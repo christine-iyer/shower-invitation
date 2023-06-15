@@ -12,8 +12,8 @@ export default function TodoList ({
 }){
     return(
         <div className={styles.todolist}>
-            Add New Todo:<input className={styles.input} type="text" 
-            value={newTodo.title} 
+            Name:<input className={styles.input} type="text" 
+            value={newTodo.name} 
             onChange={(e) => {
                 setNewTodo({...newTodo, title: e.target.value})
             }} 
@@ -21,13 +21,13 @@ export default function TodoList ({
                 e.key === 'Enter' && createTodo()
             }}
             />
-             <h3>Todos</h3>
+             <h3>Replied</h3>
         {todos.map(todo => (
             <Todo 
                 key={todo._id} 
                 todo={todo}
                 buttonAction={moveToCompleted}
-                buttonText={'Complete'}
+                buttonText={'Will Attend'}
             />
         ))}
         <h3>Completed Todos</h3>
@@ -36,7 +36,7 @@ export default function TodoList ({
                 key={todo._id}
                 todo={todo}
                 buttonAction={deleteTodo}
-                buttonText={'Delete'}
+                buttonText={'Will Not Attend'}
             />
         ))}
         </div>

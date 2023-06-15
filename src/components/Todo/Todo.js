@@ -13,11 +13,11 @@ export default function Todo({ todo, buttonAction, buttonText }){
 
 return (
     <Card>
-      <Card.Header as="h5">{todo.title}</Card.Header>
+
       <Card.Body>
-        <Card.Title>{todo.title}</Card.Title>
+        <Card.Title>{todo.name}</Card.Title>
         <Card.Text>
-          Hi
+          RSVP here
         </Card.Text>
         <Button variant="primary" onClick={() => buttonAction(todo._id) }>{buttonText}</Button>
       </Card.Body>

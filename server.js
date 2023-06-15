@@ -15,7 +15,7 @@ const app = express()
 const path = require('path')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
-const PORT = process.env.PORT || 3005
+const PORT = process.env.PORT || 3006
 
 // middleware
 app.use(express.json()) //req.body
