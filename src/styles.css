@@ -7,6 +7,15 @@ body {
      justify-content: left;
      align-items: center;
 }
+.container{
+     display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+    }
+    image {
+     border-radius: 5%;
+    }
 .shower {
      display: flex;
      flex-direction: column;
@@ -16,4 +25,9 @@ body {
      border-left-color: rgb(215,77,51);
      border-bottom-color: rgb(215,77,51);
      background-color: rgba(215,77,51, 0.1);
+     align-items: center;
+    
+  /* width: 45%; */
+  margin: 0 0 1em 0;
+  padding: 1em;
 }

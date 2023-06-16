@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import TodoList from './components/TodoList/TodoList'
 import ListGroup from 'react-bootstrap/ListGroup'
 import shower from './newShow.png'
-import kai from './kai.png'
+import kai from './kaiInvite.png'
 
 
 export default function App(){
