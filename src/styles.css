@@ -8,6 +8,8 @@ body {
      align-items: center;
 }
 .shower {
+     display: flex;
+     flex-direction: column;
      border-style: double;
      border-top-color: rgb(215,77,51);
      border-right-color: rgb(215,77,51);

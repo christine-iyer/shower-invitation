@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import TodoList from './components/TodoList/TodoList'
 import ListGroup from 'react-bootstrap/ListGroup'
 import shower from './newShow.png'
+import kai from './kai.png'
 
 
 export default function App(){
@@ -97,6 +98,7 @@ export default function App(){
        <div className="container">
 
           <img  className='shower' style={{maxHeight:'200px', marginTop: '1rem', padding:'2rem'}}src={shower} alt="fireSpot"/>
+          <img  className='shower' style={{maxHeight:'100px', marginTop: '1rem', padding:'2rem'}}src={kai} alt="fireSpot"/>
         </div>
         <ListGroup>
             <TodoList
