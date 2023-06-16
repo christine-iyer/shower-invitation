@@ -1,8 +1,17 @@
 body {
-     margin: 0;
-     height: 100vh;
+     margin:1fr;
+     /* padding:1fr; */
+     height: 70vh;
      display:flex;
      flex-direction: column;
-     justify-content: center;
+     justify-content: left;
      align-items: center;
+}
+.shower {
+     border-style: double;
+     border-top-color: rgb(215,77,51);
+     border-right-color: rgb(215,77,51);
+     border-left-color: rgb(215,77,51);
+     border-bottom-color: rgb(215,77,51);
+     background-color: rgba(215,77,51, 0.1);
 }
