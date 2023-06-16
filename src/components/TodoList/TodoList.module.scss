@@ -1,9 +1,9 @@
 .todolist {
      display:flex;
-     flex-direction: row;
+     flex-direction: column;
      justify-content: center;
      align-items: left;
-     font-size: 2rem;
+     font-size: 1rem;
      color: rgba(23, 5, 58, 0.8);
      .input {
           color: rgba(23, 19, 151, 0.7);

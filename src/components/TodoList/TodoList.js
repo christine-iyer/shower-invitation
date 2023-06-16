@@ -1,5 +1,6 @@
 import Todo from '../Todo/Todo'
 import styles from './TodoList.module.scss'
+import { ListGroup } from 'react-bootstrap'
 
 export default function TodoList ({ 
     newTodo, 
@@ -12,8 +13,8 @@ export default function TodoList ({
 }){
     return(
         <div className={styles.todolist}>
-            Name:<input className={styles.input} type="text" 
-            value={newTodo.name} 
+            Your Name? <input className={styles.input} type="text" 
+            value={newTodo.title} 
             onChange={(e) => {
                 setNewTodo({...newTodo, title: e.target.value})
             }} 
@@ -21,22 +22,25 @@ export default function TodoList ({
                 e.key === 'Enter' && createTodo()
             }}
             />
-             <h3>Replied</h3>
+             <h3>We look forward to seeing you</h3>
+             <ListGroup>
         {todos.map(todo => (
             <Todo 
                 key={todo._id} 
                 todo={todo}
                 buttonAction={moveToCompleted}
-                buttonText={'Will Attend'}
+                buttonText={'I will have to miss'}
             />
-        ))}
-        <h3>Completed Todos</h3>
+        ))}</ListGroup>
+        <span><h3>Sorry you can't be there</h3><h6>(If your plans change, delete your name from this list and sign up again.) </h6></span>
+        
         {completedTodos.map(todo =>(
             <Todo
                 key={todo._id}
                 todo={todo}
                 buttonAction={deleteTodo}
-                buttonText={'Will Not Attend'}
+                buttonText={'Delete and Start Over'}
+                
             />
         ))}
         </div>

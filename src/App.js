@@ -1,6 +1,6 @@
 // import { useState, useEffect } from 'react'
 // import TodoList from './components/TodoList/TodoList'
-// import './App.css';
+import './App.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import Container from 'react-bootstrap/Container';
 // import {
@@ -136,6 +136,8 @@
 // }
 import { useState, useEffect } from 'react'
 import TodoList from './components/TodoList/TodoList'
+import ListGroup from 'react-bootstrap/ListGroup'
+import shower from './newShow.png'
 
 
 export default function App(){
@@ -227,6 +229,11 @@ export default function App(){
     }, [])
     return(
         <>
+       <div className="container">
+
+          <img  className='shower' style={{maxHeight:'200px', marginTop: '11rem', padding:'2rem'}}src={shower} alt="fireSpot"/>
+        </div>
+        <ListGroup>
             <TodoList
             newTodo={newTodo}
             setNewTodo={setNewTodo}
@@ -236,6 +243,7 @@ export default function App(){
             completedTodos={completedTodos}
             deleteTodo={deleteTodo}
             />
+            </ListGroup>
         </>
     )
 }

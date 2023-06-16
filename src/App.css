@@ -4,6 +4,10 @@
        animation: App-logo-spin infinite 20s linear;
      }
    }
+   .container{
+    padding: 11%;
+    margin: 11%;
+   }
    
    .App-header {
      background-color: #282c34;
@@ -15,6 +19,7 @@
      font-size: calc(10px + 2vmin);
      color: white;
    }
+
    
    .App-link {
      color: #61dafb;

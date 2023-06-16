@@ -1,8 +1,8 @@
 const { model, Schema } = require('mongoose')
 
 const todoSchema = new Schema({
-    name: {required: true, type: String},
-    revp: { required: true, type: String}
+    title: {required: true, type: String},
+    completed: { required: true, type: String}
 }, {
     timestamps: true
 })
