@@ -1,33 +1,104 @@
 body {
-     margin:1fr;
+     margin: 1fr;
      /* padding:1fr; */
      height: 70vh;
-     display:flex;
+     display: flex;
      flex-direction: column;
      justify-content: left;
      align-items: center;
+     background-color: rgb(255, 223, 186); ;
 }
-.container{
-     display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-    }
-    image {
-     border-radius: 5%;
-    }
+
+Header {
+     position: sticky;
+     top: 0;
+}
+
+.container {
+     top:0;
+
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     grid-gap: 30px;
+
+     justify-content: space-between;
+     align-items: left;
+
+}
+
+image {
+
+     object-fit: none;
+     width: 100%;
+}
+
 .shower {
      display: flex;
-     flex-direction: column;
-     border-style: double;
-     border-top-color: rgb(215,77,51);
-     border-right-color: rgb(215,77,51);
-     border-left-color: rgb(215,77,51);
-     border-bottom-color: rgb(215,77,51);
-     background-color: rgba(215,77,51, 0.1);
+     flex-direction: row;
+     border-style: double; 
+     border-top-color: rgb(215, 77, 51);
+     border-right-color: rgb(215, 77, 51);
+     border-left-color: rgb(215, 77, 51);
+     border-bottom-color: rgb(215, 77, 51);
+     /* background-color: rgba(215, 77, 51, 0.1); */
      align-items: center;
-    
-  /* width: 45%; */
-  margin: 0 0 1em 0;
-  padding: 1em;
+
+     margin-right: 20px;
+
 }
+
+.one {
+     flex:1;
+     box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     border: 14px double rgb(78, 125, 115);
+     outline: 6px solid rgb(295, 243, 186); 
+}
+
+.two {
+
+     border: 14px double rgb(229, 161, 56);
+   outline: 6px solid rgb(295, 243, 186); 
+}
+
+.three {
+     border: 14px double rgb(211, 117, 81);
+     outline: 6px solid rgb(295, 243, 186); 
+}
+
+.four {
+
+     border: 14px double rgb(141, 49, 19);
+     outline: 6px solid rgb(295, 243, 186); 
+}
+
+.five {
+     border: 14px double rgb(255, 233, 186);
+     outline: 6px solid rgb(295, 243, 186); 
+}
+
+.six {
+border: 14px double rgb(255, 233, 186);
+outline: 6px solid rgb(295, 243, 186); 
+
+
+ }
+
+.seven {
+
+     border: 14px double rgb(255, 233, 186); 
+     outline: 6px solid rgb(295, 243, 150);  
+}
+
+
+.eight {
+     border: 14px double rgb(255, 233, 186); 
+     outline: 6px solid rgb(295, 243, 186); 
+
+
+}
+
+h2{
+     color:  rgb(215, 77, 51);
+  }

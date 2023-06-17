@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react'
 import TodoList from './components/TodoList/TodoList'
 import ListGroup from 'react-bootstrap/ListGroup'
 import shower from './newShow.png'
-import kai from './kaiInvite.png'
+import Content from './components/Content/Content'
+import Header from './components/Header/Header';
 
 
-export default function App(){
+export default function App() {
     const [todos, setTodos] = useState([])
     const [completedTodos, setCompletedTodos] = useState([])
     const [newTodo, setNewTodo] = useState({
@@ -16,7 +17,7 @@ export default function App(){
 
     //createTodos
     const createTodo = async () => {
-        const body = {...newTodo}
+        const body = { ...newTodo }
         try {
             const response = await fetch('/api/todos', {
                 method: 'POST',
@@ -26,13 +27,13 @@ export default function App(){
                 body: JSON.stringify(body)
             })
             const createdTodo = await response.json()
-            const todosCopy = [createdTodo,...todos]
+            const todosCopy = [createdTodo, ...todos]
             setTodos(todosCopy)
             setNewTodo({
                 title: '',
                 completed: false
             })
-        } catch (error) {   
+        } catch (error) {
             console.error(error)
         }
     }
@@ -60,7 +61,7 @@ export default function App(){
             const index = todos.findIndex((todo) => todo._id === id)
             const todosCopy = [...todos]
             const subject = todosCopy[index]
-            subject.completed = true 
+            subject.completed = true
             const response = await fetch(`/api/todos/${id}`, {
                 method: 'PUT',
                 headers: {
@@ -79,37 +80,56 @@ export default function App(){
     }
     //getTodos
     const getTodos = async () => {
-        try{
+        try {
             const response = await fetch('/api/todos')
             const foundTodos = await response.json()
             setTodos(foundTodos.reverse())
             const responseTwo = await fetch('/api/todos/completed')
             const foundCompletedTodos = await responseTwo.json()
             setCompletedTodos(foundCompletedTodos.reverse())
-        } catch(error){
+        } catch (error) {
             console.error(error)
         }
     }
     useEffect(() => {
         getTodos()
     }, [])
-    return(
+    return (
         <>
-       <div className="container">
-
-          <img  className='shower' style={{maxHeight:'200px', marginTop: '1rem', padding:'2rem'}}src={shower} alt="fireSpot"/>
-          <img  className='shower' style={{maxHeight:'100px', marginTop: '1rem', padding:'2rem'}}src={kai} alt="fireSpot"/>
-        </div>
-        <ListGroup>
-            <TodoList
-            newTodo={newTodo}
-            setNewTodo={setNewTodo}
-            createTodo={createTodo}
-            todos={todos}
-            moveToCompleted={moveToCompleted}
-            completedTodos={completedTodos}
-            deleteTodo={deleteTodo}
-            />
+        <Header style={{ top: 0 }}></Header>
+            <div className="container">
+                
+          
+            <div className='flex-child one'>
+                <div className='five'>
+                    <div className='two'>
+                        <div className='six'>
+                            <div className='three'>
+                                <div className='seven'>
+                                    <div className='four'>
+                                        <div className='eight'>
+                                            <img className='shower' style={{width:'100%'}}  src={shower} alt="fireSpot" /> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           <Content className="flex-child content"/>
+           </div>
+            <ListGroup>
+                <TodoList
+                    newTodo={newTodo}
+                    setNewTodo={setNewTodo}
+                    createTodo={createTodo}
+                    todos={todos}
+                    moveToCompleted={moveToCompleted}
+                    completedTodos={completedTodos}
+                    deleteTodo={deleteTodo}
+                />
             </ListGroup>
         </>
     )
