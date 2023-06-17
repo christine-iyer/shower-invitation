@@ -13,7 +13,8 @@ export default function TodoList ({
 }){
     return(
         <div className={styles.todolist}>
-            Your Name? <input className={styles.input} type="text" 
+            <h2>RSVP here...</h2>
+            <h3>Your Name? </h3><input className={styles.input} type="text" 
             value={newTodo.title} 
             onChange={(e) => {
                 setNewTodo({...newTodo, title: e.target.value})
@@ -23,13 +24,14 @@ export default function TodoList ({
             }}
             />
              <h3>We look forward to seeing you</h3>
-             <ListGroup>
+             <ListGroup className={styles.list}>
         {todos.map(todo => (
             <Todo 
                 key={todo._id} 
+                
                 todo={todo}
                 buttonAction={moveToCompleted}
-                buttonText={'I will have to miss'}
+                buttonText={'X'}
             />
         ))}</ListGroup>
         <span><h3>Sorry you can't be there</h3><h6>(If your plans change, delete your name from this list and sign up again.) </h6></span>

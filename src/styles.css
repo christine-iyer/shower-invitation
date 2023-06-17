@@ -6,7 +6,7 @@ body {
      flex-direction: column;
      justify-content: left;
      align-items: center;
-     background-color: rgb(255, 223, 186); ;
+     background-color: rgba(229, 161, 56, 0.6); 
 }
 
 Header {
@@ -48,53 +48,53 @@ image {
 }
 
 .one {
-     flex:1;
+     /* flex:1;
      box-sizing: border-box;
      -moz-box-sizing: border-box;
-     -webkit-box-sizing: border-box;
-     border: 14px double rgb(78, 125, 115);
-     outline: 6px solid rgb(295, 243, 186); 
+     -webkit-box-sizing: border-box; */
+     border: 14px double rgb(78, 125, 115,.8);
+     outline: 6px rgba(78, 125, 115, 0.6); 
 }
 
 .two {
 
      border: 14px double rgb(229, 161, 56);
-   outline: 6px solid rgb(295, 243, 186); 
+   outline: 6px rgba(229, 161, 56,.2); 
 }
 
 .three {
      border: 14px double rgb(211, 117, 81);
-     outline: 6px solid rgb(295, 243, 186); 
+     outline: 6px rgba(229, 161, 56,.2); 
 }
 
 .four {
 
      border: 14px double rgb(141, 49, 19);
-     outline: 6px solid rgb(295, 243, 186); 
+     outline: 6px rgba(229, 161, 56,.2); 
 }
 
 .five {
-     border: 14px double rgb(255, 233, 186);
-     outline: 6px solid rgb(295, 243, 186); 
+     border: 14px double rgba(78, 125, 115,.4);
+     outline: 6px rgba(229, 161, 56,.2); 
 }
 
 .six {
-border: 14px double rgb(255, 233, 186);
-outline: 6px solid rgb(295, 243, 186); 
+border: 14px double rgba(211, 117, 81,.3);
+outline: 6px rgba(229, 161, 56,.2); 
 
 
  }
 
 .seven {
 
-     border: 14px double rgb(255, 233, 186); 
-     outline: 6px solid rgb(295, 243, 150);  
+     border: 14px double rgba(141, 49, 19,.2); 
+     outline: 6px solid rgba(78, 125, 115, rgba(78, 125, 115, .5));  
 }
 
 
 .eight {
-     border: 14px double rgb(255, 233, 186); 
-     outline: 6px solid rgb(295, 243, 186); 
+     border: 14px double rgba(229, 161, 56, .2); 
+     outline: 6px rgba(229, 161, 56,.2); 
 
 
 }

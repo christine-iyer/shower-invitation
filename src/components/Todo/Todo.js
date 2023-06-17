@@ -1,6 +1,5 @@
 // import styles from './Todo.module.scss'
 import { ListGroup } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import styles from './Todo.module.scss'
 
@@ -10,7 +9,7 @@ return (
     <Card>
       
 
-        <span>{todo.title} <Button className={styles.button} onClick={() => buttonAction(todo._id) }>{buttonText}</Button></span>
+        <span>{todo.title} <button className={styles.button} onClick={() => buttonAction(todo._id) }>{buttonText}</button></span>
 
 
     </Card>
