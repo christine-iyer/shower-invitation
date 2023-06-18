@@ -8,6 +8,19 @@ import Header from './components/Header/Header';
 
 
 export default function App() {
+    const [width, setWindowWidth] = useState(0)
+   useEffect(() => { 
+
+     updateDimensions();
+
+     window.addEventListener("resize", updateDimensions);
+     return () => 
+       window.removeEventListener("resize",updateDimensions);
+    }, [])
+    const updateDimensions = () => {
+      const width = window.innerWidth
+      setWindowWidth(width)
+    }
     const [todos, setTodos] = useState([])
     const [completedTodos, setCompletedTodos] = useState([])
     const [newTodo, setNewTodo] = useState({

@@ -43,18 +43,18 @@ image {
      /* background-color: rgba(215, 77, 51, 0.1); */
      align-items: center;
 
-     margin-right: 20px;
+     /* margin-right: 20px; */
 
 }
 
-.one {
+/* .one {
      /* flex:1;
      box-sizing: border-box;
      -moz-box-sizing: border-box;
-     -webkit-box-sizing: border-box; */
+     -webkit-box-sizing: border-box; 
      border: 14px double rgb(78, 125, 115,.8);
      outline: 6px rgba(78, 125, 115, 0.6); 
-}
+} */
 
 .two {
 
