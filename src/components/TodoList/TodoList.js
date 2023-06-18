@@ -33,8 +33,11 @@ export default function TodoList ({
                 buttonAction={moveToCompleted}
                 buttonText={'X'}
             />
-        ))}</ListGroup>
-        <span><h3>Sorry you can't be there</h3><h6>(If your plans change, delete your name from this list and sign up again.) </h6></span>
+        ))}
+                _________________________________________________________
+
+        </ListGroup>
+        <span><h4>Sorry you can't be there(If your plans change, delete your name from this list and sign up again.) </h4></span>
         
         {completedTodos.map(todo =>(
             <Todo
@@ -45,6 +48,9 @@ export default function TodoList ({
                 
             />
         ))}
+                _________________________________________________________
+
+
         </div>
     )
 }

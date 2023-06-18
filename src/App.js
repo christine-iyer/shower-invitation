@@ -5,6 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import shower from './newShow.png'
 import Content from './components/Content/Content'
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 
 export default function App() {
@@ -144,6 +145,7 @@ export default function App() {
                     deleteTodo={deleteTodo}
                 />
             </ListGroup>
+            <Footer/>
         </>
     )
 }
