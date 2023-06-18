@@ -14,7 +14,7 @@ export default function TodoList ({
     return(
         <div className={styles.todolist}>
             <h2>RSVP here...</h2>
-            <h3>Your Name? </h3><input className={styles.input} type="text" 
+            <h3>Add your name and touch enter. If you can't attend, click the X button that appears next to your entry.   </h3><input className={styles.input} type="text" 
             value={newTodo.title} 
             onChange={(e) => {
                 setNewTodo({...newTodo, title: e.target.value})
