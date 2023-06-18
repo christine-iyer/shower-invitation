@@ -6,9 +6,19 @@ import shower from './newShow.png'
 import Content from './components/Content/Content'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import { useMediaQuery } from 'react-responsive';
 
 
 export default function App() {
+    const MyWrapperComponent = (props) => {
+        const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+        const textStyle = isMobile ? 'text-mobile' : 'text-desktop';
+      
+        return (
+          <div className={textStyle}>
+           {props.children}
+          </div>
+        )}
     const [width, setWindowWidth] = useState(0)
    useEffect(() => { 
 
@@ -110,6 +120,9 @@ export default function App() {
     }, [])
     return (
         <>
+        <MyWrapperComponent>
+
+
         <Header style={{ top: 0 }}></Header>
             <div className="container">
                 
@@ -146,6 +159,7 @@ export default function App() {
                 />
             </ListGroup>
             <Footer/>
+            </MyWrapperComponent>
         </>
     )
 }
