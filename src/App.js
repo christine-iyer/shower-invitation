@@ -136,7 +136,7 @@ export default function App() {
                                 <div className='seven'>
                                     <div className='four'>
                                         <div className='eight'>
-                                            <img className='shower' style={{width:'50%'}}  src={shower} alt="fireSpot" /> 
+                                            <img className='shower' style={{width:'100%'}}  src={shower} alt="fireSpot" /> 
                                         </div>
                                     </div>
                                 </div>
