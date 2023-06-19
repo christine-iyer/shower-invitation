@@ -20,6 +20,7 @@ export default function TodoList ({
                 setNewTodo({...newTodo, title: e.target.value})
             }} 
             onKeyDown={(e) => {
+               
                 e.key === 'Enter' && createTodo()
             }}
             />

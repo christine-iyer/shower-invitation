@@ -4,12 +4,13 @@
      text-decoration-color: rgba(212,175,55, 0.8);
 }
 body {
+
      margin: 1fr;
-     /* padding:1fr; */
-     height: 70vh;
+     padding:1fr;
+     min-height: 100vh;
      display: flex;
      flex-direction: column;
-     justify-content: left;
+     justify-content: center;
      align-items: center;
      background-color: rgba(229, 161, 56, 0.6); 
 }
@@ -41,14 +42,14 @@ image {
      display: flex;
      flex-direction: row;
      border-style: double; 
-     border-top-color: rgb(215, 77, 51);
-     border-right-color: rgb(215, 77, 51);
-     border-left-color: rgb(215, 77, 51);
-     border-bottom-color: rgb(215, 77, 51);
+     border-top-color: rgba(215, 77, 51,0.5);
+     border-right-color: rgba(215, 77, 51,0.5);
+     border-left-color: rgba(215, 77, 51,0.5);
+     border-bottom-color: rgba(215, 77, 51,0.5);
      /* background-color: rgba(215, 77, 51, 0.1); */
      align-items: center;
 
-     /* margin-right: 20px; */
+     margin-right: 20px;
 
 }
 
