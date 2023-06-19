@@ -3,36 +3,13 @@ import { useState, useEffect } from 'react'
 import TodoList from './components/TodoList/TodoList'
 import ListGroup from 'react-bootstrap/ListGroup'
 import shower from './newShow.png'
-
+import kai from './kaiInvite.png'
 import Content from './components/Content/Content'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
-
-
 export default function App() {
-   // const MyWrapperComponent = (props) => {
-//         const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
-//         const textStyle = isMobile ? 'text-mobile' : 'text-desktop';
-      
-//         return (
-//           <div className={textStyle}>
-//            {props.children}
-//           </div>
-//         )}
-//     const [width, setWindowWidth] = useState(0)
-//    useEffect(() => { 
 
-//      updateDimensions();
-
-//      window.addEventListener("resize", updateDimensions);
-//      return () => 
-//        window.removeEventListener("resize",updateDimensions);
-//     }, [])
-//     const updateDimensions = () => {
-//       const width = window.innerWidth
-//       setWindowWidth(width)
-//     }
     const [todos, setTodos] = useState([])
     const [completedTodos, setCompletedTodos] = useState([])
     const [newTodo, setNewTodo] = useState({
@@ -121,22 +98,37 @@ export default function App() {
     }, [])
     return (
         <>
-        {/* <MyWrapperComponent> */}
+            <Header style={{ top: 0 }}></Header>
 
+            <div className="container" >
+                <div className='flex-child one' style={{ width: '100%', objectFit: 'contain' }}>
+                    <div className='five'>
+                        <div className='two'>
+                            <div className='six'>
+                                <div className='three'>
+                                    <div className='seven'>
+                                        <div className='four'>
+                                            <div className='eight'>
+                                                <img className='shower' style={{ width: '100%' }} src={shower} alt="fireSpot" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <Header style={{ top: 0 }}></Header>
-            <div className="container">
-                
-          
-            <div className='flex-child one'>
-                <div className='five'>
-                    <div className='two'>
-                        <div className='six'>
-                            <div className='three'>
-                                <div className='seven'>
-                                    <div className='four'>
-                                        <div className='eight'>
-                                            <img className='shower' style={{width:'100%'}}  src={shower} alt="fireSpot" /> 
+                <div className='flex-child oneTwo' style={{ float: 'right', width: '100%', objectFit: 'contain' }}>
+                    <div className='five'>
+                        <div className='two'>
+                            <div className='six'>
+                                <div className='three'>
+                                    <div className='seven'>
+                                        <div className='four'>
+                                            <div className='eight'>
+                                                <img className='kai' style={{ width: '100%', objectFit: 'contain' }} src={kai} alt="fireSpot" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -145,26 +137,8 @@ export default function App() {
                     </div>
                 </div>
             </div>
-            {/* <div className='flex-child one'>
-                <div className='five'>
-                    <div className='two'>
-                        <div className='six'>
-                            <div className='three'>
-                                <div className='seven'>
-                                    <div className='four'>
-                                        <div className='eight'>
-                                            <img className='kai' style={{width:'100%'}}  src={kai} alt="fireSpot" /> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-            
-           <Content className="flex-child content"/>
-           </div>
+            <Content className="flex-child content" />
+
             <ListGroup>
                 <TodoList
                     newTodo={newTodo}
@@ -176,8 +150,7 @@ export default function App() {
                     deleteTodo={deleteTodo}
                 />
             </ListGroup>
-            <Footer/>
-            {/* </MyWrapperComponent> */}
+            <Footer style={{height: '5vh'}}/>
         </>
     )
 }
