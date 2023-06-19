@@ -37,7 +37,7 @@ export default function TodoList ({
                 _________________________________________________________
 
         </ListGroup>
-        <span><h4>Sorry you can't be there(If your plans change, delete your name from this list and sign up again.) </h4></span>
+        <span><h4>Sorry you can't be there. (If your plans change, delete your name from this list and sign up again.) </h4></span>
         
         {completedTodos.map(todo =>(
             <Todo
