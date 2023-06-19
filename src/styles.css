@@ -47,41 +47,53 @@ image {
 
 }
 
-/* .one {
+.one {
      /* flex:1;
      box-sizing: border-box;
      -moz-box-sizing: border-box;
-     -webkit-box-sizing: border-box; 
-     border: 14px double rgb(78, 125, 115,.8);
-     outline: 6px rgba(78, 125, 115, 0.6); 
-} */
+     -webkit-box-sizing: border-box;  */
+     border: 14px double rgba(212,175,55,0.4);
+     outline: 6px rgba(212,175,55, 0.6); 
+     outline-style: ridge;
+     border-style:ridge;
+}
 
 .two {
 
      border: 14px double rgb(229, 161, 56);
    outline: 6px rgba(229, 161, 56,.2); 
+   outline-style: ridge;
+     border-style:ridge;
 }
 
 .three {
-     border: 14px double rgb(211, 117, 81);
+     border: 14px double rgba(211, 117, 81, .4);
      outline: 6px rgba(229, 161, 56,.2); 
+     outline-style: ridge;
+     border-style:ridge;
 }
 
 .four {
 
-     border: 14px double rgb(141, 49, 19);
-     outline: 6px rgba(229, 161, 56,.2); 
+     border: 14px double rgba(141, 49, 19,0.4);
+     outline: 6px rgba(229, 161, 56,.8); 
+     outline-style: ridge;
+     border-style:ridge;
 }
 
 .five {
      border: 14px double rgba(78, 125, 115,.4);
      outline: 6px rgba(229, 161, 56,.2); 
+     outline-style: ridge;
+     border-style:ridge;
      
 }
 
 .six {
 border: 14px double rgba(211, 117, 81,.3);
 outline: 6px rgba(229, 161, 56,.2); 
+outline-style: ridge;
+     border-style:ridge;
 
 
  }
@@ -89,13 +101,17 @@ outline: 6px rgba(229, 161, 56,.2);
 .seven {
 
      border: 14px double rgba(141, 49, 19,.2); 
-     outline: 6px solid rgba(78, 125, 115, rgba(78, 125, 115, .5));  
+     outline: 6px solid  rgba(78, 125, 115, .5);  
+     outline-style: ridge;
+     border-style:ridge;
 }
 
 
 .eight {
      border: 14px double rgba(229, 161, 56, .2); 
      outline: 6px rgba(229, 161, 56,.2); 
+     outline-style: ridge;
+     border-style:ridge;
 
 
 }
