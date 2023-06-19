@@ -1,3 +1,8 @@
+
+*{
+     text-decoration-style: wavy;
+     text-decoration-color: rgba(212,175,55, 0.8);
+}
 body {
      margin: 1fr;
      /* padding:1fr; */
@@ -71,6 +76,7 @@ image {
      outline: 6px rgba(229, 161, 56,.2); 
      outline-style: ridge;
      border-style:ridge;
+     
 }
 
 .four {
@@ -119,3 +125,4 @@ outline-style: ridge;
 h2{
      color:  rgb(215, 77, 51);
   }
+ 
