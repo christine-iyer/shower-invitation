@@ -32,7 +32,9 @@ export default function TodoList({
                 <li>And finally, if you want to leave a message here, just start typing.</li>
                 <li>We'll be serving light lunch. </li>
             </ul>
-            -------------------
+
+            
+          
             <h3>We look forward to seeing you</h3>
             <ListGroup className={styles.list}>
                 {todos.map(todo => (
@@ -46,7 +48,7 @@ export default function TodoList({
                 _________________________________________________________
 
             </ListGroup>
-            <span><h4>Sorry you can't be there. (If your plans change, delete your name from this list and sign up again.) </h4></span>
+            <span><h4>Sorry you can't be there. (If your plans change, delete your name and sign up again.) </h4></span>
 
             {completedTodos.map(todo => (
                 <Todo
