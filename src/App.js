@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import TodoList from './components/TodoList/TodoList'
 import ListGroup from 'react-bootstrap/ListGroup'
 import shower from './newShow.png'
-import kai from './kaiInvite.png'
+import Image from './components/Image/Image'
 import Content from './components/Content/Content'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -101,7 +101,7 @@ export default function App() {
             <Header style={{ top: 0 }}></Header>
 
             <div className="container" >
-                <div className='flex-child one' style={{ width: '100%', objectFit: 'contain' }}>
+                <div className='flex-child one' style={{ maxWidth: '75%', objectFit: 'contain' }}>
                     <div className='five'>
                         <div className='two'>
                             <div className='six'>
@@ -119,7 +119,7 @@ export default function App() {
                     </div>
                 </div>
 
-                <div className='flex-child oneTwo' style={{ float: 'right', width: '100%', objectFit: 'contain' }}>
+                {/* <div className='flex-child oneTwo' style={{ float: 'right', width: '100%', objectFit: 'contain' }}>
                     <div className='five'>
                         <div className='two'>
                             <div className='six'>
@@ -135,7 +135,10 @@ export default function App() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
+                <hr></hr>
+                {/* <Image></Image> */}
             </div>
             <Content className="flex-child content" />
 

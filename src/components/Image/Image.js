@@ -1,5 +1,5 @@
 import React from 'react'
-import kai from './kai.png'
+import shower from '../../newShow.png'
 import styles from './Image.module.scss'
 
 const Image = () => {
@@ -13,7 +13,7 @@ const Image = () => {
                      <div className='seven'>
                          <div className='four'>
                              <div className='eight'>
-                                 <img className='kai' style={{width:'100%'}}  src={kai} alt="fireSpot" /> 
+                                 <img className='shower' style={{width:'50%'}}  src={shower} alt="fireSpot" /> 
                              </div>
                          </div>
                      </div>
