@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <>
    
-    <h2 style={{height: '2vh'}}>Please Join Us for Edith and Kai's Baby Shower</h2>
+    <h2 >Please Join Us for Edith and Kai's Baby Shower</h2>
     </>
   )
 }

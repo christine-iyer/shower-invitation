@@ -1,5 +1,6 @@
 
 *{
+     justify-content: center;
      text-decoration-style: wavy;
      text-decoration-color: rgba(212,175,55, 0.8);
 }
@@ -15,10 +16,9 @@ body {
      background-color: rgba(229, 161, 56, 0.6); 
 }
 
-/* Header {
-     position: sticky;
-     top: 0;
-} */
+Header {
+ justify-content: center;
+}
 
 .container {
      top:0;

@@ -101,20 +101,20 @@ export default function App() {
             <Header style={{ top: 0 }}></Header>
 
             <div className="container" >
-                <div className='flex-child one' style={{ maxWidth: '75%', objectFit: 'contain' }}>
+                <div className='flex-child one' style={{ maxWidth: '100%', objectFit: 'contain' }}>
                     <div className='five'>
-                        <div className='two'>
-                            <div className='six'>
+                        {/* <div className='two'> */}
+                            {/* <div className='six'> */}
                                 <div className='three'>
-                                    <div className='seven'>
+                                    {/* <div className='seven'> */}
                                         <div className='four'>
                                             <div className='eight'>
                                                 <img className='shower' style={{ width: '100%' }} src={shower} alt="fireSpot" />
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    {/* </div>
+                                </div> */}
+                            {/* </div> */}
                         </div>
                     </div>
                 </div>
