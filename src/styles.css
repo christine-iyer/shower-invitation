@@ -25,6 +25,7 @@ body {
      /* height: 20px; */
      display: flex;
      flex-flow: column wrap;
+     max-width: 50%;
 
      display: grid;
      grid-template-columns: 1fr 1fr;
