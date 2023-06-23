@@ -1,4 +1,6 @@
 h4{
+     margin:1em;
+     padding:1em;
      color: rgb(215, 77, 51);
 }
 a{
@@ -7,4 +9,12 @@ a{
 p{ 
      font-style: italic;
      color: rgb(141, 49, 19);
+}
+.content{
+     position: inherit;
+     width: 50%;
+  justify-content: right;
+  
+     align-content: right;
+     width: 50%;
 }

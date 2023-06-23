@@ -100,7 +100,8 @@ export default function App() {
         <>
             <Header ></Header>
 
-            <div className="container" >
+            <div className="container" style={{width: '90%',  
+     alignItems: 'center'}} >
                 <div className='flex-child one' style={{ maxWidth: '100%', objectFit: 'contain' }}>
                      <div className='five'> 
                          <div className='two'> 
@@ -140,7 +141,19 @@ export default function App() {
                 <hr></hr>
                 {/* <Image></Image> */}
             </div>
-            <Content className="flex-child content" />
+            <div style={{width:'100%', alignContent:'center', alignItems:'center'}}>
+
+<h4>When:</h4><p>Sunday, July, 23, 2023 1:00pm</p>
+<h4>Where:</h4>
+<address>
+  <p>Mary Hennessey Iyer's Home <br></br>
+    <a href="hjfdh">76 North St. (entrance, driveway, and street parking on Scammon St.)</a> <br></br>
+    <a href="hjvfffh">Saco, ME 04072 </a> <br></br>
+  </p>
+</address>
+
+</div>
+            {/* <Content className="flex-child content" /> */}
 
             <ListGroup>
                 <TodoList
