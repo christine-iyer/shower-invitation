@@ -14,6 +14,12 @@ const Content = () => {
         </p>
       </address>
 
+      <h4>Registry:</h4>
+      <link><a href src='https://www.babylist.com/list/baby-edith-iyer-hernandez'></a></link>
+      
+
+      
+
 </div>
   )
 }

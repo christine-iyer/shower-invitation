@@ -151,6 +151,10 @@ export default function App() {
     <a href="hjvfffh">Saco, ME 04072 </a> <br></br>
   </p>
 </address>
+<h4>Registry:</h4>
+<a href="https://www.babylist.com/list/baby-edith-iyer-hernandez">For those of you who have asked, here's is a link to a baby registry.</a>
+  
+
 
 </div>
             {/* <Content className="flex-child content" /> */}
