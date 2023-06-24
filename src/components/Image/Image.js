@@ -1,5 +1,6 @@
 import React from 'react'
 import shower from '../../newShow.png'
+import email from './email.png'
 import styles from './Image.module.scss'
 
 const Image = () => {
@@ -13,7 +14,8 @@ const Image = () => {
                      <div className='seven'>
                          <div className='four'>
                              <div className='eight'>
-                                 <img className='shower' style={{width:'50%'}}  src={shower} alt="fireSpot" /> 
+                                 <img className='email' style={{width:'50%'}}  src={email} alt="fireSpot" /> 
+                             
                              </div>
                          </div>
                      </div>
@@ -22,6 +24,8 @@ const Image = () => {
          </div>
      </div>
  </div>
+
+
  </div>
   )
 }

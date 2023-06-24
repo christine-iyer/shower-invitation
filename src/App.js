@@ -120,30 +120,12 @@ export default function App() {
                     </div>
                 </div>
 
-                {/* <div className='flex-child oneTwo' style={{ float: 'right', width: '100%', objectFit: 'contain' }}>
-                    <div className='five'>
-                        <div className='two'>
-                            <div className='six'>
-                                <div className='three'>
-                                    <div className='seven'>
-                                        <div className='four'>
-                                            <div className='eight'>
-                                                <img className='kai' style={{ width: '100%', objectFit: 'contain' }} src={kai} alt="fireSpot" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-
                 <hr></hr>
-                {/* <Image></Image> */}
+
             </div>
             <div style={{width:'100%', alignContent:'center', alignItems:'center'}}>
 
-<h4>When:</h4><p>Sunday, July, 23, 2023 1:00pm</p>
+{/* <h4>When:</h4><p>Sunday, July, 23, 2023 1:00pm</p>
 <h4>Where:</h4>
 <address>
   <p>Mary Hennessey Iyer's Home <br></br>
@@ -152,9 +134,12 @@ export default function App() {
   </p>
 </address>
 <h4>Registry:</h4>
-<a href="https://www.babylist.com/list/baby-edith-iyer-hernandez">For those of you who have asked, here's is a link to a baby registry.</a>
-  
+<p>For those of you who have asked, here's is a link to a baby registry.</p>
 
+<a href="https://www.babylist.com/list/baby-edith-iyer-hernandez">Link</a>
+   */}
+
+<Content />
 
 </div>
             {/* <Content className="flex-child content" /> */}
@@ -170,6 +155,7 @@ export default function App() {
                     deleteTodo={deleteTodo}
                 />
             </ListGroup>
+
             <Footer style={{height: '5vh'}}/>
         </>
     )

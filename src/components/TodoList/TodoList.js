@@ -13,7 +13,7 @@ export default function TodoList({
 }) {
     return (
         <div className={styles.todolist} >
-            <h3>RSVP here...</h3>
+            <h3>RSVP here... add your name and touch enter</h3>
 
          
             <input className={styles.input} type="text"
@@ -27,7 +27,7 @@ export default function TodoList({
                 }}
             />
                         <ul>
-                <li>Add your name and touch enter. If you can't attend, click the X button that appears next to your entry.</li>
+                <li>Add your name in the shaded box below and touch enter. If you can't attend, click the X button that appears next to your entry.</li>
                 <li>If you would like to chat with hosts directly, our contact information can be found below.</li>
                 <li>And finally, if you want to leave a message here, just start typing.</li>
                 <li>We'll be serving light lunch. </li>
