@@ -1,12 +1,12 @@
 import './App.css';
 import { useState, useEffect } from 'react'
-import TodoList from './components/TodoList/TodoList'
-import ListGroup from 'react-bootstrap/ListGroup'
+// import TodoList from './components/TodoList/TodoList'
+// import ListGroup from 'react-bootstrap/ListGroup'
 import shower from './newShow.png'
-import Image from './components/Image/Image'
-import Content from './components/Content/Content'
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+// import Image from './components/Image/Image'
+// import Content from './components/Content/Content'
+// import Header from './components/Header/Header';
+// import Footer from './components/Footer/Footer';
 import Blahg from './components/Blahg/Blahg'
 
 export default function App() {
@@ -99,7 +99,7 @@ export default function App() {
     }, [])
     return (
         <>
-            <Header ></Header>
+            {/* <Header ></Header> */}
 
             <div className="container" style={{width: '90%',  
      alignItems: 'center'}} >
@@ -140,12 +140,12 @@ export default function App() {
 <a href="https://www.babylist.com/list/baby-edith-iyer-hernandez">Link</a>
    */}
 
-<Content />
+{/* <Content /> */}
 
 </div>
             {/* <Content className="flex-child content" /> */}
 
-            <ListGroup>
+            {/* <ListGroup>
                 <TodoList
                     newTodo={newTodo}
                     setNewTodo={setNewTodo}
@@ -155,10 +155,10 @@ export default function App() {
                     completedTodos={completedTodos}
                     deleteTodo={deleteTodo}
                 />
-            </ListGroup>
+            </ListGroup> */}
             <Blahg />
 
-            <Footer style={{height: '5vh'}}/>
+            {/* <Footer style={{height: '5vh'}}/> */}
         </>
     )
 }

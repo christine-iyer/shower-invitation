@@ -3,6 +3,8 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 import { Container, Row, Col } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
+
+
 import ReadMore from './ReadMore';
 import '../../App.css';
 
@@ -198,12 +200,9 @@ return (
                     <div className="head">
 
                       <span><h2 >{blahg.title},  </h2>created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</span>
-{/* <p>
-                        <span className="headline hl2">Created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</span>
-                      </p> */}
                       <br></br>
 
-                      <q>`{blahg.text.substr(0, 27)}...`</q>
+                      <q>`{blahg.text.substr(0, 31)}...`</q>
 </div>
 <div className="frame">
                     <figure className="figure">
@@ -214,7 +213,7 @@ return (
 
 <ReadMore className="readMore"
                       text={blahg.text}
-                      deleteBlahg={deleteBlahg}
+                      
                       numberOfLines={1}
                       lineHeight={1.2}
                       showLessButton={true}>

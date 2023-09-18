@@ -3,13 +3,13 @@ import React, { Component } from "react";
 
 const ELLIPSES = "…";
 const SHOW_LESS_TEXT = "Show Less";
-const SHOW_MORE_TEXT = "Read More";
+const SHOW_MORE_TEXT = "Continue";
 
 export default class ReadMore extends Component {
   static defaultProps = {
     numberOfLines: 2,
     lineHeight: 1,
-    readMoreCharacterLimit: 50,
+    readMoreCharacterLimit: 100,
     showLessButton: false
   };
 
