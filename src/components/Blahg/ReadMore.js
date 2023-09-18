@@ -9,7 +9,7 @@ export default class ReadMore extends Component {
   static defaultProps = {
     numberOfLines: 2,
     lineHeight: 1,
-    readMoreCharacterLimit: 100,
+    readMoreCharacterLimit: 50,
     showLessButton: false
   };
 
