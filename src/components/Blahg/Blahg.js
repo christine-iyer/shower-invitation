@@ -150,7 +150,7 @@ return (
             value={blahg.title}
             onChange={handleChange}
             name="title"
-            placeholder='Bottom Line'
+            placeholder='Title'
             onClick={(e) => {
               setShowInput(!showInput)
             }}
@@ -169,24 +169,24 @@ return (
             onChange={handleChange}
             name="text"
             rows={2}
-            placeholder='Details'>
+            placeholder='Some meaningful text'>
           </input>
           <br />
           <select
             value={blahg.category}
             onChange={handleChange}
             name="category">
-            <option value="Curiousities">Select 🤍</option>
-            <option value="💛 Thank Me ⬅️, Franky">💛 Thank Me ⬅️, Franky</option>
-            <option value="🧡 Janky Franky">🧡 Janky Franky</option>
-            <option value="💚 Frankly Franky">💚 Frankly Franky</option>
-            <option value="💙 Cranky Franky">💙 Cranky Franky</option>
-            <option value="💜 Swanky Franky">💜 Swanky Franky</option>
-            <option value="❤️ Franky Panky">❤️ Franky Panky</option>
+            <option value="Curiousities">Select a 🤍</option>
+            <option value="💛      Thank Me ⬅️, Franky">Thank Me ⬅️, Franky</option>
+            <option value="🧡      Janky Franky">Janky Franky</option>
+            <option value="💚      Frankly Franky">Frankly Franky</option>
+            <option value="💙      Cranky Franky">Cranky Franky</option>
+            <option value="💜      Swanky Franky">Swanky Franky</option>
+            <option value="❤️      Franky Panky">Franky Panky</option>
           </select>
           <br />
 <br />
-          <button onClick={() => createBlahg()}>Your Blahg</button>
+          <button onClick={() => createBlahg()}>Display your Entry</button>
         </div>
       </section>
 <hr></hr>
@@ -205,6 +205,7 @@ return (
                       <q>`{blahg.text.substr(0, 31)}...`</q>
 </div>
 <div className="frame">
+<button onClick={() => deleteBlahg(blahg._id)}>X</button>
                     <figure className="figure">
 
                       <img className="media" src={blahg.image} alt="" />
@@ -219,7 +220,7 @@ return (
                       showLessButton={true}>
                     </ReadMore>
                     </figure>
-                    <br /><button onClick={() => deleteBlahg(blahg._id)}>X</button>
+                    <br />
                   </div>
                   </div>
 

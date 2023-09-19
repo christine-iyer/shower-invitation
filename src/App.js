@@ -130,23 +130,10 @@ export default function App() {
 {/* <Content /> */}
 
 </div>
-            {/* <Content className="flex-child content" /> */}
-
-            {/* <ListGroup>
-                <TodoList
-                    newTodo={newTodo}
-                    setNewTodo={setNewTodo}
-                    createTodo={createTodo}
-                    todos={todos}
-                    moveToCompleted={moveToCompleted}
-                    completedTodos={completedTodos}
-                    deleteTodo={deleteTodo}
-                />
-            </ListGroup> */}
+ 
             <Header />
             <Blahg />
 
-            {/* <Footer style={{height: '5vh'}}/> */}
         </>
     )
 }

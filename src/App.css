@@ -185,10 +185,11 @@ margin: auto;
 	font-size: 12px;
 }
 .media {
-	-webkit-filter: sepia(80%) contrast(1) opacity(0.8);
-	filter: sepia(80%) grayscale(1) contrast(1) opacity(0.8);
-	mix-blend-mode: multiply;
+	/* -webkit-filter: sepia(80%) contrast(1);
+	filter: sepia(80%) grayscale(1) contrast(1);
+	mix-blend-mode: multiply; */
 	width: 100%;
+  padding: 1em;
 }
 Row {
 	flex-direction: row;
@@ -281,6 +282,10 @@ Row {
      }
      button{
     position: relative;
+    background-color: rgba(162,134,109, .15);
+    border-radius: 7%;
+    color: gray;
+    border-style:none;
      }
      select {
     font-weight: 400;
@@ -288,6 +293,11 @@ Row {
      .button {
     font-size: xxx-large;
     border: none;
+    color: rgb(162,134,109);
+    }
+    h2{
+      color: rgb(162,134,109);
+      text-align:left;
     }
 
    
