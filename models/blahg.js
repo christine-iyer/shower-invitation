@@ -14,4 +14,4 @@ const blahgSchema = new Schema({
 timestamps: true
 })
 
-module.exports = model('Blahg', blahgSchema)
+module.exports = model('NewBlahg', blahgSchema)
