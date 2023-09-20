@@ -230,7 +230,7 @@ return (
               }
             </Col>
           </Row>
-        </Container>) : <>No Entries yet! Yet Add One Below</>
+        </Container>) : <>No Entries yet! Yet Add One Below this message</>
       }
     </>
   )
