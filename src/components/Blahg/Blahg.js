@@ -34,7 +34,7 @@ function handleClick() {
     category: '',
     text: '',
     image: '',
-    count: 0
+    like: 0
   })
   const [showInput, setShowInput] = useState(false)
   const [showReadMoreButton, setShowReadMoreButton] = useState(false)
@@ -101,7 +101,8 @@ function handleClick() {
         author: '',
         category: '',
         text: '',
-        image: ''
+        image: '', 
+        like: 0
       })
     } catch (error) {
       console.error(error)
@@ -129,7 +130,8 @@ function handleClick() {
       author: '',
       category: '',
       text: '',
-      image: result?.info?.secure_url
+      image: result?.info?.secure_url, 
+      like: 0
     })
   }
   return (
@@ -147,7 +149,6 @@ function handleClick() {
                 return (
                   
                   <MDBBtn style={{ "backgroundColor": 'rgb(162, 134, 109)' }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='lg'  /></MDBBtn>
-                  
                 )
               }}
             </UploadWidget>
