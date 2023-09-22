@@ -216,7 +216,7 @@ function handleClick() {
               <MDBCard key={blahg._id} className="w-75 p-3">
                 <MDBRow className='g-0'>
                   <MDBCol md='4'>
-                    <MDBCardImage src={blahg.image} alt='...' fluid />
+                    <MDBCardImage style={{"maxWidth":"100%", "height":"15vw"}}src={blahg.image} alt='...' fluid />
                   </MDBCol>
                   <MDBCol md='8'>
                     <MDBCardBody>
