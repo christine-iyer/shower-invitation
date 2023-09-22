@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 import { Container, Row, Col } from 'react-bootstrap';
-import CameraOutlinedIcon from '@mui/icons-material/CameraOutlined';
+// import CameraOutlinedIcon from '@mui/icons-material/CameraOutlined';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
 import {
   MDBCard,
