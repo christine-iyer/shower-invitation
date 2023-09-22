@@ -2,14 +2,30 @@ import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 import { Container, Row, Col } from 'react-bootstrap';
+import CameraOutlinedIcon from '@mui/icons-material/CameraOutlined';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
+import {
+  MDBCard,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+  MDBBtn,
+  MDBIcon
+} from 'mdb-react-ui-kit';
+import LikeButton from './LikeButton'
 
 
 import ReadMore from './ReadMore';
 import '../../App.css';
 
 export default function Blahg() {
-
+  const [count, setCount] = useState(0);
+function handleClick() {
+    setCount(count + 1);
+  }
   const [blahgs, setBlahgs] = useState([])
   const [foundBlahg, setFoundBlahg] = useState(null)
   const [blahg, setBlahg] = useState({
@@ -17,7 +33,8 @@ export default function Blahg() {
     author: '',
     category: '',
     text: '',
-    image: ''
+    image: '',
+    count: 0
   })
   const [showInput, setShowInput] = useState(false)
   const [showReadMoreButton, setShowReadMoreButton] = useState(false)
@@ -58,10 +75,10 @@ export default function Blahg() {
         },
         body: JSON.stringify({ updatedData })
       })
-const data = await response.json()
+      const data = await response.json()
       const blahgsCopy = [...blahgs]
       const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData}
+      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
       setFoundBlahg(blahgsCopy)
     } catch (error) {
       console.error(error)
@@ -113,40 +130,40 @@ const data = await response.json()
       category: '',
       text: '',
       image: result?.info?.secure_url
-})
+    })
   }
-return (
+  return (
     <>
       <section>
         <h1>Post Shamelessly</h1>
         <div>
-<span>
-          <UploadWidget onUpload={handleOnUpload}>
-            {({ open }) => {
-              function handleOnClick(e) {
-                e.preventDefault();
-                open();
-              }
-              return (
-                <button className = "button" onClick={handleOnClick}>
-                  🤍
-                </button>
-              )
-            }}
-          </UploadWidget>
-          {error && <p>{error}</p>}
-{url && (
-            <div key={url._id} className='card' style={{ width: '8rem' }}>
-              <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{'width': 90, "borderRadius": "5%"}}></img>
-              <p className="url">{url}</p>
-            </div>
-          )}
+          <span>
+            <UploadWidget onUpload={handleOnUpload}>
+              {({ open }) => {
+                function handleOnClick(e) {
+                  e.preventDefault();
+                  open();
+                }
+                return (
+                  
+                  <MDBBtn style={{ "backgroundColor": 'rgb(162, 134, 109)' }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='lg'  /></MDBBtn>
+                  
+                )
+              }}
+            </UploadWidget>
+            {error && <p>{error}</p>}
+            {url && (
+              <div key={url._id} className='card' style={{ width: '8rem' }}>
+                <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
+                <p className="url">{url}</p>
+              </div>
+            )}
           </span>
           <br></br>
           <br></br>
-         <input
-          type='text'
-          // defaultValue={blahg.title}
+          <input
+            type='text'
+            // defaultValue={blahg.title}
             value={blahg.title}
             onChange={handleChange}
             name="title"
@@ -157,7 +174,7 @@ return (
           >
           </input>
           <br />
-         <input
+          <input
             value={blahg.author}
             onChange={handleChange}
             name="author"
@@ -177,59 +194,53 @@ return (
             onChange={handleChange}
             name="category">
             <option value="Curiousities">Select a 🤍</option>
-            <option value="💛      Thank Me ⬅️, Franky">Thank Me ⬅️, Franky</option>
-            <option value="🧡      Janky Franky">Janky Franky</option>
-            <option value="💚      Frankly Franky">Frankly Franky</option>
-            <option value="💙      Cranky Franky">Cranky Franky</option>
-            <option value="💜      Swanky Franky">Swanky Franky</option>
-            <option value="❤️      Franky Panky">Franky Panky</option>
+            <option value="💛">💛</option>
+            <option value="🧡">🧡</option>
+            <option value="💚">💚</option>
+            <option value="💙">💙</option>
+            <option value="💜">💜</option>
+            <option value="❤️">❤️</option>
           </select>
           <br />
-<br />
+          <br />
           <button onClick={() => createBlahg()}>Display your Entry</button>
         </div>
       </section>
-<hr></hr>
+      <hr></hr>
       {blahgs && blahgs.length ? (
         <Container className='collumns'>
-          <Row>
-            <Col xs={16} md={6}>
-              {blahgs.map((blahg) => {
-                return (
-                  <div className='collumn' key={blahg._id}>
-                    <div className="head">
+          {/* <Row> */}
+          {/* <Col xs={16} md={6}> */}
+          {blahgs.map((blahg) => {
+            return (
+              <MDBCard key={blahg._id} className="w-75 p-3">
+                <MDBRow className='g-0'>
+                  <MDBCol md='4'>
+                    <MDBCardImage src={blahg.image} alt='...' fluid />
+                  </MDBCol>
+                  <MDBCol md='8'>
+                    <MDBCardBody>
+                      <MDBCardTitle>{blahg.title}</MDBCardTitle>
+                      <MDBCardText>
+                        {blahg.text}
+                      </MDBCardText>
+                      <MDBCardText>
+                        <small className='text-muted'>created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</small>
+                      </MDBCardText>
+<LikeButton/> {blahg.category}
 
-                      <span><h2 >{blahg.title},  </h2>created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</span>
-                      <br></br>
-
-                      <q>`{blahg.text.substr(0, 31)}...`</q>
-</div>
-<div className="frame">
-<button onClick={() => deleteBlahg(blahg._id)}>X</button>
-                    <figure className="figure">
-
-                      <img className="media" src={blahg.image} alt="" />
-
-<figcaption className="figcaption">{blahg.category}</figcaption>
-
-<ReadMore className="readMore"
-                      text={blahg.text}
-                      
-                      numberOfLines={1}
-                      lineHeight={1.2}
-                      showLessButton={true}>
-                    </ReadMore>
-                    </figure>
-                    <br />
-                  </div>
-                  </div>
-
-                ) 
-
-              })
-              }
-            </Col>
-          </Row>
+                     {/* <h2 onClick={handleClick} >{blahg.category} </h2> */}
+                    
+                    
+                    
+                    </MDBCardBody>
+                  </MDBCol>
+                </MDBRow>
+              </MDBCard>
+            )
+          }
+          )
+          }
         </Container>) : <>No Entries yet! Yet Add One Below this message</>
       }
     </>

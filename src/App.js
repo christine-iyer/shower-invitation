@@ -101,37 +101,14 @@ export default function App() {
         <>
 
 
-            {/* <div className="container" style={{width: '90%',  alignItems: 'center'}} >
-                <div className='flex-child one' style={{ maxWidth: '100%', objectFit: 'contain' }}>
-                     <div className='five'> 
-                         <div className='two'> 
-                             <div className='six'> 
-                                <div className='three'>
-                                     <div className='seven'> 
-                                         <div className='four'> 
-                                             <div className='eight'> 
-                                                <img className='shower' style={{ width: '19%' }} src={shower} alt="fireSpot" />
-                                             </div> 
-                                         </div> 
-                                     </div>
-                                </div> 
-                             </div> 
-                         </div> 
-                    </div>
-                </div>
 
-                <hr></hr>
-
-            </div> */}
             <div style={{width:'100%', alignContent:'center', alignItems:'center'}}>
 
 
 
-{/* <Content /> */}
 
 </div>
- 
-            <Header />
+
             <Blahg />
 
         </>

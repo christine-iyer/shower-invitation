@@ -6,8 +6,8 @@ const blahgSchema = new Schema({
      title: String, 
      category: String, 
      text: String,
-     image: String 
-     //   likes: { type: Number, default: 0 },
+     image: String, 
+     likes: { type: Number, default: 0 }
  // comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 
 }, {
