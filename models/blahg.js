@@ -1,4 +1,4 @@
-//const comment = require('./comment')
+const Todo = require('./todo')
 const { Schema, model } = require('mongoose')
 
 const blahgSchema = new Schema({
@@ -7,8 +7,9 @@ const blahgSchema = new Schema({
      category: String, 
      text: String,
      image: String, 
-     likes: { type: Number, default: 0 }
- // comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+     likes: Number, default:0
+    //  todos: [{ type: Schema.Types.ObjectId, ref: 'Todo' }]
+ 
 
 }, {
 timestamps: true

@@ -5,7 +5,7 @@ const todoSchema = new Schema({
         //author: {required: false, type: String}
     title: {required: true, type: String},
     //comment: {required: false, type: String},
-    completed: { required: true, type: String}
+    completed: {type:Number, default:0}
     //likes: {type:Number, default:0}
 }, {
     timestamps: true

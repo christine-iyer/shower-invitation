@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
+import '../../App.css';
 import { Cloudinary } from "@cloudinary/url-gen";
+import ReadMore from './ReadMore';
 import UploadWidget from './UploadWidget';
 import { Container, Row, Col } from 'react-bootstrap';
-// import CameraOutlinedIcon from '@mui/icons-material/CameraOutlined';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
 import {
   MDBCard,
@@ -15,16 +16,11 @@ import {
   MDBBtn,
   MDBIcon
 } from 'mdb-react-ui-kit';
-import LikeButton from './LikeButton'
-
-
-import ReadMore from './ReadMore';
-import '../../App.css';
 
 export default function Blahg() {
-  const [count, setCount] = useState(0);
+  const [like, setLike] = useState(0);
 function handleClick() {
-    setCount(count + 1);
+    setLike(like + 1);
   }
   const [blahgs, setBlahgs] = useState([])
   const [foundBlahg, setFoundBlahg] = useState(null)
@@ -66,6 +62,33 @@ function handleClick() {
       console.error(error)
     }
   }
+
+  const likeBlahg = async (id, updatedData) => {
+    try {
+      const response = await fetch(`/api/blahgs/${id}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ updatedData })
+      })
+      const data = await response.json()
+      const blahgsCopy = [...blahgs]
+      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
+      setFoundBlahg(blahgsCopy)
+      setLike(...blahgs.like);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
+
+
+
+
+
   const updateBlahg = async (id, updatedData) => {
     try {
       const response = await fetch(`/api/blahgs/${id}`, {
@@ -80,6 +103,8 @@ function handleClick() {
       const index = blahgsCopy.findIndex(blahg => id === blahg._id)
       blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
       setFoundBlahg(blahgsCopy)
+      
+
     } catch (error) {
       console.error(error)
     }
@@ -194,7 +219,7 @@ function handleClick() {
             value={blahg.category}
             onChange={handleChange}
             name="category">
-            <option value="Curiousities">Select a 🤍</option>
+            <option value="🤍">Select a 🤍</option>
             <option value="💛">💛</option>
             <option value="🧡">🧡</option>
             <option value="💚">💚</option>
@@ -228,7 +253,7 @@ function handleClick() {
                       <MDBCardText>
                         <small className='text-muted'>created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</small>
                       </MDBCardText>
-<LikeButton/> {blahg.category}
+<button onClick={handleClick} setLike={setLike}>{blahg.category}{like}</button> 
 
                      {/* <h2 onClick={handleClick} >{blahg.category} </h2> */}
                     
