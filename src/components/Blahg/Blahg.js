@@ -37,7 +37,7 @@ function handleClick() {
     like: 0
   })
   const [showInput, setShowInput] = useState(false)
-  const [showReadMoreButton, setShowReadMoreButton] = useState(false)
+  // const [showReadMoreButton, setShowReadMoreButton] = useState(false)
   const ref = useRef(null)
   const inputRef = useRef(null)
   const handleChange = (evt) => {

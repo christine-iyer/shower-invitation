@@ -1,12 +1,5 @@
 import './App.css';
 import { useState, useEffect } from 'react'
-// import TodoList from './components/TodoList/TodoList'
-// import ListGroup from 'react-bootstrap/ListGroup'
-import shower from './newShow.png'
-// import Image from './components/Image/Image'
-// import Content from './components/Content/Content'
-import Header from './components/Header/Header';
-// import Footer from './components/Footer/Footer';
 import Blahg from './components/Blahg/Blahg'
 
 export default function App() {
