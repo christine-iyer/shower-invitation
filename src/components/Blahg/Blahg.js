@@ -251,7 +251,12 @@ function handleClick() {
                         {blahg.text}
                       </MDBCardText>
                       <MDBCardText>
-                        <small className='text-muted'>created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</small>
+                        <small className='text-muted'>
+                          
+                          
+                          {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
+                          
+                          </small>
                       </MDBCardText>
 <button onClick={handleClick} setLike={setLike}>{blahg.category}{like}</button> 
 
