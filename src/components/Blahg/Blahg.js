@@ -63,25 +63,25 @@ function handleClick() {
     }
   }
 
-  const likeBlahg = async (id, updatedData) => {
-    try {
-      const response = await fetch(`/api/blahgs/${id}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ updatedData })
-      })
-      const data = await response.json()
-      const blahgsCopy = [...blahgs]
-      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-      setFoundBlahg(blahgsCopy)
-      setLike(...blahgs.like);
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  // const likeBlahg = async (id, updatedData) => {
+  //   try {
+  //     const response = await fetch(`/api/blahgs/${id}`, {
+  //       method: "PUT",
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ updatedData })
+  //     })
+  //     const data = await response.json()
+  //     const blahgsCopy = [...blahgs]
+  //     const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+  //     blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
+  //     setFoundBlahg(blahgsCopy)
+  //     setLike(like);
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 
 
 
@@ -102,7 +102,7 @@ function handleClick() {
       const blahgsCopy = [...blahgs]
       const index = blahgsCopy.findIndex(blahg => id === blahg._id)
       blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-      setFoundBlahg(blahgsCopy)
+      setBlahgs(blahgsCopy)
       
 
     } catch (error) {
@@ -247,8 +247,26 @@ function handleClick() {
                   <MDBCol md='8'>
                     <MDBCardBody>
                       <MDBCardTitle>{blahg.title}</MDBCardTitle>
-                      <MDBCardText>
-                        {blahg.text}
+                      <MDBCardText onClick={() => setShowInput(!showInput)}>{blahg.text}
+        <input
+          ref={inputRef}
+          style={{ display: showInput ? 'block' : 'none' }}
+          type='text'
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              const text = inputRef.current.value
+              updateBlahg(blahg._id, { text: text })
+              setShowInput(false)
+            }
+          }}
+          defaultValue= {blahg.text}
+        />
+
+
+
+
+
+                       
                       </MDBCardText>
                       <MDBCardText>
                         <small className='text-muted'>
@@ -258,7 +276,7 @@ function handleClick() {
                           
                           </small>
                       </MDBCardText>
-<button onClick={handleClick} setLike={setLike}>{blahg.category}{like}</button> 
+{/* <button onClick={likeBlahg} >{blahg.category}{blahg.like}</button>  */}
 
                      {/* <h2 onClick={handleClick} >{blahg.category} </h2> */}
                     
