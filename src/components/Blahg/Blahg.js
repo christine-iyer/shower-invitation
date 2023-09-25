@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import '../../App.css';
 import { Cloudinary } from "@cloudinary/url-gen";
-import ReadMore from './ReadMore';
+
 import UploadWidget from './UploadWidget';
-import { Container, Row, Col } from 'react-bootstrap';
-import { border } from '@cloudinary/url-gen/qualifiers/background';
+import { Container } from 'react-bootstrap';
+
 import {
   MDBCard,
   MDBCardTitle,
@@ -29,7 +29,7 @@ export default function Blahg() {
     like: 0
   })
   const [showInput, setShowInput] = useState(false)
-  // const [showReadMoreButton, setShowReadMoreButton] = useState(false)
+
   const ref = useRef(null)
   const inputRef = useRef(null)
   const handleChange = (evt) => {
@@ -43,7 +43,8 @@ export default function Blahg() {
     } catch (error) {
       console.error(error)
     }
-  }
+  }  
+  // const [showReadMoreButton, setShowReadMoreButton] = useState(false)
   // const deleteBlahg = async (id) => {
   //   try {
   //     const response = await fetch(`/api/blahgs/${id}`, {
@@ -202,9 +203,9 @@ export default function Blahg() {
             onChange={handleChange}
             name="title"
             placeholder='Title'
-            onClick={(e) => {
-              setShowInput(!showInput)
-            }}
+            // onClick={(e) => {
+            //   setShowInput(!showInput)
+            // }}
           >
           </input>
           <br />
@@ -263,7 +264,7 @@ export default function Blahg() {
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               const text = inputRef.current.value
-              updateBlahg(blahg._id, { text })
+              updateBlahg(blahg._id, { text: blahg.text })
               setShowInput(false)
             }
           }}
