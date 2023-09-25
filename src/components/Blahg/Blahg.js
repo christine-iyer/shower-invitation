@@ -18,12 +18,8 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function Blahg() {
-  const [like, setLike] = useState(0);
-function handleClick() {
-    setLike(like + 1);
-  }
+
   const [blahgs, setBlahgs] = useState([])
-  const [foundBlahg, setFoundBlahg] = useState(null)
   const [blahg, setBlahg] = useState({
     title: '',
     author: '',
@@ -48,22 +44,23 @@ function handleClick() {
       console.error(error)
     }
   }
-  const deleteBlahg = async (id) => {
-    try {
-      const response = await fetch(`/api/blahgs/${id}`, {
-        method: "DELETE",
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      const data = await response.json()
-      setFoundBlahg(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  // const deleteBlahg = async (id) => {
+  //   try {
+  //     const response = await fetch(`/api/blahgs/${id}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       }
+  //     })
+  //     const data = await response.json()
+  //     setFoundBlahg(data)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 
-  // const likeBlahg = async (id, updatedData) => {
+  
+  // const updateBlahg = async (id, updatedData) => {
   //   try {
   //     const response = await fetch(`/api/blahgs/${id}`, {
   //       method: "PUT",
@@ -76,39 +73,13 @@ function handleClick() {
   //     const blahgsCopy = [...blahgs]
   //     const index = blahgsCopy.findIndex(blahg => id === blahg._id)
   //     blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-  //     setFoundBlahg(blahgsCopy)
-  //     setLike(like);
+  //     setBlahgs(blahgsCopy)
+      
+
   //   } catch (error) {
   //     console.error(error)
   //   }
   // }
-
-
-
-
-
-
-
-  const updateBlahg = async (id, updatedData) => {
-    try {
-      const response = await fetch(`/api/blahgs/${id}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ updatedData })
-      })
-      const data = await response.json()
-      const blahgsCopy = [...blahgs]
-      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-      setBlahgs(blahgsCopy)
-      
-
-    } catch (error) {
-      console.error(error)
-    }
-  }
   const createBlahg = async () => {
     try {
       const response = await fetch('/api/blahgs', {
@@ -119,7 +90,7 @@ function handleClick() {
         body: JSON.stringify({ ...blahg })
       })
       const data = await response.json()
-      setFoundBlahg(data)
+      setBlahgs(data, ...blahgs)
       setBlahg({
         title: '',
         createdDate: '',
@@ -133,9 +104,46 @@ function handleClick() {
       console.error(error)
     }
   }
+
+  const deleteBlahg = async (id) => {
+    try {
+      const response = await fetch(`/api/blahgs/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      const data = await response.json()
+      const blahgsCopy = [...blahgs]
+      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+      blahgsCopy.splice(index, 1)
+      setBlahgs(blahgsCopy)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const updateBlahg = async (id, updatedData) => {
+    try {
+      const response = await fetch(`/api/blahgs/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData)
+      })
+      const data = await response.json()
+      const blahgsCopy = [...blahgs]
+      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
+      setBlahgs(blahgsCopy)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffect(() => {
     getBlahgs()
-  }, [foundBlahg])
+  }, [])
 
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
@@ -255,7 +263,7 @@ function handleClick() {
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               const text = inputRef.current.value
-              updateBlahg(blahg._id, { text: text })
+              updateBlahg(blahg._id, { text })
               setShowInput(false)
             }
           }}
