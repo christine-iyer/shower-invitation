@@ -18,7 +18,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function Blahg() {
-
+  const [foundBlahgs, setFoundBlahgs] = useState(null)
   const [blahgs, setBlahgs] = useState([])
   const [blahg, setBlahg] = useState({
     title: '',
@@ -91,7 +91,7 @@ export default function Blahg() {
         body: JSON.stringify({ ...blahg })
       })
       const data = await response.json()
-      setBlahgs(data, ...blahgs)
+      setFoundBlahgs(data)
       setBlahg({
         title: '',
         createdDate: '',
@@ -115,10 +115,11 @@ export default function Blahg() {
         }
       })
       const data = await response.json()
-      const blahgsCopy = [...blahgs]
-      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      blahgsCopy.splice(index, 1)
-      setBlahgs(blahgsCopy)
+      // const blahgsCopy = [...blahgs]
+      // const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+      // blahgsCopy.splice(index, 1)
+      // setBlahgs(blahgsCopy)
+      setFoundBlahgs(data)
     } catch (error) {
       console.error(error)
     }
@@ -130,13 +131,14 @@ export default function Blahg() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedData)
+        body: JSON.stringify(...updatedData)
       })
       const data = await response.json()
-      const blahgsCopy = [...blahgs]
-      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-      setBlahgs(blahgsCopy)
+      setFoundBlahgs(data)
+      // const blahgsCopy = [...blahgs]
+      // const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+      // blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
+      // setBlahgs(blahgsCopy)
     } catch (error) {
       console.error(error)
     }
@@ -144,7 +146,7 @@ export default function Blahg() {
 
   useEffect(() => {
     getBlahgs()
-  }, [])
+  }, [foundBlahgs])
 
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
@@ -264,7 +266,7 @@ export default function Blahg() {
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               const text = inputRef.current.value
-              updateBlahg(blahg._id, { text: blahg.text })
+              updateBlahg(blahg._id, { text: text })
               setShowInput(false)
             }
           }}
