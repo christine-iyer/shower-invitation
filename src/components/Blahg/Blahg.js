@@ -43,7 +43,7 @@ export default function Blahg() {
     } catch (error) {
       console.error(error)
     }
-  }  
+  }
   // const [showReadMoreButton, setShowReadMoreButton] = useState(false)
   // const deleteBlahg = async (id) => {
   //   try {
@@ -60,7 +60,7 @@ export default function Blahg() {
   //   }
   // }
 
-  
+
   // const updateBlahg = async (id, updatedData) => {
   //   try {
   //     const response = await fetch(`/api/blahgs/${id}`, {
@@ -75,7 +75,7 @@ export default function Blahg() {
   //     const index = blahgsCopy.findIndex(blahg => id === blahg._id)
   //     blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
   //     setBlahgs(blahgsCopy)
-      
+
 
   //   } catch (error) {
   //     console.error(error)
@@ -98,7 +98,7 @@ export default function Blahg() {
         author: '',
         category: '',
         text: '',
-        image: '', 
+        image: '',
         like: 0
       })
     } catch (error) {
@@ -131,14 +131,14 @@ export default function Blahg() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(...updatedData)
+        body: JSON.stringify(updatedData)
       })
       const data = await response.json()
-      setFoundBlahgs(data)
-      // const blahgsCopy = [...blahgs]
-      // const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      // blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-      // setBlahgs(blahgsCopy)
+      // setFoundBlahgs(data)
+      const blahgsCopy = [...blahgs]
+      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
+      setBlahgs(blahgsCopy)
     } catch (error) {
       console.error(error)
     }
@@ -146,7 +146,7 @@ export default function Blahg() {
 
   useEffect(() => {
     getBlahgs()
-  }, [foundBlahgs])
+  }, [])
 
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
@@ -166,7 +166,7 @@ export default function Blahg() {
       author: '',
       category: '',
       text: '',
-      image: result?.info?.secure_url, 
+      image: result?.info?.secure_url,
       like: 0
     })
   }
@@ -183,8 +183,8 @@ export default function Blahg() {
                   open();
                 }
                 return (
-                  
-                  <MDBBtn style={{ "backgroundColor": 'rgb(162, 134, 109)' }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='lg'  /></MDBBtn>
+
+                  <MDBBtn style={{ "backgroundColor": 'rgb(162, 134, 109)' }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='lg' /></MDBBtn>
                 )
               }}
             </UploadWidget>
@@ -205,9 +205,9 @@ export default function Blahg() {
             onChange={handleChange}
             name="title"
             placeholder='Title'
-            // onClick={(e) => {
-            //   setShowInput(!showInput)
-            // }}
+          // onClick={(e) => {
+          //   setShowInput(!showInput)
+          // }}
           >
           </input>
           <br />
@@ -253,46 +253,41 @@ export default function Blahg() {
               <MDBCard key={blahg._id} className="w-75 p-3">
                 <MDBRow className='g-0'>
                   <MDBCol md='4'>
-                    <MDBCardImage style={{"maxWidth":"100%", "height":"15vw"}}src={blahg.image} alt='...' fluid />
+                    <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={blahg.image} alt='...' fluid />
                   </MDBCol>
                   <MDBCol md='8'>
                     <MDBCardBody>
                       <MDBCardTitle>{blahg.title}</MDBCardTitle>
-                      <MDBCardText onClick={() => setShowInput(!showInput)}>{blahg.text}
-        <input
-          ref={inputRef}
-          style={{ display: showInput ? 'block' : 'none' }}
-          type='text'
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              const text = inputRef.current.value
-              updateBlahg(blahg._id, { text: text })
-              setShowInput(false)
-            }
-          }}
-          defaultValue= {blahg.text}
-        />
-
-
-
-
-
-                       
-                      </MDBCardText>
+                      < onClick={() => setShowInput(!showInput)}>{blahg.text}
+                        <input
+                          ref={inputRef}
+                          style={{ display: showInput ? 'block' : 'none' }}
+                          type='text'
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              const text = inputRef.current.value
+                              updateBlahg(blahg._id, { text: text })
+                              setShowInput(false)
+                              console.log(text)
+                            }
+                          }}
+                          defaultValue={blahg.text}
+                        />
+                      </>
                       <MDBCardText>
                         <small className='text-muted'>
-                          
-                          
-                          {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
-                          
-                          </small>
-                      </MDBCardText>
-{/* <button onClick={likeBlahg} >{blahg.category}{blahg.like}</button>  */}
 
-                     {/* <h2 onClick={handleClick} >{blahg.category} </h2> */}
-                    
-                    
-                    
+
+                          {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
+
+                        </small>
+                      </MDBCardText>
+                      {/* <button onClick={likeBlahg} >{blahg.category}{blahg.like}</button>  */}
+
+                      {/* <h2 onClick={handleClick} >{blahg.category} </h2> */}
+
+
+
                     </MDBCardBody>
                   </MDBCol>
                 </MDBRow>
