@@ -273,13 +273,7 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
           }}
           defaultValue= {blahg.text}
         />
-
-
-
-
-
-                       
-                      </MDBCardText>
+ </MDBCardText>
                       <MDBCardText>
                         <small className='text-muted'>
                           
