@@ -266,6 +266,7 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
           type='text'
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
+              e.preventDefault()
               const text = inputRef.current.value
               updateBlahg(blahg._id, { text: e.target.value })
               setShowInput(false)
