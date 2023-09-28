@@ -3,7 +3,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
-// import ReadMore from './ReadMore';
+
 import '../../App.css';
 
 import {
@@ -30,6 +30,15 @@ export default function Blahg() {
     like: 0
   })
   const [showInput, setShowInput] = useState(false)
+  const [url, updateUrl] = useState(false);
+  const [error, updateError] = useState();
+  const [addLike, setAddLike] = useState();
+
+  function handleLike() {
+    setAddLike(addLike + 1);
+    updateBlahg(blahg._id, { like: addLike })
+  }
+
 
   const ref = useRef(null)
   const inputRef = useRef(null)
@@ -44,44 +53,9 @@ export default function Blahg() {
     } catch (error) {
       console.error(error)
     }
-  }  
-const [showReadMoreButton, setShowReadMoreButton] = useState(false)
-  // const deleteBlahg = async (id) => {
-  //   try {
-  //     const response = await fetch(`/api/blahgs/${id}`, {
-  //       method: "DELETE",
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       }
-  //     })
-  //     const data = await response.json()
-  //     setFoundBlahg(data)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
+  }
 
-  
-  // const updateBlahg = async (id, updatedData) => {
-  //   try {
-  //     const response = await fetch(`/api/blahgs/${id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({ updatedData })
-  //     })
-  //     const data = await response.json()
-  //     const blahgsCopy = [...blahgs]
-  //     const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-  //     blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-  //     setBlahgs(blahgsCopy)
-      
 
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
   const createBlahg = async () => {
     try {
       const response = await fetch('/api/blahgs', {
@@ -99,7 +73,7 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
         author: '',
         category: '',
         text: '',
-        image: '', 
+        image: '',
         like: 0
       })
     } catch (error) {
@@ -149,8 +123,7 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
     getBlahgs()
   }, [foundBlahgs])
 
-  const [url, updateUrl] = useState(false);
-  const [error, updateError] = useState();
+
   function handleOnUpload(error, result, widget) {
     if (error) {
       updateError(error);
@@ -167,7 +140,7 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
       author: '',
       category: '',
       text: '',
-      image: result?.info?.secure_url, 
+      image: result?.info?.secure_url,
       like: 0
     })
   }
@@ -184,8 +157,7 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
                   open();
                 }
                 return (
-                  
-                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl'  /></button>
+                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl' /></button>
                 )
               }}
             </UploadWidget>
@@ -201,14 +173,10 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
           <br></br>
           <input
             type='text'
-            // defaultValue={blahg.title}
             value={blahg.title}
             onChange={handleChange}
             name="title"
             placeholder='Title'
-            // onClick={(e) => {
-            //   setShowInput(!showInput)
-            // }}
           >
           </input>
           <br />
@@ -254,47 +222,33 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
               <MDBCard key={blahg._id} className="w-75 p-3">
                 <MDBRow className='g-0'>
                   <MDBCol md='4'>
-                    <MDBCardImage style={{"maxWidth":"100%", "height":"15vw"}}src={blahg.image} alt='...' fluid />
+                    <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={blahg.image} alt='...' fluid />
                   </MDBCol>
                   <MDBCol md='8'>
                     <MDBCardBody>
                       <MDBCardTitle>{blahg.title}</MDBCardTitle>
                       <MDBCardText onClick={() => setShowInput(!showInput)}>{blahg.text}
-        <input
-          ref={inputRef}
-          style={{ display: showInput ? 'block' : 'none' }}
-          type='text'
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault()
-              const text = inputRef.current.value
-              updateBlahg(blahg._id, { text: e.target.value })
-              setShowInput(false)
-            }
-          }}
-          defaultValue= {blahg.text}
-        />
-
-
-
-
-
-                       
+                        <input
+                          ref={inputRef}
+                          style={{ display: showInput ? 'block' : 'none' }}
+                          type='text'
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault()
+                              const text = inputRef.current.value
+                              updateBlahg(blahg._id, { text: e.target.value })
+                              setShowInput(false)
+                            }
+                          }}
+                          defaultValue={blahg.text}
+                        />
                       </MDBCardText>
                       <MDBCardText>
                         <small className='text-muted'>
-                          
-                          
                           {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
-                          
-                          </small>
+                        </small>
                       </MDBCardText>
-{/* <button onClick={likeBlahg} >{blahg.category}{blahg.like}</button>  */}
-
-                     {/* <h2 onClick={handleClick} >{blahg.category} </h2> */}
-                    
-                    
-                    
+                      <button onClick={setAddLike} value={addLike}>{blahg.like}</button> {blahg.like}
                     </MDBCardBody>
                   </MDBCol>
                 </MDBRow>

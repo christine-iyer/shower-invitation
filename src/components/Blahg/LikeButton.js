@@ -1,15 +1,15 @@
 import { useState } from 'react';
-export default function LikeButton({category, updateBlahg}) {
-     const [like, setLike] = useState(0);
+export default function LikeButton({blahg, updateBlahg}) {
+     const [addLike, setAddLike] = useState(0);
    
-     function handleClick() {
-       setLike(like + 1);
-       updateBlahg(like)
+     function handleLike() {
+       setAddLike(addLike + 1);
+       updateBlahg(blahg._id, {like: addLike})
      }
    
      return (
-       <button style={{"color": "rgb(0,0,4)", "backgroundColor": "rgba(150,150,1,0", "textIndent":"right"}}onClick={handleClick}>
-         {category}{like}
+       <button onClick={handleLike} style={{"color": "rgb(0,0,4)", "backgroundColor": "rgba(150,150,1,0", "textIndent":"right"}}>
+         {like}
        </button>
      );
    }
