@@ -38,8 +38,6 @@ export default function Blahg() {
     setAddLike(addLike + 1);
     updateBlahg(blahg._id, { like: addLike })
   }
-
-
   const ref = useRef(null)
   const inputRef = useRef(null)
   const handleChange = (evt) => {
