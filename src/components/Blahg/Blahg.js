@@ -132,7 +132,7 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(...updatedData)
+        body: JSON.stringify(updatedData)
       })
       const data = await response.json()
       setFoundBlahgs(data)
@@ -267,13 +267,19 @@ const [showReadMoreButton, setShowReadMoreButton] = useState(false)
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               const text = inputRef.current.value
-              updateBlahg(blahg._id, { text: text })
+              updateBlahg(blahg._id, { text: e.target.value })
               setShowInput(false)
             }
           }}
           defaultValue= {blahg.text}
         />
- </MDBCardText>
+
+
+
+
+
+                       
+                      </MDBCardText>
                       <MDBCardText>
                         <small className='text-muted'>
                           
