@@ -113,6 +113,31 @@ export default function Blahg() {
     }
   }
 
+  const likeBlahg = async (id) => {
+    try {
+        const index = blahgs.findIndex((blahg) => blahg._id === id)
+        const blahgsCopy = [...blahgs]
+        const subject = blahgsCopy[index]
+        subject.like = subject.like+1 
+        const response = await fetch(`/api/blahgs/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(subject)
+        })
+        const updatedBlahg = await response.json()
+        const completedBlahgsCopy = [updatedBlahg, ...blahgs]
+        
+        setBlahgs(completedBlahgsCopy)
+        // blahgsCopy.splice(index, 1)
+        setBlahgs(blahgsCopy)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+  
   useEffect(() => {
     getBlahgs()
   }, [foundBlahgs])
@@ -242,7 +267,11 @@ export default function Blahg() {
                           {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
                         </small>
                       </MDBCardText>
-                      <button onClick={setAddLike} value={addLike}>{blahg.like}</button> {blahg.like}
+
+
+
+
+                      <button onClick={likeBlahg} value={blahg.like+1}>{blahg.like}</button> {blahg.like}{blahg.category}
                     </MDBCardBody>
                   </MDBCol>
                 </MDBRow>
