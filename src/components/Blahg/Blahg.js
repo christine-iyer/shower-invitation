@@ -34,10 +34,6 @@ export default function Blahg() {
   const [error, updateError] = useState();
   const [addLike, setAddLike] = useState();
 
-  function handleLike() {
-    setAddLike(addLike + 1);
-    updateBlahg(blahg._id, { like: addLike })
-  }
   const ref = useRef(null)
   const inputRef = useRef(null)
   const handleChange = (evt) => {
