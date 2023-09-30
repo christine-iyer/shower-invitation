@@ -220,7 +220,7 @@ function handleOnUpload(error, result, widget) {
             <option value="💛 Janky Franky">💛 Janky Franky</option>
             <option value="🧡 Franky Panky">🧡 Franky Panky</option>
             <option value="💚 Cranky Franky">💚 Cranky Franky</option>
-            <option value="💙 Wanky Franky">💙 Wanky Franky</option>
+            <option value="💙 Franky 🌙">💙 Franky 🌙</option>
             <option value="💜 Swanky Franky">💜 Swanky Franky</option>
             <option value="❤️ C'est la vie, Franky!">❤️ C'est la vie, Franky!</option>
           </select>
@@ -265,7 +265,7 @@ function handleOnUpload(error, result, widget) {
                           {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
                         </small>
                       </MDBCardText>
-                      <button className="btn btn-light" onClick={() => likeBlahg(blahg._id)}></button> {blahg.like}{blahg.category}
+                      <button style={{'fontStyle': 'italic'}} className="btn btn-outline-warning" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button> 
                     </MDBCardBody>
                   </MDBCol>
                 </MDBRow>
