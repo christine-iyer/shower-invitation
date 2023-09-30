@@ -115,36 +115,33 @@ export default function Blahg() {
 
   const likeBlahg = async (id) => {
     try {
-        const index = blahgs.findIndex((blahg) => blahg._id === id)
-        const blahgsCopy = [...blahgs]
-        const subject = blahgsCopy[index]
-        subject.like = subject.like+1 
-        const response = await fetch(`/api/blahgs/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(subject)
-        })
-        const updatedBlahg = await response.json()
-        const completedBlahgsCopy = [updatedBlahg, ...blahgs]
-        
-        setBlahgs(completedBlahgsCopy)
-        // blahgsCopy.splice(index, 1)
-        setBlahgs(blahgsCopy)
+      const index = blahgs.findIndex((blahg) => blahg._id === id)
+      const blahgsCopy = [...blahgs]
+      const subject = blahgsCopy[index]
+      subject.like = subject.like + 1
+      const response = await fetch(`/api/blahgs/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(subject)
+      })
+      const updatedBlahg = await response.json()
+      const completedBlahgsCopy = [updatedBlahg, ...blahgs]
+
+      setBlahgs(completedBlahgsCopy)
+      // blahgsCopy.splice(index, 1)
+      setBlahgs(blahgsCopy)
 
     } catch (error) {
-        console.error(error)
+      console.error(error)
     }
-}
-
-  
-  useEffect(() => {
+  }
+useEffect(() => {
     getBlahgs()
   }, [foundBlahgs])
 
-
-  function handleOnUpload(error, result, widget) {
+function handleOnUpload(error, result, widget) {
     if (error) {
       updateError(error);
       widget.close({
@@ -219,13 +216,13 @@ export default function Blahg() {
             value={blahg.category}
             onChange={handleChange}
             name="category">
-            <option value="🤍">Select a 🤍</option>
-            <option value="💛">💛</option>
-            <option value="🧡">🧡</option>
-            <option value="💚">💚</option>
-            <option value="💙">💙</option>
-            <option value="💜">💜</option>
-            <option value="❤️">❤️</option>
+            <option value="🤍 Frankly Franky">Select a 🤍</option>
+            <option value="💛 Janky Franky">💛 Janky Franky</option>
+            <option value="🧡 Franky Panky">🧡 Franky Panky</option>
+            <option value="💚 Cranky Franky">💚 Cranky Franky</option>
+            <option value="💙 Wanky Franky">💙 Wanky Franky</option>
+            <option value="💜 Swanky Franky">💜 Swanky Franky</option>
+            <option value="❤️ C'est la vie, Franky!">❤️ C'est la vie, Franky!</option>
           </select>
           <br />
           <br />
@@ -268,10 +265,6 @@ export default function Blahg() {
                           {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
                         </small>
                       </MDBCardText>
-
-
-
-
                       <button className="btn btn-light" onClick={() => likeBlahg(blahg._id)}></button> {blahg.like}{blahg.category}
                     </MDBCardBody>
                   </MDBCol>
