@@ -132,6 +132,7 @@ export default function Blahg() {
         setBlahgs(completedBlahgsCopy)
         // blahgsCopy.splice(index, 1)
         setBlahgs(blahgsCopy)
+
     } catch (error) {
         console.error(error)
     }
@@ -271,7 +272,7 @@ export default function Blahg() {
 
 
 
-                      <button onClick={likeBlahg} value={blahg.like+1}>{blahg.like}</button> {blahg.like}{blahg.category}
+                      <button className="btn btn-light" onClick={() => likeBlahg(blahg._id)}></button> {blahg.like}{blahg.category}
                     </MDBCardBody>
                   </MDBCol>
                 </MDBRow>
