@@ -161,8 +161,26 @@ function handleOnUpload(error, result, widget) {
       like: 0
     })
   }
+  const [index, setIndex] = useState(0);
+  const [showMore, setShowMore] = useState(false);
+  const hasNext = index < blahgs.length - 1;
+
+  function handleNextClick() {
+    if (hasNext) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+  }
+
+  function handleMoreClick() {
+    setShowMore(!showMore);
+  }
+
+  let sculpture = blahgs[index];
   return (
     <>
+
       <section>
         <h1>Post Shamelessly</h1>
         <div>
@@ -236,6 +254,8 @@ function handleOnUpload(error, result, widget) {
           {/* <Col xs={16} md={6}> */}
           {blahgs.map((blahg) => {
             return (
+              
+              
               <MDBCard key={blahg._id} className="w-75 p-3">
                 <MDBRow className='g-0'>
                   <MDBCol md='4'>
