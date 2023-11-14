@@ -1,5 +1,4 @@
 import './App.css';
-import { useState, useEffect } from 'react'
 import Blahg from './components/Blahg/Blahg'
 export default function App() {
     return (
