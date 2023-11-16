@@ -254,7 +254,7 @@ function handleOnUpload(error, result, widget) {
           {/* <Col xs={16} md={6}> */}
           {blahgs.map((blahg) => {
             return (
-              
+             
               
               <MDBCard key={blahg._id} className="w-75 p-3">
                 <MDBRow className='g-0'>
@@ -297,5 +297,6 @@ function handleOnUpload(error, result, widget) {
         </Container>) : <>No Entries yet! Yet Add One Below this message</>
       }
     </>
+
   )
 }
