@@ -32,9 +32,6 @@ export default function Blahg() {
   const [showInput, setShowInput] = useState(false)
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
-  const [addLike, setAddLike] = useState();
-
-  const ref = useRef(null)
   const inputRef = useRef(null)
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
@@ -48,7 +45,6 @@ export default function Blahg() {
       console.error(error)
     }
   }
-
 
   const createBlahg = async () => {
     try {
@@ -74,6 +70,7 @@ export default function Blahg() {
       console.error(error)
     }
   }
+
 
   const deleteBlahg = async (id) => {
     try {
@@ -137,11 +134,11 @@ export default function Blahg() {
       console.error(error)
     }
   }
-useEffect(() => {
+  useEffect(() => {
     getBlahgs()
   }, [foundBlahgs])
 
-function handleOnUpload(error, result, widget) {
+  function handleOnUpload(error, result, widget) {
     if (error) {
       updateError(error);
       widget.close({
@@ -165,17 +162,17 @@ function handleOnUpload(error, result, widget) {
   const [showMore, setShowMore] = useState(false);
   const hasNext = index < blahgs.length - 1;
 
-  function handleNextClick() {
-    if (hasNext) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
-  }
+  // function handleNextClick() {
+  //   if (hasNext) {
+  //     setIndex(index + 1);
+  //   } else {
+  //     setIndex(0);
+  //   }
+  // }
 
-  function handleMoreClick() {
-    setShowMore(!showMore);
-  }
+  // function handleMoreClick() {
+  //   setShowMore(!showMore);
+  // }
 
   let sculpture = blahgs[index];
   return (
@@ -192,19 +189,20 @@ function handleOnUpload(error, result, widget) {
                   open();
                 }
                 return (
-                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl' /></button>
+                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' , 'marginBottom': "9px"}} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl' /></button>
                 )
               }}
             </UploadWidget>
             {error && <p>{error}</p>}
             {url && (
-              <div key={url._id} className='card' style={{ width: '8rem' }}>
+           
+              <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
                 <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
-                <p className="url">{url}</p>
+                {/* <p style={{ 'fontSize': '6px' }} className="url">{url}</p> */}
               </div>
             )}
           </span>
-          <br></br>
+
           <br></br>
           <input
             type='text'
@@ -250,13 +248,8 @@ function handleOnUpload(error, result, widget) {
       <hr></hr>
       {blahgs && blahgs.length ? (
         <Container className='collumns'>
-          {/* <Row> */}
-          {/* <Col xs={16} md={6}> */}
           {blahgs.map((blahg) => {
             return (
-             
-        
-                
               <MDBCard key={blahg._id} className="w-75 p-3">
                 <MDBRow className='g-0'>
                   <MDBCol md='4'>
@@ -273,7 +266,7 @@ function handleOnUpload(error, result, widget) {
                           onKeyDown={(e) => {
                             if (e.key === 'Enter') {
                               e.preventDefault()
-                              const text = inputRef.current.value
+                              // const text = inputRef.current.value
                               updateBlahg(blahg._id, { text: e.target.value })
                               setShowInput(false)
                             }
@@ -286,12 +279,12 @@ function handleOnUpload(error, result, widget) {
                           {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
                         </small>
                       </MDBCardText>
-                      <button style={{'fontStyle': 'italic'}} className="btn btn-outline-warning" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button> 
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button>
                     </MDBCardBody>
                   </MDBCol>
                 </MDBRow>
               </MDBCard>
-         
+
             )
           }
           )
