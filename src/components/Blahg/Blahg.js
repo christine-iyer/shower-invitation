@@ -255,11 +255,8 @@ function handleOnUpload(error, result, widget) {
           {blahgs.map((blahg) => {
             return (
              
-              <div>
-                <li key={blahg._id}>
-                <img src={blahg.image}
-                alt={blahg.name} />
-</li>
+        
+                
               <MDBCard key={blahg._id} className="w-75 p-3">
                 <MDBRow className='g-0'>
                   <MDBCol md='4'>
@@ -294,7 +291,7 @@ function handleOnUpload(error, result, widget) {
                   </MDBCol>
                 </MDBRow>
               </MDBCard>
-              </div>
+         
             )
           }
           )
