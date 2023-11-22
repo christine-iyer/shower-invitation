@@ -14,7 +14,6 @@ import {
   MDBCardImage,
   MDBRow,
   MDBCol,
-  MDBBtn,
   MDBIcon
 } from 'mdb-react-ui-kit';
 
@@ -157,24 +156,9 @@ export default function Blahg() {
       image: result?.info?.secure_url,
       like: 0
     })
-  }
-  const [index, setIndex] = useState(0);
-  const [showMore, setShowMore] = useState(false);
-  const hasNext = index < blahgs.length - 1;
+}
 
-  // function handleNextClick() {
-  //   if (hasNext) {
-  //     setIndex(index + 1);
-  //   } else {
-  //     setIndex(0);
-  //   }
-  // }
 
-  // function handleMoreClick() {
-  //   setShowMore(!showMore);
-  // }
-
-  let sculpture = blahgs[index];
   return (
     <>
 
