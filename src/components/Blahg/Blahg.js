@@ -4,6 +4,7 @@ import UploadWidget from './UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
 
+
 import '../../App.css';
 
 import {
@@ -18,9 +19,12 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function Blahg() {
+
+
   const [foundBlahgs, setFoundBlahgs] = useState(null)
   const [blahgs, setBlahgs] = useState([])
   const [blahg, setBlahg] = useState({
+createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
     title: '',
     author: '',
     category: '',
@@ -32,6 +36,21 @@ export default function Blahg() {
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
   const inputRef = useRef(null)
+  
+const one_day = 1000 * 60 * 60 * 24
+
+const birthDate = new Date("September 11, 2023 10:50:00")
+
+const result = Math.round(blahg.createdAt - birthDate / one_day);
+
+// To remove the decimals from the (result) resulting days value
+const finalResult = result.toFixed(0);
+
+console.log("Franky is " 
+
+            + result.toLocaleDateString());
+
+
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
@@ -39,7 +58,6 @@ export default function Blahg() {
     try {
       const response = await fetch('/api/blahgs')
       const data = await response.json()
-      data.reverse()
       setBlahgs(data)
     } catch (error) {
       console.error(error)
@@ -264,7 +282,10 @@ export default function Blahg() {
                       </MDBCardText>
                       <MDBCardText>
                         <small className='text-muted'>
-                          {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
+                          {blahg.author} posted on {
+                          
+                          new Date(blahg.createdAt).toLocaleDateString() } At the age of {finalResult} 
+
                         </small>
                       </MDBCardText>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button>

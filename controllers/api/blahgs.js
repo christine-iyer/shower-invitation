@@ -36,6 +36,7 @@ const destroyBlahg = async (req, res, next) => {
          
          const blahgs = await Blahg.find(req.body)
          res.locals.data.blahgs = blahgs 
+         blahgs.reverse()
          next()
      } catch (error) {
          res.status(400).json({ msg: error.message })
