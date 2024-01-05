@@ -39,6 +39,7 @@ export default function Blahg() {
     try {
       const response = await fetch('/api/blahgs')
       const data = await response.json()
+      data.reverse()
       setBlahgs(data)
     } catch (error) {
       console.error(error)
@@ -173,7 +174,10 @@ export default function Blahg() {
                   open();
                 }
                 return (
-                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' , 'marginBottom': "9px"}} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl' /></button>
+                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' , 'marginBottom': "9px"}} 
+                  onClick={handleOnClick}>
+                    <MDBIcon fab icon='instagram' size='xxl' />
+                    </button>
                 )
               }}
             </UploadWidget>
