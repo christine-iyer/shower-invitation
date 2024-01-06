@@ -46,9 +46,9 @@ const result = Math.round(blahg.createdAt - birthDate / one_day);
 // To remove the decimals from the (result) resulting days value
 const finalResult = result.toFixed(0);
 
-console.log("Franky is " 
+console.log("Franky is supercurw" 
 
-            + result.toLocaleDateString());
+           );
 
 
   const handleChange = (evt) => {
@@ -284,7 +284,7 @@ console.log("Franky is "
                         <small className='text-muted'>
                           {blahg.author} posted on {
                           
-                          new Date(blahg.createdAt).toLocaleDateString() } At the age of {finalResult} 
+                          new Date(blahg.createdAt).toLocaleDateString() }
 
                         </small>
                       </MDBCardText>
