@@ -37,18 +37,12 @@ createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
   const [error, updateError] = useState();
   const inputRef = useRef(null)
   
-const one_day = 1000 * 60 * 60 * 24
+// const one_day = 1000 * 60 * 60 * 24
 
-const birthDate = new Date("September 11, 2023 10:50:00")
+// const birthDate = new Date("September 11, 2023 10:50:00")
 
-const result = Math.round(blahg.createdAt - birthDate / one_day);
+// const result = Math.round(blahg.createdAt - birthDate / one_day);
 
-// To remove the decimals from the (result) resulting days value
-const finalResult = result.toFixed(0);
-
-console.log("Franky is supercurw" 
-
-           );
 
 
   const handleChange = (evt) => {
