@@ -3,8 +3,6 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
-
-
 import '../../App.css';
 
 import {
@@ -19,12 +17,10 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function Blahg() {
-
-
   const [foundBlahgs, setFoundBlahgs] = useState(null)
   const [blahgs, setBlahgs] = useState([])
   const [blahg, setBlahg] = useState({
-createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
+    createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
     title: '',
     author: '',
     category: '',
@@ -36,14 +32,10 @@ createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
   const inputRef = useRef(null)
-  
-// const one_day = 1000 * 60 * 60 * 24
 
-// const birthDate = new Date("September 11, 2023 10:50:00")
-
-// const result = Math.round(blahg.createdAt - birthDate / one_day);
-
-
+  // const one_day = 1000 * 60 * 60 * 24
+  // const birthDate = new Date("September 11, 2023 10:50:00")
+  // const result = Math.round(blahg.createdAt - birthDate / one_day);
 
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
@@ -82,7 +74,6 @@ createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
       console.error(error)
     }
   }
-
 
   const deleteBlahg = async (id) => {
     try {
@@ -169,9 +160,7 @@ createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
       image: result?.info?.secure_url,
       like: 0
     })
-}
-
-
+  }
   return (
     <>
 
@@ -186,16 +175,16 @@ createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
                   open();
                 }
                 return (
-                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' , 'marginBottom': "9px"}} 
-                  onClick={handleOnClick}>
+                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)', 'marginBottom': "9px" }}
+                    onClick={handleOnClick}>
                     <MDBIcon fab icon='instagram' size='xxl' />
-                    </button>
+                  </button>
                 )
               }}
             </UploadWidget>
             {error && <p>{error}</p>}
             {url && (
-           
+
               <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
                 <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
                 {/* <p style={{ 'fontSize': '6px' }} className="url">{url}</p> */}
@@ -277,9 +266,7 @@ createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
                       <MDBCardText>
                         <small className='text-muted'>
                           {blahg.author} posted on {
-                          
-                          new Date(blahg.createdAt).toLocaleDateString() }
-
+                            new Date(blahg.createdAt).toLocaleDateString()}
                         </small>
                       </MDBCardText>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button>
@@ -287,7 +274,6 @@ createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
                   </MDBCol>
                 </MDBRow>
               </MDBCard>
-
             )
           }
           )
@@ -295,6 +281,5 @@ createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
         </Container>) : <>No Entries yet! Yet Add One Below this message</>
       }
     </>
-
   )
 }
