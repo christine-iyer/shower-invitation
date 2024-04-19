@@ -17,8 +17,6 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function Blahg() {
-  const [foundBlahgs, setFoundBlahgs] = useState(null)
-  const [blahgs, setBlahgs] = useState([])
   const [blahg, setBlahg] = useState({
     createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
     title: '',
@@ -27,7 +25,11 @@ export default function Blahg() {
     text: '',
     image: '',
     like: 0
-  })
+  }) 
+  const [blahgs, setBlahgs] = useState([])
+  const [foundBlahgs, setFoundBlahgs] = useState(null)
+
+
   const [showInput, setShowInput] = useState(false)
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
@@ -103,7 +105,7 @@ export default function Blahg() {
         body: JSON.stringify(updatedData)
       })
       const data = await response.json()
-      setFoundBlahgs(data)
+     
       const blahgsCopy = [...blahgs]
       const index = blahgsCopy.findIndex(blahg => id === blahg._id)
       blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
