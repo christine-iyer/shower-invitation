@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import Card from 'react-bootstrap/Card'
-import '../App.css'
-import setClass from '../utilities/category-class'
+import '../../App.css'
+import setClass from '../../utilities/category-class'
 import styles from './HaikuList.module.scss'
 
 

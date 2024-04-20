@@ -16,7 +16,7 @@ import {
   MDBIcon
 } from 'mdb-react-ui-kit';
 
-export default function Blahg() {
+export default function BlahgPage() {
   const [blahg, setBlahg] = useState({
     createdAt: new Date('2023-09-20T14:20:04.899+00:00'),
     title: '',
