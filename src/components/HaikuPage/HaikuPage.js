@@ -187,7 +187,7 @@ function HaikuPage() {
     <div className="HaikuPage">
       <div>
     
-        <Modal show={show} onHide={handleClose}>
+        <Modal  style={{backgroundColor:'red'}}show={show} onHide={handleClose}>
           <Modal.Body>
             <CreateHaiku style={{ height: '50%', margin: "5%", width: '80%' }}
               createHaiku={createHaiku}

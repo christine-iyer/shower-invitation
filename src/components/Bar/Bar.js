@@ -14,14 +14,12 @@ export default function Bar(props) {
         <Link to="/haikus">
         <h1>Haikus</h1>
       </Link>
-      <Link to="/">
-        <h1>House</h1>
-      </Link>
+   &nbsp;  &nbsp;
      &nbsp;
       <Link to="/blahg">
         <h1>Franky</h1>
       </Link>
-      &nbsp;  &nbsp;
+     
   
 
       
