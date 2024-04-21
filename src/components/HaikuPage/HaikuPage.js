@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
 import '../../App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button } from 'react-bootstrap';
+
 import CreateHaiku from './CreateHaiku';
 // import Buttons from './components/Buttons';
 // import HaikuCard from './components/HaikuCard';
 import HaikuList from './HaikuList';
-// import Logo from './components/Logo';
-// import Auth from './pages/AuthPage/AuthPage';
-// const axios = require('axios')
+
 function HaikuPage() {
   const [haiku, setHaiku] = useState({
     author: '',
@@ -187,19 +186,12 @@ function HaikuPage() {
     <div className="HaikuPage">
       <div>
     
-        <Modal  style={{backgroundColor:'red'}}show={show} onHide={handleClose}>
-          <Modal.Body>
+       
             <CreateHaiku style={{ height: '50%', margin: "5%", width: '80%' }}
               createHaiku={createHaiku}
               haiku={haiku}
               handleChange={handleChange} />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+
         <h1>Me and You and Our Haikus</h1>
         <HaikuList
           haikus={haikus}

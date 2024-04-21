@@ -8,16 +8,16 @@ import Navbar from 'react-bootstrap/Navbar';
 export default function Bar(props) {
   return (
     <>
-    <Navbar  className="navbar-left" bg="light" variant="light" width='100%'>
+    <Navbar  className="navbar-left" bg="dark" variant="light" width='100%'>
       <Container >
     <Nav >
         <Link to="/haikus">
-        <h1>Haikus</h1>
+        <h6>Haikus</h6>
       </Link>
    &nbsp;  &nbsp;
      &nbsp;
       <Link to="/blahg">
-        <h1>Franky</h1>
+        <h6>Franky</h6>
       </Link>
      
   
