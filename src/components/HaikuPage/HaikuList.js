@@ -11,7 +11,7 @@ export default function HaikuList ({
   return (
     <div styles={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
 
-    <ul  style={{ margin: '1rem', 'display': 'flex',flexDirection: 'row',flexWrap: 'wrap'}}>
+    <ul  style={{ margin: '1rem'}}>
       {
             haikus.length
               ? haikus.map(haiku => (
