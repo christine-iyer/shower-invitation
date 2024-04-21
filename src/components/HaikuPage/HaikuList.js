@@ -9,7 +9,7 @@ export default function HaikuList ({
   commentHaiku
 }) {
   return (
-    <div styles={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}>
+    <div styles={{position: 'absolute', top: 0, bottom: 0, left: 0}}>
 
     <ul  style={{ margin: '1rem'}}>
       {
