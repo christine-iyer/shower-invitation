@@ -27,7 +27,7 @@ export default function Haiku({
   return (
     < >
       <Card  className={setClass(haiku,styles)} style={{  padding: '1%', margin: '1%', textAlign: 'left', boxShadow: '12px 12px 12px 11px haiku.color'}}>
-        <Card.Title onClick={() => setShowE(!showE)}>Title: {haiku.title}</Card.Title>
+       
         <input
           ref={inputRefE}
           style={{ display: showE ? 'block' : 'none' }}
