@@ -1,5 +1,5 @@
 import Haiku from './Haiku'
-import '../App.css'
+import '../../App.css'
 
 export default function HaikuList ({
   haikus,
