@@ -11,7 +11,9 @@ export default function Bar(props) {
     <Navbar  className="navbar-left" bg="light" variant="light" width='100%'>
       <Container >
     <Nav >
-    
+        <Link to="/haikus">
+        <h1>Haikus</h1>
+      </Link>
       <Link to="/">
         <h1>House</h1>
       </Link>
@@ -20,9 +22,7 @@ export default function Bar(props) {
         <h1>Franky</h1>
       </Link>
       &nbsp;  &nbsp;
-      <Link to="/haikus">
-        <h1>Haikus</h1>
-      </Link>
+  
 
       
  &nbsp;&nbsp; 
