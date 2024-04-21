@@ -4,35 +4,30 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 
+
 export default function Bar(props) {
   return (
     <>
     <Navbar  className="navbar-left" bg="light" variant="light" width='100%'>
       <Container >
     <Nav >
-    <Link to="/" target="_blank" rel="noreferrer">
-        <h1>HomePage</h1>
+    
+      <Link to="/">
+        <h1>House</h1>
       </Link>
-      <Link to="/blocks" target="_blank" rel="noreferrer">
+     &nbsp;
+      <Link to="/blahg">
         <h1>Franky</h1>
       </Link>
-    
-     
-      <Link to="/haikus" target="_blank" rel="noreferrer">
+      &nbsp;  &nbsp;
+      <Link to="/haikus">
         <h1>Haikus</h1>
       </Link>
 
       
- &nbsp;🧞‍♂️🧜🏿‍♀️🧞 &nbsp;
+ &nbsp;&nbsp; 
   
-         
-        
-          {/* <Link to="/times" target="_blank" rel="noreferrer">
-            <img src={Times} alt='times'></img>
-          </Link>
-          <Link to="/vibes" target="_blank" rel="noreferrer">
-            <img src={Vibes} alt='vibin'></img>
-          </Link> */}
+
 </Nav>
 </Container>
 </Navbar>
