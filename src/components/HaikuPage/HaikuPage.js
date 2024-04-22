@@ -187,10 +187,21 @@ function HaikuPage() {
       <div>
     
        
+      <button  onClick={handleShow}> <h1>+ </h1> 
+</button>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Body>
             <CreateHaiku style={{ height: '50%', margin: "5%", width: '80%' }}
               createHaiku={createHaiku}
               haiku={haiku}
               handleChange={handleChange} />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
         <h1>Me and You and Our Haikus</h1>
         <HaikuList
