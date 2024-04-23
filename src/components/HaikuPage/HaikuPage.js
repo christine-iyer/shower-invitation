@@ -4,9 +4,9 @@ import '../../App.css'
 import { Modal, Button } from 'react-bootstrap';
 
 import CreateHaiku from './CreateHaiku';
-// import Buttons from './components/Buttons';
-// import HaikuCard from './components/HaikuCard';
+
 import HaikuList from './HaikuList';
+import HaikuCarousel from './HaikuCarousel';
 
 function HaikuPage() {
   const [haiku, setHaiku] = useState({
@@ -21,15 +21,7 @@ function HaikuPage() {
   })
   const [haikus, setHaikus] = useState([])
   const [foundHaikus, setFoundHaikus] = useState(null)
-  // const [item, setItem] = useState(haikus);
-// const menuItems = [...new Set(haikus?.map((Val) => Val.author))];
-// const filterItem = (curcat) => {
-  //   const newItem = haikus?.filter((newVal) => {
-  //     return newVal.author === curcat;
-  //   });
-  //   setItem(newItem);
-  // };
-
+  
 // const [sentimentScore, setSentimentScore] = useState(0)
   // const [errorMessage, setErrorMessage] = useState("");
 
@@ -202,44 +194,25 @@ function HaikuPage() {
             </Button>
           </Modal.Footer>
         </Modal>
+   
 
         <h1>Me and You and Our Haikus</h1>
         <HaikuList
           haikus={haikus}
+
           deleteHaiku={deleteHaiku}
           updateHaiku={updateHaiku}
           likeHaiku={likeHaiku} />
 
        
 
-        {/*  <h1>Filtable List</h1>
-        <Buttons
-          haikus={haikus}
-          item={item}
-          filterItem={filterItem}
-          setItem={setItem}
-          menuItems={menuItems}
-        />
-        <HaikuCard
-          haikus={haikus}
-          item={item}
-          filterItem={filterItem}
-          deleteHaiku={deleteHaiku}
-          updateHaiku={updateHaiku}
-          likeHaiku={likeHaiku} /> */}
-
-
+      
 
         
       </div>
       <div>
      
-      <svg  viewBox="0 0 841.9 595.3">
-        <g fill='none' stroke='#000' strokeWidth='2' transform='translate(180,0)'>
-          <path width='100' d="M0,0 C50,40 50,70 20,100,  L0,85 L-20,100 C-50,70 -50,40 0,0"/>
 
-        </g>
-      </svg>
 
       </div>
     </div>
