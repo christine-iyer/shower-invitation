@@ -178,3 +178,6 @@ export default App;
 ```
 
 This needs to be adjusted. 
+
+## Swiper
+[code Sandbox Swiper Example](https://codesandbox.io/p/devbox/swiper-react-pagination-fraction-jt6zlg?file=%2Fsrc%2FApp.jsx)
