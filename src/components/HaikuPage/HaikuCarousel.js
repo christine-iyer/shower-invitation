@@ -29,7 +29,7 @@ const HaikuCarousel = () => {
     focusOnSelect: true,
     nextArrow: (
       <div>
-        <div className={styles.nextSlickArrow}>
+        <div className='next-slick-arrow'>
             <svg xmlns="http://www.w3.org/2000/svg" stroke="black" height="24" viewBox="0 -960 960 960" width="24"><path d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z"/></svg>
         </div>
       </div>
@@ -59,9 +59,9 @@ const HaikuCarousel = () => {
 
   return (
     <>
-    <div className="content">
-      <h1 className="header">Afro Styles Fashion Store</h1>
-      <div className="container">
+    <div className={styles.content}>
+      <h1 className={styles.header}>Afro Styles Fashion Store</h1>
+      <div className={styles.container}>
         <Slider {...settings}
             asNavFor={nav1}
             ref={(slider) => setSlider1(slider)}
