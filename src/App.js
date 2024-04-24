@@ -3,6 +3,7 @@ import './App.css';
 import Bar from './components/Bar/Bar'
 import BlahgPage from './components/BlahgPage/BlahgPage'
 import HaikuPage from "./components/HaikuPage/HaikuPage";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 export default function App() {
     return (

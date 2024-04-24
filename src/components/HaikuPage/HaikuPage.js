@@ -4,7 +4,7 @@ import '../../App.css'
 import { Modal, Button } from 'react-bootstrap';
 
 import CreateHaiku from './CreateHaiku';
-
+import FunCarousel from '../FunCarousel.ts'
 import HaikuList from './HaikuList';
 import FilterableList from './FilterableList';
 
