@@ -6,6 +6,7 @@ import styles from './HaikuList.module.scss'
 
 
 
+
 export default function Haiku({
   haiku,
   updateHaiku,

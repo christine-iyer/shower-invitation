@@ -29,6 +29,7 @@
     "react-swipeable": "^7.0.1",
     "sass": "^1.75.0",
     "serve-favicon": "^2.5.0",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
