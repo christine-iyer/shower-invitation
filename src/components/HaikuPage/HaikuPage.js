@@ -4,9 +4,9 @@ import '../../App.css'
 import { Modal, Button } from 'react-bootstrap';
 
 import CreateHaiku from './CreateHaiku';
-import FunCarousel from '../FunCarousel.ts'
+import HaikuCarousel from './HaikuCarousel';
 import HaikuList from './HaikuList';
-import FilterableList from './FilterableList';
+
 
 function HaikuPage() {
   const [haiku, setHaiku] = useState({
@@ -211,7 +211,7 @@ function HaikuPage() {
       </div>
       <div>
      
-
+<HaikuCarousel />
 
       </div>
     </div>
