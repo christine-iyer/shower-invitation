@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import '../../App.css'
+import '../App.css'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button } from 'react-bootstrap';
-
-import CreateHaiku from './CreateHaiku';
-import HaikuCarousel from './HaikuCarousel';
-import HaikuList from './HaikuList';
+import HaikuCarousel from '../components/HaikuPage/HaikuCarousel';
+import CreateHaiku from '../components/HaikuPage/CreateHaiku';
+// import HaikuCarousel from './HaikuCarousel';
+import HaikuList from '../components/HaikuPage/HaikuList';
 
 function HaikuPage() {
   const [haiku, setHaiku] = useState({
@@ -194,13 +194,13 @@ function HaikuPage() {
           </Modal.Footer>
         </Modal>
 
-        <h1>Me and You and Our Haikus</h1>
+        {/* <h1>Me and You and Our Haikus</h1>
         <HaikuList
           haikus={haikus}
 
           deleteHaiku={deleteHaiku}
           updateHaiku={updateHaiku}
-          likeHaiku={likeHaiku} />
+          likeHaiku={likeHaiku} /> */}
 
        
 
@@ -210,7 +210,7 @@ function HaikuPage() {
       </div>
       <div>
      
-<HaikuCarousel />
+ <HaikuCarousel />
 
       </div>
     </div>
