@@ -1,29 +1,41 @@
-import { useEffect, useState } from 'react';
-import './HaikuCarousel.module.scss';
+import React, { useState } from 'react'
+import Haiku from './Haiku'
 
-
-
-const HaikuCarousel=()=> {
-  const data = [1, 2, 3, 4]
+export default function HaikuCarousel({ haikus }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const carouselInfiniteScroll = () => {
-    if (currentIndex === data.length - 1) {
-      return setCurrentIndex(0)
-    }
-    return setCurrentIndex(currentIndex + 1)
-  }
-  useEffect(() => {
-    const interval = setInterval(() => { carouselInfiniteScroll()}, 3000)
-    return () => 
-      clearInterval(interval)})
+  const goToNextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === haikus.length - 1 ? 0 : prevIndex + 1));
+    console.log('next slide clicked')
+  };
+
+  const goToPrevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? haikus.length - 1 : prevIndex - 1));
+    console.log('next slide clicked')
+  };
+
+
   return (
-    <div className='carousel-container'>
-      {data.map((item, index) => {
-        return <h1 className='carousel-item'
-          style={{ transform: `translate(-${currentIndex * 100}%)` }}
-          key={index}>{item}</h1>})
+    <div>
+    <div>
+      <h1>Carousel</h1>
+      {
+        haikus.length
+          ? haikus.map(haiku => (
+            <p key={haiku._id}>{haiku.one} {haiku.two} {haiku.three}</p>
+
+
+
+
+          ))
+          : <>
+            <h2>No Haikus Yet... Add one in the Form Above</h2>
+          </>
       }
-    </div>
+
+      </div>
+      <button onClick={goToPrevSlide}>Back</button>
+      <p haikus={haikus[currentIndex]}></p>
+      <button onClick={goToNextSlide}>Next</button>
+      </div>
   )
 }
-export default HaikuCarousel

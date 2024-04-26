@@ -1,5 +1,6 @@
 import Haiku from './Haiku'
 import '../../App.css'
+ 
 
 export default function HaikuList ({
   haikus,
@@ -10,7 +11,6 @@ export default function HaikuList ({
 }) {
   return (
     <div styles={{position: 'absolute', top: 0, bottom: 0, left: 0}}>
-      
 
     <ul  style={{ margin: '1rem'}}>
       {
@@ -34,6 +34,7 @@ export default function HaikuList ({
                 </>
         }
     </ul>
+    
     </div>
   )
 }
