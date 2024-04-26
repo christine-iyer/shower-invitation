@@ -5,12 +5,12 @@ export default function HaikuCarousel({ haikus }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const goToNextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === haikus.length - 1 ? 0 : prevIndex + 1));
-    console.log('next slide clicked')
+    console.log('next')
   };
 
   const goToPrevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? haikus.length - 1 : prevIndex - 1));
-    console.log('next slide clicked')
+    console.log('prev')
   };
 
 
@@ -21,7 +21,7 @@ export default function HaikuCarousel({ haikus }) {
       {
         haikus.length
           ? haikus.map(haiku => (
-            <p key={haiku._id}>{haiku.one} {haiku.two} {haiku.three}</p>
+            <p key={haiku._id}>{haiku.one[currentIndex]} {haiku.two[currentIndex]} {haiku.three[currentIndex]}</p>
 
 
 
