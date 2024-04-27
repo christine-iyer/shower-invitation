@@ -20,9 +20,9 @@ export default function HaikuCarousel({ haikus }) {
       <h1>Carousel</h1>
       {
         haikus.length
-          ? haikus.map(haiku => (
+          ? haikus.map((haiku,index) => (
             <div key={haiku._id}>
-              <Haiku haiku={haiku}/>
+              <Haiku haiku={haiku} index={index}/>
             </div>
 
 
