@@ -1,43 +1,52 @@
 import React, { useState } from 'react'
-import Haiku from './Haiku'
 
-export default function HaikuCarousel({ haikus }) {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const goToNextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === haikus.length - 1 ? 0 : prevIndex + 1));
-    console.log('next')
+
+
+// import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+
+// import "./HaikuCarousel.css";
+
+export default function HaikuCarousel ({ haikus }){
+  const [slide, setSlide] = useState(0);
+
+  const nextSlide = () => {
+    setSlide(slide === haikus.length - 1 ? 0 : slide + 1);
   };
 
-  const goToPrevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? haikus.length - 1 : prevIndex - 1));
-    console.log('prev')
+  const prevSlide = () => {
+    setSlide(slide === 0 ? haikus.length - 1 : slide - 1);
   };
-
 
   return (
-    <div>
-    <div>
-      <h1>Carousel</h1>
-      {
-        haikus.length
-          ? haikus.map((haiku,index) => (
-            <div key={haiku._id}>
-              <Haiku haiku={haiku} index={index}/>
-            </div>
-
-
-
-
-          ))
-          : <>
-            <h2>No Haikus Yet... Add one in the Form Above</h2>
-          </>
-      }
-
-      </div>
-      <button onClick={goToPrevSlide}>Back</button>
-    
-      <button onClick={goToNextSlide}>Next</button>
-      </div>
-  )
-}
+    <div className="carousel">
+      <button onClick={prevSlide} className="arrow arrow-left" />
+      {haikus.map((item, idx) => {
+        return (
+          <author
+            haiku={item.author}
+          
+            key={idx}
+            className={slide === idx ? "slide" : "slide slide-hidden"}
+          />
+        );
+      })} 
+    <button
+        onClick={nextSlide}
+        className="arrow arrow-right"
+      /> 
+      <span className="indicators">
+        {haikus.map((_, idx) => {
+          return (
+            <button
+              key={idx}
+              className={
+                slide === idx ? "indicator" : "indicator indicator-inactive"
+              }
+              onClick={() => setSlide(idx)}
+            ></button>
+          );
+        })}
+      </span>
+    </div>
+  );
+};
