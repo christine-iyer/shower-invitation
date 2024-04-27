@@ -21,7 +21,9 @@ export default function HaikuCarousel({ haikus }) {
       {
         haikus.length
           ? haikus.map(haiku => (
-            <p key={haiku._id}>{haiku.one[currentIndex]} {haiku.two[currentIndex]} {haiku.three[currentIndex]}</p>
+            <div key={haiku._id}>
+              <Haiku haiku={haiku}/>
+            </div>
 
 
 
@@ -34,7 +36,7 @@ export default function HaikuCarousel({ haikus }) {
 
       </div>
       <button onClick={goToPrevSlide}>Back</button>
-      <p haikus={haikus[currentIndex]}></p>
+    
       <button onClick={goToNextSlide}>Next</button>
       </div>
   )
