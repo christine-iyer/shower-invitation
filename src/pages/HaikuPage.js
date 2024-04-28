@@ -5,7 +5,7 @@ import { Modal, Button } from 'react-bootstrap';
 import HaikuCarousel from '../components/HaikuPage/HaikuCarousel'
 import CreateHaiku from '../components/HaikuPage/CreateHaiku';
 
-// import HaikuList from '../components/HaikuPage/HaikuList';
+import HaikuList from '../components/HaikuPage/HaikuList';
 
 function HaikuPage() {
   const [haiku, setHaiku] = useState({
@@ -195,12 +195,12 @@ function HaikuPage() {
         </Modal>
 
         <h1>Me and You and Our Haikus</h1>
-        {/* <HaikuList
+        <HaikuList
           haikus={haikus}
 
           deleteHaiku={deleteHaiku}
           updateHaiku={updateHaiku}
-          likeHaiku={likeHaiku} /> */}
+          likeHaiku={likeHaiku} />
 
        
 
@@ -209,7 +209,7 @@ function HaikuPage() {
         
       </div>
       <div>
-        <h1>What</h1>
+     
       <HaikuCarousel haikus={haikus}/>
 
 

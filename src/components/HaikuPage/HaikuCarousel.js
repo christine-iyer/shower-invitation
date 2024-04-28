@@ -22,8 +22,8 @@ export default function HaikuCarousel ({ haikus }){
       <button onClick={prevSlide} className="arrow arrow-left" />
       {haikus.map((item, idx) => {
         return (
-          <author
-            haiku={item.author}
+          <div
+            haiku={item}
           
             key={idx}
             className={slide === idx ? "slide" : "slide slide-hidden"}
@@ -31,18 +31,19 @@ export default function HaikuCarousel ({ haikus }){
         );
       })} 
     <button
-        onClick={nextSlide}
+        onClick={console.log("Chicked")}  
         className="arrow arrow-right"
-      /> 
+        style={{ backgroundColor:'blue', height:"45%"ç, padding: "5px" , margin: "5px" }}
+      > Hi</button>
       <span className="indicators">
-        {haikus.map((_, idx) => {
+        {haikus.map((_id, idx) => {
           return (
             <button
               key={idx}
               className={
                 slide === idx ? "indicator" : "indicator indicator-inactive"
               }
-              onClick={() => setSlide(idx)}
+              onClick={() => console.log('Hi')}
             ></button>
           );
         })}
