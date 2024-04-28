@@ -33,7 +33,7 @@ export default function HaikuCarousel ({ haikus }){
     <button
         onClick={console.log("Chicked")}  
         className="arrow arrow-right"
-        style={{ backgroundColor:'blue', height:"45%"ç, padding: "5px" , margin: "5px" }}
+        style={{ backgroundColor:'blue', height:"45%", padding: "5px" , margin: "5px" }}
       > Hi</button>
       <span className="indicators">
         {haikus.map((_id, idx) => {
