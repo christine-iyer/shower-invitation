@@ -6,6 +6,7 @@ import HaikuPage from "./pages/HaikuPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import HaikuCarousel from "./components/HaikuPage/HaikuCarousel";
 
 
 export default function App() {
@@ -14,7 +15,7 @@ export default function App() {
         <BrowserRouter>
         <Bar/>
         <Routes>
-       
+        <Route path='/haikus/carousel' element={<HaikuCarousel />} />
             <Route path='/haikus' element={<HaikuPage />} />
             <Route path='/blahg' element={<BlahgPage />} style={{ width: '100%', alignContent: 'center', alignItems: 'center' }}/>
 
