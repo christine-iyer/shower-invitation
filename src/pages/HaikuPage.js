@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react'
 import '../App.css'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button } from 'react-bootstrap';
-import HaikuCarousel from '../components/HaikuPage/HaikuCarousel'
 import CreateHaiku from '../components/HaikuPage/CreateHaiku';
-
+import HaikuCarousel from '../components/HaikuPage/HaikuCarousel';
 import HaikuList from '../components/HaikuPage/HaikuList';
 
 function HaikuPage() {

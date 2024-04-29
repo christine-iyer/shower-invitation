@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
+import "./Carousel.css";
 
- const HaikuCarousel = ({ haikus }) => {
+export default function HaikuCarousel({ haikus }) {
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
     setSlide(slide === haikus.length - 1 ? 0 : slide + 1);
-    console.log('clicked Next')
   };
 
   const prevSlide = () => {
@@ -15,23 +16,23 @@ import React, { useState } from "react";
 
   return (
     <div className="carousel">
-      <p onClick={prevSlide} className="arrow arrow-left" />
-      {haikus?.map((item, idx) => {
+      <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
+      {haikus.map((item, idx) => {
         return (
           <p
-            src={item.author}
-            alt={item.one}
             key={idx}
             className={slide === idx ? "slide" : "slide slide-hidden"}
-          />
+          >
+            {item.one} - {item.two} - {item.three} - by {item.author}
+          </p>
         );
       })}
-      <p
+      <BsArrowRightCircleFill
         onClick={nextSlide}
         className="arrow arrow-right"
       />
       <span className="indicators">
-        {haikus?.map((_id, idx) => {
+        {haikus.map((_, idx) => {
           return (
             <button
               key={idx}
@@ -39,13 +40,10 @@ import React, { useState } from "react";
                 slide === idx ? "indicator" : "indicator indicator-inactive"
               }
               onClick={() => setSlide(idx)}
-              styles={{ color:'red'}}
-          />
+            ></button>
           );
         })}
       </span>
     </div>
   );
 };
-
-export default HaikuCarousel;
