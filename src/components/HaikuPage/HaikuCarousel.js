@@ -1,49 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 
+import "./style.css";
 
-// import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-
-// import "./HaikuCarousel.css";
-
-export default function HaikuCarousel ({ haikus }){
+ const HaikuCarousel = ({ data }) => {
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
-    setSlide(slide === haikus.length - 1 ? 0 : slide + 1);
+    setSlide(slide === data.length - 1 ? 0 : slide + 1);
   };
 
   const prevSlide = () => {
-    setSlide(slide === 0 ? haikus.length - 1 : slide - 1);
+    setSlide(slide === 0 ? data.length - 1 : slide - 1);
   };
 
   return (
     <div className="carousel">
-      <button onClick={prevSlide} className="arrow arrow-left" />
-      {haikus.map((item, idx) => {
+      <p onClick={prevSlide} className="arrow arrow-left" />
+      {data.map((item, idx) => {
         return (
-          <div
-            haiku={item}
-          
+          <img
+            src={item.src}
+            alt={item.alt}
             key={idx}
             className={slide === idx ? "slide" : "slide slide-hidden"}
           />
         );
-      })} 
-    <button
-        onClick={console.log("Chicked")}  
+      })}
+      <p
+        onClick={nextSlide}
         className="arrow arrow-right"
-        style={{ backgroundColor:'blue', height:"45%", padding: "5px" , margin: "5px" }}
-      > Hi</button>
+      />
       <span className="indicators">
-        {haikus.map((_id, idx) => {
+        {data.map((_, idx) => {
           return (
             <button
               key={idx}
               className={
                 slide === idx ? "indicator" : "indicator indicator-inactive"
               }
-              onClick={() => console.log('Hi')}
+              onClick={() => setSlide(idx)}
             ></button>
           );
         })}
@@ -51,3 +47,5 @@ export default function HaikuCarousel ({ haikus }){
     </div>
   );
 };
+
+export default HaikuCarousel;
