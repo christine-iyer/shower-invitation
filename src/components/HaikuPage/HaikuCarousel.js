@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-
+import Haiku from "./Haiku";
 import "./Carousel.css";
 
 export default function HaikuCarousel({ haikus }) {
@@ -19,19 +19,20 @@ export default function HaikuCarousel({ haikus }) {
       <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
       {haikus.map((item, idx) => {
         return (
-          <p
+          <div
             key={idx}
             className={slide === idx ? "slide" : "slide slide-hidden"}
           >
-            {item.one} - {item.two} - {item.three} - by {item.author}
-          </p>
+            <Haiku haiku={item} />
+            
+          </div>
         );
       })}
       <BsArrowRightCircleFill
         onClick={nextSlide}
         className="arrow arrow-right"
       />
-      <span className="indicators">
+      {/* <span className="indicators">
         {haikus.map((_, idx) => {
           return (
             <button
@@ -43,7 +44,7 @@ export default function HaikuCarousel({ haikus }) {
             ></button>
           );
         })}
-      </span>
+      </span> */}
     </div>
   );
 };

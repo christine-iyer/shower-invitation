@@ -194,13 +194,13 @@ function HaikuPage() {
         </Modal>
 
         <h1>Me and You and Our Haikus</h1>
-        <HaikuCarousel haikus={haikus}/>
-        <HaikuList
+        <HaikuCarousel haikus={haikus} />
+        {/* <HaikuList
           haikus={haikus}
 
           deleteHaiku={deleteHaiku}
           updateHaiku={updateHaiku}
-          likeHaiku={likeHaiku} />
+          likeHaiku={likeHaiku} /> */}
 
        
 
