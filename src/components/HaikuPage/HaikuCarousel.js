@@ -1,27 +1,26 @@
 import React, { useState } from "react";
 
 
-import "./style.css";
-
- const HaikuCarousel = ({ data }) => {
+ const HaikuCarousel = ({ haikus }) => {
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
-    setSlide(slide === data.length - 1 ? 0 : slide + 1);
+    setSlide(slide === haikus.length - 1 ? 0 : slide + 1);
+    console.log('clicked Next')
   };
 
   const prevSlide = () => {
-    setSlide(slide === 0 ? data.length - 1 : slide - 1);
+    setSlide(slide === 0 ? haikus.length - 1 : slide - 1);
   };
 
   return (
     <div className="carousel">
       <p onClick={prevSlide} className="arrow arrow-left" />
-      {data.map((item, idx) => {
+      {haikus?.map((item, idx) => {
         return (
-          <img
-            src={item.src}
-            alt={item.alt}
+          <p
+            src={item.author}
+            alt={item.one}
             key={idx}
             className={slide === idx ? "slide" : "slide slide-hidden"}
           />
@@ -32,7 +31,7 @@ import "./style.css";
         className="arrow arrow-right"
       />
       <span className="indicators">
-        {data.map((_, idx) => {
+        {haikus?.map((_id, idx) => {
           return (
             <button
               key={idx}
@@ -40,7 +39,8 @@ import "./style.css";
                 slide === idx ? "indicator" : "indicator indicator-inactive"
               }
               onClick={() => setSlide(idx)}
-            ></button>
+              styles={{ color:'red'}}
+          />
           );
         })}
       </span>
