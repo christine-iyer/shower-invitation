@@ -14,11 +14,11 @@ export default function App() {
     return (
         <>
         <BrowserRouter>
-        <Bar/>
+        <Bar />
         <Routes>
   
             <Route path='/haikus' element={<HaikuPage />} />
-            <Route path='/carousel' element={<HaikuCarousel />} style={{ width: '100%', alignContent: 'center', alignItems: 'center' }}/>
+            
             <Route path='/blahg' element={<BlahgPage />} style={{ width: '100%', alignContent: 'center', alignItems: 'center' }}/>
 
 

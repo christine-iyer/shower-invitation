@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import '../../App.css';
 
 
 
 export default function Bar(props) {
   return (
     <>
-    <Navbar  style={{backgroundColor: 'rgba(23,45,65,.7)'}}className="navbar-left" bg="dark" variant="light" width='100%'>
+    <Navbar className="navbar-left" bg="light" variant="dark" width='100%'>
       <Container >
 
     <Nav >
