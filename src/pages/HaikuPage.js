@@ -175,9 +175,7 @@ function HaikuPage() {
   return (
     <div className="HaikuPage">
       <div>
-    
-       
-      <button  onClick={handleShow}> <h1>+ </h1> 
+     <button  onClick={handleShow}> <h1>+ </h1> 
 </button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>

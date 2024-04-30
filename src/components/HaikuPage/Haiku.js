@@ -27,7 +27,7 @@ export default function Haiku({
   const inputRefE = useRef(null)
   return (
     < >
-      <Card  className={setClass(haiku,styles)} style={{  padding: '1%', margin: '1%', textAlign: 'left', boxShadow: '12px 12px 12px 11px haiku.color'}}>
+      <Card  style={{marginTop:'10%'}}className={setClass(haiku,styles)} style={{  padding: '1%', margin: '1%', textAlign: 'center', boxShadow: '12px 12px 12px 11px haiku.color'}}>
        
         <input
           ref={inputRefE}
