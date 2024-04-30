@@ -335,4 +335,13 @@ h2 {
 	color: rgb(162, 134, 109);
 	text-align: left;
 }
-
+.HaikuPage{
+	position: relative;
+	
+}
+.carouselContainer{
+	position:absolute;
+	top: 109px;
+	left: 600px;
+	
+}

@@ -3,7 +3,11 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Haiku from "./Haiku";
 import "./Carousel.css";
 
-export default function HaikuCarousel({ haikus }) {
+export default function HaikuCarousel({ haikus,
+  updateHaiku,
+  deleteHaiku,
+  likeHaiku
+ }) {
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
@@ -23,7 +27,9 @@ export default function HaikuCarousel({ haikus }) {
             key={idx}
             className={slide === idx ? "slide" : "slide slide-hidden"}
           >
-            <Haiku haiku={item} />
+            <Haiku haiku={item} updateHaiku={updateHaiku}
+                  deleteHaiku={deleteHaiku}
+                  likeHaiku={likeHaiku}/>
             
           </div>
         );
@@ -32,19 +38,6 @@ export default function HaikuCarousel({ haikus }) {
         onClick={nextSlide}
         className="arrow arrow-right"
       />
-      {/* <span className="indicators">
-        {haikus.map((_, idx) => {
-          return (
-            <button
-              key={idx}
-              className={
-                slide === idx ? "indicator" : "indicator indicator-inactive"
-              }
-              onClick={() => setSlide(idx)}
-            ></button>
-          );
-        })}
-      </span> */}
     </div>
   );
 };

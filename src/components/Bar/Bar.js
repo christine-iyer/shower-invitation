@@ -10,10 +10,12 @@ export default function Bar(props) {
     <>
     <Navbar  className="navbar-left" bg="dark" variant="light" width='100%'>
       <Container >
+
     <Nav >
         <Link to="/haikus">
         <h6>Haikus</h6>
       </Link>
+      
    &nbsp;  &nbsp;
      &nbsp;
       <Link to="/blahg">

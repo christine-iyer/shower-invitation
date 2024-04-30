@@ -19,8 +19,8 @@ function HaikuPage() {
   })
   const [haikus, setHaikus] = useState([])
   const [foundHaikus, setFoundHaikus] = useState(null)
-  
-// const [sentimentScore, setSentimentScore] = useState(0)
+
+  // const [sentimentScore, setSentimentScore] = useState(0)
   // const [errorMessage, setErrorMessage] = useState("");
 
 
@@ -153,7 +153,7 @@ function HaikuPage() {
   //       text: 'Steam dances above, dark elixir soothes the soul,morning\'s gift of life.'
   //     }
   //   };
-    
+
   //   try {
   //     const response = await fetch(url, options);
   //     const result = await response.text();
@@ -175,8 +175,8 @@ function HaikuPage() {
   return (
     <div className="HaikuPage">
       <div>
-     <button  onClick={handleShow}> <h1>+ </h1> 
-</button>
+        <button onClick={handleShow}> <h1>+ </h1>
+        </button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>
             <CreateHaiku style={{ height: '50%', margin: "5%", width: '80%' }}
@@ -190,27 +190,22 @@ function HaikuPage() {
             </Button>
           </Modal.Footer>
         </Modal>
-
+        <div className='carouselContainer'>
         <h1>Me and You and Our Haikus</h1>
-        <HaikuCarousel haikus={haikus} />
+        <HaikuCarousel 
+        haikus={haikus}
+        deleteHaiku={deleteHaiku}
+        updateHaiku={updateHaiku}
+        likeHaiku={likeHaiku} />
+        </div>
         {/* <HaikuList
           haikus={haikus}
 
           deleteHaiku={deleteHaiku}
           updateHaiku={updateHaiku}
           likeHaiku={likeHaiku} /> */}
-
-       
-
-      
-
-        
       </div>
       <div>
-     
-  
-
-
       </div>
     </div>
   )

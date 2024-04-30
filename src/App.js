@@ -9,14 +9,16 @@ import "slick-carousel/slick/slick-theme.css";
 import HaikuCarousel from "./components/HaikuPage/HaikuCarousel";
 
 
+
 export default function App() {
     return (
         <>
         <BrowserRouter>
         <Bar/>
         <Routes>
-        <Route path='/haikus/carousel' element={<HaikuCarousel />} />
+  
             <Route path='/haikus' element={<HaikuPage />} />
+            <Route path='/carousel' element={<HaikuCarousel />} style={{ width: '100%', alignContent: 'center', alignItems: 'center' }}/>
             <Route path='/blahg' element={<BlahgPage />} style={{ width: '100%', alignContent: 'center', alignItems: 'center' }}/>
 
 

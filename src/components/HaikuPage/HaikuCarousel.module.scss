@@ -79,7 +79,14 @@ body {
      object-fit: cover;
    }
    .arrow arrow-right{
+    position:relative;
     height:50%;
-    background-color: blue;
+z-index: 100;
+
    }
+   .arrow arrow-left{
+    position:relative;
+
+   }
+
    
