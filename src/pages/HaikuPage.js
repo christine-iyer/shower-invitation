@@ -12,10 +12,8 @@ function HaikuPage() {
     one: '',
     two: '',
     three: '',
-    title: '',
-    color: '',
-    like: 0,
-    comment: ''
+    like: 0
+   
   })
   const [haikus, setHaikus] = useState([])
   const [foundHaikus, setFoundHaikus] = useState(null)
@@ -54,10 +52,7 @@ function HaikuPage() {
         one: '',
         two: '',
         three: '',
-        title: '',
-        color: '',
-        like: 0,
-        comment: ''
+        like: 0
       })
     }
   }
