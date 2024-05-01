@@ -16,7 +16,8 @@ export default function App() {
         <BrowserRouter>
         <Bar />
         <Routes>
-  
+       
+            
             <Route path='/haikus' element={<HaikuPage />} />
             
             <Route path='/blahg' element={<BlahgPage />} style={{ width: '100%', alignContent: 'center', alignItems: 'center' }}/>

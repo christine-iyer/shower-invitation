@@ -12,7 +12,14 @@ export default function Bar(props) {
     <Navbar className="navbar-left" bg="light" variant="dark" width='100%'>
       <Container >
 
+
     <Nav >
+
+    <Link to="/carousel">
+        <h6>Carousel</h6>
+      </Link>
+      &nbsp;  &nbsp;
+     &nbsp;
         <Link to="/haikus">
         <h6>Haikus</h6>
       </Link>

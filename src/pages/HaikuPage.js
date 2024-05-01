@@ -175,7 +175,7 @@ function HaikuPage() {
   return (
     <div className="HaikuPage">
       <div>
-        <button onClick={handleShow}> <h1>+ </h1>
+        <button style={{marginTop:'2px'}}onClick={handleShow}> <h1>+ </h1>
         </button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>
@@ -198,12 +198,14 @@ function HaikuPage() {
         updateHaiku={updateHaiku}
         likeHaiku={likeHaiku} />
         </div>
+    <div >
         {/* <HaikuList
           haikus={haikus}
 
           deleteHaiku={deleteHaiku}
           updateHaiku={updateHaiku}
           likeHaiku={likeHaiku} /> */}
+          </div>
       </div>
       <div>
       </div>

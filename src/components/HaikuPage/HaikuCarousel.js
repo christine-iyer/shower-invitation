@@ -36,8 +36,9 @@ export default function HaikuCarousel({ haikus,
       })}
       <BsArrowRightCircleFill
         onClick={nextSlide}
-        className="arrow arrow-right"
-      />
+        className="arrow arrow-right">次</BsArrowRightCircleFill>
+      
+    
     </div>
   );
 };
