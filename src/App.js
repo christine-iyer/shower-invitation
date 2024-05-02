@@ -20,7 +20,7 @@ export default function App() {
             
             <Route path='/haikus' element={<HaikuPage />} />
             
-            <Route path='/blahg' element={<BlahgPage />} style={{ width: '100%', alignContent: 'center', alignItems: 'center' }}/>
+            <Route path='/blahg' element={<BlahgPage />} style={{ display:"grid", width: '100%', alignContent: 'center', alignItems: 'center' }}/>
 
 
         </Routes>
