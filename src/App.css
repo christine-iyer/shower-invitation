@@ -138,8 +138,11 @@ Row {
 	.carouselContainer{
 		align-items: left;
 		justify-items: left;
+		width: 50%;
 	}
-}
+	.haikuCard{
+		width: fit-content;
+}}
 
 
 
