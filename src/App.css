@@ -138,7 +138,9 @@ Row {
 	.carouselContainer{
 		align-items: left;
 		justify-items: left;
-		width: 50%;
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
 	}
 	.haikuCard{
 		width: fit-content;
