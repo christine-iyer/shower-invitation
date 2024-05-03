@@ -85,13 +85,13 @@ p {
 	border-left: navy;
 }
 
-.collumn .headline {
+/* .collumn .headline {
 	text-align: center;
 	line-height: normal;
 	font-family: 'Playfair Display', serif;
 	display: block;
 	margin: 0 auto;
-}
+} */
 
 
 
@@ -141,9 +141,11 @@ Row {
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
+		
 	}
 	.haikuCard{
 		width: fit-content;
+		
 }}
 
 
