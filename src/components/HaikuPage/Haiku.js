@@ -43,7 +43,7 @@ export default function Haiku({
           defaultValue={haiku.title}
         />
 
-        <Card.Text className="text" onClick={() => setShowB(!showB)}>{haiku.one}</Card.Text>
+        <Card.Text className={styles.texty} onClick={() => setShowB(!showB)}>{haiku.one}</Card.Text>
         <input
           ref={inputRefB}
           style={{ display: showB ? 'block' : 'none' }}
@@ -57,7 +57,7 @@ export default function Haiku({
           }}
           defaultValue={haiku.one}
         />
-        <Card.Text className="text" onClick={() => setShowC(!showC)}>{haiku.two}</Card.Text>
+        <Card.Text className={styles.text} onClick={() => setShowC(!showC)}>{haiku.two}</Card.Text>
         <input
           ref={inputRefC}
           style={{ display: showC ? 'block' : 'none' }}
@@ -71,7 +71,7 @@ export default function Haiku({
           }}
           defaultValue={haiku.two}
         />
-        <Card.Text className="texty" onClick={() => setShowD(!showD)}>{haiku.three}</Card.Text>
+        <Card.Text className={styles.text} onClick={() => setShowD(!showD)}>{haiku.three}</Card.Text>
         <input
           ref={inputRefD}
           style={{ display: showD ? 'block' : 'none' }}
@@ -85,7 +85,7 @@ export default function Haiku({
           }}
           defaultValue={haiku.three}
         />
-          <span><p onClick={() => setShowA(!showA)}>by {haiku.author}</p> <input
+        <p onClick={() => setShowA(!showA)}>by {haiku.author} on {new Date(haiku.createdAt).toLocaleDateString()} </p> <input
           ref={inputRefA}
           type='text'
           style={{ display: showA ? 'block' : 'none' }}
@@ -99,13 +99,7 @@ export default function Haiku({
           defaultValue={haiku.author}
         />
        
-        <p style={{
-          defaultValue: "#E45845",
-          color: haiku.color,
-          display: "flex", alignItems: "center",
-          position: "relative", zIndex: 1
-        }} > {new Date(haiku.createdAt).toLocaleDateString()}  </p>
-    </span>
+       
         <button style={{ 'fontStyle': 'italic' , 'width':'30%', 'display':'inlineBlock', border:'none', opacity:'50%'}} className="btn btn-outline-warning" onClick={() => deleteHaiku(haiku._id)}>消去</button>
 
         <button style={{ 'fontStyle': 'italic' , 'width':'30%', 'display':'inlineBlock', border:'none', opacity:'50%'}} className="btn btn-outline-warning" onClick={() => likeHaiku(haiku._id)}>愛 {haiku.like}</button>

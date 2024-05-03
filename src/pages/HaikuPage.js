@@ -139,7 +139,7 @@ function HaikuPage() {
   return (
     <div className="HaikuPage">
       <div>
-        <button style={{marginTop:'2px'}}onClick={handleShow}> <h1>+ </h1>
+        <button style={{ padding:'1%', margin:'1%'}}onClick={handleShow}> <h1>+ </h1>
         </button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>

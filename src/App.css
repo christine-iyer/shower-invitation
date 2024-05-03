@@ -1,8 +1,8 @@
 .App {
 	text-align: left;
 	contain: fit;
-	/* padding: 3px;
-  margin: 3px;  */
+	padding: 3px;
+  margin: 3px; 
 }
 
 .App-header {
@@ -22,14 +22,7 @@
 
 }
 
-/* body {
-	font-family: Roboto, Helvetica, Arial, sans-serif;
 
-	background: rgb(240, 205, 76);
-	line-height: 1.2;
-	margin: 4em;
-	justify-items: left;
-} */
 
 
 header {
@@ -45,12 +38,12 @@ header {
 p {
 	margin-top: 0;
 	margin-bottom: 20px;
+	font-family: "Audiowide";
+	font-size: 20px;
+	
 }
 
-/* .head {
-	text-align: center;
-	position: relative;
-} */
+
 
 
 
@@ -84,34 +77,6 @@ p {
 .collumn+.collumn {
 	border-left: navy;
 }
-
-/* .collumn .headline {
-	text-align: center;
-	line-height: normal;
-	font-family: 'Playfair Display', serif;
-	display: block;
-	margin: 0 auto;
-} */
-
-
-
-.media {
-	/* -webkit-filter: sepia(80%) contrast(1);
-	filter: sepia(80%) grayscale(1) contrast(1);
-	mix-blend-mode: multiply; */
-	width: 100%;
-	padding: 1em;
-}
-/* 
-Row {
-	flex-direction: row;
-	grid-area: bottom;
-	align-self: start;
-	object-fit: contain;
-} */
-
-
-
 
 @media only all and (max-width: 900px) {
 	.collumn {
@@ -147,8 +112,6 @@ Row {
 		width: fit-content;
 		
 }}
-
-
 
 
 
