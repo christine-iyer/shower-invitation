@@ -36,6 +36,7 @@ const getHaikus = async (req, res, next) => {
 
         const haikus = await Haiku.find(req.body)
         res.locals.data.haikus = haikus
+        haikus.reverse()
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
