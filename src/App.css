@@ -3,11 +3,12 @@
 	text-align: left;
 	contain: fit;
 	padding: 3px;
-  margin: 3px; 
+  margin: 3px;
+
 }
 
 .App-header {
-	background-color: antiquewhite;
+
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -18,8 +19,9 @@
 }
 
 * {
+
 	box-sizing: border-box;
-	/* break-inside: avoid-column; */
+/* background-image: url('./photos/bg25.png'); */
 
 }
 

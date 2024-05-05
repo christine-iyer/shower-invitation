@@ -117,7 +117,7 @@ function HaikuPage() {
       const index = haikusCopy.findIndex(haiku => id === haiku._id)
       haikusCopy[index] = { ...haikusCopy[index], ...updatedData }
       setHaikus(haikusCopy)
-      console.log(haikusCopy.one)
+   
     } catch (error) {
       console.error(error)
     }
@@ -172,7 +172,7 @@ function HaikuPage() {
         likeHaiku={likeHaiku} />
         </div>
     <div >
-    <h1>Filtable List #2</h1>
+    <h6>Filtable List #2</h6>
         <Buttons
           haikus={haikus}
           item={item}
@@ -181,7 +181,7 @@ function HaikuPage() {
           menuItems={menuItems}
         />
         <HaikuCard
-          // haikus={haikus}
+           haikus={haikus}
           item={item}
           filterItem={filterItem}
           deleteHaiku={deleteHaiku}

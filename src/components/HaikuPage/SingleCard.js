@@ -76,6 +76,7 @@ export default function SingleCard({
           style={{ display: showA ? 'block' : 'none' }}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
+
               const author = inputRefA.current.value
               updateHaiku(Val._id, { author: author })
               setShowA(false)
