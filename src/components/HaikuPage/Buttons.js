@@ -16,7 +16,7 @@ export default function Buttons({ filterItem, setItem, menuItems,haikus }) {
           );
         })}
         <button
-          className="btn-dark text-whitep-1 px-1 mx-.125  btn"
+          className="btn-dark text-white p-1 px-1 mx-.125  btn"
           
           onClick={() => setItem(haikus)}
         >
