@@ -4,7 +4,7 @@ import '../App.css'
 import { Modal, Button } from 'react-bootstrap';
 import CreateHaiku from '../components/HaikuPage/CreateHaiku';
 import HaikuCarousel from '../components/HaikuPage/HaikuCarousel';
-import HaikuList from '../components/HaikuPage/HaikuList';
+// import HaikuList from '../components/HaikuPage/HaikuList';
 import Buttons from '../components/HaikuPage/Buttons';
 import HaikuCard from '../components/HaikuPage/HaikuCard';
 function HaikuPage() {
@@ -117,6 +117,7 @@ function HaikuPage() {
       const index = haikusCopy.findIndex(haiku => id === haiku._id)
       haikusCopy[index] = { ...haikusCopy[index], ...updatedData }
       setHaikus(haikusCopy)
+      console.log(haikusCopy.one)
     } catch (error) {
       console.error(error)
     }
@@ -180,7 +181,7 @@ function HaikuPage() {
           menuItems={menuItems}
         />
         <HaikuCard
-          haikus={haikus}
+          // haikus={haikus}
           item={item}
           filterItem={filterItem}
           deleteHaiku={deleteHaiku}
