@@ -17,6 +17,12 @@ export default function setClass(div, styles){
      if(div.author === 'Lynne'){
           return styles.lynne
      }
+     if(div.author === 'Mary'){
+          return styles.mary
+     }
+     if(div.author === 'Julie'){
+          return styles.julie
+     }
    
      
 }
