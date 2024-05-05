@@ -14,11 +14,18 @@ function HaikuPage() {
     two: '',
     three: '',
     like: 0
-   
   })
   const [haikus, setHaikus] = useState([])
   const [foundHaikus, setFoundHaikus] = useState(null)
-
+  const [item, setItem] = useState(haikus);
+  const menuItems = [...new Set(haikus?.map((Val) => Val.author))];
+  const filterItem = (curcat) => {
+      const newItem = haikus?.filter((newVal) => {
+        return newVal.author === curcat;
+      });
+      setItem(newItem);
+    };
+  
   // const [sentimentScore, setSentimentScore] = useState(0)
   // const [errorMessage, setErrorMessage] = useState("");
 
@@ -164,12 +171,26 @@ function HaikuPage() {
         likeHaiku={likeHaiku} />
         </div>
     <div >
-        <HaikuList
+    <h1>Filtable List #2</h1>
+        <Buttons
           haikus={haikus}
-
+          item={item}
+          filterItem={filterItem}
+          setItem={setItem}
+          menuItems={menuItems}
+        />
+        <HaikuCard
+          haikus={haikus}
+          item={item}
+          filterItem={filterItem}
           deleteHaiku={deleteHaiku}
           updateHaiku={updateHaiku}
           likeHaiku={likeHaiku} />
+        {/* <HaikuList
+          haikus={haikus}
+          deleteHaiku={deleteHaiku}
+          updateHaiku={updateHaiku}
+          likeHaiku={likeHaiku} /> */}
           </div>
       </div>
       <div>

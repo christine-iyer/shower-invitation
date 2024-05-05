@@ -19,30 +19,15 @@ export default function SingleCard({
   const [showB, setShowB] = useState(false)
   const [showC, setShowC] = useState(false)
   const [showD, setShowD] = useState(false)
-  const [showE, setShowE] = useState(false)
   const inputRefA = useRef(null)
   const inputRefB = useRef(null)
   const inputRefC = useRef(null)
   const inputRefD = useRef(null)
-  const inputRefE = useRef(null)
+ 
   return (
     < >
       <Card  style={{marginTop:'10%',padding: '1%', margin: '1%', textAlign: 'center', boxShadow: '12px 12px 12px 11px Val.color', content:"initial"}} className={setClass(Val,styles)}>
        
-        <input
-          ref={inputRefE}
-          style={{ display: showE ? 'block' : 'none' }}
-          type='text'
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              const title = inputRefE.current.value
-              updateHaiku(Val._id, { title: title });
-              setShowE(false)
-            }
-          }}
-          defaultValue={Val.title}
-        />
-
         <Card.Text className={styles.texty} onClick={() => setShowB(!showB)}>{Val.one}</Card.Text>
         <input
           ref={inputRefB}

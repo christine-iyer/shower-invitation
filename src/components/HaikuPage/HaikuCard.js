@@ -10,17 +10,7 @@ const HaikuCard = ({ item,
   updateHaiku,
   deleteHaiku,
   likeHaiku }) => {
-    // const [showA, setShowA] = useState(false)
-    // const [showB, setShowB] = useState(false)
-    // const [showC, setShowC] = useState(false)
-    // const [showD, setShowD] = useState(false)
-    // const [showE, setShowE] = useState(false)
-    // const inputRefA = useRef(null)
-    // const inputRefB = useRef(null)
-    // const inputRefC = useRef(null)
-    // const inputRefD = useRef(null)
-    // const inputRefE = useRef(null)
-
+    
     
   return (
     <>
@@ -34,11 +24,7 @@ const HaikuCard = ({ item,
               deleteHaiku={deleteHaiku}
               likeHaiku={likeHaiku}
            />
-       
-      
-
-            
-          );
+       );
           })}
         </div>
       </div>
