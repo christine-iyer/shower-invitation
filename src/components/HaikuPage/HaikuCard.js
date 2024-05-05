@@ -8,7 +8,7 @@ import SingleCard from "./SingleCard";
 
 const HaikuCard = ({ item,
   updateHaiku,
-  deleteHaiku,
+
   likeHaiku }) => {
     
     
@@ -21,7 +21,6 @@ const HaikuCard = ({ item,
               <SingleCard key={Val._id}
               Val={Val}
               updateHaiku={updateHaiku}
-              deleteHaiku={deleteHaiku}
               likeHaiku={likeHaiku}
            />
        );

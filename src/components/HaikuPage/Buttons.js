@@ -7,7 +7,7 @@ export default function Buttons({ filterItem, setItem, menuItems,haikus }) {
         {menuItems?.map((Val, _id) => {
           return (
             <button
-              className="btn-light text-white p-1 px-2 mx-5 btn fw-bold"
+              className="btn-light text-green p-1 px-1 mx-.125 btn "
               onClick={() => filterItem(Val)}
               key={_id}
             >
@@ -16,7 +16,7 @@ export default function Buttons({ filterItem, setItem, menuItems,haikus }) {
           );
         })}
         <button
-          className="btn-dark text-white p-1 px-3 mx-5 fw-bold btn"
+          className="btn-dark text-whitep-1 px-1 mx-.125  btn"
           
           onClick={() => setItem(haikus)}
         >

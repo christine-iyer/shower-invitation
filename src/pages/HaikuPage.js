@@ -167,12 +167,17 @@ function HaikuPage() {
         <h1>Me and You and Our Haikus</h1>
         <HaikuCarousel 
         haikus={haikus}
-        deleteHaiku={deleteHaiku}
         updateHaiku={updateHaiku}
         likeHaiku={likeHaiku} />
         </div>
     <div >
-    <h6>Filtable List #2</h6>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+    <h3 style={{textAlign:'center'}}>All Haikus</h3>
+    <br></br>
         <Buttons
           haikus={haikus}
           item={item}
