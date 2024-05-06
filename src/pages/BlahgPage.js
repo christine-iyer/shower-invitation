@@ -164,7 +164,7 @@ export default function BlahgPage() {
     })
   }
   return (
-    <>
+    <div className='franky' style={{flexWrap:'nowrap'}}>
 
       <section>
         <h1>Post Shamelessly</h1>
@@ -282,6 +282,6 @@ export default function BlahgPage() {
           }
         </Container>) : <>No Entries yet! Yet Add One Below this message</>
       }
-    </>
+    </div>
   )
 }
