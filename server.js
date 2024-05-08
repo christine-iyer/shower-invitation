@@ -39,38 +39,38 @@ app.listen(PORT, () => {
     console.log(`I am listening on ${PORT}. We In the Building.`)
 })
 // Import the Twilio package
-const twilio = require('twilio');
+// const twilio = require('twilio');
 
 
 
-// Define an asynchronous function to send an SMS message
-async function sendSMS(message, to) {
-    try {
-        // Create a Twilio client using environment variables
-        const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+// // Define an asynchronous function to send an SMS message
+// async function sendSMS(message, to) {
+//     try {
+//         // Create a Twilio client using environment variables
+//         const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
-        // Send the SMS message and store the message info in 'messageInfo'
-        const messageInfo = await client.messages.create({
-            body: message,         // The message content
-            from: process.env.TWILIO_PHONE_NUMBER, // Your Twilio phone number (sender)
-            to                   // The recipient's phone number
-        });
+//         // Send the SMS message and store the message info in 'messageInfo'
+//         const messageInfo = await client.messages.create({
+//             body: message,         // The message content
+//             from: process.env.TWILIO_PHONE_NUMBER, // Your Twilio phone number (sender)
+//             to                   // The recipient's phone number
+//         });
 
-        // Return the message info
-        return messageInfo;
-    } catch (error) {
-        // Handle any errors that occur during the process
-        console.error('Error:', error);
-    }
-}
+//         // Return the message info
+//         return messageInfo;
+//     } catch (error) {
+//         // Handle any errors that occur during the process
+//         console.error('Error:', error);
+//     }
+// }
 
-// An immediately invoked function expression (IIFE) to send an SMS and log the result
-(async () => {
-    // Call the 'sendSMS' function to send an SMS message
-    const messageInfo = await sendSMS(`${PORT} we are in the building`, +8777804236);
+// // An immediately invoked function expression (IIFE) to send an SMS and log the result
+// (async () => {
+//     // Call the 'sendSMS' function to send an SMS message
+//     const messageInfo = await sendSMS(`${PORT} we are in the building`, +8777804236);
 
-    // Log the message info (this will include the message SID, etc.)
-    console.log(messageInfo);
-})();
+//     // Log the message info (this will include the message SID, etc.)
+//     console.log(messageInfo);
+// })();
 
 
