@@ -36,7 +36,7 @@ const createHaiku = async (req, res, next) => {
         const messageInfo = await client.messages.create({
             body: message,         // The message content
             from: process.env.TWILIO_PHONE_NUMBER, // Your Twilio phone number (sender)
-            to                   // The recipient's phone number
+            to  :+12072399509                 // The recipient's phone number
         });
 
         // Return the message info
