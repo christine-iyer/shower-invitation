@@ -67,7 +67,7 @@ async function sendSMS(message, to) {
 // An immediately invoked function expression (IIFE) to send an SMS and log the result
 (async () => {
     // Call the 'sendSMS' function to send an SMS message
-    const messageInfo = await sendSMS('Coding with ado', +2072399509);
+    const messageInfo = await sendSMS(`${PORT} we are in the building`, +8777804236);
 
     // Log the message info (this will include the message SID, etc.)
     console.log(messageInfo);
