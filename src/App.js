@@ -3,6 +3,7 @@ import './App.css';
 import Bar from './components/Bar/Bar'
 import BlahgPage from './pages/BlahgPage'
 import HaikuPage from "./pages/HaikuPage";
+import AuthPage from "./pages/AuthPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -16,7 +17,7 @@ export default function App() {
         <BrowserRouter>
         <Bar />
         <Routes>
-       
+       <AuthPage path="/user" element={AuthPage} />
             
             <Route path='/haikus' element={<HaikuPage />} />
             

@@ -31,7 +31,7 @@ const login = async (req, res, next) => {
   }
 }
 
-const getBookmarksByUser = async (req, res, next) => {
+const getHaikusByUser = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: res.locals.data.email }).populate('bookmarks').sort('bookmarks.createdAt').exec()
     const bookmarks = user.bookmarks
@@ -50,16 +50,16 @@ const respondWithUser = (req, res) => {
   res.json(res.locals.data.user)
 }
 
-const respondWithBookmarks = (req, res) => {
+const respondWithHaikus = (req, res) => {
   res.json(res.locals.data.bookmarks)
 }
 
 module.exports = {
   signUp,
   login,
-  getBookmarksByUser,
+  getHaikusByUser,
   respondWithToken,
-  respondWithBookmarks,
+  respondWithHaikus,
   respondWithUser
 }
 

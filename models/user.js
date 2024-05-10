@@ -9,9 +9,10 @@ const SALT_ROUNDS = 6
 
 const userSchema = new Schema({
   name: { type: String, required: true },
-  email: { type: String, unique: true, trim: true, lowercase: true, required: true },
-  password: { type: String, trim: true, minLength: 5, require: true },
-  bookmarks: [{ type: Schema.Types.ObjectId, ref: 'Bookmark' }]
+  phone: { type: String, unique: true, trim: true, lowercase: true, required: true },
+  password: { type: String, trim: true, minLength: 3, require: true },
+  haikus: [{ type: Schema.Types.ObjectId, ref: 'Haiku' }],
+  consent: {type: Boolean}
 }, {
   timestamps: true,
   toJSON: {

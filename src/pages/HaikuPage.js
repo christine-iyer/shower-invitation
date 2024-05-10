@@ -7,6 +7,7 @@ import HaikuCarousel from '../components/HaikuPage/HaikuCarousel';
  import Notification from '../components/HaikuPage/Notification';
 import Buttons from '../components/HaikuPage/Buttons';
 import HaikuCard from '../components/HaikuPage/HaikuCard';
+
 function HaikuPage() {
   const [haiku, setHaiku] = useState({
     author: '',

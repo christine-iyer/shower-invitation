@@ -10,9 +10,12 @@ export default function Bar(props) {
   return (
     <>
     <Navbar className="navbar-left" bg="light" variant="dark" width='100%'>
- s
-
     <Nav >
+        <Link to="/haikus/users">
+        <h6>Haikus</h6>
+      </Link>
+
+
         <Link to="/haikus">
         <h6>Haikus</h6>
       </Link>
