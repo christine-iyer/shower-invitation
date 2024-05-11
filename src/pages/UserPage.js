@@ -114,35 +114,14 @@ function UserPage() {
   return (
     <div className="UserPage">
       <div>
-        <SignUpForm />
+        <SignUpForm onChange={handleChange}/>
 
-        <button style={{ padding:'1%', margin:'1%'}}onClick={handleShow}> <h1>+ </h1>
-        </button>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Body>
-            <User style={{ height: '50%', margin: "5%", width: '80%' }}
-              createUser={createUser}
-              user={user}
-              handleChange={handleChange} />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-        <div className='carouselContainer'>
-        <h1>Me and You and Our Users</h1>
-        
-        </div>
-    <div >
-  
-       
-          </div>
+     
+
+
      
       </div>
-      <div>
-      </div>
+   
     </div>
   )
 
