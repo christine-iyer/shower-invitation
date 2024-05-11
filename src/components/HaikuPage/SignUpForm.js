@@ -4,10 +4,9 @@ import styles from './SignUpForm.module.scss'
 
 export default class SignUpForm extends Component {
 state = {
-  name: '',
+  author: '',
   phone: '',
   password: '',
-  color: '',
   confirm: '',
   consent: '',
   error: ''

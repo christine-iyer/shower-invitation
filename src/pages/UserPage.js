@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../App.css'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import { Modal, Button } from 'react-bootstrap';
-import User from '../components/HaikuPage/User';
+
+// import User from '../components/HaikuPage/User';
 import SignUpForm from '../components/HaikuPage/SignUpForm';
 function UserPage() {
   const [user, setUser] = useState({

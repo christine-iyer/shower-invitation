@@ -12,9 +12,10 @@ export default function Bar(props) {
     <Navbar className="navbar-left" bg="light" variant="dark" width='100%'>
     <Nav >
         <Link to="/haikus/users">
-        <h6>Haikus</h6>
+        <h6>User Consent</h6>
       </Link>
-
+      &nbsp;  &nbsp;
+     &nbsp;
 
         <Link to="/haikus">
         <h6>Haikus</h6>
