@@ -19,7 +19,7 @@ export default function App() {
         <Bar />
         <Routes>
 
-        <Route path='/users' element={<UserPage  />} />
+        {/* <Route path='/users' element={<UserPage  />} /> */}
             <Route path='/haikus' element={<HaikuPage />} />
             
             <Route path='/blahg' element={<BlahgPage />} style={{ display:"grid", width: '100%', alignContent: 'center', alignItems: 'center' }}/>

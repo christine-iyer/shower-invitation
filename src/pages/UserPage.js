@@ -113,7 +113,7 @@ function UserPage() {
   return (
     <div className="UserPage">
       <div>
-        <SignUpForm onChange={handleChange}/>
+        <SignUpForm user={user} setUser={setUser} onChange={handleChange}/>
 
      
 
