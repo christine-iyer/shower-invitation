@@ -4,7 +4,7 @@ import '../App.css'
 import { Modal, Button } from 'react-bootstrap';
 import CreateHaiku from '../components/HaikuPage/CreateHaiku';
 import HaikuCarousel from '../components/HaikuPage/HaikuCarousel';
- import Notification from '../components/HaikuPage/Notification';
+
 import Buttons from '../components/HaikuPage/Buttons';
 import HaikuCard from '../components/HaikuPage/HaikuCard';
 import SignUpForm from '../components/HaikuPage/SignUpForm';
@@ -150,8 +150,6 @@ function HaikuPage() {
     <div className="HaikuPage">
       <div>
         <SignUpForm />
-
-      <Notification/>
         <button style={{ padding:'1%', margin:'1%'}}onClick={handleShow}> <h1>+ </h1>
         </button>
         <Modal show={show} onHide={handleClose}>
