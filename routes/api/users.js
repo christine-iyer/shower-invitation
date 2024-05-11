@@ -1,12 +1,10 @@
 const router = require('express').Router()
 const userCtrl = require('../../controllers/api/users')
-const checkToken = require('../../config/checkToken')
 
 
-/*
-/api/users
-SignUp
-*/
-router.post('/', userCtrl.signUp, userCtrl.respondWithToken)
-
+// router.delete('/:id', userCtrl.deleteUser, userCtrl.respondWithUser)
+router.put('/:id', userCtrl.updateUser, userCtrl.respondWithUser)
+router.post('/', userCtrl.createUser, userCtrl.respondWithUser)
+router.get('/:id', userCtrl.getUsers, userCtrl.respondWithUser)
+router.get('/', userCtrl.getUsers, userCtrl.respondWithUsers)
 module.exports = router

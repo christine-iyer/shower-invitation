@@ -9,6 +9,7 @@ state = {
   password: '',
   color: '',
   confirm: '',
+  consent: '',
   error: ''
 };
 
