@@ -4,8 +4,6 @@ import Bar from './components/Bar/Bar'
 import BlahgPage from './pages/BlahgPage'
 import HaikuPage from "./pages/HaikuPage";
 import UserPage from "./pages/UserPage";
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,7 +17,7 @@ export default function App() {
         <Bar />
         <Routes>
 
-        {/* <Route path='/users' element={<UserPage  />} /> */}
+         <Route path='/users' element={<UserPage  />} /> 
             <Route path='/haikus' element={<HaikuPage />} />
             
             <Route path='/blahg' element={<BlahgPage />} style={{ display:"grid", width: '100%', alignContent: 'center', alignItems: 'center' }}/>
