@@ -19,7 +19,7 @@ const createHaiku = async (req, res, next) => {
     try {
         const createdHaiku = await Haiku.create(req.body)
         res.locals.data.Haiku = createdHaiku
-        next()
+        
         async function sendSMS(phoneNumber) {
             try {
                 const message = await client.messages.create({
@@ -39,6 +39,7 @@ const createHaiku = async (req, res, next) => {
                 await sendSMS(phoneNumber);
             }
         }
+        next()
 
 
         sendBulkSMS();
