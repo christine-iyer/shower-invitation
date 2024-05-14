@@ -31,12 +31,12 @@ const createHaiku = async (req, res, next) => {
     try {
         // Create a Twilio client using environment variables
         const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-
+        const numbers = ["+12077722214", "+12072399509"]
         // Send the SMS message and store the message info in 'messageInfo'
         const messageInfo = await client.messages.create({
             body: message,         // The message content
             from: process.env.TWILIO_PHONE_NUMBER, // Your Twilio phone number (sender)
-            to  :+12072399509                 // The recipient's phone number
+            to  :  numbers.map            // The recipient's phone number
         });
 
         // Return the message info
