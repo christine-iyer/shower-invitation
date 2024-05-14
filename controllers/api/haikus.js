@@ -1,8 +1,7 @@
 require('dotenv').config()
 const Haiku = require('../../models/haiku')
-const accountSid = process.env.TWILIO_ACCOUNT_SID
-const authToken = process.env.TWILIO_AUTH_TOKEN
-const client = require('twilio')(accountSid, authToken);
+
+
 
 
 const deleteHaiku = async (req, res, next) => {
@@ -15,6 +14,7 @@ const deleteHaiku = async (req, res, next) => {
     }
 }
 const createHaiku = async (req, res) => {
+    const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
     const phoneNumbers = ["+12076531815", "12077722214", "+12072399509"]
     try {
         const createdHaiku = await Haiku.create(req.body)
