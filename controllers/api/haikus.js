@@ -39,12 +39,12 @@ const createHaiku = async (req, res, next) => {
                 await sendSMS(phoneNumber);
             }
         }
-        next()
+    
 
 
         sendBulkSMS();
 
-
+    next()
 
     } catch (error) {
         res.status(400).json({ msg: error.message })
