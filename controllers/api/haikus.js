@@ -13,7 +13,7 @@ const deleteHaiku = async (req, res, next) => {
         res.status(400).json({ msg: error.message })
     }
 }
-const createHaiku = async (req, res, next) => {
+const createHaiku = async (req, res) => {
     const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
     const phoneNumbers = ["+12076531815", "12077722214", "+12072399509"]
     try {
@@ -44,7 +44,7 @@ const createHaiku = async (req, res, next) => {
 
         sendBulkSMS();
 
-    next()
+
 
     } catch (error) {
         res.status(400).json({ msg: error.message })
