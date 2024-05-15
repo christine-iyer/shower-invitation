@@ -15,7 +15,7 @@ const deleteHaiku = async (req, res, next) => {
 }
 const createHaiku = async (req, res, next) => {
     const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-    const phoneNumbers = ["+12076531815", "12077722214", "+12072399509"]
+    const phoneNumbers = ["+12076531815", "12077722214", "+12072399509","+17189265522"]
     try {
         const createdHaiku = await Haiku.create(req.body)
         res.locals.data.Haiku = createdHaiku
