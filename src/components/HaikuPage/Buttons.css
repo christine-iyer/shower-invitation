@@ -1,0 +1,13 @@
+button {
+	align-self: center;
+	border: solid  transparent;
+	padding: 3px;
+	
+	border-radius: 1.75;
+	font: 2.5em Satisfy, cursive;
+	text-shadow: 
+		0 0 1px currentColor, 
+		0 0 2px dimgrey;
+	cursor: pointer;
+
+}
