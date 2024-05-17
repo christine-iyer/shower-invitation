@@ -150,8 +150,19 @@ function HaikuPage() {
     <div className="HaikuPage">
       <div>
 
-        <button style={{ padding:'1%', margin:'1%'}}onClick={handleShow}> <h1>+ </h1>
-        </button>
+
+
+        <button type="button" onClick={handleShow} className="btn btn--yellow">
+  <span className="btn__txt">Write a haiku </span>
+  <i className="btn__bg" aria-hidden="true"></i>
+  <i className="btn__bg" aria-hidden="true"></i>
+  <i className="btn__bg" aria-hidden="true"></i>
+  <i className="btn__bg" aria-hidden="true"></i>
+</button>
+
+
+
+
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>
             <CreateHaiku style={{ height: '50%', margin: "5%", width: '80%' }}
