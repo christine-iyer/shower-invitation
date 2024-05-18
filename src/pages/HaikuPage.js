@@ -4,7 +4,6 @@ import '../App.css'
 import { Modal, Button } from 'react-bootstrap';
 import CreateHaiku from '../components/HaikuPage/CreateHaiku';
 import HaikuCarousel from '../components/HaikuPage/HaikuCarousel';
-
 import Buttons from '../components/HaikuPage/Buttons';
 import HaikuCard from '../components/HaikuPage/HaikuCard';
 
@@ -152,7 +151,7 @@ function HaikuPage() {
 
 
 
-        <button type="button" onClick={handleShow} className="btn btn--yellow">
+        <button type="btn" onClick={handleShow} className="btn btn--yellow">
   <span className="btn__txt">Write a haiku </span>
   <i className="btn__bg" aria-hidden="true"></i>
   <i className="btn__bg" aria-hidden="true"></i>

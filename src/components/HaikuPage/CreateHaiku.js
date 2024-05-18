@@ -1,5 +1,5 @@
-import { Form } from 'react-bootstrap';
-
+import { Form } from 'react-bootstrap'
+import '../../App.css'
 
 
 export default function CreateHaiku({

@@ -130,7 +130,7 @@ button {
 	position: relative;
 	background-color: rgba(162, 134, 109, .15);
 	border-radius: 7%;
-	color: gray;
+	color: rgb(243, 120, 161);
 	border-style: none;
 }
 
@@ -141,11 +141,11 @@ select {
 .button {
 	/* font-size: xxx-large; */
 	border: none;
-	color: rgb(162, 134, 109);
+	color: rgb(243, 120, 161);
 }
 
 h2 {
-	color: rgb(162, 134, 109);
+	color: rgb(243, 120, 161);
 	text-align: left;
 }
 .HaikuPage{
@@ -157,7 +157,7 @@ h2 {
 	border: none;
 	border-radius: 7px;
 	cursor: pointer;
-	color: yellowgreen;
+	color: rgb(243, 120, 161);
 	font: 600 1.05rem/1 "Nunito", sans-serif;
 	letter-spacing: .05em;
 	overflow: hidden;
