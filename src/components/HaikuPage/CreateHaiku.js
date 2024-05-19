@@ -34,7 +34,7 @@ export default function CreateHaiku({
             <Form.Control style={{ backgroundColor: 'rgba( 224,175,155,0.1)' }} type='text' value={haiku.two} name='two' onChange={handleChange} placeholder='Line 2' />
             <Form.Control style={{ backgroundColor: 'rgba( 224,175,155,0.1)' }} type='text' value={haiku.three} name='three' onChange={handleChange} placeholder='Line 3' />
           </div>
-          <input style={{ color: 'red' }} className='button' type='submit' value='Create Haiku' />
+          <button  className='button' type='submit' value='Create Haiku'>Create</button>
         </Form>
       </div>
 

@@ -126,23 +126,20 @@ p {
 
 
 
-button {
+.button {
 	position: relative;
 	background-color: rgba(162, 134, 109, .15);
 	border-radius: 7%;
-	color: rgb(243, 120, 161);
+	color: rgb(247, 50, 116);
 	border-style: none;
+	margin: 1em;
 }
 
 select {
 	font-weight: 400;
 }
 
-.button {
-	/* font-size: xxx-large; */
-	border: none;
-	color: rgb(243, 120, 161);
-}
+
 
 h2 {
 	color: rgb(243, 120, 161);
