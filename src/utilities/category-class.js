@@ -20,9 +20,11 @@ export default function setClass(div, styles){
      if(div.author === 'Mary'){
           return styles.mary
      }
-     if(div.author === 'Julie'){
-          return styles.julie
+     if(div.author === 'Anon'){
+          return styles.anon
      }
+     return styles.julie
+}
    
      
 }
