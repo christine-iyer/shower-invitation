@@ -1,4 +1,6 @@
-
+* {
+	font-family: "Caesar Dressing", system-ui;
+}
 .App {
 	text-align: left;
 	contain: fit;
@@ -16,6 +18,10 @@
 	justify-content: left;
 	/* font-size: calc(10px + 2vmin); */
 	color: yellowgreen;
+}
+.text {
+	font-family: "Zhi Mang Xing", cursive;
+
 }
 
 * {
