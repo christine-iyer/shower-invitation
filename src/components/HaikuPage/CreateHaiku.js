@@ -22,7 +22,7 @@ export default function CreateHaiku({
           <div >
             <Form.Select style={{ backgroundColor: 'rgba( 224,175,155,0.3)' }} aria-label="Default select example" value={haiku.author} onChange={handleChange} name="author">
               <option>Author</option>
-              <option value="Anon" name="Anon">Lynne</option>
+              <option value="Anon" name="Anon">Anon</option>
               <option value="Chris" name="Chris">Chris</option>
               <option value="Julie" name="Julie">Julie</option>
               <option value="Laura" name="Laura">Laura</option>
