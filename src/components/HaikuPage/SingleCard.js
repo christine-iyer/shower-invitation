@@ -85,11 +85,9 @@ export default function SingleCard({
           defaultValue={Val.author}
         />
        
+       <span> <button style={{ 'fontStyle': 'italic' , 'width':'30%', 'display':'inlineBlock', border:'none', opacity:'50%'}} className="btn btn-outline-warning" onClick={() => deleteHaiku(Val._id)}>消去</button> <button style={{ 'fontStyle': 'italic' , 'width':'30%', 'display':'inlineBlock', border:'none', opacity:'50%'}} className="btn btn-outline-warning" onClick={() => likeHaiku(Val._id)}>愛 {Val.like}</button>
+</span>
        
-        <button style={{ 'fontStyle': 'italic' , 'width':'30%', 'display':'inlineBlock', border:'none', opacity:'50%'}} className="btn btn-outline-warning" onClick={() => deleteHaiku(Val._id)}>消去</button>
-
-        <button style={{ 'fontStyle': 'italic' , 'width':'30%', 'display':'inlineBlock', border:'none', opacity:'50%'}} className="btn btn-outline-warning" onClick={() => likeHaiku(Val._id)}>愛 {Val.like}</button>
-
       </Card>
     </>
   )
