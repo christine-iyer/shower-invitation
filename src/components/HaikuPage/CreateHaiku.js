@@ -30,6 +30,7 @@ export default function CreateHaiku({
               <option value="Mary" name="Mary">Mary</option>
               <option value="Paul" name="Paul">Paul</option>
               <option value="Lynne" name="Lynne">Lynne</option>
+              <option value="Shannon" name="Shannon">Shannon</option>
             </Form.Select>
             <Form.Control style={{ backgroundColor: 'rgba( 224,175,155,0.1)' }} type='text' value={haiku.one} name='one' onChange={handleChange} placeholder='Line 1' />
             <Form.Control style={{ backgroundColor: 'rgba( 224,175,155,0.1)' }} type='text' value={haiku.two} name='two' onChange={handleChange} placeholder='Line 2' />

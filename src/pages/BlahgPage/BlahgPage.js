@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
-import UploadWidget from '../components/BlahgPage/UploadWidget';
+import UploadWidget from '../../components/BlahgPage/UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
-import '../App.css';
+import './style.css'
 
 import {
   MDBCard,
@@ -164,7 +164,7 @@ export default function BlahgPage() {
     })
   }
   return (
-    <div className='franky' style={{flexWrap:'nowrap'}}>
+    <div className='franky'>
 
       <section>
         <h1>Post Shamelessly</h1>

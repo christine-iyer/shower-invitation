@@ -3,6 +3,8 @@
   border-radius: 0.5rem;
 border-color: aqua;
   width: 80%;
+  margin: 0 auto;
+  align: center;
 }
 
 .slide-hidden {
@@ -148,6 +150,7 @@ z-index: 100;
   display: flex;
   justify-content: center;
   align-content: center;
+  align-items: center;
   font-weight: 500;
   width: 600px;
   height: 400px;

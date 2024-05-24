@@ -2,6 +2,9 @@ export default function setClass(div, styles){
      if(div.author === 'Laura'){
           return styles.laura
      }
+     if(div.author === 'Shannon'){
+          return styles.shannon
+     }
      if(div.author === 'Paul'){
           return styles.paul
      }
@@ -25,5 +28,6 @@ export default function setClass(div, styles){
      }
      return styles.julie
 }
+
    
      

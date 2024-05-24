@@ -1,8 +1,8 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import './App.css';
 import Bar from './components/Bar/Bar'
-import BlahgPage from './pages/BlahgPage'
-import HaikuPage from "./pages/HaikuPage";
+import BlahgPage from './pages/BlahgPage/BlahgPage'
+import HaikuPage from "./pages/HaikuPage/HaikuPage";
 import UserPage from "./pages/UserPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "slick-carousel/slick/slick.css";
@@ -12,7 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function App() {
     return (
-        <>
+        <div className="main">
         <BrowserRouter>
         <Bar />
         <Routes>
@@ -30,6 +30,6 @@ export default function App() {
           
                 
          
-        </>
+        </div>
     )
 }

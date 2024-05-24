@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import '../App.css'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../App.css'
+
 import { Modal, Button } from 'react-bootstrap';
-import CreateHaiku from '../components/HaikuPage/CreateHaiku';
-import HaikuCarousel from '../components/HaikuPage/HaikuCarousel';
-import Buttons from '../components/HaikuPage/Buttons';
-import HaikuCard from '../components/HaikuPage/HaikuCard';
+import CreateHaiku from '../../components/HaikuPage/CreateHaiku';
+import HaikuCarousel from '../../components/HaikuPage/HaikuCarousel';
+import Buttons from '../../components/HaikuPage/Buttons';
+import HaikuCard from '../../components/HaikuPage/HaikuCard';
 
 function HaikuPage() {
   const [haiku, setHaiku] = useState({

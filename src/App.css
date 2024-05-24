@@ -1,12 +1,16 @@
 * {
 	font-family: "Caesar Dressing", system-ui;
+
+}
+.main{
+	background-color: rgba(282,239,121, .3);
+
 }
 .App {
 	text-align: left;
 	contain: fit;
 	padding: 3px;
   margin: 3px;
-
 }
 
 .App-header {
@@ -57,14 +61,6 @@ p {
 
 
 
-.collumns {
-	color: rbg(54, 54, 53);
-	/* display: grid; */
-	/* align-items: center; */
-	display: flex;
-	/* flex-wrap: wrap;
-	align-self: flex-end; */
-}
 
 .collumn {
 	/* font-size: 11px; */
