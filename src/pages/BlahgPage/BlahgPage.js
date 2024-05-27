@@ -241,7 +241,7 @@ export default function BlahgPage() {
         <Container className='collumns'>
           {blahgs.map((blahg) => {
             return (
-              <MDBCard key={blahg._id} style ={{ "flexDirection": "column"}}className="w-75 p-3">
+              <MDBCard key={blahg._id} style ={{ "flexDirection": "row"}}className="w-75 p-3">
                 <MDBRow className='g-0'>
                   <MDBCol md='4'>
                     <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={blahg.image} alt='...' fluid />
