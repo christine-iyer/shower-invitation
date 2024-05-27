@@ -19,6 +19,7 @@ export default function HaikuCarousel({ haikus,
   };
 
   return (
+    <div className="container">
     <div className="carousel">
       <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
       {haikus.map((item, idx) => {
@@ -39,6 +40,7 @@ export default function HaikuCarousel({ haikus,
         className="arrow arrow-right">次</BsArrowRightCircleFill>
       
     
+    </div>
     </div>
   );
 };
