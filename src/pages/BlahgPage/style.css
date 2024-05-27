@@ -1,8 +1,3 @@
 .collumns {
 	color: rbg(54, 54, 53);
-	/* display: grid; */
-align-items: left;
-	display: flex;
-	/* flex-wrap: wrap;
-	align-self: flex-end; */
 }
