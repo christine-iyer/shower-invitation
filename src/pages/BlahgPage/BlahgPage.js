@@ -238,18 +238,16 @@ export default function BlahgPage() {
       </section>
       <hr></hr>
       {blahgs && blahgs.length ? (
-        <Container className='collumns'>
+        <div className='columns'>
           {blahgs.map((blahg) => {
             return (
-              <MDBCard key={blahg._id} style ={{ "flexDirection": "row"}}className="w-75 p-3">
-                <MDBRow className='g-0'>
-                  <MDBCol md='4'>
-                    <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={blahg.image} alt='...' fluid />
-                  </MDBCol>
-                  <MDBCol md='8'>
-                    <MDBCardBody>
-                      <MDBCardTitle>{blahg.title}</MDBCardTitle>
-                      <MDBCardText onClick={() => setShowInput(!showInput)}>{blahg.text}
+              <card  key={blahg._id}  className="card">
+            
+                    <MDBCardImage className="cardImage" style={{ "maxWidth": "100%", "height": "15vw" }} src={blahg.image} alt='...' fluid />
+                 
+                    <div className='cardBody'>
+                      <p className='title' >{blahg.title}</p>
+                      <text className= 'text' onClick={() => setShowInput(!showInput)}>{blahg.text}
                         <input
                           ref={inputRef}
                           style={{ display: showInput ? 'block' : 'none' }}
@@ -264,23 +262,22 @@ export default function BlahgPage() {
                           }}
                           defaultValue={blahg.text}
                         />
-                      </MDBCardText>
-                      <MDBCardText>
-                        <small className='text-muted'>
+                      </text>
+                      <text>
+                        <small className='textMuted'>
                           {blahg.author} posted on {
                             new Date(blahg.createdAt).toLocaleDateString()}
                         </small>
-                      </MDBCardText>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard>
+                      </text>
+                      <button style={{ 'fontStyle': 'italic' }} className="cardButton" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button>
+                    </div>
+           
+              </card>
             )
           }
           )
           }
-        </Container>) : <>No Entries yet! Yet Add One Below this message</>
+        </div>) : <>No Entries yet! Yet Add One Below this message</>
       }
     </div>
   )

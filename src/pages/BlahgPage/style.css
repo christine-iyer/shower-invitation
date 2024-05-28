@@ -1,3 +1,54 @@
-.collumns {
-	color: rbg(54, 54, 53);
+.columns {
+	
 }
+.title{
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-style: oblique;
+}
+
+.card {
+	display: flex;	
+	flex-direction: row;
+	justify-content: flex-start;
+	padding: 1.25rem;
+	margin-bottom: 1.25rem;
+}
+.cardImage {
+	transform: scale(1.35);
+	/* margin-left: 3.5rem;
+	margin-top: 1.85rem; */
+     display: flex;
+	padding: 1.5rem;
+}
+
+.cardBody {
+	margin-left: 10%;
+	display: flex;
+	flex-direction: column;
+}
+.title {
+     /* display: flex; */
+}
+.text{
+
+}
+.textMuted{
+
+}
+.cardButton {
+    height:3rem;
+    font-size: 1rem;
+    border: solid rgb(217, 194, 176) .2rem;
+    border-radius: .5rem;
+    padding: .35rem;
+    background-color: rgba(217, 194, 176, .3);
+align-self: flex-end;
+
+}
+
+cardButton:hover {
+	background-color: red;
+}
+
+
+
