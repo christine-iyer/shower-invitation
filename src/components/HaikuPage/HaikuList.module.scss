@@ -1,15 +1,20 @@
 .haikuCard{
      justify-items: center; 
+     width: 40%;
 
 }
 .laura {
      border: 1px solid transparent;
      background-image: url('../../photos/haiku10.png');
+     background-repeat: no-repeat;
+     background-size: cover;
      
 }
 .shannon {
      border: 1px solid transparent;
      background-image: url('../../photos/shannon.png');
+     background-repeat: no-repeat;
+     background-size: cover;
    
 }
 .anon {
@@ -21,16 +26,21 @@
 .paul {
      border: 1px solid transparent;
      background-image: url('../../photos/haiku9.png');
-   
+     background-repeat: no-repeat;
+     background-size: cover;
 }
 .chris {
      border: 1px solid transparent;
      background-image: url('../../photos/bg24.png');
+     background-repeat: no-repeat;
+     background-size: cover;
 }
 
 .leah {
      border: 1px solid transparent;
      background-image: url('../../photos/bg25.png');
+     background-repeat: no-repeat;
+     background-size: cover;
 }
 
 .claire {
@@ -48,6 +58,8 @@
 .mary {
      border: 1px solid transparent;
      background-image: url('../../photos/bg41.png');
+     background-repeat: no-repeat;
+     background-size: cover;
 }
 .julie {
      border: 1px solid transparent;
@@ -56,22 +68,22 @@
      background-size: cover;
 }
 .texty { 
-     font-family: "Zhi Mang Xing", cursive;
-      font-size: 18px;
-     line-height: .5;
-     margin-top: 12%;
-     font-weight: 300;
-     font-style: normal;
+     // font-family: "Zhi Mang Xing", cursive;
+     //  font-size: 18px;
+     // line-height: .5;
+     // margin-top: 12%;
+     // font-weight: 300;
+     // font-style: normal;
      
 
 }
 
 .text{
-     font-size: 18px;
-     font-family: "Zhi Mang Xing", cursive;
-     line-height: .5;
-     font-weight: 300;
-     font-style: normal;
+     // font-size: 18px;
+     // font-family: "Zhi Mang Xing", cursive;
+     // line-height: .5;
+     // font-weight: 300;
+     // font-style: normal;
     
 }
 
