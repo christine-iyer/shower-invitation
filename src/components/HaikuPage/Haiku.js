@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
-import Card from 'react-bootstrap/Card'
-// import '../../App.css'
+
+import '../../App.css'
 import setClass from '../../utilities/category-class'
 import styles from './HaikuList.module.scss'
 
@@ -26,8 +26,8 @@ export default function Haiku({
   const inputRefD = useRef(null)
   const inputRefE = useRef(null)
   return (
-    < >
-      <Card className="haikuCard" style={{marginTop:'10%',padding: '1%', margin: '1%', textAlign: 'center', boxShadow: '12px 12px 12px 11px haiku.color', content:"initial"}} className={setClass(haiku,styles)}>
+    < div>
+      <card className="haikuCard" style={{marginTop:'10%',padding: '1%', margin: '1%', textAlign: 'center', boxShadow: '12px 12px 12px 11px haiku.color', content:"initial"}} className={setClass(haiku,styles)}>
        
         <input
           ref={inputRefE}
@@ -43,7 +43,7 @@ export default function Haiku({
           defaultValue={haiku.title}
         />
 
-        <Card.Text className={styles.texty} onClick={() => setShowB(!showB)}>{haiku.one}</Card.Text>
+        <p className={styles.texty} onClick={() => setShowB(!showB)}>{haiku.one}</p>
         <input
           ref={inputRefB}
           style={{ display: showB ? 'block' : 'none' }}
@@ -57,7 +57,8 @@ export default function Haiku({
           }}
           defaultValue={haiku.one}
         />
-        <Card.Text className={styles.text} onClick={() => setShowC(!showC)}>{haiku.two}</Card.Text>
+        <hr></hr>
+        <p className={styles.text} onClick={() => setShowC(!showC)}>{haiku.two}</p>
         <input
           ref={inputRefC}
           style={{ display: showC ? 'block' : 'none' }}
@@ -71,7 +72,8 @@ export default function Haiku({
           }}
           defaultValue={haiku.two}
         />
-        <Card.Text className={styles.text} onClick={() => setShowD(!showD)}>{haiku.three}</Card.Text>
+         <hr></hr>
+        <p className={styles.text} onClick={() => setShowD(!showD)}>{haiku.three}</p>
         <input
           ref={inputRefD}
           style={{ display: showD ? 'block' : 'none' }}
@@ -104,7 +106,7 @@ export default function Haiku({
 
         <button style={{ 'fontStyle': 'italic' , 'width':'30%', 'display':'inlineBlock', border:'none', opacity:'50%'}} className="btn btn-outline-warning" onClick={() => likeHaiku(haiku._id)}>愛 {haiku.like}</button>
 
-      </Card>
-    </>
+      </card>
+    </div>
   )
 }
