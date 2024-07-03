@@ -11,8 +11,8 @@ export default function Bar(props) {
     <>
     <Navbar className="navbar-left" bg="light" variant="dark" width='100%'>
     <Nav >
-        <Link to="/users">
-        <h6>User Consent</h6>
+        <Link to="/">
+        <h6>Word Game</h6>
       </Link>
       &nbsp;  &nbsp;
      &nbsp;
