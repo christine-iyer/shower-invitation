@@ -6,13 +6,7 @@ import { border } from '@cloudinary/url-gen/qualifiers/background';
 import './style.css'
 
 import {
-  MDBCard,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardBody,
   MDBCardImage,
-  MDBRow,
-  MDBCol,
   MDBIcon
 } from 'mdb-react-ui-kit';
 
@@ -25,7 +19,7 @@ export default function BlahgPage() {
     text: '',
     image: '',
     like: 0
-  }) 
+  })
   const [blahgs, setBlahgs] = useState([])
   const [foundBlahgs, setFoundBlahgs] = useState(null)
 
@@ -34,11 +28,6 @@ export default function BlahgPage() {
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
   const inputRef = useRef(null)
-
-  // const one_day = 1000 * 60 * 60 * 24
-  // const birthDate = new Date("September 11, 2023 10:50:00")
-  // const result = Math.round(blahg.createdAt - birthDate / one_day);
-
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
@@ -105,7 +94,7 @@ export default function BlahgPage() {
         body: JSON.stringify(updatedData)
       })
       const data = await response.json()
-     
+
       const blahgsCopy = [...blahgs]
       const index = blahgsCopy.findIndex(blahg => id === blahg._id)
       blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
@@ -241,37 +230,37 @@ export default function BlahgPage() {
         <div className='columns'>
           {blahgs.map((blahg) => {
             return (
-              <card  key={blahg._id}  className="card">
-            
-                    <MDBCardImage className="cardImage" style={{ "maxWidth": "100%", "height": "15vw" }} src={blahg.image} alt='...' fluid />
-                 
-                    <div className='cardBody'>
-                      <p className='title' >{blahg.title}</p>
-                      <text className= 'text' onClick={() => setShowInput(!showInput)}>{blahg.text}
-                        <input
-                          ref={inputRef}
-                          style={{ display: showInput ? 'block' : 'none' }}
-                          type='text'
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              e.preventDefault()
-                              // const text = inputRef.current.value
-                              updateBlahg(blahg._id, { text: e.target.value })
-                              setShowInput(false)
-                            }
-                          }}
-                          defaultValue={blahg.text}
-                        />
-                      </text>
-                      <text>
-                        <small className='textMuted'>
-                          {blahg.author} posted on {
-                            new Date(blahg.createdAt).toLocaleDateString()}
-                        </small>
-                      </text>
-                      <button style={{ 'fontStyle': 'italic' }} className="cardButton" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button>
-                    </div>
-           
+              <card key={blahg._id} className="card">
+
+                <MDBCardImage className="cardImage" style={{ "maxWidth": "100%", "height": "15vw" }} src={blahg.image} alt='...' fluid />
+
+                <div className='cardBody'>
+                  <p className='title' >{blahg.title}</p>
+                  <text className='text' onClick={() => setShowInput(!showInput)}>{blahg.text}
+                    <input
+                      ref={inputRef}
+                      style={{ display: showInput ? 'block' : 'none' }}
+                      type='text'
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault()
+                          // const text = inputRef.current.value
+                          updateBlahg(blahg._id, { text: e.target.value })
+                          setShowInput(false)
+                        }
+                      }}
+                      defaultValue={blahg.text}
+                    />
+                  </text>
+                  <text>
+                    <small className='textMuted'>
+                      {blahg.author} posted on {
+                        new Date(blahg.createdAt).toLocaleDateString()}
+                    </small>
+                  </text>
+                  <button style={{ 'fontStyle': 'italic' }} className="cardButton" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button>
+                </div>
+
               </card>
             )
           }
