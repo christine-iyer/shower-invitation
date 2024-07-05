@@ -3,7 +3,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../../components/BlahgPage/UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
-import './style.css'
+// import './style.css'
 
 import {
   MDBCardImage,

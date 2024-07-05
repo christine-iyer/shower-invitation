@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 
-import '../../App.css'
+// import '../../App.css'
 import setClass from '../../utilities/category-class'
 import styles from './HaikuList.module.scss'
 
