@@ -11,20 +11,19 @@ import "slick-carousel/slick/slick-theme.css";
 export default function App() {
     return (
         <div className="main">
-        <BrowserRouter>
-        <Bar />
-        <Routes>
+            <BrowserRouter>
+                <Bar />
+                <Routes>
+                    <Route path='/' element={<FlipCard />} />
+                    <Route path='/haikus' element={<HaikuPage />} />
+                    <Route path='/blahg' element={<BlahgPage />} />
+                </Routes>
+            </BrowserRouter>
 
-         <Route path='/' element={<FlipCard  />} /> 
-            <Route path='/haikus' element={<HaikuPage />} />
-        <Route path='/blahg' element={<BlahgPage />} style={{ display:"grid", width: '100%', alignContent: 'center', alignItems: 'center' }}/>
-</Routes>
-        </BrowserRouter>
-            
 
-          
-                
-         
+
+
+
         </div>
     )
 }

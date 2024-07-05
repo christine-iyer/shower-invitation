@@ -3,7 +3,8 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../../components/BlahgPage/UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
-// import './style.css'
+import './style.css'
+
 
 import {
   MDBCardImage,
@@ -154,7 +155,6 @@ export default function BlahgPage() {
   }
   return (
     <div className='franky'>
-
       <section>
         <h1>Post Shamelessly</h1>
         <div>
@@ -166,52 +166,49 @@ export default function BlahgPage() {
                   open();
                 }
                 return (
-                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)', 'marginBottom': "9px" }}
-                    onClick={handleOnClick}>
+                  <button style={{ backgroundColor: 'rgba(162, 134, 109, 0.5)', marginBottom: '9px' }} onClick={handleOnClick}>
                     <MDBIcon fab icon='instagram' size='xxl' />
                   </button>
-                )
+                );
               }}
             </UploadWidget>
             {error && <p>{error}</p>}
             {url && (
-
-              <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
-                <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
-                {/* <p style={{ 'fontSize': '6px' }} className="url">{url}</p> */}
+              <div key={url._id} className='card' style={{ width: '8rem', marginBottom: '1px', backgroundColor: 'red' }}>
+                <img variant="top" src={url} alt='uploaded image' id="uploadedimage"></img>
               </div>
             )}
           </span>
-
-          <br></br>
+  
+          <br />
           <input
             type='text'
             value={blahg.title}
             onChange={handleChange}
             name="title"
             placeholder='Title'
-          >
-          </input>
+          />
           <br />
           <input
             value={blahg.author}
             onChange={handleChange}
             name="author"
-            placeholder='Author'>
-          </input>
+            placeholder='Author'
+          />
           <br />
           <input
             value={blahg.text}
             onChange={handleChange}
             name="text"
             rows={2}
-            placeholder='Some meaningful text'>
-          </input>
+            placeholder='Some meaningful text'
+          />
           <br />
           <select
             value={blahg.category}
             onChange={handleChange}
-            name="category">
+            name="category"
+          >
             <option value="🤍 Frankly Franky">Select a 🤍</option>
             <option value="💛 Janky Franky">💛 Janky Franky</option>
             <option value="🧡 Franky Panky">🧡 Franky Panky</option>
@@ -223,51 +220,48 @@ export default function BlahgPage() {
           <br />
           <br />
           <button onClick={() => createBlahg()}>Display your Entry</button>
+          <br />
+          Entries
         </div>
       </section>
-      <hr></hr>
+      <hr />
       {blahgs && blahgs.length ? (
-        <div className='columns'>
-          {blahgs.map((blahg) => {
-            return (
-              <card key={blahg._id} className="card">
-
-                <MDBCardImage className="cardImage" style={{ "maxWidth": "100%", "height": "15vw" }} src={blahg.image} alt='...' fluid />
-
-                <div className='cardBody'>
-                  <p className='title' >{blahg.title}</p>
-                  <text className='text' onClick={() => setShowInput(!showInput)}>{blahg.text}
-                    <input
-                      ref={inputRef}
-                      style={{ display: showInput ? 'block' : 'none' }}
-                      type='text'
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          e.preventDefault()
-                          // const text = inputRef.current.value
-                          updateBlahg(blahg._id, { text: e.target.value })
-                          setShowInput(false)
-                        }
-                      }}
-                      defaultValue={blahg.text}
-                    />
-                  </text>
-                  <text>
-                    <small className='textMuted'>
-                      {blahg.author} posted on {
-                        new Date(blahg.createdAt).toLocaleDateString()}
-                    </small>
-                  </text>
-                  <button style={{ 'fontStyle': 'italic' }} className="cardButton" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button>
-                </div>
-
-              </card>
-            )
-          }
-          )
-          }
-        </div>) : <>No Entries yet! Yet Add One Below this message</>
-      }
+        <div className='entries'>
+          {blahgs.map((blahg) => (
+            <div key={blahg._id} className="card">
+              <img className="cardImage" src={blahg.image} alt='...' />
+              <div className='cardBody'>
+                <p className='title'>{blahg.title}</p>
+                <p className='text' onClick={() => setShowInput(!showInput)}>{blahg.text}
+                  <input
+                    ref={inputRef}
+                    style={{ display: showInput ? 'block' : 'none' }}
+                    type='text'
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        updateBlahg(blahg._id, { text: e.target.value });
+                        setShowInput(false);
+                      }
+                    }}
+                    defaultValue={blahg.text}
+                  />
+                </p>
+                <p className='details'>
+                  <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small>
+                </p>
+                <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>{blahg.like} {blahg.category}</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <>No Entries yet! Yet Add One Below this message</>
+      )}
     </div>
-  )
+  );
+  
+
+  
+    ;
 }
