@@ -1,7 +1,7 @@
 import React from 'react'
 import './card.css'
 
-export default function Card({ card, handleChoice, flipped, disabled, choiceOne, choiceTwo}) {
+export default function Card({ card, handleChoice, flipped, disabled, choiceOne}) {
      const handleClick = () => {
           if(!disabled) {
           handleChoice(card)
@@ -10,9 +10,9 @@ export default function Card({ card, handleChoice, flipped, disabled, choiceOne,
      return (
           <div className="card" >
                <div className={flipped ? "flipped" : ""}>
-                    {}
                     
-                    <p className="front">{card.definition }</p>
+                    
+                    <div className="front"> {choiceOne ? card.word : card.definition}</div>
                     <img src='/IMG_4816.jpg' onClick={handleClick} className="back" alt="back" />
                </div>
           </div>
