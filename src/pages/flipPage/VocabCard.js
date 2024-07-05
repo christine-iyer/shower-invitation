@@ -30192,7 +30192,7 @@ export default function FlipCard() {
                     setTimeout(() => resetTurn(), 1000);
                }
           }
-     }, [choiceOne, choiceTwo]);
+     }, [choiceOne.word, choiceTwo.definition]);
 
      const triggerConfetti = () => {
           confetti({
