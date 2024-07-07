@@ -1,21 +1,23 @@
-import React from 'react'
-import './card.css'
+import React from 'react';
+import './card.css';
 
-export default function Card({ card, handleChoice, flipped, disabled, choiceOne}) {
-     const handleClick = () => {
-          if(!disabled) {
-          handleChoice(card)
-     }
-     }
-     return (
-          <div className="card" >
-               <div className={flipped ? "flipped" : ""}>
-                    
-                    
-                    <div className="front"> {choiceOne ? card.word : card.definition}</div>
-                    <img src='/IMG_4816.jpg' onClick={handleClick} className="back" alt="back" />
-               </div>
-          </div>
-     )
+export default function Card({ card, handleChoice, flipped, disabled, choiceTwo }) {
+    const handleClick = () => {
+        if (!disabled) {
+            handleChoice(card);
+        }
+    };
+
+    return (
+        <div className="card" onClick={handleClick}>
+            <div className={flipped ? "flipped" : ""}>
+                <div className="front">
+                    {choiceTwo ? card.definition : card.word}
+                </div>
+                <div className="back">
+                    <img src='/IMG_4816.jpg' alt="back" />
+                </div>
+            </div>
+        </div>
+    );
 }
-

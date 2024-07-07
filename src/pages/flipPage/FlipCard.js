@@ -30176,7 +30176,7 @@ export default function FlipCard() {
                               handleChoice={handleChoice}
                               flipped={card === choiceOne || card === choiceTwo || card.matched}
                               disabled={disabled}
-                         />
+                         >{choiceOne ? card.definition : card.word} </Card>
                     ))}
                     <p style={{ fontSize: '27px', color:'brown' }}>Misses: {turns}</p>
                </div>

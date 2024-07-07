@@ -21,6 +21,7 @@
      height: 100%;
      transform-style: preserve-3d;
      transition: transform 0.8s;
+
  }
  
  .card img {
@@ -40,11 +41,13 @@
      align-items: center;
      justify-content: center;
      font-size: 14px; /* Adjust the font size as needed */
+     border: 2px solid #fff;
+     border-radius: 6px;
  }
  
  .card .front {
      background: #fff; /* Added background color for better visibility */
-     transform: rotateY(180deg);
+     transform: rotateY(0deg);
  }
  
  .flipped .front {
