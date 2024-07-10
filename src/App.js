@@ -3,6 +3,7 @@ import Bar from './components/Bar/Bar'
 import BlahgPage from './pages/BlahgPage/BlahgPage'
 import HaikuPage from "./pages/HaikuPage/HaikuPage";
 import FlipCard from "./pages/flipPage/FlipCard";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

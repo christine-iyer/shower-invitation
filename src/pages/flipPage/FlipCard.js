@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Card from './Card';
+import Random from './Random';
 import confetti from 'canvas-confetti';
 import './card.css';
 
@@ -97,7 +98,7 @@ export default function FlipCard() {
                 });
                 setTimeout(() => {
                     triggerConfetti(); // Trigger confetti on match
-                    resetTurn(true)
+                    resetTurn(true);
                 }, 1000);
 
             } else {
@@ -136,11 +137,12 @@ export default function FlipCard() {
                         handleChoice={handleChoice}
                         flipped={card === choiceOne || card === choiceTwo || card.matched}
                         disabled={disabled}
-                        choiceTwo={choiceTwo !== null}
+                        showDefinition={card === choiceTwo}
                     />
                 ))}
                 <p style={{ fontSize: '27px', color: 'brown' }}>Misses: {turns}</p>
             </div>
+            <Random />
         </div>
     );
 }
