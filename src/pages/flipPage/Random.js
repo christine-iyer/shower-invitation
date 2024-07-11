@@ -145,6 +145,16 @@ svg.append("rect")
 .attr("height", height)
 .attr("fill", "green")
 .attr("opacity", 0.1);
+
+svg.append('text')
+.attr("x", x(26))
+.attr("y", height/2)
+.attr("text-anchor", "middle") // Center the text horizontally
+      .attr("dy", ".35em") // Adjust vertical alignment
+      .attr("font-size", "14px") // Font size
+      .attr("fill", "black") // Font color
+      .text("Now"); 
+
 // July
 svg.append("rect")
 .attr("x", x(28))
