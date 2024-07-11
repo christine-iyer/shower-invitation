@@ -87,22 +87,31 @@ export default function FlipCard() {
         if (choiceOne && choiceTwo) {
             setDisabled(true);
             if (choiceOne.word === choiceTwo.word) {
-                setCards(prevCards => {
-                    return prevCards.map(card => {
-                        if (card.word === choiceOne.word) {
-                            return { ...card, matched: true };
-                        } else {
-                            return card;
-                        }
-                    });
-                });
+                // setCards(prevCards => {
+                //     return prevCards.map(card => {
+                //         if (card.word === choiceOne.word) {
+                //             return { ...card, matched: true };
+                //         } else {
+                //             return card;
+                //         }
+                //     });
+                // });
                 setTimeout(() => {
+                    setCards(prevCards => {
+                        return prevCards.map(card => {
+                            if (card.word === choiceOne.word) {
+                                return { ...card, matched: true };
+                            } else {
+                                return card;
+                            }
+                        });
+                    });
                     triggerConfetti(); // Trigger confetti on match
                     resetTurn(true);
-                }, 1000);
+                }, 2000);
 
             } else {
-                setTimeout(() => resetTurn(), 1000);
+                setTimeout(() => resetTurn(), 2500);
             }
         }
     }, [choiceOne, choiceTwo]);

@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
-
+import DataPicker from "./DataPicker";
 const Random = () => {
   const ref = useRef();
   const [selectedYears, setSelectedYears] = useState([2020, 2021, 2022, 2023, 2024]);
@@ -328,6 +328,7 @@ svg.append("rect")
 
   return (
     <div style={{ textAlign: 'center' }}>
+      <DataPicker/>
       <div style={{ marginBottom: '20px' }}>
         <label
           style={{
