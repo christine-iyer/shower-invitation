@@ -2,14 +2,20 @@ import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
 import DataPicker from "./DataPicker";
 const Random = () => {
+
   const ref = useRef();
+  const csvUrls = [
+    "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv",
+    "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/data.csv",
+    "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/newdata.csv"
+  ];
+
   const [selectedYears, setSelectedYears] = useState([2020, 2021, 2022, 2023, 2024]);
   const [data, setData] = useState(null);
+  const [selectedCsv, setSelectedCsv] = useState(csvUrls[0]); // Default to the last CSV
 
-  // Fetch data on component mount
-  useEffect(() => {
-    // Read the data
-    d3.csv("https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv")
+  const fetchData = (csvUrl) => {
+    d3.csv(csvUrl)
       .then(function (csvData) {
         // Function to calculate week number
         function getWeekNumber(date) {
@@ -36,7 +42,52 @@ const Random = () => {
       .catch(function (error) {
         console.error('Error loading or processing data:', error);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchData(selectedCsv);
+  }, [selectedCsv]);
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  // useEffect(() => {
+  //   // Read the data
+  //   d3.csv("https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv")
+  //     .then(function (csvData) {
+  //       // Function to calculate week number
+  //       function getWeekNumber(date) {
+  //         const startDate = new Date(date.getFullYear(), 0, 1);
+  //         const days = Math.floor((date - startDate) / (24 * 60 * 60 * 1000));
+  //         return Math.ceil((days + startDate.getDay() + 1) / 7);
+  //       }
+
+  //       // Format variables
+  //       const formattedData = csvData.map(function (d) {
+  //         let parsedDate = d3.timeParse("%Y-%m-%d")(d.date);
+  //         return {
+  //           date: parsedDate,
+  //           value: +d.value, // Convert value to number
+  //           year: parsedDate.getFullYear(),
+  //           month: parsedDate.getMonth() + 1, // Month number (0-11),
+  //           week: getWeekNumber(parsedDate) // Calculate week number
+  //         };
+  //       });
+
+  //       // Set data state
+  //       setData(formattedData);
+  //     })
+  //     .catch(function (error) {
+  //       console.error('Error loading or processing data:', error);
+  //     });
+  // }, []);
 
   useEffect(() => {
     if (!data) return;
