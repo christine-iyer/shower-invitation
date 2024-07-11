@@ -9,7 +9,7 @@ const Random = () => {
   // Fetch data on component mount
   useEffect(() => {
     // Read the data
-    d3.csv("https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/newdata.csv")
+    d3.csv("https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv")
       .then(function (csvData) {
         // Function to calculate week number
         function getWeekNumber(date) {
@@ -74,7 +74,7 @@ const Random = () => {
 
     // Define color scale for years
     var color = d3.scaleOrdinal()
-      .domain([2020, 2021, 20.1, 2023, 2024])
+      .domain([2020, 2021, 2022, 2023, 2024])
       .range(["rgb(203,203,70)", "rgb(103,103,154)", "rgb(132,45,103)", "rgb(233, 64,147)", "rgb(234,97,42)"]);
 
     // Define x-axis scale (0 to 52 weeks)
