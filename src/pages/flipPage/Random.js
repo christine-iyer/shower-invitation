@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
-import DataPicker from "./DataPicker";
+import ChoiceComponent from "./DataPicker";
 const Random = () => {
 
   const ref = useRef();
@@ -12,8 +12,11 @@ const Random = () => {
 
   const [selectedYears, setSelectedYears] = useState([2020, 2021, 2022, 2023, 2024]);
   const [data, setData] = useState(null);
-  const [selectedCsv, setSelectedCsv] = useState(csvUrls[0]); // Default to the last CSV
+  const [selectedCsv, setSelectedCsv] = useState(csvUrls[2]); // Default to the last CSV
 
+  const handleChange = (evt) => {
+    setSelectedCsv({  [evt.target.name]: evt.target.value })
+  }
   const fetchData = (csvUrl) => {
     d3.csv(csvUrl)
       .then(function (csvData) {
@@ -379,7 +382,7 @@ svg.append("rect")
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <DataPicker/>
+      <ChoiceComponent />
       <div style={{ marginBottom: '20px' }}>
         <label
           style={{
