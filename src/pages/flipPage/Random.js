@@ -1,6 +1,5 @@
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
-import ChoiceComponent from "./DataPicker";
 const Random = () => {
 
   const ref = useRef();
@@ -11,14 +10,15 @@ const Random = () => {
   ];
 
   const [selectedYears, setSelectedYears] = useState([2020, 2021, 2022, 2023, 2024]);
-  const [data, setData] = useState(null);
-  const [selectedCsv, setSelectedCsv] = useState(csvUrls[2]); // Default to the last CSV
+  const [data, setData] = useState(null);  
+  const [selectedChoice, setSelectedChoice] = useState('');
 
-  const handleChange = (evt) => {
-    setSelectedCsv({  [evt.target.name]: evt.target.value })
-  }
-  const fetchData = (csvUrl) => {
-    d3.csv(csvUrl)
+  const handleChoiceChange = (event) => {
+    setSelectedChoice(event.target.value);
+  };  
+  
+const fetchData = (selectedChoice) => {
+    d3.csv(selectedChoice)
       .then(function (csvData) {
         // Function to calculate week number
         function getWeekNumber(date) {
@@ -48,19 +48,8 @@ const Random = () => {
   };
 
   useEffect(() => {
-    fetchData(selectedCsv);
-  }, [selectedCsv]);
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+    fetchData(selectedChoice);
+  }, [selectedChoice]);
   // useEffect(() => {
   //   // Read the data
   //   d3.csv("https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv")
@@ -382,7 +371,45 @@ svg.append("rect")
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <ChoiceComponent />
+      <div>
+      <h1>Choose one of the following to see how it has trended in google since 1/1/2020.</h1>
+      <form>
+        <div>
+          <input
+            type="radio"
+            id="choice1"
+            name="choice"
+            value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv"
+            checked={selectedChoice === 'Trump Lies'}
+            onChange={handleChoiceChange}
+          />
+          <label htmlFor="choice1">Trump Lies</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="choice2"
+            name="choice"
+            value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/data.csv"
+            checked={selectedChoice === 'Inflation'}
+            onChange={handleChoiceChange}
+          />
+          <label htmlFor="choice2">Inflation</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="choice3"
+            name="choice"
+            value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/newdata.csv"
+            checked={selectedChoice === 'Biden Age'}
+            onChange={handleChoiceChange}
+          />
+          <label htmlFor="choice3">Biden Age</label>
+        </div>
+      </form>
+      {selectedChoice && <h2>Your updated season plot! Feel free to update based on the year selection</h2>}
+    </div>
       <div style={{ marginBottom: '20px' }}>
         <label
           style={{
