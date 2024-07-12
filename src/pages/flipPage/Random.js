@@ -387,7 +387,7 @@ svg.append("rect")
   return (
     <div style={{ textAlign: 'center' }}>
       <div>
-      <h1>Choose one of the following to see how it has trended in google since 1/1/2020.</h1>
+      <h3>Choose one of the following to see how it has trended in google since 1/1/2020.</h3>
       <form>
         <div>
           <input
@@ -397,6 +397,7 @@ svg.append("rect")
             value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv"
             checked={selectedChoice === 'Trump Lies'}
             onChange={handleChoiceChange}
+            
           />
           <label htmlFor="choice1">Trump Lies</label>
         </div>
@@ -423,7 +424,7 @@ svg.append("rect")
           <label htmlFor="choice3">Biden Age</label>
         </div>
       </form>
-      {selectedChoice &&  <h2>Your updated season plot! Feel free to update based on the year selection {getMessage()}</h2>}
+      {selectedChoice &&  <h3 className="selected-choice" style={{textAlign:'center'}}>Your updated season plot! Feel free to update based on the year selection {getMessage()}</h3>}
     </div>
       <div style={{ marginBottom: '20px' }}>
         <label
