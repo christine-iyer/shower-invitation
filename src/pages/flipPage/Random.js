@@ -16,6 +16,21 @@ const Random = () => {
   const handleChoiceChange = (event) => {
     setSelectedChoice(event.target.value);
   };  
+
+    const getMessage = () => {
+      switch (selectedChoice) {
+        case csvUrls[0]:
+          return 'Trump Lies';
+        case csvUrls[1]:
+          return 'Inflation';
+        case csvUrls[2]:
+          return 'Biden Age';
+        default:
+          return '';
+      }
+    };
+ 
+
   
 const fetchData = (selectedChoice) => {
     d3.csv(selectedChoice)
@@ -408,7 +423,7 @@ svg.append("rect")
           <label htmlFor="choice3">Biden Age</label>
         </div>
       </form>
-      {selectedChoice && <h2>Your updated season plot! Feel free to update based on the year selection</h2>}
+      {selectedChoice &&  <h2>Your updated season plot! Feel free to update based on the year selection {getMessage()}</h2>}
     </div>
       <div style={{ marginBottom: '20px' }}>
         <label
