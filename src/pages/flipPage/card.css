@@ -1,8 +1,12 @@
+
 .card-grid {
     margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 1%;
+    gap: 9px
+
+    
 }
 
 .card {
@@ -11,6 +15,7 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
+    padding: 1%;
 }
 
 .card > div {
@@ -48,6 +53,9 @@
     background: #fff;
     transform: rotateY(0deg);
 }
+.flipmatch{
+    animation: flipmatch 0.8s infinite;
+}
 
 .flipped .front {
     transform: rotateY(180deg);
@@ -67,10 +75,11 @@
 }
   
 .match-grid {
-    margin-top: 40px;
+    margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 2px;
+
 }
 
 .match {

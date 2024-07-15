@@ -30175,7 +30175,7 @@ export default function FlipCard() {
 
     return (
         <div className="app">
-        <div>
+        <div className='match-container'>
             <MatchWord/>
             <hr></hr>
         </div>

@@ -10,6 +10,7 @@
    } */
 
 
+
 .App-header {
 
 	min-height: 100vh;
@@ -28,6 +29,9 @@
 * {
 
 	box-sizing: border-box;
+	margin: 1px;
+	padding: 1px;
+	
 
 
 }
