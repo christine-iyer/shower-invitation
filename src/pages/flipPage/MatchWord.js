@@ -129,7 +129,7 @@ export default function FlipMatch() {
 
      return (
           <div className="flipmatch">
-               <h1>Matching</h1>
+               <h2>Matching</h2>
                <button onClick={shuffleMatchs}>NewGame</button>
                <div className='match-grid'>
                     {matchs.map(match => (

@@ -11,8 +11,8 @@ export default function Match({ match, handleMatch, over, prevented }) {
      return (
           <div className="match" >
                <div className={over ? "over" : ""}>
-                    <p className="face">{match.word.toUpperCase()}</p>
-                    <img src='/IMG_4816.jpg' onClick={handleClick} className="hair" alt="back" />
+                    <p className="hair">{match.word.toUpperCase()}</p>
+                    <img src='/IMG_4816.jpg' onClick={handleClick} className="face" alt="back" />
                </div>
           </div>
      )

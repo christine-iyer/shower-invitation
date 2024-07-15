@@ -30174,8 +30174,12 @@ export default function FlipCard() {
     }, []);
 
     return (
+        <div className="app">
+        <div>
+            <MatchWord/>
+        </div>
         <div className="flipcard">
-            <h1>Matching</h1>
+            <h2>Vocab Practice</h2>
             <button onClick={shuffleCards}>New Game</button>
             <div className='card-grid'>
                 {cards.map(card => (
@@ -30190,7 +30194,8 @@ export default function FlipCard() {
                 <p style={{ fontSize: '27px', color: 'brown' }}>Misses: {turns}</p>
             </div>
             <Random />
-            <MatchWord />
+
+        </div>
         </div>
     );
 }

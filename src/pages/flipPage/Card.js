@@ -15,7 +15,7 @@ export default function Card({ card, handleChoice, flipped, disabled, showDefini
                     {showDefinition ? card.definition : card.word}
                 </div>
                 <div className="front">
-                    <img src='/IMG_4816.jpg' alt="back" />
+                    <img src='/IMG_4937.jpg' alt="back" />
                 </div>
             </div>
         </div>
