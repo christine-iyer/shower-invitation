@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Card from './Card';
 import Random from './Random';
+import MatchWord from './MatchWord';
 import confetti from 'canvas-confetti';
 import './card.css';
 
@@ -30189,6 +30190,7 @@ export default function FlipCard() {
                 <p style={{ fontSize: '27px', color: 'brown' }}>Misses: {turns}</p>
             </div>
             <Random />
+            <MatchWord />
         </div>
     );
 }

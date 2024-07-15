@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import KidsCard from './KidsCard';
+import Match from './Match';
 import confetti from 'canvas-confetti';
-import './kids.css'
+import './card.css';
 
-const cardImages = [
+const matchImages = [
      { "word": "bad", "matched": false },
      { "word": "bed", "matched": false },
      { "word": "bag", "matched": false },
@@ -61,39 +61,39 @@ function getRandomSubset(arr, n) {
      return subset.slice(0, n);
 }
 
-export default function KidsFlipCard() {
-     const [cards, setCards] = useState([]);
-     const [turns, setTurns] = useState(0);
-     const [choiceOne, setChoiceOne] = useState(null);
-     const [choiceTwo, setChoiceTwo] = useState(null);
-     const [disabled, setDisabled] = useState(false);
+export default function FlipMatch() {
+     const [matchs, setMatchs] = useState([]);
+     const [rounds, setRounds] = useState(0);
+     const [choiceThree, setChoiceThree] = useState(null);
+     const [choiceFour, setChoiceFour] = useState(null);
+     const [prevented, setPrevented] = useState(false);
 
-     const shuffleCards = () => {
-          const selected = getRandomSubset(cardImages, 6);
-          const shuffledCards = [...selected, ...selected]
+     const shuffleMatchs = () => {
+          const selected = getRandomSubset(matchImages, 6);
+          const shuffledMatchs = [...selected, ...selected]
                .sort(() => Math.random() - 0.5)
-               .map((card) => ({ ...card, id: Math.random() }));
+               .map((match) => ({ ...match, id: Math.random() }));
 
-          setChoiceOne(null);
-          setChoiceTwo(null);
-          setCards(shuffledCards);
-          setTurns(0);
+          setChoiceThree(null);
+          setChoiceFour(null);
+          setMatchs(shuffledMatchs);
+          setRounds(0);
      };
 
-     const handleChoice = (card) => {
-          choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+     const handleMatch = (match) => {
+          choiceThree ? setChoiceFour(match) : setChoiceThree(match);
      };
 
      useEffect(() => {
-          if (choiceOne && choiceTwo) {
-               setDisabled(true);
-               if (choiceOne.word === choiceTwo.word) {
-                    setCards(prevCards => {
-                         return prevCards.map(card => {
-                              if (card.word === choiceOne.word) {
-                                   return { ...card, matched: true };
+          if (choiceThree && choiceFour) {
+               setPrevented(true);
+               if (choiceThree.word === choiceFour.word) {
+                    setMatchs(prevMatchs => {
+                         return prevMatchs.map(match => {
+                              if (match.word === choiceThree.word) {
+                                   return { ...match, matched: true };
                               } else {
-                                   return card;
+                                   return match;
                               }
                          });
                     });
@@ -106,7 +106,7 @@ export default function KidsFlipCard() {
                     setTimeout(() => resetTurn(), 1000);
                }
           }
-     }, [choiceOne, choiceTwo]);
+     }, [choiceThree, choiceFour]);
 
      const triggerConfetti = () => {
           confetti({
@@ -117,30 +117,30 @@ export default function KidsFlipCard() {
      };
 
      const resetTurn = (matched) => {
-          setChoiceOne(null);
-          setChoiceTwo(null);
-          setTurns(prev => prev +  (matched ? 0 : 1 ));
-          setDisabled(false);
+          setChoiceThree(null);
+          setChoiceFour(null);
+          setRounds(prev => prev +  (matched ? 0 : 1 ));
+          setPrevented(false);
      };
 
      useEffect(() => {
-          shuffleCards();
+          shuffleMatchs();
      }, []);
 
      return (
-          <div className="flipcard">
+          <div className="flipmatch">
                <h1>Matching</h1>
-               <button onClick={shuffleCards}>NewGame</button>
-               <div className='card-grid'>
-                    {cards.map(card => (
-                         <KidsCard key={card.id}
-                              card={card}
-                              handleChoice={handleChoice}
-                              flipped={card === choiceOne || card === choiceTwo || card.matched}
-                              disabled={disabled}
+               <button onClick={shuffleMatchs}>NewGame</button>
+               <div className='match-grid'>
+                    {matchs.map(match => (
+                         <Match key={match.id}
+                              match={match}
+                              handleMatch={handleMatch}
+                              over={match === choiceThree || match === choiceFour || match.matched}
+                              prevented={prevented}
                          />
                     ))}
-                    <p style={{ fontSize: '27px', color:'brown' }}>Misses: {turns}</p>
+                    <p style={{ fontSize: '27px', color:'brown' }}>Misses: {rounds}</p>
                </div>
           </div>
      );
