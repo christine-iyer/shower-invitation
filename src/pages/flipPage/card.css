@@ -57,6 +57,8 @@
 .card .back {
     transform: rotateY(-180deg);
     transition: transform 0.8s;
+    color: rgb(14, 18, 243);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .flipped .back {
@@ -120,6 +122,10 @@
 .match .hair {
     transform: rotateY(-180deg);
     transition: transform 0.8s;
+    font-size: 34px;
+    color: #520afb;
+    font-style: bold;
+    border: #520afb;
 }
 .over .face {
     transform: rotateY(180deg);

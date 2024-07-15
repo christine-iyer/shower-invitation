@@ -30177,6 +30177,7 @@ export default function FlipCard() {
         <div className="app">
         <div>
             <MatchWord/>
+            <hr></hr>
         </div>
         <div className="flipcard">
             <h2>Vocab Practice</h2>
@@ -30193,6 +30194,7 @@ export default function FlipCard() {
                 ))}
                 <p style={{ fontSize: '27px', color: 'brown' }}>Misses: {turns}</p>
             </div>
+            <hr></hr>
             <Random />
 
         </div>
