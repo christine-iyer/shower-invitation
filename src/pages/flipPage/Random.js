@@ -7,7 +7,8 @@ const Random = () => {
     "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv",
     "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/data.csv",
     "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/newdata.csv",
-    "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/abortion.csv"
+    "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/abortion.csv",
+    "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/guns.csv"
 
   ];
 
@@ -29,6 +30,8 @@ const Random = () => {
         return 'Biden Age';
       case csvUrls[3]:
         return 'End of Abortion';
+      case csvUrls[4]:
+          return 'Get Guns';  
       default:
         return '';
     }
@@ -438,6 +441,18 @@ const Random = () => {
 
             />
             <label htmlFor="choice4">End of Abortion</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="choice5"
+              name="choice"
+              value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/guns.csv"
+              checked={selectedChoice === 'Get Guns'}
+              onChange={handleChoiceChange}
+
+            />
+            <label htmlFor="choice5">Get Guns</label>
           </div>
         </form>
         {selectedChoice && <h3 className="selected-choice" style={{ textAlign: 'center' }}>Your updated season plot! Feel free to update based on the year selection {getMessage()}</h3>}
