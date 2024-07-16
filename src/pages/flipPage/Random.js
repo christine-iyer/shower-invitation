@@ -6,33 +6,37 @@ const Random = () => {
   const csvUrls = [
     "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv",
     "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/data.csv",
-    "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/newdata.csv"
+    "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/newdata.csv",
+    "https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/abortion.csv"
+
   ];
 
   const [selectedYears, setSelectedYears] = useState([2020, 2021, 2022, 2023, 2024]);
-  const [data, setData] = useState(null);  
+  const [data, setData] = useState(null);
   const [selectedChoice, setSelectedChoice] = useState('');
 
   const handleChoiceChange = (event) => {
     setSelectedChoice(event.target.value);
-  };  
+  };
 
-    const getMessage = () => {
-      switch (selectedChoice) {
-        case csvUrls[0]:
-          return 'Trump Lies';
-        case csvUrls[1]:
-          return 'Inflation';
-        case csvUrls[2]:
-          return 'Biden Age';
-        default:
-          return '';
-      }
-    };
- 
+  const getMessage = () => {
+    switch (selectedChoice) {
+      case csvUrls[0]:
+        return 'Trump Lies';
+      case csvUrls[1]:
+        return 'Democracy';
+      case csvUrls[2]:
+        return 'Biden Age';
+      case csvUrls[3]:
+        return 'End of Abortion';
+      default:
+        return '';
+    }
+  };
 
-  
-const fetchData = (selectedChoice) => {
+
+
+  const fetchData = (selectedChoice) => {
     d3.csv(selectedChoice)
       .then(function (csvData) {
         // Function to calculate week number
@@ -147,97 +151,97 @@ const fetchData = (selectedChoice) => {
     // Add shaded area between weeks 40 and 44
 
 
-// Jan
-svg.append("rect")
-.attr("x", x(0))
-.attr("width", x(4) - x(0))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "green")
-.attr("opacity", 0.1);
-// Feb
-svg.append("rect")
-.attr("x", x(4))
-.attr("width", x(8) - x(4))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "yellow")
-.attr("opacity", 0.1);
-// March
-svg.append("rect")
-.attr("x", x(8))
-.attr("width", x(12) - x(8))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "green")
-.attr("opacity", 0.1);
-// April
-svg.append("rect")
-.attr("x", x(12))
-.attr("width", x(16) - x(12))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "yellow")
-.attr("opacity", 0.1);
-// May
-svg.append("rect")
-.attr("x", x(16))
-.attr("width", x(20) - x(16))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "green")
-.attr("opacity", 0.1);
-// June
-svg.append("rect")
-.attr("x", x(20))
-.attr("width", x(24) - x(20))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "yellow")
-.attr("opacity", 0.1);
-// July
-svg.append("rect")
-.attr("x", x(24))
-.attr("width", x(28) - x(24))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "green")
-.attr("opacity", 0.1);
+    // Jan
+    svg.append("rect")
+      .attr("x", x(0))
+      .attr("width", x(4) - x(0))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "green")
+      .attr("opacity", 0.1);
+    // Feb
+    svg.append("rect")
+      .attr("x", x(4))
+      .attr("width", x(8) - x(4))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "yellow")
+      .attr("opacity", 0.1);
+    // March
+    svg.append("rect")
+      .attr("x", x(8))
+      .attr("width", x(12) - x(8))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "green")
+      .attr("opacity", 0.1);
+    // April
+    svg.append("rect")
+      .attr("x", x(12))
+      .attr("width", x(16) - x(12))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "yellow")
+      .attr("opacity", 0.1);
+    // May
+    svg.append("rect")
+      .attr("x", x(16))
+      .attr("width", x(20) - x(16))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "green")
+      .attr("opacity", 0.1);
+    // June
+    svg.append("rect")
+      .attr("x", x(20))
+      .attr("width", x(24) - x(20))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "yellow")
+      .attr("opacity", 0.1);
+    // July
+    svg.append("rect")
+      .attr("x", x(24))
+      .attr("width", x(28) - x(24))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "green")
+      .attr("opacity", 0.1);
 
-svg.append('text')
-.attr("x", x(26))
-.attr("y", height/2)
-.attr("text-anchor", "middle") // Center the text horizontally
+    svg.append('text')
+      .attr("x", x(26))
+      .attr("y", height / 2)
+      .attr("text-anchor", "middle") // Center the text horizontally
       .attr("dy", ".35em") // Adjust vertical alignment
       .attr("font-size", "14px") // Font size
       .attr("fill", "black") // Font color
-      .text("Now"); 
+      .text("Now");
 
-// July
-svg.append("rect")
-.attr("x", x(28))
-.attr("width", x(32) - x(28))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "yellow")
-.attr("opacity", 0.1);
-// Aug
-svg.append("rect")
-.attr("x", x(32))
-.attr("width", x(36) - x(32))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "green")
-.attr("opacity", 0.1);
-// Sept
-svg.append("rect")
-.attr("x", x(36))
-.attr("width", x(40) - x(36))
-.attr("y", 0)
-.attr("height", height)
-.attr("fill", "yellow")
-.attr("opacity", 0.1);
-// October 
+    // July
+    svg.append("rect")
+      .attr("x", x(28))
+      .attr("width", x(32) - x(28))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "yellow")
+      .attr("opacity", 0.1);
+    // Aug
+    svg.append("rect")
+      .attr("x", x(32))
+      .attr("width", x(36) - x(32))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "green")
+      .attr("opacity", 0.1);
+    // Sept
+    svg.append("rect")
+      .attr("x", x(36))
+      .attr("width", x(40) - x(36))
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("fill", "yellow")
+      .attr("opacity", 0.1);
+    // October 
     svg.append("rect")
       .attr("x", x(40))
       .attr("width", x(44) - x(40))
@@ -255,16 +259,16 @@ svg.append("rect")
       .attr("height", height)
       .attr("fill", "yellow")
       .attr("opacity", 0.1);
-    
-      svg.append("text")
+
+    svg.append("text")
       .attr("x", x(42)) // Position the text at the center of the shaded area
-      .attr("y", height /2) // Vertically centered
+      .attr("y", height / 2) // Vertically centered
       .attr("text-anchor", "middle") // Center the text horizontally
       .attr("dy", ".35em") // Adjust vertical alignment
       .attr("font-size", "14px") // Font size
       .attr("fill", "black") // Font color
-      .text("Voting"); 
-      
+      .text("Voting");
+
     // December
     svg.append("rect")
       .attr("x", x(48))
@@ -387,45 +391,57 @@ svg.append("rect")
   return (
     <div style={{ textAlign: 'center' }}>
       <div>
-      <h3>Choose one of the following to see how it has trended in google since 1/1/2020.</h3>
-      <form>
-        <div>
-          <input
-            type="radio"
-            id="choice1"
-            name="choice"
-            value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv"
-            checked={selectedChoice === 'Trump Lies'}
-            onChange={handleChoiceChange}
-            
-          />
-          <label htmlFor="choice1">Trump Lies</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="choice2"
-            name="choice"
-            value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/data.csv"
-            checked={selectedChoice === 'Inflation'}
-            onChange={handleChoiceChange}
-          />
-          <label htmlFor="choice2">Inflation</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="choice3"
-            name="choice"
-            value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/newdata.csv"
-            checked={selectedChoice === 'Biden Age'}
-            onChange={handleChoiceChange}
-          />
-          <label htmlFor="choice3">Biden Age</label>
-        </div>
-      </form>
-      {selectedChoice &&  <h3 className="selected-choice" style={{textAlign:'center'}}>Your updated season plot! Feel free to update based on the year selection {getMessage()}</h3>}
-    </div>
+        <h3>Choose one of the following to see how it has trended in google since 1/1/2020.</h3>
+        <form>
+          <div>
+            <input
+              type="radio"
+              id="choice1"
+              name="choice"
+              value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/lies.csv"
+              checked={selectedChoice === 'Trump Lies'}
+              onChange={handleChoiceChange}
+
+            />
+            <label htmlFor="choice1">Trump Lies</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="choice2"
+              name="choice"
+              value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/data.csv"
+              checked={selectedChoice === 'Democracy'}
+              onChange={handleChoiceChange}
+            />
+            <label htmlFor="choice2">Democracy</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="choice3"
+              name="choice"
+              value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/newdata.csv"
+              checked={selectedChoice === 'Biden Age'}
+              onChange={handleChoiceChange}
+            />
+            <label htmlFor="choice3">Biden Age</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="choice4"
+              name="choice"
+              value="https://raw.githubusercontent.com/christine-iyer/d3-practice/main/src/data/abortion.csv"
+              checked={selectedChoice === 'End of Abortion'}
+              onChange={handleChoiceChange}
+
+            />
+            <label htmlFor="choice4">End of Abortion</label>
+          </div>
+        </form>
+        {selectedChoice && <h3 className="selected-choice" style={{ textAlign: 'center' }}>Your updated season plot! Feel free to update based on the year selection {getMessage()}</h3>}
+      </div>
       <div style={{ marginBottom: '20px' }}>
         <label
           style={{
