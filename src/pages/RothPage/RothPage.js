@@ -101,3 +101,199 @@ export default function Roth() {
   );
 }
 
+import { useState, useEffect, useRef } from 'react'
+
+
+import './style.css'
+
+
+export default function AssetPage() {
+  const [asset, setAsset] = useState({
+    symbol: '',
+    purchasePrice: 0.00,
+    shares: 0,
+    principalDate: ''
+   
+  })
+  const [assets, setAssets] = useState([])
+  const [foundAssets, setFoundAssets] = useState(null)
+
+
+  const [showInput, setShowInput] = useState(false)
+
+  const [error, updateError] = useState();
+  const inputRef = useRef(null)
+  const handleChange = (evt) => {
+    setAsset({ ...asset, [evt.target.name]: evt.target.value })
+  }
+  const getAssets = async () => {
+    try {
+      const response = await fetch('/api/assets')
+      const data = await response.json()
+      setAssets(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const createAsset = async () => {
+    try {
+      const response = await fetch('/api/assets', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ...asset })
+      })
+      const data = await response.json()
+      setFoundAssets(data)
+      setAsset({
+        symbol: '',
+        purchasePrice: 0.00,
+        shares: 0,
+        principalDate: ''
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  
+
+
+  useEffect(() => {
+    getAssets()
+  }, [foundAssets])
+
+  function handleOnUpload(error, result, widget) {
+    if (error) {
+      updateError(error);
+      widget.close({
+        quiet: true
+      });
+      return;
+    }
+    console.dir(result);
+    updateUrl(result?.info?.secure_url);
+    console.dir(url);
+    setAsset({
+      title: '',
+      author: '',
+      category: '',
+      text: '',
+      image: result?.info?.secure_url,
+      like: 0
+    })
+  }
+  return (
+    <div className='franky'>
+      <section>
+        <h1>Post Shamelessly</h1>
+        <div>
+          <span>
+            <UploadWidget onUpload={handleOnUpload}>
+              {({ open }) => {
+                function handleOnClick(e) {
+                  e.preventDefault();
+                  open();
+                }
+                return (
+                  <button style={{ backgroundColor: 'rgba(162, 134, 109, 0.5)', marginBottom: '9px' }} onClick={handleOnClick}>
+                    <MDBIcon fab icon='instagram' size='xxl' />
+                  </button>
+                );
+              }}
+            </UploadWidget>
+            {error && <p>{error}</p>}
+            {url && (
+              <div key={url._id} className='card' style={{ width: '8rem', marginBottom: '1px', backgroundColor: 'red' }}>
+                <img variant="top" src={url} alt='uploaded image' id="uploadedimage"></img>
+              </div>
+            )}
+          </span>
+  
+          <br />
+          <input
+            type='text'
+            value={asset.title}
+            onChange={handleChange}
+            name="title"
+            placeholder='Title'
+          />
+          <br />
+          <input
+            value={asset.author}
+            onChange={handleChange}
+            name="author"
+            placeholder='Author'
+          />
+          <br />
+          <input
+            value={asset.text}
+            onChange={handleChange}
+            name="text"
+            rows={2}
+            placeholder='Some meaningful text'
+          />
+          <br />
+          <select
+            value={asset.category}
+            onChange={handleChange}
+            name="category"
+          >
+            <option value="🤍 Frankly Franky">Select a 🤍</option>
+            <option value="💛 Janky Franky">💛 Janky Franky</option>
+            <option value="🧡 Franky Panky">🧡 Franky Panky</option>
+            <option value="💚 Cranky Franky">💚 Cranky Franky</option>
+            <option value="💙 Franky 🌙">💙 Franky 🌙</option>
+            <option value="💜 Swanky Franky">💜 Swanky Franky</option>
+            <option value="❤️ C'est la vie, Franky!">❤️ C'est la vie, Franky!</option>
+          </select>
+          <br />
+          <br />
+          <button onClick={() => createAsset()}>Display your Entry</button>
+          <br />
+          Entries
+        </div>
+      </section>
+      <hr />
+      {assets && assets.length ? (
+        <div className='entries'>
+          {assets.map((asset) => (
+            <div key={asset._id} className="card">
+              <img className="cardImage" src={asset.image} alt='...' />
+              <div className='cardBody'>
+                <p className='title'>{asset.title}</p>
+                <p className='text' onClick={() => setShowInput(!showInput)}>{asset.text}
+                  <input
+                    ref={inputRef}
+                    style={{ display: showInput ? 'block' : 'none' }}
+                    type='text'
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        updateAsset(asset._id, { text: e.target.value });
+                        setShowInput(false);
+                      }
+                    }}
+                    defaultValue={asset.text}
+                  />
+                </p>
+                <p className='details'>
+                  <small>{asset.author} posted on {new Date(asset.createdAt).toLocaleDateString()}</small>
+                </p>
+                <button className="cardButton" onClick={() => likeAsset(asset._id)}>{asset.like} {asset.category}</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <>No Entries yet! Yet Add One Below this message</>
+      )}
+    </div>
+  );
+  
+
+  
+    ;
+}
