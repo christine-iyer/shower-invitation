@@ -1,5 +1,5 @@
 export default function CreateAsset(
-     {  CreateAsset,
+     {  createAsset,
           asset,
           handleChange}
 ){
