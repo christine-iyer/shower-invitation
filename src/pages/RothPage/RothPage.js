@@ -1,15 +1,46 @@
-import { useState, useEffect } from 'react';
 
+import CreateAsset from './CreateAsset';
 
 
 const SERVER_URL = "http://localhost:3008/api/portfolio/";
 
 export default function Roth() {
+  const [asset, setAsset] = useState({
+    symbol: '',
+    purchasePrice: 0,
+    shares: '',
+    principalDate: ''
+  })
   const [mergedData, setMergedData] = useState([]);
   const [errorMessageR, setErrorMessageR] = useState("");
   const [showPercentChange, setShowPercentChange] = useState(false);
   const [totalPercentChange, setTotalPercentChange] = useState(0);
 
+  const createAsset = async () => {
+    try {
+      const response = await fetch('/api/assets', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ...asset })
+      })
+      const data = await response.json()
+      setAssets([data, ...assets])
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setAsset({
+        symbol: '',
+        purchasePrice: 0,
+        shares: '',
+        principalDate: ''
+      })
+    }
+  }
+  const handleChange = (evt) => {
+    setAsset({ ...asset, [evt.target.name]: evt.target.value })
+  }
   const getMergedData = async () => {
     try {
       const response = await fetch(SERVER_URL);
@@ -50,6 +81,7 @@ export default function Roth() {
 
   return (
     <div className="App">
+      <CreateAsset createAsset={createAsset} asset={asset} handleChange={handleChange} />
       <header className="App-header">
         <div>
           <button type='submit' onClick={getMergedData}> $
