@@ -8,7 +8,7 @@ export default function CreateAsset(
                <h2>Create a New Entry</h2>
                <form onSubmit={(e) => {
                     e.preventDefault()
-                    CreateAsset()
+                    createAsset()
                }}>
                     <input
                          type='text'

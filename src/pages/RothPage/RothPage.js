@@ -1,142 +1,142 @@
+import { useState, useEffect } from 'react'
+// import CreateAsset from './CreateAsset';
 
-import CreateAsset from './CreateAsset';
 
+// const SERVER_URL = "http://localhost:3008/api/portfolio/";
 
-const SERVER_URL = "http://localhost:3008/api/portfolio/";
+// export default function Roth() {
+//   const [asset, setAsset] = useState({
+//     symbol: '',
+//     purchasePrice: 0.00,
+//     shares: '',
+//     principalDate: ''
+//   })
+//   const [mergedData, setMergedData] = useState([]);
+//   const [errorMessageR, setErrorMessageR] = useState("");
+//   const [showPercentChange, setShowPercentChange] = useState(false);
+//   const [totalPercentChange, setTotalPercentChange] = useState(0);
 
-export default function Roth() {
-  const [asset, setAsset] = useState({
-    symbol: '',
-    purchasePrice: 0,
-    shares: '',
-    principalDate: ''
-  })
-  const [mergedData, setMergedData] = useState([]);
-  const [errorMessageR, setErrorMessageR] = useState("");
-  const [showPercentChange, setShowPercentChange] = useState(false);
-  const [totalPercentChange, setTotalPercentChange] = useState(0);
+//   const createAsset = async () => {
+//     try {
+//       const response = await fetch('/api/assets', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ ...asset })
+//       })
+//       const data = await response.json()
+//       setAssets([data, ...assets])
+//     } catch (error) {
+//       console.error(error)
+//     } finally {
+//       setAsset({
+//         symbol: '',
+//         purchasePrice: 0,
+//         shares: '',
+//         principalDate: ''
+//       })
+//     }
+//   }
+//   const handleChange = (evt) => {
+//     setAsset({ ...asset, [evt.target.name]: evt.target.value })
+//   }
+//   const getMergedData = async () => {
+//     try {
+//       const response = await fetch(SERVER_URL);
+//       const data = await response.json();
+//       setMergedData(data);
+//       console.log(data);
+//     } catch (e) {
+//       console.error(e);
+//       setErrorMessageR(e.message);
+//     }
+//   };
 
-  const createAsset = async () => {
-    try {
-      const response = await fetch('/api/assets', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ ...asset })
-      })
-      const data = await response.json()
-      setAssets([data, ...assets])
-    } catch (error) {
-      console.error(error)
-    } finally {
-      setAsset({
-        symbol: '',
-        purchasePrice: 0,
-        shares: '',
-        principalDate: ''
-      })
-    }
-  }
-  const handleChange = (evt) => {
-    setAsset({ ...asset, [evt.target.name]: evt.target.value })
-  }
-  const getMergedData = async () => {
-    try {
-      const response = await fetch(SERVER_URL);
-      const data = await response.json();
-      setMergedData(data);
-      console.log(data);
-    } catch (e) {
-      console.error(e);
-      setErrorMessageR(e.message);
-    }
-  };
+//   const calculateTotalPurchasePrice = (data) => {
+//     return data.reduce((total, stock) => total + (stock.purchasePrice * stock.shares), 0).toFixed(2);
+//   };
 
-  const calculateTotalPurchasePrice = (data) => {
-    return data.reduce((total, stock) => total + (stock.purchasePrice * stock.shares), 0).toFixed(2);
-  };
-
-  const calculateTotalPercentChange = (data) => {
-    const totalPurchasePrice = data.reduce((total, stock) => total + (stock.purchasePrice * stock.shares), 0);
-    const totalMarketValue = data.reduce((total, stock) => total + (stock.regularMarketPrice * stock.shares), 0);
-    const percentChange = ((totalMarketValue - totalPurchasePrice) / totalPurchasePrice) * 100;
-    return percentChange.toFixed(2);
-  };
+//   const calculateTotalPercentChange = (data) => {
+//     const totalPurchasePrice = data.reduce((total, stock) => total + (stock.purchasePrice * stock.shares), 0);
+//     const totalMarketValue = data.reduce((total, stock) => total + (stock.regularMarketPrice * stock.shares), 0);
+//     const percentChange = ((totalMarketValue - totalPurchasePrice) / totalPurchasePrice) * 100;
+//     return percentChange.toFixed(2);
+//   };
   
 
-  const handlePercentChangeClick = () => {
-    const percentChange = calculateTotalPercentChange(mergedData);
-    setTotalPercentChange(percentChange);
-    setShowPercentChange(true);
-  };
-  const formatDollarAmount = (amount) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
-  };
+//   const handlePercentChangeClick = () => {
+//     const percentChange = calculateTotalPercentChange(mergedData);
+//     setTotalPercentChange(percentChange);
+//     setShowPercentChange(true);
+//   };
+//   const formatDollarAmount = (amount) => {
+//     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+//   };
 
-  useEffect(() => { }, []);
+//   useEffect(() => { }, []);
 
-  const totalPurchasePrice = calculateTotalPurchasePrice(mergedData);
-  const totalMarketValue = mergedData.reduce((total, stock) => total + (stock.regularMarketPrice * stock.shares), 0).toFixed(2);
+//   const totalPurchasePrice = calculateTotalPurchasePrice(mergedData);
+//   const totalMarketValue = mergedData.reduce((total, stock) => total + (stock.regularMarketPrice * stock.shares), 0).toFixed(2);
 
-  return (
-    <div className="App">
-      <CreateAsset createAsset={createAsset} asset={asset} handleChange={handleChange} />
-      <header className="App-header">
-        <div>
-          <button type='submit' onClick={getMergedData}> $
+//   return (
+//     <div className="App">
+//       <CreateAsset createAsset={createAsset} asset={asset} handleChange={handleChange} />
+//       <header className="App-header">
+//         <div>
+//           <button type='submit' onClick={getMergedData}> $
 
-          </button>
-        </div>
-        <div>
-          <div className='cass'>
-            <div className='happy'>
-              {mergedData && mergedData.length ? (
-                mergedData.map(data => (
-                  <p key={data?.symbol} blog={data}>
-                    {data.symbol + ' ' +
-                      (data.regularMarketPrice * data.shares).toFixed(2) +
-                      '... you paid ' +
-                      (data.purchasePrice * data.shares).toFixed(2) +
-                      '... a  ' +
-                      (
-                        (
-                          (data.regularMarketPrice * data.shares) -
-                          (data.purchasePrice * data.shares)
-                        ) /
-                        (data.purchasePrice * data.shares) * 100
-                      ).toFixed(2)
-                      + '%'}
-                  </p>
-                ))
-              ) : (
-                <h2>Click $ for your portfolio</h2>
-              )}
-            </div>
-            <div>
-              <h3>Total Purchase Price: {formatDollarAmount(totalPurchasePrice)}</h3>
-              <h3>Total Market Value: {formatDollarAmount(totalMarketValue)}</h3>
+//           </button>
+//         </div>
+//         <div>
+//           <div className='cass'>
+//             <div className='happy'>
+//               {mergedData && mergedData.length ? (
+//                 mergedData.map(data => (
+//                   <p key={data?.symbol} blog={data}>
+//                     {data.symbol + ' ' +
+//                       (data.regularMarketPrice * data.shares).toFixed(2) +
+//                       '... you paid ' +
+//                       (data.purchasePrice * data.shares).toFixed(2) +
+//                       '... a  ' +
+//                       (
+//                         (
+//                           (data.regularMarketPrice * data.shares) -
+//                           (data.purchasePrice * data.shares)
+//                         ) /
+//                         (data.purchasePrice * data.shares) * 100
+//                       ).toFixed(2)
+//                       + '%'}
+//                   </p>
+//                 ))
+//               ) : (
+//                 <h2>Click $ for your portfolio</h2>
+//               )}
+//             </div>
+//             <div>
+//               <h3>Total Purchase Price: {formatDollarAmount(totalPurchasePrice)}</h3>
+//               <h3>Total Market Value: {formatDollarAmount(totalMarketValue)}</h3>
 
-            </div>
-            <div>
-              <button onClick={handlePercentChangeClick}>
-                %△
-              </button>
-              {showPercentChange && (
-                <h3>{totalPercentChange}%</h3>
-              )}
-            </div>
-          </div>
-        </div>
-      </header>
-    </div>
-  );
-}
+//             </div>
+//             <div>
+//               <button onClick={handlePercentChangeClick}>
+//                 %△
+//               </button>
+//               {showPercentChange && (
+//                 <h3>{totalPercentChange}%</h3>
+//               )}
+//             </div>
+//           </div>
+//         </div>
+//       </header>
+//     </div>
+//   );
+// }
 
-import { useState, useEffect, useRef } from 'react'
+// import { useState, useEffect, useRef } from 'react'
 
 
-import './style.css'
+// import './style.css'
 
 
 export default function AssetPage() {
@@ -149,12 +149,8 @@ export default function AssetPage() {
   })
   const [assets, setAssets] = useState([])
   const [foundAssets, setFoundAssets] = useState(null)
+const [error, updateError] = useState();
 
-
-  const [showInput, setShowInput] = useState(false)
-
-  const [error, updateError] = useState();
-  const inputRef = useRef(null)
   const handleChange = (evt) => {
     setAsset({ ...asset, [evt.target.name]: evt.target.value })
   }
@@ -197,52 +193,12 @@ export default function AssetPage() {
     getAssets()
   }, [foundAssets])
 
-  function handleOnUpload(error, result, widget) {
-    if (error) {
-      updateError(error);
-      widget.close({
-        quiet: true
-      });
-      return;
-    }
-    console.dir(result);
-    updateUrl(result?.info?.secure_url);
-    console.dir(url);
-    setAsset({
-      title: '',
-      author: '',
-      category: '',
-      text: '',
-      image: result?.info?.secure_url,
-      like: 0
-    })
-  }
   return (
     <div className='franky'>
       <section>
         <h1>Post Shamelessly</h1>
         <div>
-          <span>
-            <UploadWidget onUpload={handleOnUpload}>
-              {({ open }) => {
-                function handleOnClick(e) {
-                  e.preventDefault();
-                  open();
-                }
-                return (
-                  <button style={{ backgroundColor: 'rgba(162, 134, 109, 0.5)', marginBottom: '9px' }} onClick={handleOnClick}>
-                    <MDBIcon fab icon='instagram' size='xxl' />
-                  </button>
-                );
-              }}
-            </UploadWidget>
-            {error && <p>{error}</p>}
-            {url && (
-              <div key={url._id} className='card' style={{ width: '8rem', marginBottom: '1px', backgroundColor: 'red' }}>
-                <img variant="top" src={url} alt='uploaded image' id="uploadedimage"></img>
-              </div>
-            )}
-          </span>
+
   
           <br />
           <input
