@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import CreateAsset from './CreateAsset';
+import CreateAsset from './CreateAsset';
 
 
 // const SERVER_URL = "http://localhost:3008/api/portfolio/";
@@ -195,55 +195,7 @@ const [error, updateError] = useState();
 
   return (
     <div className='franky'>
-      <section>
-        <h1>Post Shamelessly</h1>
-        <div>
-
-  
-          <br />
-          <input
-            type='text'
-            value={asset.title}
-            onChange={handleChange}
-            name="title"
-            placeholder='Title'
-          />
-          <br />
-          <input
-            value={asset.author}
-            onChange={handleChange}
-            name="author"
-            placeholder='Author'
-          />
-          <br />
-          <input
-            value={asset.text}
-            onChange={handleChange}
-            name="text"
-            rows={2}
-            placeholder='Some meaningful text'
-          />
-          <br />
-          <select
-            value={asset.category}
-            onChange={handleChange}
-            name="category"
-          >
-            <option value="🤍 Frankly Franky">Select a 🤍</option>
-            <option value="💛 Janky Franky">💛 Janky Franky</option>
-            <option value="🧡 Franky Panky">🧡 Franky Panky</option>
-            <option value="💚 Cranky Franky">💚 Cranky Franky</option>
-            <option value="💙 Franky 🌙">💙 Franky 🌙</option>
-            <option value="💜 Swanky Franky">💜 Swanky Franky</option>
-            <option value="❤️ C'est la vie, Franky!">❤️ C'est la vie, Franky!</option>
-          </select>
-          <br />
-          <br />
-          <button onClick={() => createAsset()}>Display your Entry</button>
-          <br />
-          Entries
-        </div>
-      </section>
+     <CreateAsset/>
       <hr />
       {assets && assets.length ? (
         <div className='entries'>
@@ -252,7 +204,7 @@ const [error, updateError] = useState();
               <img className="cardImage" src={asset.image} alt='...' />
               <div className='cardBody'>
                 <p className='title'>{asset.title}</p>
-                <p className='text' onClick={() => setShowInput(!showInput)}>{asset.text}
+                {/* <p className='text' onClick={() => setShowInput(!showInput)}>{asset.text}
                   <input
                     ref={inputRef}
                     style={{ display: showInput ? 'block' : 'none' }}
@@ -266,7 +218,7 @@ const [error, updateError] = useState();
                     }}
                     defaultValue={asset.text}
                   />
-                </p>
+                </p> */}
                 <p className='details'>
                   <small>{asset.author} posted on {new Date(asset.createdAt).toLocaleDateString()}</small>
                 </p>

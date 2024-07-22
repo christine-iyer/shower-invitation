@@ -5,4 +5,5 @@ const portfolioIndex = require('./viewController')
 
 
 router.get('/', portfolioController.get, portfolioIndex)
+router.post('/', portfolioController.createAsset, portfolioIndex)
 module.exports = router 

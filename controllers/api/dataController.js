@@ -1,4 +1,6 @@
 require('dotenv').config()
+const Asset = require('../../models/asset')
+
 
 const axios = require("axios");
 
@@ -72,12 +74,21 @@ function get(req, res, next) {
 } 
 
 const assetIndex = (req, res) => {
-  res.json(res.locals.data.mergedData
-    )
+  res.json(res.locals.data.mergedData)
+}
 
+const createAsset = async (req, res, next) => {
+  try {
+      const createdAsset = await Asset.create(req.body)
+      res.locals.data.blahg = createdAsset
+      next()
+  } catch (error) {
+      res.status(400).json({ msg: error.message })
+  }
 }
 module.exports = {
   get,
-  assetIndex
+  assetIndex, 
+  createAsset
 };
 

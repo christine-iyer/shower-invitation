@@ -24,6 +24,13 @@ export default function CreateAsset(
                          name='purchasePrice'
                          placeholder='Purchase Price'
                     />
+                     <input
+                         type='number'
+                         value={asset.shares}
+                         onChange={handleChange}
+                         name='purchasePrice'
+                         placeholder='Purchase Price'
+                    />
                     <input
                          type='text'
                          value={asset.principalDate}
