@@ -20,6 +20,12 @@ export default function Bar(props) {
         <Link to="/haikus">
         <h6>Haikus</h6>
       </Link>
+      &nbsp;  &nbsp;
+     &nbsp;
+
+        <Link to="/assets">
+        <h6>Assets</h6>
+      </Link>
       
    &nbsp;  &nbsp;
      &nbsp;

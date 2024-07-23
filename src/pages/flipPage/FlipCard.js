@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Card from './Card';
 import Random from './Random';
 import MatchWord from './MatchWord';
+import RothPage from '../RothPage/RothPage';
 import confetti from 'canvas-confetti';
 import './card.css';
 
@@ -30196,6 +30197,8 @@ export default function FlipCard() {
             </div>
             <hr></hr>
             <Random />
+            {/* <RothPage /> */}
+
 
         </div>
         </div>

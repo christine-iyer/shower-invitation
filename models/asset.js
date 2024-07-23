@@ -3,8 +3,8 @@ const { Schema, model } = require('mongoose')
 
 const assetSchema = new Schema({
      symbol: String, 
-     purchasePrice: String, 
-     shares: String, 
+     purchasePrice: Number, 
+     shares: Number, 
      principalDate: String
     
 

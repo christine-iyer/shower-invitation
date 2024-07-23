@@ -30,8 +30,7 @@ app.use(require('./config/checkToken'))
 /*
 app.use('/api', routes) <====== Finish code once you got it
 */
-app.use('/api/users', require('./routes/api/users'))
-
+app.use('/api/assets', require('./routes/api/assets'))
 app.use('/api/haikus', require('./routes/api/haikus'))
 app.use('/api/blahgs', require('./routes/api/blahgs'))
 

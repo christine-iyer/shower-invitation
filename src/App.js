@@ -16,7 +16,8 @@ export default function App() {
             <BrowserRouter>
                 <Bar />
                 <Routes>
-                    <Route path='/' element={<Roth />} />
+                    <Route path='/' element={<FlipCard />} />
+                    <Route path='/assets' element={<Roth />} />
                     <Route path='/haikus' element={<HaikuPage />} />
                     <Route path='/blahg' element={<BlahgPage />} />
                 </Routes>

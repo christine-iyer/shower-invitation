@@ -10,12 +10,12 @@
 }
 
 .card {
-    perspective: 1000px;
+    /* perspective: 100px;
     position: relative;
     width: 100px;
     height: 100px;
     cursor: pointer;
-    padding: 1%;
+    padding: 1%; */
 }
 
 .card > div {
