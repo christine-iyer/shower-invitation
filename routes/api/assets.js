@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const portfolioController = require('../../controllers/api/dataController')
+const portfolioController = require('../../controllers/api/assets')
 //const portfolioIndex = require('../../controllers/api/viewController')
 
 
