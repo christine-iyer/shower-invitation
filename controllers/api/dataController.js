@@ -86,9 +86,13 @@ const createAsset = async (req, res, next) => {
       res.status(400).json({ msg: error.message })
   }
 }
+function portfolioIndex (req, res){
+     res.json(res.locals.data.results[4])
+}
 module.exports = {
   get,
   assetIndex, 
-  createAsset
+  createAsset, 
+  portfolioIndex
 };
 
