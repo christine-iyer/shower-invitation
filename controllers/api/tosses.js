@@ -1,5 +1,16 @@
 require('dotenv').config();
 const Toss = require("../../models/toss");
+const getTosses= async (req, res, next) => {
+    try {
+        
+        const tosses = await Toss.find(req.body)
+        res.locals.data.tosses = tosses 
+        tosses.reverse()
+        next()
+    } catch (error) {
+        res.status(400).json({ msg: error.message })
+    }
+}
 
 const updateToss = async (req, res, next) => {
      try {
@@ -21,19 +32,9 @@ const updateToss = async (req, res, next) => {
      }
  }
  //hi
- const getTosses= async (req, res, next) => {
-     try {
-         
-         const tosss = await Toss.find(req.body)
-         res.locals.data.tosss = tosss 
-         tosss.reverse()
-         next()
-     } catch (error) {
-         res.status(400).json({ msg: error.message })
-     }
- }
+
  const respondWithTosses = (req, res) => {
-     res.json(res.locals.data.tosss)
+     res.json(res.locals.data.tosses)
  }
  
  const respondWithToss = (req, res) => {
