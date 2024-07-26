@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
-import CreateToss from "../PlotPage/CreateToss";
+
 const Random = () => {
 
   const ref = useRef();
@@ -394,7 +394,7 @@ const Random = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <CreateToss />
+
       <div>
         <h3>Choose one of the following to see how it has trended in google since 1/1/2020.</h3>
         <form>
