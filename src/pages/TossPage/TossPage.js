@@ -103,7 +103,7 @@ useEffect(() => {
           {tosses.map((toss) => (
             <div key={toss._id} className="card">
             
-              <div className='cardBody'>
+              <div className='cardBody' style={{'height':'100%'}}>
                 <p className='title'>{toss.name}</p>
                
                 <p className='details'>
