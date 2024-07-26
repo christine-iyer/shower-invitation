@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import CreateToss from "./CreateToss";
 
 
@@ -62,7 +62,7 @@ export default function PlotPage() {
       console.error(error)
     }
   }
-useEffect(() => {
+  useEffect(() => {
     getTosses()
   }, [foundTosses])
 
@@ -88,8 +88,8 @@ useEffect(() => {
             <option value="Harris">Harris</option>
             <option value="Trump">Trump</option>
           </select>
-          <input type='number' name = 'margin' onChange={handleChange} value={toss.margin}/>
-          <input type='date' name = 'date' onChange={handleChange} value={toss.date}/>
+          <input type='number' name='margin' onChange={handleChange} value={toss.margin} />
+          <input type='date' name='date' onChange={handleChange} value={toss.date} />
           <br />
           <br />
           <button onClick={() => createToss()}>Display your Entry</button>
@@ -98,18 +98,29 @@ useEffect(() => {
         </div>
       </section>
       <hr />
+
+
       {tosses && tosses.length ? (
-        <div className='entries'>
+        <div className='entries'
+          style={{
+            "maxWidth": '500px',
+            "margin": '0 auto',
+            "padding": '1rem',
+            "boxShadow": '0 2px 4px rgba(0,0,0,0.16)',
+            "borderRadius": '5px',
+            "backgroundColor": 'violet'}}>
           {tosses.map((toss) => (
             <div key={toss._id} className="card">
-            
-              <div className='cardBody' style={{'height':'100%'}}>
-                <p className='title'>{toss.name}</p>
-               
+              <div className='cardBody' >
+                <p className='title'
+                  style={{
+                    "textAlign": "center",
+                    "fontSize": '24px',
+                    "color": 'white'
+                  }}>{toss.name}</p>
                 <p className='details'>
                   <small>{toss.winner} posted on {toss.date}.toLocaleDateString()</small>
                 </p>
-
               </div>
             </div>
           ))}
