@@ -41,7 +41,7 @@ export default function PlotPage() {
         name: '',
         winner: '',
         margin: 0,
-        date: Date.now()
+        date: Date
       })
     } catch (error) {
       console.error(error)
@@ -84,12 +84,12 @@ useEffect(() => {
             value={toss.winner}
             onChange={handleChange}
             name="winner">
-            <option value="Franky">Select a 🤍</option>
+            <option >Select a Winner</option>
             <option value="Harris">Harris</option>
             <option value="Trump">Trump</option>
           </select>
-          <input type='number'/>
-          <input type='date'/>
+          <input type='number' name = 'margin' onChange={handleChange} value={toss.margin}/>
+          <input type='date' name = 'date' onChange={handleChange} value={toss.date}/>
           <br />
           <br />
           <button onClick={() => createToss()}>Display your Entry</button>
