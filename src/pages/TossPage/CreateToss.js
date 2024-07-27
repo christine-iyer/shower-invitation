@@ -1,3 +1,4 @@
+import "./toss.css"
 export default function CreateToss({
   createToss,
   toss,
@@ -8,7 +9,7 @@ export default function CreateToss({
     <>
       <h2>Create A Toss</h2>
       <div className='container'>
-        <div style={{ width: '100%', position: 'sticky', float: 'left', fontFamily: 'bradleyHand' }}
+        <div 
           className='form'
           onSubmit={(e) => {
             e.preventDefault()

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import CreateToss from "./CreateToss";
+import "./toss.css"
 
 
 export default function PlotPage() {
@@ -101,23 +102,12 @@ export default function PlotPage() {
 
 
       {tosses && tosses.length ? (
-        <div className='entries'
-          style={{
-            "maxWidth": '500px',
-            "margin": '0 auto',
-            "padding": '1rem',
-            "boxShadow": '0 2px 4px rgba(0,0,0,0.16)',
-            "borderRadius": '5px',
-            "backgroundColor": 'violet'}}>
+        <div className='entries'>
           {tosses.map((toss) => (
             <div key={toss._id} className="card">
               <div className='cardBody' >
                 <p className='title'
-                  style={{
-                    "textAlign": "center",
-                    "fontSize": '24px',
-                    "color": 'white'
-                  }}>{toss.name}</p>
+               >{toss.name}</p>
                 <p className='details'>
                   <small>{toss.winner} posted on {toss.date}.toLocaleDateString()</small>
                 </p>
