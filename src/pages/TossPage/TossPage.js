@@ -107,9 +107,9 @@ export default function PlotPage() {
             <div key={toss._id} className="card">
               <div className='cardBody' >
                 <p className='title'
-               >{toss.name}</p>
+               >on {toss.date}, {toss.name}  predicts {toss.winner} by {toss.margin}</p>
                 <p className='details'>
-                  <small>{toss.winner} posted on {toss.date}.toLocaleDateString()</small>
+                  <small>{toss.winner} posted .toLocaleDateString()</small>
                 </p>
               </div>
             </div>
