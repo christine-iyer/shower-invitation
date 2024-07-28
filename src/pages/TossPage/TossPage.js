@@ -3,7 +3,7 @@ import CreateToss from "./CreateToss";
 import "./toss.css"
 
 
-export default function PlotPage() {
+export default function TossPage() {
   const [toss, setToss] = useState({
     name: '',
     winner: '',
@@ -107,10 +107,11 @@ export default function PlotPage() {
             <div key={toss._id} className="card">
               <div className='cardBody' >
                 <p className='title'
-               >on {toss.date}, {toss.name}  predicts {toss.winner} by {toss.margin}</p>
+               >on {toss.date}.toLocaleString(), {toss.name}  predicts {toss.winner} by {toss.margin}</p>
                 <p className='details'>
-                  <small>{toss.winner} posted .toLocaleDateString()</small>
+                  <small>{toss.winner} posted</small>
                 </p>
+               
               </div>
             </div>
           ))}
