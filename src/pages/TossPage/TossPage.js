@@ -107,11 +107,11 @@ export default function TossPage() {
             <div key={toss._id} className="card">
               <div className='cardBody' >
                 <p className='title'
-               >on {toss.date}.toLocaleString(), {toss.name}  predicts {toss.winner} by {toss.margin}</p>
+                >on {new Date(toss.date).toLocaleDateString()}, {toss.name}  predicts {toss.winner} by {toss.margin}</p>
                 <p className='details'>
                   <small>{toss.winner} posted</small>
                 </p>
-               
+
               </div>
             </div>
           ))}
