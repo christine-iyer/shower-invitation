@@ -5,8 +5,7 @@ import HaikuPage from "./pages/HaikuPage/HaikuPage";
 import FlipCard from "./pages/flipPage/FlipCard";
 import Roth from "./pages/RothPage/RothPage";
 import TossPage from "./pages/TossPage/TossPage"
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 import './App.css';
 
 
@@ -23,11 +22,6 @@ export default function App() {
                     <Route path='/blahg' element={<BlahgPage />} />
                 </Routes>
             </BrowserRouter>
-
-
-
-
-
-        </div>
+</div>
     )
 }
