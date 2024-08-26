@@ -7,7 +7,7 @@ import Roth from "./pages/RothPage/RothPage";
 import TossPage from "./pages/TossPage/TossPage"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import './App.css';
+import './App.css';
 
 
 
@@ -17,7 +17,7 @@ export default function App() {
             <BrowserRouter>
                 <Bar />
                 <Routes>
-                    <Route path='/' element={<TossPage />} />
+                    <Route path='/' element={<FlipCard />} />
                     <Route path='/assets' element={<Roth />} />
                     <Route path='/haikus' element={<HaikuPage />} />
                     <Route path='/blahg' element={<BlahgPage />} />

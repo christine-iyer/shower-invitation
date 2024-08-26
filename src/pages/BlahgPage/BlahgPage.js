@@ -1,15 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
-import { Cloudinary } from "@cloudinary/url-gen";
+// import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../../components/BlahgPage/UploadWidget';
-import { Container } from 'react-bootstrap';
-import { border } from '@cloudinary/url-gen/qualifiers/background';
+// import { Container } from 'react-bootstrap';
+// import { border } from '@cloudinary/url-gen/qualifiers/background';
 import './style.css'
 
 
-import {
-  MDBCardImage,
-  MDBIcon
-} from 'mdb-react-ui-kit';
+
 
 export default function BlahgPage() {
   const [blahg, setBlahg] = useState({
@@ -167,7 +164,7 @@ export default function BlahgPage() {
                 }
                 return (
                   <button style={{ backgroundColor: 'rgba(162, 134, 109, 0.5)', marginBottom: '9px' }} onClick={handleOnClick}>
-                    <MDBIcon fab icon='instagram' size='xxl' />
+                    {/* <MDBIcon fab icon='instagram' size='xxl' /> */}
                   </button>
                 );
               }}
@@ -175,7 +172,7 @@ export default function BlahgPage() {
             {error && <p>{error}</p>}
             {url && (
               <div key={url._id} className='card' style={{ width: '8rem', marginBottom: '1px', backgroundColor: 'red' }}>
-                <img variant="top" src={url} alt='uploaded image' id="uploadedimage"></img>
+                <img variant="top" src={url} alt='' id="uploadedimage"></img>
               </div>
             )}
           </span>
@@ -221,16 +218,17 @@ export default function BlahgPage() {
           <br />
           <button onClick={() => createBlahg()}>Display your Entry</button>
           <br />
-          Entries
+     
         </div>
       </section>
-      <hr />
+
+        <h1>Entries</h1>   
       {blahgs && blahgs.length ? (
         <div className='entries'>
           {blahgs.map((blahg) => (
-            <div key={blahg._id} className="card">
+            <card key={blahg._id} className="card">
               <img className="cardImage" src={blahg.image} alt='...' />
-              <div className='cardBody'>
+
                 <p className='title'>{blahg.title}</p>
                 <p className='text' onClick={() => setShowInput(!showInput)}>{blahg.text}
                   <input
@@ -251,8 +249,8 @@ export default function BlahgPage() {
                   <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small>
                 </p>
                 <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>{blahg.like} {blahg.category}</button>
-              </div>
-            </div>
+     
+            </card>
           ))}
         </div>
       ) : (
