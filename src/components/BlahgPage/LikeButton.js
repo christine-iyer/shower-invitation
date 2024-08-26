@@ -9,7 +9,7 @@ export default function LikeButton({blahg, updateBlahg}) {
    
      return (
        <button onClick={handleLike} style={{"color": "rgb(0,0,4)", "backgroundColor": "rgba(150,150,1,0", "textIndent":"right"}}>
-         {like}
+         {addLike}
        </button>
      );
    }

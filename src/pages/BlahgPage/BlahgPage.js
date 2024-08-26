@@ -164,7 +164,7 @@ export default function BlahgPage() {
                 }
                 return (
                   <button style={{ backgroundColor: 'rgba(162, 134, 109, 0.5)', marginBottom: '9px' }} onClick={handleOnClick}>
-                    {/* <MDBIcon fab icon='instagram' size='xxl' /> */}
+
                   </button>
                 );
               }}
@@ -226,8 +226,8 @@ export default function BlahgPage() {
       {blahgs && blahgs.length ? (
         <div className='entries'>
           {blahgs.map((blahg) => (
-            <card key={blahg._id} className="card">
-              <img className="cardImage" src={blahg.image} alt='...' />
+            <div key={blahg._id} className="card">
+              <img className="image" src={blahg.image} alt='...' />
 
                 <p className='title'>{blahg.title}</p>
                 <p className='text' onClick={() => setShowInput(!showInput)}>{blahg.text}
@@ -250,7 +250,7 @@ export default function BlahgPage() {
                 </p>
                 <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>{blahg.like} {blahg.category}</button>
      
-            </card>
+            </div>
           ))}
         </div>
       ) : (

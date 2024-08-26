@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import CreateToss from "./CreateToss";
+
 import "./toss.css"
 
 

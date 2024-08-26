@@ -1,34 +1,33 @@
-
 .franky {
 	font-family: Arial, sans-serif;
-	
    }
    
    .entries {
 	display: flex;
-
-	gap: 20px; /* Space between cards */
+	flex-direction: column;
+	gap: 2px; /* Space between cards */
    }
    
    .card {
-/* 
-	flex-direction: column;
-
-	width: 100%; */
+	display: flex;
+	height: fit-content;
+	width: 100%;
+	max-width: 600px; /* Limit the maximum width of the card */
 	background-color: #fff;
 	border-radius: 8px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-	padding: 16px;
-	box-sizing: border-box;
+	padding: 1px;
+	/* box-sizing: border-box; */
+	margin: 0 auto; /* Center the card horizontally */
    }
    
-   .cardImage {
-	width: 150px; /* Fixed width for the image */
-	max-width: 100%;
-	height: auto;
+   
+   .image {
+	 /* Fixed width for the image */
+	
 	border-radius: 8px;
-	object-fit: cover;
-	margin-right: 16px;
+
+
    }
    
    .cardBody {
