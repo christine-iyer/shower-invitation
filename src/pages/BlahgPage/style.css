@@ -24,7 +24,7 @@
    
    .image {
 	 /* Fixed width for the image */
-	
+	vertical-align: middle;
 	border-radius: 8px;
 
 
