@@ -176,7 +176,7 @@ export default function BlahgPage() {
               </div>
             )}
           </span>
-  
+
           <br />
           <input
             type='text'
@@ -218,17 +218,19 @@ export default function BlahgPage() {
           <br />
           <button onClick={() => createBlahg()}>Display your Entry</button>
           <br />
-     
+
         </div>
       </section>
 
-        <h1>Entries</h1>   
+      <h1>Entries</h1>
       {blahgs && blahgs.length ? (
         <div className='entries'>
           {blahgs.map((blahg) => (
             <div key={blahg._id} className="card">
-              <img className="image" src={blahg.image} alt='...' />
-
+              <div className="imageContainer">
+                <img className="image" src={blahg.image} alt='...' />
+              </div>
+              <div className='textContainer'>
                 <p className='title'>{blahg.title}</p>
                 <p className='text' onClick={() => setShowInput(!showInput)}>{blahg.text}
                   <input
@@ -245,11 +247,12 @@ export default function BlahgPage() {
                     defaultValue={blahg.text}
                   />
                 </p>
-                <p className='details'>
-                  <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small>
-                </p>
-                <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>{blahg.like} {blahg.category}</button>
-     
+              </div>
+              <p className='details'>
+                <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small>
+              </p>
+              <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>{blahg.like} {blahg.category}</button>
+
             </div>
           ))}
         </div>
@@ -258,8 +261,8 @@ export default function BlahgPage() {
       )}
     </div>
   );
-  
 
-  
-    ;
+
+
+  ;
 }
