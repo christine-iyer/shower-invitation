@@ -224,7 +224,7 @@ export default function BlahgPage() {
 
       <h1>Entries</h1>
       {blahgs && blahgs.length ? (
-        <div className='entries'>
+        <div className='cards'>
           {blahgs.map((blahg) => (
             <div key={blahg._id} className="card">
               <div className="imageContainer">

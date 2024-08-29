@@ -6,7 +6,7 @@ import FlipCard from "./pages/flipPage/FlipCard";
 import Roth from "./pages/RothPage/RothPage";
 import TossPage from "./pages/TossPage/TossPage"
 
-import './App.css';
+// import './App.css';
 
 
 

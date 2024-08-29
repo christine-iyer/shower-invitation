@@ -1,17 +1,12 @@
-.franky {
-	font-family: Arial, sans-serif;
-}
-
-.entries {
+.cards {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 20px;
 	width: 100%;
-	/* Space between cards */
-}
-
-.card {
+   }
+   
+   .card {
 	display: flex;
 	flex-direction: row; /* Horizontal layout */
 	width: 90%;
@@ -21,78 +16,44 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
-}
-
-.imageContainer {
-	flex: 0 0 40%; /* Image takes up 40% of the card width */
+   }
+   
+   .imageContainer {
+	flex: 0 0 30%; /* Image takes up 40% of the card width */
 	position: relative;
 	max-height: 90%; /* Ensure the image container doesn’t exceed card height */
-}
-.image {
-	object-fit: cover; /* Ensure the image covers the container */
+   }
+   
+   .image {
+	align-self: flex-start;
+	object-fit:inherit;
 	width: 100%; /* Full width */
 	height: 100%; /* Full height */
 	max-height: 300px; /* Maximum height of the image */
 	border-radius: 8px 0 0 8px; /* Rounded corners on the left */
-
-
-}
-
-.textContainer {
-	flex: 1 1 70%; /* Text content takes up the remaining 60% */
+   }
+   
+   .textContainer {
+	flex: 1 1 60%; /* Text content takes up the remaining 60% */
 	padding: 16px;
 	display: flex;
 	line-height: normal;
 	flex-direction: column;
 	justify-content: space-between; /* Space out the content vertically */
 	overflow-y: auto; /* Allow scrolling if content is too long */
-}
-
-.title {
+   }
+   
+   .title {
 	font-size: 1.5em;
 	font-weight: bold;
 	margin-bottom: 8px;
-}
-
-.text {
-	font-size: 1em;
-	margin-bottom: 16px;
-	line-height: 1.5;
-	cursor: pointer;
-}
-
-.text input {
-	margin-top: 8px;
-	padding: 4px;
-	font-size: 1em;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.details {
-	font-size: 0.8em;
+   }
+   
+   .details, .text {
+	margin-bottom: 8px;
+   }
+   
+   .cardAuthor {
+	font-size: 0.9em;
 	color: #666;
-	margin-bottom: 12px;
-}
-
-.cardButton {
-	align-self: flex-start;
-	padding: 8px 16px;
-	font-size: 1em;
-	color: #fff;
-	background-color: #007bff;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-.cardButton:hover {
-	background-color: #0056b3;
-}
-
-#uploadedimage {
-	width: 100%;
-	/* Ensures the uploaded image in the preview fits the container */
-	height: auto;
-	border-radius: 8px;
-}
+   }
