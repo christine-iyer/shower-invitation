@@ -27,7 +27,7 @@
    .image {
 	align-self: flex-start;
 	object-fit:inherit;
-	width: 100%; /* Full width */
+	width: 30%; /* Full width */
 	height: 100%; /* Full height */
 	max-height: 300px; /* Maximum height of the image */
 	border-radius: 8px 0 0 8px; /* Rounded corners on the left */
