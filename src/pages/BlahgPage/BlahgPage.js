@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import UploadWidget from '../../components/BlahgPage/UploadWidget';
-import './style.css'
+
 
 export default function BlahgPage() {
   const [blahg, setBlahg] = useState({
