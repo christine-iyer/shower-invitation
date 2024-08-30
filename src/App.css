@@ -1,44 +1,13 @@
-* {
-	font-family: "Caesar Dressing", system-ui;
 
-}
- /* body {
+/* body {
 	background: white;
 	background-image: linear-gradient(90deg, rgba(223, 194, 175,.5) 50%, transparent 0),
 	  linear-gradient(rgba(223, 194, 175) 50%, transparent 0);
 	background-size: 30px 30px;
-   }  */
+   }   */
 
 
-
-.text {
-	font-family: "Zhi Mang Xing", cursive;
-
-}
-
-@media only all and (max-width: 900px) {
-	.collumn {
-		width: 47%;
-	}
-}
-
-@media only all and (max-width: 600px) {
-	.main {
-
-		width: 90%;
-	}
-
-	.collumn+.collumn {
-		border-left: 6pc;
-		border-bottom: 11px solid #2f2f2f;
-	}
-
-	header {
-		max-width: 320px;
-		/* font-size: 60px; */
-		line-height: 54px;
-		overflow: hidden;
-	}
+	
 	.carouselContainer{
 		align-items: left;
 		justify-items: left;
@@ -47,7 +16,7 @@
 		flex-wrap: wrap;
 		
 	}
-}
+
 .button {
 	position: relative;
 	background-color: rgba(162, 134, 109, .15);
