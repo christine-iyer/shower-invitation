@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import UploadWidget from '../../components/BlahgPage/UploadWidget';
-
+import './style.css'
 
 export default function BlahgPage() {
   const [blahg, setBlahg] = useState({
@@ -145,10 +145,11 @@ export default function BlahgPage() {
     })
   }
   return (
+
     <div className='franky'>
       <section>
         <h1>Post Shamelessly</h1>
-        <div>
+        <div className='create'>
           <span>
             <UploadWidget onUpload={handleOnUpload}>
               {({ open }) => {
@@ -254,6 +255,7 @@ export default function BlahgPage() {
         <>No Entries yet! Yet Add One Below this message</>
       )}
     </div>
+
   );
 
 

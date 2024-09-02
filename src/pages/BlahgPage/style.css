@@ -1,0 +1,54 @@
+.page{
+
+}
+.franky {
+     
+    
+
+}
+
+.create {}
+
+.cards {     background-color: yellow;
+     flex-direction: column;
+     align-items: center;
+     gap: 20px ;
+     width: 100%}
+
+.card {
+     display: flex;
+     flex-direction: row;
+     width: 90%
+}
+
+.imageContainer {
+     display: flex;
+     flex: 0 0 40%;
+     position: relative;
+     align-items: flex-start;
+}
+
+.image {object-fit: contain;
+}
+
+.textContainer {
+     display: flex;
+     flex: 0 0 60%;
+flex-direction: column;
+border-style: dashed;
+}
+
+
+.title {
+     color: aqua;
+}
+
+.text {
+     color: pink;
+}
+
+.details {
+     color: green;
+}
+
+.cardButton {color: blue}
