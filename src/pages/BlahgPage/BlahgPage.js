@@ -16,10 +16,11 @@ export default function BlahgPage() {
   const [foundBlahgs, setFoundBlahgs] = useState(null)
 
 
-  const [showInput, setShowInput] = useState(false)
+
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
-  const inputRef = useRef(null)
+   const [showInput, setShowInput] = useState(false) 
+   const inputRef = useRef(null)
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
@@ -234,8 +235,8 @@ export default function BlahgPage() {
                     type='text'
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {
-                        e.preventDefault();
-                        updateBlahg(blahg._id, { text: e.target.value });
+                        const text= inputRef.current.value
+                        updateBlahg(blahg._id, { text: text});
                         setShowInput(false);
                       }
                     }}

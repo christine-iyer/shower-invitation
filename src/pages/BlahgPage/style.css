@@ -11,17 +11,14 @@ display: flex;
 .create {}
 
 .cards {     
-     flex-direction: column;
-     align-items: left;
-     gap: 20px ;
-     width: 90%;
-border: 1px solid #555;
+
 }
 
 
 .card {
      display: flex;
-     align-items: flex-start;
+     
+     align-items: flex-end;
      background: #F6F3EB;
      padding: 1em;
      border-radius: 3px;
@@ -29,25 +26,28 @@ border: 1px solid #555;
 
 }
 
-.imageContainer {
-     display: flex;
-justify-content: flex-start;
-     position: relative;
-     
-     background-color: antiquewhite;
-     border-style: groove;
-     border-color: yellow;
-}
 
-.image {object-fit:scale-down;
+.imageContainer {
+     width: 10em;
+     height: 10em;
+     overflow: hidden;
+     margin-right: 1em;
+align-self: baseline;
+background-color: aqua;
+
+}
+.image {
+  object-fit: contain;
+  justify-self: flex-start;
+
+
+
 }
 
 .textContainer {
-     /* background-color: yellow; */
-     display: flex;
+     margin-left: 60%;
+     background-color: aquamarine;
 
-flex-direction: column;
-border-style: dashed;
 }
 
 
