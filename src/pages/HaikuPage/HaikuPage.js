@@ -25,11 +25,6 @@ function HaikuPage() {
       setItem(newItem);
     };
   
-  // const [sentimentScore, setSentimentScore] = useState(0)
-  // const [errorMessage, setErrorMessage] = useState("");
-
-
-
   const handleChange = (event) => {
     setHaiku({ ...haiku, [event.target.name]: event.target.value })
   }

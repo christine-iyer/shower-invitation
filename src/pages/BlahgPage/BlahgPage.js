@@ -15,28 +15,55 @@ export default function BlahgPage() {
   const [blahgs, setBlahgs] = useState([])
   const [foundBlahgs, setFoundBlahgs] = useState(null)
 
-
-
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
-   const [showInput, setShowInput] = useState(false) 
-   const inputRef = useRef(null)
+
+  const [showInput, setShowInput] = useState(false)
+  const inputRef = useRef(null)
+
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
-  
 
+
+  // const createBlahg = async () => {
+  //   try {
+  //     const response = await fetch('/api/blahgs', {
+  //       method: "POST",
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ ...blahg })
+  //     })
+  //     const data = await response.json()
+  //     setBlahgs(data, ...blahgs)
+  //     setBlahg({
+  //       title: '',
+  //       createdDate: '',
+  //       author: '',
+  //       category: '',
+  //       text: '',
+  //       image: '',
+  //       like: 0
+  //     })
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
   const createBlahg = async () => {
     try {
       const response = await fetch('/api/blahgs', {
-        method: "POST",
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...blahg })
+        body: JSON.stringify({ ...blahg  })
       })
       const data = await response.json()
-      setFoundBlahgs(data)
+      setBlahg([data, ...blahgs])
+    } catch (error) {
+      console.error(error)
+    } finally {
       setBlahg({
         title: '',
         createdDate: '',
@@ -46,8 +73,6 @@ export default function BlahgPage() {
         image: '',
         like: 0
       })
-    } catch (error) {
-      console.error(error)
     }
   }
 
@@ -243,8 +268,8 @@ export default function BlahgPage() {
                     type='text'
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {
-                        const text= inputRef.current.value
-                        updateBlahg(blahg._id, { text: text});
+                        const text = inputRef.current.value
+                        updateBlahg(blahg._id, { text: text });
                         setShowInput(false);
                       }
                     }}
