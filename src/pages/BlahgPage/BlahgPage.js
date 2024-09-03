@@ -24,15 +24,7 @@ export default function BlahgPage() {
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
-  const getBlahgs = async () => {
-    try {
-      const response = await fetch('/api/blahgs')
-      const data = await response.json()
-      setBlahgs(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  
 
   const createBlahg = async () => {
     try {
@@ -121,6 +113,22 @@ export default function BlahgPage() {
       console.error(error)
     }
   }
+  const getBlahgs = async () => {
+    try {
+      const response = await fetch('/api/blahgs', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+
+      const data = await response.json()
+      setBlahgs(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffect(() => {
     getBlahgs()
   }, [foundBlahgs])
