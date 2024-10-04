@@ -25,31 +25,6 @@ export default function BlahgPage() {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
 
-
-  // const createBlahg = async () => {
-  //   try {
-  //     const response = await fetch('/api/blahgs', {
-  //       method: "POST",
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({ ...blahg })
-  //     })
-  //     const data = await response.json()
-  //     setBlahgs(data, ...blahgs)
-  //     setBlahg({
-  //       title: '',
-  //       createdDate: '',
-  //       author: '',
-  //       category: '',
-  //       text: '',
-  //       image: '',
-  //       like: 0
-  //     })
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
   const createBlahg = async () => {
     try {
       const response = await fetch('/api/blahgs', {
@@ -269,7 +244,7 @@ export default function BlahgPage() {
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {
                         const text = inputRef.current.value
-                        updateBlahg(blahg._id, { text: text });
+                        updateBlahg(blahg._id, { text });
                         setShowInput(false);
                       }
                     }}
