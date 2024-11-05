@@ -10,9 +10,9 @@ const getClosingTime = (zone) => {
     C: "8:00 PM",
     D: "8:30 PM",
     E: "9:00 PM",
-    F: "9:30 PM",
-    G: "10:00 PM",
-    H: "12:00 AM",
+    F: "10:00 PM",
+    G: "11:00",
+    H: "12:00 AM"
   };
 
   return closingTimes[zone] || "Unknown Time";
