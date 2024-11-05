@@ -11,6 +11,7 @@ const TimelineCard = ({ stateName, abortionOnBallot, houseNotes, senateNotes, wi
   const hasNotes = houseNotes || senateNotes;
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
+  
 
   return (
     <div style={{
