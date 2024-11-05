@@ -24,7 +24,7 @@ const TimelineCard = ({ stateName, abortionOnBallot, houseNotes, senateNotes, wi
       <h3 style={{ color: stateColor }}>{stateName}</h3>
 
       {/* Abortion on Ballot Line */}
-      <p>{abortionOnBallot !== "No" ? "Abortion is on the ballot" : "Abortion is not on the ballot"}</p>
+      <p>{abortionOnBallot !== "No" ? "Abortion is on the ballot" : " "}</p>
 
       {/* Other Races line, only if there are notes */}
       {hasNotes && <p>Other Races...</p>}
