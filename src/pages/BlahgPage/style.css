@@ -1,66 +1,58 @@
-.page{
-display: flex;
-}
 .franky {
      display: flex;
-     
-    
-
+     flex-direction: column;
+     align-items: center;
+   }
+   
+   .create button {
+     font-size: 1.2rem; /* Increase font size */
+     padding: 0.75em 1.5em; /* Adjust padding for larger size */
+     background-color: rgba(162, 134, 109, 0.5);
+     margin-bottom: 9px;
+     border: none;
+     color: #333;
+     border-radius: 5px;
+     cursor: pointer;
+   }
+   
+   .create button:hover {
+     background-color: rgba(162, 134, 109, 0.7);
+   }
+   .cards {
+  display: flex;
+  flex-direction: column;
+  width: 85vw; /* Occupies 85% of the viewport width */
+  margin: 0 auto; /* Centers the .cards container */
+  gap: 1em; /* Adds spacing between cards */
 }
-
-.create {}
-
-.cards {     
-
-}
-
 
 .card {
-     display: flex;
-     
-     align-items: flex-end;
-     background: #F6F3EB;
-     padding: 1em;
-     border-radius: 3px;
-     max-width: 24em;
-
+  display: flex;
+  background: #F6F3EB;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%; /* Full width of .cards container */
 }
-
 
 .imageContainer {
-     width: 10em;
-     height: 10em;
-     overflow: hidden;
-     margin-right: 1em;
-align-self: baseline;
-background-color: aqua;
-
+  width: 45%; /* 45% width for the image container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevents image overflow */
 }
+
 .image {
-  object-fit: contain;
-  justify-self: flex-start;
-
-
-
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
 }
 
 .textContainer {
-     margin-left: 60%;
-     background-color: aquamarine;
-
+  width: 55%; /* 55% width for the text container */
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-
-.title {
-     color: aqua;
-}
-
-.text {
-     color: pink;
-}
-
-.details {
-     color: green;
-}
-
-.cardButton {color: blue}

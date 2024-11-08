@@ -19,12 +19,12 @@ function HaikuPage() {
   const [item, setItem] = useState(haikus);
   const menuItems = [...new Set(haikus?.map((Val) => Val.author))];
   const filterItem = (curcat) => {
-      const newItem = haikus?.filter((newVal) => {
-        return newVal.author === curcat;
-      });
-      setItem(newItem);
-    };
-  
+    const newItem = haikus?.filter((newVal) => {
+      return newVal.author === curcat;
+    });
+    setItem(newItem);
+  };
+
   const handleChange = (event) => {
     setHaiku({ ...haiku, [event.target.name]: event.target.value })
   }
@@ -111,7 +111,7 @@ function HaikuPage() {
       const index = haikusCopy.findIndex(haiku => id === haiku._id)
       haikusCopy[index] = { ...haikusCopy[index], ...updatedData }
       setHaikus(haikusCopy)
-   
+
     } catch (error) {
       console.error(error)
     }
@@ -136,26 +136,16 @@ function HaikuPage() {
   useEffect(() => {
     listHaikus()
   }, [foundHaikus])
-
-
-
   return (
     <div className="HaikuPage">
       <div>
-
-
-
         <button type="btn" onClick={handleShow} className="btn btn--yellow">
-  <span className="btn__txt">Write a haiku </span>
-  <i className="btn__bg" aria-hidden="true"></i>
-  <i className="btn__bg" aria-hidden="true"></i>
-  <i className="btn__bg" aria-hidden="true"></i>
-  <i className="btn__bg" aria-hidden="true"></i>
-</button>
-
-
-
-
+          <span className="btn__txt">Write a haiku </span>
+          <i className="btn__bg" aria-hidden="true"></i>
+          <i className="btn__bg" aria-hidden="true"></i>
+          <i className="btn__bg" aria-hidden="true"></i>
+          <i className="btn__bg" aria-hidden="true"></i>
+        </button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>
             <CreateHaiku style={{ height: '50%', margin: "5%", width: '80%' }}
@@ -170,41 +160,36 @@ function HaikuPage() {
           </Modal.Footer>
         </Modal>
         <div className='carouselContainer'>
-        <h1>Me and You and Our Haikus</h1>
-        <HaikuCarousel 
-        haikus={haikus}
-        updateHaiku={updateHaiku}
-        likeHaiku={likeHaiku} />
+          <h1>Me and You and Our Haikus</h1>
+          <HaikuCarousel
+            haikus={haikus}
+            updateHaiku={updateHaiku}
+            likeHaiku={likeHaiku} />
         </div>
-    <div >
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-    <h3 style={{textAlign:'center'}}>All Haikus</h3>
-    <br></br>
-        <Buttons
-          haikus={haikus}
-          item={item}
-          filterItem={filterItem}
-          setItem={setItem}
-          menuItems={menuItems}
-        />
-        <HaikuCard
-           haikus={haikus}
-          item={item}
-          filterItem={filterItem}
-          deleteHaiku={deleteHaiku}
-          updateHaiku={updateHaiku}
-          likeHaiku={likeHaiku} />
-        {/* <HaikuList
+        <div >
+          <h3 style={{ textAlign: 'center' }}>All Haikus</h3>
+          <br></br>
+          <Buttons
+            haikus={haikus}
+            item={item}
+            filterItem={filterItem}
+            setItem={setItem}
+            menuItems={menuItems}
+          />
+          <HaikuCard
+            haikus={haikus}
+            item={item}
+            filterItem={filterItem}
+            deleteHaiku={deleteHaiku}
+            updateHaiku={updateHaiku}
+            likeHaiku={likeHaiku} />
+          {/* <HaikuList
           haikus={haikus}
           deleteHaiku={deleteHaiku}
           updateHaiku={updateHaiku}
           likeHaiku={likeHaiku} /> */}
-          </div>
-     
+        </div>
+
       </div>
       <div>
       </div>

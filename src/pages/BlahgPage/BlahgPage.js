@@ -32,7 +32,7 @@ export default function BlahgPage() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...blahg  })
+        body: JSON.stringify({ ...blahg })
       })
       const data = await response.json()
       setBlahg([data, ...blahgs])
@@ -154,7 +154,6 @@ export default function BlahgPage() {
     })
   }
   return (
-
     <div className='franky'>
       <section>
         <h1>Post Shamelessly</h1>
@@ -167,8 +166,18 @@ export default function BlahgPage() {
                   open();
                 }
                 return (
-                  <button style={{ backgroundColor: 'rgba(162, 134, 109, 0.5)', marginBottom: '9px' }} onClick={handleOnClick}>
-
+                  <button
+                    style={{
+                      backgroundColor: 'rgba(162, 134, 109, 0.5)',
+                      marginBottom: '9px',
+                      padding: '1em 2em', // Increase padding for larger button
+                      fontSize: '1.2rem',  // Increase font size
+                      borderRadius: '5px', // Round corners
+                      cursor: 'pointer',
+                    }}
+                    onClick={handleOnClick}
+                  >
+                    Upload a Photo
                   </button>
                 );
               }}
@@ -176,12 +185,10 @@ export default function BlahgPage() {
             {error && <p>{error}</p>}
             {url && (
               <div key={url._id} className='card' style={{ width: '8rem', marginBottom: '1px', backgroundColor: 'red' }}>
-                <img variant="top" src={url} alt='' id="uploadedimage"></img>
+                <img variant="top" src={url} alt='' id="uploadedimage" />
               </div>
             )}
           </span>
-
-          <br />
           <input
             type='text'
             value={blahg.title}

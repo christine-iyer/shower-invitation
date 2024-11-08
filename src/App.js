@@ -2,7 +2,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom"
 import Bar from './components/Bar/Bar'
 import BlahgPage from './pages/BlahgPage/BlahgPage'
 import HaikuPage from "./pages/HaikuPage/HaikuPage";
-// import FlipCard from "./pages/flipPage/FlipCard";
+import FlipCard from "./pages/flipPage/FlipCard";
 import { getCombinedData } from "./utils/data";
 import { formatTime } from "./utils/helpers";
 import ZoneGrid from './components/Ballot/ZoneGrid'
@@ -35,7 +35,7 @@ export default function App() {
             <BrowserRouter>
                 <Bar />
                 <Routes>
-                    <Route path='/' element={<ZoneGrid events={events}/>} />
+                    <Route path='/' element={<FlipCard events={events}/>} />
                     <Route path='/assets' element={<Roth />} />
                     <Route path='/haikus' element={<HaikuPage />} />
                     <Route path='/blahg' element={<BlahgPage />} />
