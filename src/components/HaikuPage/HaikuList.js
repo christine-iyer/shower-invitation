@@ -1,6 +1,4 @@
 import Haiku from './Haiku'
-// import '../../App.css'
- 
 
 export default function HaikuList ({
   haikus,

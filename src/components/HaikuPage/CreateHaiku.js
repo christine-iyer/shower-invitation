@@ -11,7 +11,7 @@ export default function CreateHaiku({
   return (
     <>
       <h2>Create A Haiku</h2>
-      <div className='container'>
+      <div className='container-x'>
         <Form style={{ width: '100%', position: 'sticky', float: 'left', fontFamily: 'bradleyHand' }}
           className='form'
           onSubmit={(e) => {

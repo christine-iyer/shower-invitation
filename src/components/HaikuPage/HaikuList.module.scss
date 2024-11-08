@@ -63,21 +63,61 @@
      background-repeat: no-repeat;
      background-size: cover;
 }
-.haikuCard { 
-  border-color: red;
-  background-image: url('../../photos/bg42.png');
+.haikuContainer {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+     gap: 1rem;
+     padding: 1rem;
+   }
+   
+   .haikuCard {
+     padding: 1rem;
+     background-color: #f9f9f9;
+     border-radius: 8px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     transition: transform 0.3s;
      
-
-}
-
-.slide {
-     justify-items: center;
-     margin: 20 auto;
-     width: 100%;
-     height: 80vh;
-     background-color: white;
-}
-
-
-
+     &:hover {
+       transform: scale(1.02);
+     }
+   }
+   
+   .text {
+     font-size: 1rem;
+     cursor: pointer;
+   }
+   
+   .buttons {
+     display: flex;
+     justify-content: space-around;
+     margin-top: 1rem;
+   }
+   
+   .deleteButton,
+   .likeButton {
+     font-style: italic;
+     width: 30%;
+     display: inline-block;
+     border: none;
+     opacity: 0.5;
+     padding: 0.5rem;
+     border-radius: 4px;
+   }
+   
+   @media (max-width: 768px) {
+     .haikuContainer {
+       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+     }
+   
+     .text {
+       font-size: 0.9rem;
+     }
+   }
+   
+   @media (max-width: 480px) {
+     .haikuContainer {
+       grid-template-columns: 1fr;
+     }
+   }
+   
 

@@ -1,164 +1,93 @@
-.slide {
-  margin-top: 20%;
+/* Center .container and ensure .carousel is centered within it */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* centers vertically based on viewport height */
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Style adjustments for .carousel to ensure centering */
+.carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 80%; /* or adjust as necessary */
+  max-width: 600px;
+  height: auto;
+  padding: 1rem;
+  background-color: rgba(210, 229, 229,.7);
   border-radius: 0.5rem;
-border-color: aqua;
-  width: 80%;
-  margin: 20 auto;
-  align-self: center;
+  box-shadow: mediumblue;
+}
+
+/* Adjusting slide and positioning arrows correctly */
+.slide {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .slide-hidden {
   display: none;
 }
 
+/* Centering arrows on the sides of the .carousel */
 .arrow {
   position: absolute;
-  filter: drop-shadow(0px 0px 5px rgb(243, 120, 161));
+  top: 50%;
+  transform: translateY(-50%);
   width: 3.5rem;
   height: 3.5rem;
   color: rgba(133, 184, 33, 0.524);
-}
-
-.arrow:hover {
   cursor: pointer;
 }
 
 .arrow-left {
-  left: 1rem;
-  top: 450px;
-
+  left: -2rem; /* Adjust to position the arrow at an appropriate distance */
 }
 
 .arrow-right {
-  right: 1rem;
-  top: 450px;
+  right: -2rem; /* Adjust for spacing consistency */
 }
 
+.arrow:hover {
+  filter: brightness(1.2);
+}
+
+/* Indicator positioning and styling */
 .indicators {
   display: flex;
+  justify-content: center;
   position: absolute;
   bottom: 1rem;
+  width: 100%;
 }
 
 .indicator {
   background-color: white;
   height: 0.5rem;
   width: 0.5rem;
-  border-radius: 100%;
-  border: none;
-  outline: none;
-  box-shadow: 0px 0px 5px red;
+  border-radius: 50%;
+
   margin: 0 0.2rem;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .indicator-inactive {
   background-color: red;
 }
-@media only screen and (max-width: 650px ){
-  
- 
-  
-}
-body {
-  margin: 0 auto;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  box-sizing: border-box;
-  width: 90%;
-  color: rgb(243, 120, 161);
-  margin-top:'10%';
-}
 
-.content {
-  text-align: center;
-  margin-bottom: 300px;
-}
-.header {
-  font-size: 30px;
-}
+@media only screen and (max-width: 650px) {
+  /* Adjust carousel for smaller screens */
+  .carousel {
+    width: 90%;
+  }
 
-.img-body img {
-  display: flex;
-  margin: 0 auto;
-  height: 40vh;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0px 0px 100px 20px rgba(245, 245, 245, 0.182), 
-              0px 0px 100px 20px rgb(243, 120, 161);
+  .arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
-
-
-.container {
-  justify-items: center;
-  margin: 20 auto;
-  width: 100%;
-  height: 80vh;
-  border-style: dashed;
-  border-color: rgb(243, 120, 161);
-  background-color: antiquewhite;
-  
-}
-
-.rotate-180 {
-  transform: rotate(180deg);
-}
-
-.thumb-wrapper {
-  width: 100px;
-  aspect-ratio: 1/1;
-}
-
-.thumb-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.thumb-wrapper {
-  display: flex;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.thumb-wrapper > div {
-  width: 100%;
-  max-height: 200px;
-  aspect-ratio: 1/1;
-  overflow: hidden;
-  transition: all .1s;
-}
-.thumb-wrapper > div:hover, .thumb-wrapper > div.active {
-  border: 3px solid rgba(216, 35, 35, 0.732);
-  max-height: calc(200px - 6px);
-}
-.thumb-wrapper > div img {
-  width: 100%;
-  height: 100%;
-  object-position: center 0;
-  object-fit: cover;
-}
-.arrow arrow-right{
- position:relative;
- height:50%;
-z-index: 100;
-
-}
-.arrow arrow-left{
- position:relative;
-
-}
-.carousel {
-border-style: dotted;
-border-color: black;
-background-color: aqua;
-
-
-  font-weight: 500;
-  width: 600px;
-  height: 400px;
-  margin: 1rem;
-  padding: 1rem;
-  /* border: none; */
-}
-
