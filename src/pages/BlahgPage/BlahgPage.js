@@ -51,43 +51,8 @@ export default function BlahgPage() {
     }
   }
 
-  const deleteBlahg = async (id) => {
-    try {
-      const response = await fetch(`/api/blahgs/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      const data = await response.json()
-      // const blahgsCopy = [...blahgs]
-      // const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      // blahgsCopy.splice(index, 1)
-      // setBlahgs(blahgsCopy)
-      setFoundBlahgs(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  const updateBlahg = async (id, updatedData) => {
-    try {
-      const response = await fetch(`/api/blahgs/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedData)
-      })
-      const data = await response.json()
 
-      const blahgsCopy = [...blahgs]
-      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-      setBlahgs(blahgsCopy)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+
 
   const likeBlahg = async (id) => {
     try {
@@ -232,7 +197,7 @@ export default function BlahgPage() {
 
         </div>
       </section>
-
+<div>
       <h1>Entries</h1>
       {blahgs && blahgs.length ? (
         <div className='cards'>
@@ -243,33 +208,18 @@ export default function BlahgPage() {
               </div>
               <div className='textContainer'>
                 <p className='title'>{blahg.title}</p>
-                <p className='text' onClick={() => setShowInput(!showInput)}>{blahg.text}
-                  <input
-                    ref={inputRef}
-                    style={{ display: showInput ? 'block' : 'none' }}
-                    type='text'
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        const text = inputRef.current.value
-                        updateBlahg(blahg._id, { text });
-                        setShowInput(false);
-                      }
-                    }}
-                    defaultValue={blahg.text}
-                  />
-                </p>
+                <p className='text' >{blahg.text}</p>
+                <p className='details'>
+                  <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small></p>
+                <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>{blahg.like} {blahg.category}</button>
               </div>
-              <p className='details'>
-                <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small>
-              </p>
-              <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>{blahg.like} {blahg.category}</button>
-
             </div>
           ))}
         </div>
       ) : (
         <>No Entries yet! Yet Add One Below this message</>
       )}
+    </div>
     </div>
 
   );
