@@ -183,3 +183,105 @@ This needs to be adjusted.
 
 ## Swiper
 [code Sandbox Swiper Example](https://codesandbox.io/p/devbox/swiper-react-pagination-fraction-jt6zlg?file=%2Fsrc%2FApp.jsx)
+
+Blahg Page
+```js
+const [blahg, setBlahg] = useState({
+  createdAt: new Date(),
+  title: "",
+  author: "",
+  category: "",
+  text: "",
+  images: [], // Change from `image: ''` to `images: []`
+  like: 0,
+});
+```
+
+```js
+function handleOnUpload(error, result, widget) {
+  if (error) {
+    updateError(error);
+    widget.close({ quiet: true });
+    return;
+  }
+
+  if (result.event === "success") {
+    updateUrl(result?.info?.secure_url);
+    
+    setBlahg((prev) => ({
+      ...prev,
+      images: [...prev.images, result.info.secure_url], // Append new image URL
+    }));
+  }
+}
+
+```
+
+```js
+{blahg.images.length > 0 && (
+  <div className="image-previews">
+    {blahg.images.map((img, index) => (
+      <img key={index} src={img} alt="Uploaded preview" className="preview-image" />
+    ))}
+  </div>
+)}
+
+```
+
+```js
+{blahg.images.length > 0 && (
+  <div className="image-previews">
+    {blahg.images.map((img, index) => (
+      <img key={index} src={img} alt="Uploaded preview" className="preview-image" />
+    ))}
+  </div>
+)}
+
+```
+
+```js
+const blahgSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  author: String,
+  category: String,
+  text: String,
+  images: [{ type: String }], // Change `image: String` to `images: [String]`
+  like: { type: Number, default: 0 },
+  createdAt: { type: Date, default: Date.now },
+});
+
+const Blahg = mongoose.model("Blahg", blahgSchema);
+module.exports = Blahg;
+
+
+```
+
+```js
+const editBlahg = async (id) => {
+  try {
+    const response = await fetch(`/api/blahgs/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blahg), // Ensure images array is included
+    });
+    const updatedBlahg = await response.json();
+    setBlahgs((prev) =>
+      prev.map((item) => (item._id === id ? updatedBlahg : item))
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+```
+
+```js
+
+router.put("/:id", async (req, res) => {
+  try {
+    const updatedBlahg = await Blahg.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedBlahg);
+  } catch (err) {
+    res.status(400).json({ error: "Update failed" });
+  }
+});
+```
