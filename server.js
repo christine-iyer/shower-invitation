@@ -1,4 +1,8 @@
 // server.js
+const cors = require("cors");
+const userRoutes = require('./routes/api/user')
+const reviewRoutes = require('./routes/api/review')
+
 require('dotenv').config() // **
 /* This lets me take the values from my .env file
     and inject them into process.env
@@ -9,6 +13,7 @@ require('./config/database') // **
 /* running this will connect our database to our MERN app */
 const express = require('express')
 const app = express()
+app.use(cors())
 /* create an application object that we can use to build our
     API that will connect to our React App 
 */
@@ -30,6 +35,8 @@ app.use(require('./config/checkToken'))
 /*
 app.use('/api', routes) <====== Finish code once you got it
 */
+app.use('/api/user', userRoutes )
+app.use('/api/review', reviewRoutes )
 app.use('/api/assets', require('./routes/api/assets'))
 app.use('/api/haikus', require('./routes/api/haikus'))
 app.use('/api/blahgs', require('./routes/api/blahgs'))
