@@ -3,8 +3,8 @@ const { Schema, model, models } = mongoose; // Import models to check if User is
 
 const userSchema = new Schema({
   username: { type: String, required: true },
-  email: { type: String, unique: true, trim: true, lowercase: true, required: true },
-  password: { type: String, trim: true, minlength: 3, required: true }
+  email: { type: String, unique: true, trim: true, lowercase: true, required: false },
+  password: { type: String, trim: true, minlength: 3, required: false }
 }, { timestamps: true });
 
 // Check if model already exists to avoid OverwriteModelError
