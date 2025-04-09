@@ -14,12 +14,7 @@ export default function BlahgPage() {
   })
   const [blahgs, setBlahgs] = useState([])
   const [foundBlahgs, setFoundBlahgs] = useState(null)
-  const [editState, setEditState] = useState({
-    isEditing: false,
-    blahgId: null,
-    title: '',
-    text: ''
-  })
+  const [editState, setEditState] = useState({ isEditing: false, blahgId: null });
 
   // Franky's birthday
   const frankyBirthday = new Date('2023-09-11');
@@ -306,7 +301,7 @@ export default function BlahgPage() {
       </section>
 
       <div>
-    
+        <h1 className=''>Observation Records</h1>
         {blahgs && blahgs.length ? (
           <div className='cards'>
             {blahgs.map((blahg) => (
@@ -322,7 +317,7 @@ export default function BlahgPage() {
                 <div className="imageContainer">
                   <img className="image" src={blahg.image} alt='...' />
                   <p className="frankyAge">
-                  posted by {blahg.author}, {new Date(blahg.createdAt).toLocaleDateString()}, ({calculateFrankyAge(blahg.createdAt)})  
+                  ({calculateFrankyAge(blahg.createdAt)})  
                   </p>
                 </div>
                 <div className='textContainer'>
@@ -361,18 +356,8 @@ export default function BlahgPage() {
                   ) : (
                     // View Mode
                     <>
-                      <p 
-                        className='title editable' 
-                        onClick={() => startEditing(blahg)}
-                      >
-                        {blahg.title}
-                      </p>
-                      <p 
-                        className='text editable' 
-                        onClick={() => startEditing(blahg)}
-                      >
-                        {blahg.text}
-                      </p>
+                      <p className='title ditable'>{blahg.title}</p>
+                      <p className='text editable'>{blahg.text}</p>
                       <p className='details'>
                         <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small>
                       </p>
@@ -382,6 +367,7 @@ export default function BlahgPage() {
                     </>
                   )}
                 </div>
+                <button onClick={() => startEditing(blahg)}>Edit Haiku</button>
               </div>
             ))}
           </div>

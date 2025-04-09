@@ -3,9 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* centers vertically based on viewport height */
+  min-height: 350px;
   margin: 0 auto;
   width: 100%;
+  position: relative;
 }
 
 /* Style adjustments for .carousel to ensure centering */
@@ -13,13 +14,14 @@
   display: flex;
   align-items: center;
   position: relative;
-  width: 80%; /* or adjust as necessary */
-  max-width: 600px;
+  width: 90%;
+  max-width: 800px;
   height: auto;
   padding: 1rem;
-  background-color: rgba(210, 229, 229,.7);
-  border-radius: 0.5rem;
-  box-shadow: mediumblue;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d4a5a5;
 }
 
 /* Adjusting slide and positioning arrows correctly */
@@ -27,10 +29,51 @@
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  padding: 0;
+  font-family: "Noto Serif JP", serif;
+  color: #2c3e50;
+  line-height: 1.4;
 }
 
 .slide-hidden {
   display: none;
+}
+
+/* Override the haikuContainer style when inside a slide */
+.slide .haikuContainer {
+  display: block;
+  max-width: 100%;
+  padding: 0;
+}
+
+/* Override the haikuCard style when inside a slide */
+.slide .haikuCard {
+  margin: 0 auto;
+  max-width: 90%;
+  min-height: auto;
+  max-height: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+/* Haiku-specific overrides for carousel */
+.slide .haiku-author {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 3.5rem;
+}
+
+.slide .haiku-like-btn {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+.slide .haiku-delete-btn {
+  position: absolute;
+  bottom: 2rem;
+  right: 0.5rem;
 }
 
 /* Centering arrows on the sides of the .carousel */
@@ -38,22 +81,27 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 3.5rem;
-  height: 3.5rem;
-  color: rgba(133, 184, 33, 0.524);
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #d4a5a5;
   cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  z-index: 2;
 }
 
 .arrow-left {
-  left: -2rem; /* Adjust to position the arrow at an appropriate distance */
+  left: -1.5rem;
 }
 
 .arrow-right {
-  right: -2rem; /* Adjust for spacing consistency */
+  right: -1.5rem;
 }
 
 .arrow:hover {
-  filter: brightness(1.2);
+  color: #2c3e50;
+  transform: translateY(-50%) scale(1.1);
 }
 
 /* Indicator positioning and styling */
@@ -61,33 +109,49 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.5rem;
   width: 100%;
+  gap: 0.5rem;
 }
 
 .indicator {
-  background-color: white;
+  background-color: #d4a5a5;
   height: 0.5rem;
   width: 0.5rem;
   border-radius: 50%;
-
-  margin: 0 0.2rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+  border: none;
 }
 
 .indicator-inactive {
-  background-color: red;
+  background-color: #2c3e50;
+  opacity: 0.2;
+}
+
+.indicator:hover {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 @media only screen and (max-width: 650px) {
   /* Adjust carousel for smaller screens */
   .carousel {
-    width: 90%;
+    width: 95%;
+    padding: 0.5rem;
   }
 
   .arrow {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .slide {
+    padding: 0;
+  }
+
+  .slide .haikuCard {
+    padding: 0.5rem;
   }
 }

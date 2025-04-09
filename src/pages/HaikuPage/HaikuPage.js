@@ -5,6 +5,7 @@ import CreateHaiku from '../../components/HaikuPage/CreateHaiku';
 import HaikuCarousel from '../../components/HaikuPage/HaikuCarousel';
 import Buttons from '../../components/HaikuPage/Buttons';
 import HaikuCard from '../../components/HaikuPage/HaikuCard';
+import './HaikuPage.css';
 
 function HaikuPage() {
   const [haiku, setHaiku] = useState({
@@ -137,21 +138,27 @@ function HaikuPage() {
     listHaikus()
   }, [foundHaikus])
   return (
-    <div className="HaikuPage">
-      <div>
-        <button type="btn" onClick={handleShow} className="btn btn--yellow">
-          <span className="btn__txt">Write a haiku </span>
-          <i className="btn__bg" aria-hidden="true"></i>
-          <i className="btn__bg" aria-hidden="true"></i>
-          <i className="btn__bg" aria-hidden="true"></i>
-          <i className="btn__bg" aria-hidden="true"></i>
-        </button>
-        <Modal show={show} onHide={handleClose}>
+    <div className="haiku-page">
+      <div className="haiku-header">
+        <h1 className="main-title">俳句の庭</h1>
+        <p className="subtitle">Haiku Garden</p>
+      </div>
+
+      <div className="haiku-content">
+        <div className="create-section">
+          <button type="btn" onClick={handleShow} className="create-btn">
+            <span className="btn-text">新しい俳句を書く</span>
+            <span className="btn-text-en">Write a New Haiku</span>
+          </button>
+        </div>
+
+        <Modal show={show} onHide={handleClose} className="haiku-modal">
           <Modal.Body>
-            <CreateHaiku style={{ height: '50%', margin: "5%", width: '80%' }}
+            <CreateHaiku
               createHaiku={createHaiku}
               haiku={haiku}
-              handleChange={handleChange} />
+              handleChange={handleChange}
+            />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
@@ -159,16 +166,18 @@ function HaikuPage() {
             </Button>
           </Modal.Footer>
         </Modal>
-        <div className='carouselContainer'>
-          <h1>Me and You and Our Haikus</h1>
+
+        <div className="carousel-section">
+          <h2 className="section-title">Featured Haikus</h2>
           <HaikuCarousel
             haikus={haikus}
             updateHaiku={updateHaiku}
-            likeHaiku={likeHaiku} />
+            likeHaiku={likeHaiku}
+          />
         </div>
-        <div >
-          <h3 style={{ textAlign: 'center' }}>All Haikus</h3>
-          <br></br>
+
+        <div className="all-haikus-section">
+          <h2 className="section-title">All Haikus</h2>
           <Buttons
             haikus={haikus}
             item={item}
@@ -182,20 +191,12 @@ function HaikuPage() {
             filterItem={filterItem}
             deleteHaiku={deleteHaiku}
             updateHaiku={updateHaiku}
-            likeHaiku={likeHaiku} />
-          {/* <HaikuList
-          haikus={haikus}
-          deleteHaiku={deleteHaiku}
-          updateHaiku={updateHaiku}
-          likeHaiku={likeHaiku} /> */}
+            likeHaiku={likeHaiku}
+          />
         </div>
-
-      </div>
-      <div>
       </div>
     </div>
   )
-
 }
 
 export default HaikuPage;

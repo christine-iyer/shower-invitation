@@ -1,11 +1,7 @@
 import { useRef, useState } from 'react'
 import Card from 'react-bootstrap/Card'
-// import '../../App.css'
 import setClass from '../../utilities/category-class'
-import styles from './HaikuList.module.scss'
-
-
-
+import './HaikuStyles.css'
 
 export default function SingleCard({
   Val,
@@ -13,81 +9,200 @@ export default function SingleCard({
   deleteHaiku,
   likeHaiku,
 }) {
-
-
-  const [showA, setShowA] = useState(false)
-  const [showB, setShowB] = useState(false)
-  const [showC, setShowC] = useState(false)
-  const [showD, setShowD] = useState(false)
+  // Use a single state object to manage all input displays
+  const [showInputs, setShowInputs] = useState({
+    showA: false,
+    showB: false,
+    showC: false,
+    showD: false,
+  });
+  
   const inputRefA = useRef(null)
   const inputRefB = useRef(null)
   const inputRefC = useRef(null)
   const inputRefD = useRef(null)
+  
+  // Function to toggle input visibility
+  const toggleInput = (field) => {
+    // Close all inputs first, then toggle the selected one
+    setShowInputs({
+      showA: false,
+      showB: false,
+      showC: false,
+      showD: false,
+      [field]: !showInputs[field],
+    });
+  };
+  
+  // Common input style
+  const inputStyle = {
+    width: '100%',
+    maxWidth: '300px',
+    margin: '0.25rem auto',
+    padding: '0.4rem 0.6rem',
+    fontSize: '0.9rem',
+    border: '1px solid #d4a5a5',
+    borderRadius: '4px',
+    backgroundColor: 'white',
+    fontFamily: 'inherit',
+    textAlign: 'center',
+    display: 'block'
+  };
+  
+  const buttonStyle = {
+    fontSize: '0.7rem',
+    padding: '0.2rem 0.4rem',
+    border: '1px solid #d4a5a5',
+    borderRadius: '4px',
+    background: 'none',
+    color: '#2c3e50',
+    maxWidth: '40px',
+    minWidth: 'auto',
+    width: 'auto',
+    height: 'auto'
+  };
  
   return (
-    < >
-      <Card  style={{marginTop:'10%',padding: '1%', margin: '1%', textAlign: 'center', boxShadow: '12px 12px 12px 11px Val.color', content:"initial"}} className={setClass(Val,styles)}>
-       
-        <Card.Text className={styles.texty} onClick={() => setShowB(!showB)}>{Val.one}</Card.Text>
-        <input
-          ref={inputRefB}
-          style={{ display: showB ? 'block' : 'none' }}
-          type='text'
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              const one = inputRefB.current.value
-              updateHaiku(Val._id, { one: one });
-              setShowB(false)
-            }
+    <>
+      <Card className={`${setClass(Val)} haikuCard`}>
+        <div className="haikuLines">
+          <div className="haikuLine">
+            <Card.Text 
+              className="text" 
+              onClick={() => toggleInput('showB')}
+              style={{ display: showInputs.showB ? 'none' : 'block' }}
+            >
+              {Val.one}
+            </Card.Text>
+            <input
+              ref={inputRefB}
+              style={{ 
+                display: showInputs.showB ? 'block' : 'none',
+                ...inputStyle
+              }}
+              type='text'
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const one = inputRefB.current.value
+                  updateHaiku(Val._id, { one: one });
+                  toggleInput('showB');
+                }
+              }}
+              defaultValue={Val.one}
+            />
+          </div>
+          
+          <div className="haikuLine">
+            <Card.Text 
+              className="text" 
+              onClick={() => toggleInput('showC')}
+              style={{ display: showInputs.showC ? 'none' : 'block' }}
+            >
+              {Val.two}
+            </Card.Text>
+            <input
+              ref={inputRefC}
+              style={{ 
+                display: showInputs.showC ? 'block' : 'none',
+                ...inputStyle
+              }}
+              type='text'
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const two = inputRefC.current.value
+                  updateHaiku(Val._id, { two: two })
+                  toggleInput('showC');
+                }
+              }}
+              defaultValue={Val.two}
+            />
+          </div>
+          
+          <div className="haikuLine">
+            <Card.Text 
+              className="text" 
+              onClick={() => toggleInput('showD')}
+              style={{ display: showInputs.showD ? 'none' : 'block' }}
+            >
+              {Val.three}
+            </Card.Text>
+            <input
+              ref={inputRefD}
+              style={{ 
+                display: showInputs.showD ? 'block' : 'none',
+                ...inputStyle
+              }}
+              type='text'
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const three = inputRefD.current.value
+                  updateHaiku(Val._id, { three: three })
+                  toggleInput('showD');
+                }
+              }}
+              defaultValue={Val.three}
+            />
+          </div>
+        </div>
+        
+        <button 
+          className="haiku-delete-btn" 
+          onClick={() => deleteHaiku(Val._id)}
+          style={buttonStyle}
+        >
+          消去
+        </button>
+        <button 
+          className="haiku-edit-btn" 
+          onClick={() => {
+            toggleInput('showA');
+            toggleInput('showB');
+            toggleInput('showC');
+            toggleInput('showD');
           }}
-          defaultValue={Val.one}
-        />
-        <Card.Text className={styles.text} onClick={() => setShowC(!showC)}>{Val.two}</Card.Text>
-        <input
-          ref={inputRefC}
-          style={{ display: showC ? 'block' : 'none' }}
-          type='text'
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              const two = inputRefC.current.value
-              updateHaiku(Val._id, { two: two })
-              setShowC(false)
-            }
+          style={buttonStyle}
+        >
+          Edit Haiku
+        </button>
+        <button 
+          className="haiku-like-btn" 
+          onClick={() => likeHaiku(Val._id)}
+          style={{
+            ...buttonStyle,
+            bottom: '0.75rem',
+            fontSize: '0.65rem'
           }}
-          defaultValue={Val.two}
-        />
-        <Card.Text className={styles.text} onClick={() => setShowD(!showD)}>{Val.three}</Card.Text>
+        >
+          ♥ {Val.like}
+        </button>
+        
+        <p 
+          onClick={() => toggleInput('showA')} 
+          className="haiku-author"
+          style={{ display: showInputs.showA ? 'none' : 'block' }}
+        >
+          by {Val.author} on {new Date(Val.createdAt).toLocaleDateString()}
+        </p>
         <input
-          ref={inputRefD}
-          style={{ display: showD ? 'block' : 'none' }}
-          type='text'
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              const three = inputRefD.current.value
-              updateHaiku(Val._id, { three: three })
-              setShowD(false)
-            }
-          }}
-          defaultValue={Val.three}
-        />
-        <p onClick={() => setShowA(!showA)}>by {Val.author} on {new Date(Val.createdAt).toLocaleDateString()} </p> <input
           ref={inputRefA}
           type='text'
-          style={{ display: showA ? 'block' : 'none' }}
+          style={{ 
+            display: showInputs.showA ? 'block' : 'none',
+            ...inputStyle,
+            position: 'absolute',
+            bottom: '0.75rem',
+            right: '3.5rem',
+            maxWidth: '150px'
+          }}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-
               const author = inputRefA.current.value
               updateHaiku(Val._id, { author: author })
-              setShowA(false)
+              toggleInput('showA');
             }
           }}
           defaultValue={Val.author}
         />
-       
-       <span> <button style={{ 'fontStyle': 'italic' , 'width':'30%', 'display':'inlineBlock', border:'none', opacity:'50%'}} className="btn btn-outline-warning" onClick={() => deleteHaiku(Val._id)}>消去</button> <button style={{ 'fontStyle': 'italic' , 'width':'30%', 'display':'inlineBlock', border:'none', opacity:'50%'}} className="btn btn-outline-warning" onClick={() => likeHaiku(Val._id)}>愛 {Val.like}</button>
-</span>
-       
       </Card>
     </>
   )

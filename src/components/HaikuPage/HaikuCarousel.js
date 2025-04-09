@@ -20,27 +20,36 @@ export default function HaikuCarousel({ haikus,
 
   return (
     <div className="container">
-    <div className="carousel">
-      <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
-      {haikus.map((item, idx) => {
-        return (
-          <div
-            key={idx}
-            className={slide === idx ? "slide" : "slide slide-hidden"}
-          >
-            <Haiku haiku={item} updateHaiku={updateHaiku}
-                  deleteHaiku={deleteHaiku}
-                  likeHaiku={likeHaiku}/>
-            
-          </div>
-        );
-      })}
-      <BsArrowRightCircleFill
-        onClick={nextSlide}
-        className="arrow arrow-right">次</BsArrowRightCircleFill>
-      
-    
-    </div>
+      <div className="carousel">
+        <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
+        {haikus.map((item, idx) => {
+          return (
+            <div
+              key={idx}
+              className={slide === idx ? "slide" : "slide slide-hidden"}
+            >
+              <Haiku 
+                haiku={item} 
+                updateHaiku={updateHaiku}
+                deleteHaiku={deleteHaiku}
+                likeHaiku={likeHaiku}
+              />
+            </div>
+          );
+        })}
+        <BsArrowRightCircleFill onClick={nextSlide} className="arrow arrow-right" />
+        <div className="indicators">
+          {haikus.map((_, idx) => {
+            return (
+              <button
+                key={idx}
+                className={`indicator ${slide === idx ? "" : "indicator-inactive"}`}
+                onClick={() => setSlide(idx)}
+              />
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

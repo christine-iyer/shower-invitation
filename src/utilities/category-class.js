@@ -1,32 +1,27 @@
-export default function setClass(div, styles){
-     if(div.author === 'Laura'){
-          return styles.laura
-     }
-     if(div.author === 'Shannon'){
-          return styles.shannon
-     }
-     if(div.author === 'Paul'){
-          return styles.paul
-     }
-     if(div.author === 'Leah'){
-          return styles.leah
-     }
-     if(div.author === 'Chris'){
-          return styles.chris
-     }
-     if(div.author === 'Claire'){
-          return styles.claire
-     }
-     if(div.author === 'Lynne'){
-          return styles.lynne
-     }
-     if(div.author === 'Mary'){
-          return styles.mary
-     }
-     if(div.author === 'Anon'){
-          return styles.anon
-     }
-     return styles.julie
+export default function setClass(item) {
+  if (item.author === 'Laura') {
+    return 'laura';
+  } else if (item.author === 'Shannon') {
+    return 'shannon';
+  } else if (item.author === 'Anon') {
+    return 'anon';
+  } else if (item.author === 'Paul') {
+    return 'paul';
+  } else if (item.author === 'Chris') {
+    return 'chris';
+  } else if (item.author === 'Leah') {
+    return 'leah';
+  } else if (item.author === 'Claire') {
+    return 'claire';
+  } else if (item.author === 'Lynne') {
+    return 'lynne';
+  } else if (item.author === 'Mary') {
+    return 'mary';
+  } else if (item.author === 'Julie') {
+    return 'julie';
+  } else {
+    return 'anon';
+  }
 }
 
    
