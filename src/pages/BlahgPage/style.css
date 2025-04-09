@@ -1,20 +1,120 @@
 .franky {
   align-items: left;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+.create {
+  background-color: #f9f7f2 !important;
+  border: 1px solid #d9d2c5 !important;
+  border-radius: 5px !important;
+  padding: 1.5em 2em !important;
+  margin-bottom: 2em !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  max-width: 85% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.create h1 {
+  font-size: 1.8em !important;
+  margin-bottom: 1em !important;
+  text-align: center !important;
+  color: #333 !important;
+  font-weight: normal !important;
+  border-bottom: 1px solid #d9d2c5 !important;
+  padding-bottom: 0.5em !important;
+}
+
+.create input, .create select {
+  width: 100% !important;
+  padding: 0.8em 1em !important;
+  margin-bottom: 1.2em !important;
+  border: 1px solid #d1c9bc !important;
+  border-radius: 3px !important;
+  background-color: #fcfbf8 !important;
+  font-family: 'Times New Roman', Times, serif !important;
+  font-size: 1em !important;
+  color: #333 !important;
+}
+
+.create select {
+  appearance: none !important;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.7em top 50% !important;
+  background-size: 0.65em auto !important;
+  padding-right: 2em !important;
+}
+
+.create input:focus, .create select:focus {
+  outline: none !important;
+  border-color: #a28a7a !important;
+  box-shadow: 0 0 5px rgba(162, 134, 109, 0.3) !important;
 }
 
 .create button {
-  font-size: 1.2rem; /* Increase font size */
-  padding: 0.75em 1.5em; /* Adjust padding for larger size */
-  background-color: rgba(162, 134, 109, 0.5);
-  margin-bottom: 9px;
-  border: none;
-  color: #333;
-  border-radius: 5px;
-  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif !important;
+  font-size: 1.1rem !important;
+  padding: 0.8em 1.8em !important;
+  background-color: rgba(162, 134, 109, 0.7) !important;
+  margin: 1em 0 !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  letter-spacing: 0.05em !important;
+  transition: background-color 0.2s ease !important;
 }
 
 .create button:hover {
-  background-color: rgba(162, 134, 109, 0.7);
+  background-color: rgba(162, 134, 109, 0.9) !important;
+}
+
+.uploadSection {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin-bottom: 1.5em !important;
+  border-bottom: 1px dashed #d9d2c5 !important;
+  padding-bottom: 1.5em !important;
+}
+
+.uploadSection button {
+  background-color: rgba(162, 134, 109, 0.6) !important;
+  color: #333 !important;
+  font-style: italic !important;
+}
+
+.formLabel {
+  display: block !important;
+  font-size: 0.9em !important;
+  margin-bottom: 0.4em !important;
+  color: #666 !important;
+  font-style: italic !important;
+}
+
+.formSection {
+  margin-bottom: 1em !important;
+}
+
+.preview-card {
+  width: 10rem !important;
+  margin: 1em auto !important;
+  padding: 0.5em !important;
+  border: 1px solid #d9d2c5 !important;
+  border-radius: 3px !important;
+  background-color: #fff !important;
+  display: block !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.preview-card img {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 2px !important;
 }
 
 /* Card styling with !important to override any conflicting styles */
@@ -50,7 +150,7 @@
   align-items: center !important;
   overflow: hidden !important;
   height: auto !important; /* Allow height to adjust to content */
-  min-height: 150px !important; /* Minimum height */
+  min-height: 190px !important; /* Increased from 150px to 190px to accommodate larger image */
   padding: 5px !important;
   box-sizing: border-box !important;
   position: relative !important; /* Position relative for z-index */
@@ -63,7 +163,7 @@
   width: auto !important;
   height: auto !important;
   max-width: 100% !important;
-  max-height: 140px !important; /* Limit height to avoid overflow */
+  max-height: 180px !important; /* Increased from 140px to 180px */
   object-fit: contain !important; /* Show full image */
   border-radius: 2px !important; /* Slightly round the image corners */
 }
@@ -121,23 +221,6 @@
   align-items: center !important;
   box-sizing: border-box !important;
   padding: 10px !important;
-}
-
-/* Add a style for the preview card */
-.preview-card {
-  width: 8rem !important;
-  margin-bottom: 5px !important;
-  padding: 5px !important;
-  border-radius: 3px !important;
-  background-color: #F6F3EB !important;
-  display: inline-block !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-
-.preview-card img {
-  width: 100% !important;
-  height: auto !important;
-  border-radius: 2px !important;
 }
 
 /* Delete button styling */
@@ -258,5 +341,8 @@
   padding: 0 5px !important;
   box-sizing: border-box !important;
 }
-   
+.franky{
+  margin-left: 25px !important;
+  position: center;
+}
    

@@ -226,166 +226,169 @@ export default function BlahgPage() {
   return (
     <div className='franky'>
       <section>
-        <h1>Post Shamelessly</h1>
         <div className='create'>
-          <span>
-            <UploadWidget onUpload={handleOnUpload}>
-              {({ open }) => {
-                function handleOnClick(e) {
-                  e.preventDefault();
-                  open();
-                }
-                return (
-                  <button
-                    style={{
-                      backgroundColor: 'rgba(162, 134, 109, 0.5)',
-                      marginBottom: '9px',
-                      padding: '1em 2em', // Increase padding for larger button
-                      fontSize: '1.2rem',  // Increase font size
-                      borderRadius: '5px', // Round corners
-                      cursor: 'pointer',
-                    }}
-                    onClick={handleOnClick}
-                  >
-                    Upload a Photo
-                  </button>
-                );
-              }}
-            </UploadWidget>
-            {error && <p>{error}</p>}
-            {url && (
-              <div key={url._id} className='preview-card' style={{ width: '8rem', marginBottom: '1px', backgroundColor: 'red' }}>
-                <img variant="top" src={url} alt='' id="uploadedimage" />
-              </div>
-            )}
-          </span>
-          <input
-            type='text'
-            value={blahg.title}
-            onChange={handleChange}
-            name="title"
-            placeholder='Title'
-          />
-          <br />
-          <input
-            value={blahg.author}
-            onChange={handleChange}
-            name="author"
-            placeholder='Author'
-          />
-          <br />
-          <input
-            value={blahg.text}
-            onChange={handleChange}
-            name="text"
-            rows={2}
-            placeholder='Some meaningful text'
-          />
-          <br />
-          <select
-            value={blahg.category}
-            onChange={handleChange}
-            name="category"
-          >
-            <option value="🤍 Frankly Franky">Select a 🤍</option>
-            <option value="💛 Janky Franky">💛 Janky Franky</option>
-            <option value="🧡 Franky Panky">🧡 Franky Panky</option>
-            <option value="💚 Cranky Franky">💚 Cranky Franky</option>
-            <option value="💙 Franky 🌙">💙 Franky 🌙</option>
-            <option value="💜 Swanky Franky">💜 Swanky Franky</option>
-            <option value="❤️ C'est la vie, Franky!">❤️ C'est la vie, Franky!</option>
-          </select>
-          <br />
-          <br />
-          <button onClick={() => createBlahg()}>Display your Entry</button>
-          <br />
-
+          <h1>Scientific Observation Record</h1>
+          
+          <div className="uploadSection">
+            <span>
+              <UploadWidget onUpload={handleOnUpload}>
+                {({ open }) => {
+                  function handleOnClick(e) {
+                    e.preventDefault();
+                    open();
+                  }
+                  return (
+                    <button onClick={handleOnClick}>
+                      Attach Photographic Evidence
+                    </button>
+                  );
+                }}
+              </UploadWidget>
+              {error && <p>{error}</p>}
+              {url && (
+                <div key={url._id} className='preview-card'>
+                  <img variant="top" src={url} alt='' id="uploadedimage" />
+                </div>
+              )}
+            </span>
+          </div>
+          
+          <div className="formSection">
+            <label className="formLabel">Observation Title</label>
+            <input
+              type='text'
+              value={blahg.title}
+              onChange={handleChange}
+              name="title"
+              placeholder='Enter the title of your observation'
+            />
+          </div>
+          
+          <div className="formSection">
+            <label className="formLabel">Observer Name</label>
+            <input
+              value={blahg.author}
+              onChange={handleChange}
+              name="author"
+              placeholder='Your name as the observer'
+            />
+          </div>
+          
+          <div className="formSection">
+            <label className="formLabel">Observation Notes</label>
+            <input
+              value={blahg.text}
+              onChange={handleChange}
+              name="text"
+              placeholder='Detailed description of the observation'
+            />
+          </div>
+          
+          <div className="formSection">
+            <label className="formLabel">Classification Category</label>
+            <select
+              value={blahg.category}
+              onChange={handleChange}
+              name="category"
+            >
+              <option value="🤍 Frankly Franky">Select Classification Category</option>
+              <option value="💛 Janky Franky">💛 Janky Franky</option>
+              <option value="🧡 Franky Panky">🧡 Franky Panky</option>
+              <option value="💚 Cranky Franky">💚 Cranky Franky</option>
+              <option value="💙 Franky 🌙">💙 Franky 🌙</option>
+              <option value="💜 Swanky Franky">💜 Swanky Franky</option>
+              <option value="❤️ C'est la vie, Franky!">❤️ C'est la vie, Franky!</option>
+            </select>
+          </div>
+          
+          <button onClick={() => createBlahg()}>Submit Observation for Review</button>
         </div>
       </section>
-<div>
-      <h1>Entries</h1>
-      {blahgs && blahgs.length ? (
-        <div className='cards'>
-          {blahgs.map((blahg) => (
-            <div key={blahg._id} className="card">
-              {/* Delete button */}
-              <button 
-                className="deleteButton" 
-                onClick={() => deleteBlahg(blahg._id)}
-              >
-                ×
-              </button>
-              
-              <div className="imageContainer">
-                <img className="image" src={blahg.image} alt='...' />
-                <p className="frankyAge">
-                posted by {blahg.author}, {new Date(blahg.createdAt).toLocaleDateString()}, ({calculateFrankyAge(blahg.createdAt)})  
-                </p>
-              </div>
-              <div className='textContainer'>
-                {editState.isEditing && editState.blahgId === blahg._id ? (
-                  // Edit Mode
-                  <>
-                    <input
-                      className="editableInput"
-                      value={editState.title}
-                      onChange={handleEditChange}
-                      name="title"
-                      placeholder="Title"
-                    />
-                    <textarea
-                      className="editableTextarea"
-                      value={editState.text}
-                      onChange={handleEditChange}
-                      name="text"
-                      placeholder="Text"
-                    />
-                    <div className="editControls">
-                      <button 
-                        className="cancelButton" 
-                        onClick={cancelEditing}
+
+      <div>
+    
+        {blahgs && blahgs.length ? (
+          <div className='cards'>
+            {blahgs.map((blahg) => (
+              <div key={blahg._id} className="card">
+                {/* Delete button */}
+                <button 
+                  className="deleteButton" 
+                  onClick={() => deleteBlahg(blahg._id)}
+                >
+                  ×
+                </button>
+                
+                <div className="imageContainer">
+                  <img className="image" src={blahg.image} alt='...' />
+                  <p className="frankyAge">
+                  posted by {blahg.author}, {new Date(blahg.createdAt).toLocaleDateString()}, ({calculateFrankyAge(blahg.createdAt)})  
+                  </p>
+                </div>
+                <div className='textContainer'>
+                  {editState.isEditing && editState.blahgId === blahg._id ? (
+                    // Edit Mode
+                    <>
+                      <input
+                        className="editableInput"
+                        value={editState.title}
+                        onChange={handleEditChange}
+                        name="title"
+                        placeholder="Title"
+                      />
+                      <textarea
+                        className="editableTextarea"
+                        value={editState.text}
+                        onChange={handleEditChange}
+                        name="text"
+                        placeholder="Text"
+                      />
+                      <div className="editControls">
+                        <button 
+                          className="cancelButton" 
+                          onClick={cancelEditing}
+                        >
+                          Cancel
+                        </button>
+                        <button 
+                          className="saveButton" 
+                          onClick={() => saveEdits(blahg._id)}
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    // View Mode
+                    <>
+                      <p 
+                        className='title editable' 
+                        onClick={() => startEditing(blahg)}
                       >
-                        Cancel
-                      </button>
-                      <button 
-                        className="saveButton" 
-                        onClick={() => saveEdits(blahg._id)}
+                        {blahg.title}
+                      </p>
+                      <p 
+                        className='text editable' 
+                        onClick={() => startEditing(blahg)}
                       >
-                        Save
+                        {blahg.text}
+                      </p>
+                      <p className='details'>
+                        <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small>
+                      </p>
+                      <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>
+                        {blahg.like} {blahg.category}
                       </button>
-                    </div>
-                  </>
-                ) : (
-                  // View Mode
-                  <>
-                    <p 
-                      className='title editable' 
-                      onClick={() => startEditing(blahg)}
-                    >
-                      {blahg.title}
-                    </p>
-                    <p 
-                      className='text editable' 
-                      onClick={() => startEditing(blahg)}
-                    >
-                      {blahg.text}
-                    </p>
-                    <p className='details'>
-                      <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small>
-                    </p>
-                    <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>
-                      {blahg.like} {blahg.category}
-                    </button>
-                  </>
-                )}
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <>No Entries yet! Yet Add One Below this message</>
-      )}
-    </div>
+            ))}
+          </div>
+        ) : (
+          <>No Entries yet! Yet Add One Below this message</>
+        )}
+      </div>
     </div>
   );
 }
