@@ -1,54 +1,262 @@
 .franky {
+  align-items: left;
+}
 
+.create button {
+  font-size: 1.2rem; /* Increase font size */
+  padding: 0.75em 1.5em; /* Adjust padding for larger size */
+  background-color: rgba(162, 134, 109, 0.5);
+  margin-bottom: 9px;
+  border: none;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-     align-items: left;
-   }
-   
-   .create button {
-     font-size: 1.2rem; /* Increase font size */
-     padding: 0.75em 1.5em; /* Adjust padding for larger size */
-     background-color: rgba(162, 134, 109, 0.5);
-     margin-bottom: 9px;
-     border: none;
-     color: #333;
-     border-radius: 5px;
-     cursor: pointer;
-   }
-   
-   .create button:hover {
-     background-color: rgba(162, 134, 109, 0.7);
-   }
-   .card {
-    display: flex;
+.create button:hover {
+  background-color: rgba(162, 134, 109, 0.7);
+}
 
-    width: 85%; /* Sets card width to 85% of the page */
-    max-width: 85vw; /* Makes sure the card doesn’t exceed the screen width */
-    background: #F6F3EB;
-    padding: 1em;
-    border-radius: 3px;
-    margin: 1em auto; /* Centers the card and adds vertical spacing */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .imageContainer {
-    width: 45%; /* Occupies 45% of the card width */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  .image {
- 
-    height: 100%;
-  }
-  
-  .textContainer {
-    width: 55%; /* Occupies the remaining 55% of the card width */
-    padding: 0 1em; /* Adds horizontal padding for spacing */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+/* Card styling with !important to override any conflicting styles */
+.card {
+  display: flex !important;
+  flex-direction: row !important; /* Force horizontal layout */
+  width: 85% !important; /* Sets card width to 85% of the page */
+  max-width: 85vw !important; /* Makes sure the card doesn't exceed the screen width */
+  background: #F6F3EB !important;
+  padding: 1em !important;
+  border-radius: 3px !important;
+  margin: 1em auto !important; /* Centers the card and adds vertical spacing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  height: auto !important; /* Allow the card to adjust to content height */
+  position: relative !important;
+  min-height: 160px !important; /* Minimum height to accommodate content */
+  overflow: hidden !important; /* Prevent content from overflowing */
+  box-sizing: border-box !important; /* Include padding in width/height calculations */
+  align-items: stretch !important; /* Stretch items to fill the container */
+  transition: box-shadow 0.3s ease !important;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.imageContainer {
+  width: 33.33% !important; /* Fixed 1/3 width */
+  min-width: 33.33% !important; /* Ensure it doesn't shrink */
+  max-width: 33.33% !important; /* Ensure it doesn't grow */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow: hidden !important;
+  height: auto !important; /* Allow height to adjust to content */
+  min-height: 150px !important; /* Minimum height */
+  padding: 5px !important;
+  box-sizing: border-box !important;
+  position: relative !important; /* Position relative for z-index */
+  z-index: 1 !important; /* Lower z-index */
+  border-right: 1px solid rgba(0,0,0,0.1) !important; /* Add a subtle separator */
+  flex-direction: column !important;
+}
+
+.image {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 140px !important; /* Limit height to avoid overflow */
+  object-fit: contain !important; /* Show full image */
+  border-radius: 2px !important; /* Slightly round the image corners */
+}
+
+.textContainer {
+  width: 66.67% !important; /* Exact 2/3 of the card width */
+  min-width: 66.67% !important; /* Ensure it doesn't shrink */
+  padding: 0 0.5em 0 1.5em !important; /* Add padding only on the left for spacing from image */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  box-sizing: border-box !important; /* Include padding in width/height calculations */
+  position: relative !important; /* Position relative for z-index */
+  z-index: 2 !important; /* Higher z-index */
+  background-color: #F6F3EB !important; /* Same as card background */
+}
+
+/* Additional styling for text elements */
+.title {
+  font-weight: bold !important;
+  margin-bottom: 0.5em !important;
+  font-size: 1.2em !important;
+}
+
+.text {
+  margin-bottom: 0.5em !important;
+}
+
+.details {
+  font-style: italic !important;
+  margin-bottom: 0.5em !important;
+  color: #666 !important;
+}
+
+.cardButton {
+  align-self: flex-start !important;
+  margin-top: 0.5em !important;
+  padding: 0.3em 0.6em !important;
+
+  border: none !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+}
+
+.cardButton:hover {
+  background-color: rgba(162, 134, 109, 0.7) !important;
+}
+
+/* Container for all cards */
+.cards {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  padding: 10px !important;
+}
+
+/* Add a style for the preview card */
+.preview-card {
+  width: 8rem !important;
+  margin-bottom: 5px !important;
+  padding: 5px !important;
+  border-radius: 3px !important;
+  background-color: #F6F3EB !important;
+  display: inline-block !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.preview-card img {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 2px !important;
+}
+
+/* Delete button styling */
+.deleteButton {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  background-color: rgba(255, 0, 0, 0.7) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  opacity: 0 !important; /* Hidden by default */
+  transition: opacity 0.2s ease !important;
+  z-index: 10 !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+}
+
+.card:hover .deleteButton {
+  opacity: 1 !important; /* Show on hover */
+}
+
+.deleteButton:hover {
+  background-color: rgba(255, 0, 0, 0.9) !important;
+}
+
+/* Edit mode styles */
+.editable {
+  cursor: pointer !important;
+  padding: 2px 5px !important;
+  border-radius: 3px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.editable:hover {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.editable:hover::after {
+  content: '✎' !important;
+  margin-left: 5px !important;
+  font-size: 0.8em !important;
+  opacity: 0.5 !important;
+}
+
+.editableInput {
+  width: 100% !important;
+  padding: 3px 5px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 3px !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  background-color: white !important;
+  margin-bottom: 5px !important;
+}
+
+.editableTextarea {
+  width: 100% !important;
+  padding: 3px 5px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 3px !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  background-color: white !important;
+  min-height: 60px !important;
+  margin-bottom: 5px !important;
+  resize: vertical !important;
+}
+
+/* Edit controls */
+.editControls {
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 5px !important;
+  margin-top: 5px !important;
+}
+
+.saveButton, .cancelButton {
+  padding: 3px 8px !important;
+  border: none !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  font-size: 0.8em !important;
+}
+
+.saveButton {
+  background-color: rgba(40, 167, 69, 0.7) !important;
+  color: white !important;
+}
+
+.saveButton:hover {
+  background-color: rgba(40, 167, 69, 0.9) !important;
+}
+
+.cancelButton {
+  background-color: rgba(108, 117, 125, 0.7) !important;
+  color: white !important;
+}
+
+.cancelButton:hover {
+  background-color: rgba(108, 117, 125, 0.9) !important;
+}
+
+.frankyAge {
+  font-style: italic !important;
+  font-size: 0.55em !important;
+  color: #666 !important;
+  margin-top: 8px !important;
+  text-align: center !important;
+  width: 100% !important;
+  padding: 0 5px !important;
+  box-sizing: border-box !important;
+}
    
    
