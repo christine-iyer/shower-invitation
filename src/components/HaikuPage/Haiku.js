@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import setClass from '../../utilities/category-class'
-import './HaikuStyles.css'
+import styles from './Haiku.module.scss'
 
 export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
   const [showInputs, setShowInputs] = useState({
@@ -60,11 +60,11 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
   };
 
   return (
-    <div className="haikuContainer">
-      <div className={`haikuCard ${setClass(haiku)}`}>
+    <div className={styles.haikuContainer}>
+      <div className={`${styles.haikuCard} ${setClass(haiku)}`}>
         {haiku.title && !showInputs.showE ? (
           <h3 
-            className="haiku-title" 
+            className={styles.haikuTitle} 
             onClick={() => toggleInput('showE')}
             style={{ 
               textAlign: 'center', 
@@ -94,10 +94,10 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
           defaultValue={haiku.title}
         />
         
-        <div className="haikuLines">
-          <div className="haikuLine">
+        <div className={styles.haikuLines}>
+          <div className={styles.haikuLine}>
             <p 
-              className="text" 
+              className={styles.text} 
               onClick={() => toggleInput('showB')}
               style={{ display: showInputs.showB ? 'none' : 'block' }}
             >
@@ -121,9 +121,9 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
             />
           </div>
           
-          <div className="haikuLine">
+          <div className={styles.haikuLine}>
             <p 
-              className="text" 
+              className={styles.text} 
               onClick={() => toggleInput('showC')}
               style={{ display: showInputs.showC ? 'none' : 'block' }}
             >
@@ -147,9 +147,9 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
             />
           </div>
           
-          <div className="haikuLine">
+          <div className={styles.haikuLine}>
             <p 
-              className="text" 
+              className={styles.text} 
               onClick={() => toggleInput('showD')}
               style={{ display: showInputs.showD ? 'none' : 'block' }}
             >
@@ -175,14 +175,14 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
         </div>
         
         <button 
-          className="haiku-delete-btn" 
+          className={styles.haikuDeleteBtn} 
           onClick={() => deleteHaiku(haiku._id)}
           style={buttonStyle}
         >
           消去
         </button>
         <button 
-          className="haiku-like-btn" 
+          className={styles.haikuLikeBtn} 
           onClick={() => likeHaiku(haiku._id)}
           style={{
             ...buttonStyle,
@@ -195,7 +195,7 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
         
         <p 
           onClick={() => toggleInput('showA')} 
-          className="haiku-author"
+          className={styles.haikuAuthor}
           style={{ display: showInputs.showA ? 'none' : 'block' }}
         >
           by {haiku.author} on {new Date(haiku.createdAt).toLocaleDateString()}

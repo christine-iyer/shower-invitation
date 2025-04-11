@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Haiku from "./Haiku";
-import "./Carousel.css";
+import styles from './HaikuCarousel.module.scss';
 
 export default function HaikuCarousel({ haikus,
   updateHaiku,
@@ -19,14 +19,14 @@ export default function HaikuCarousel({ haikus,
   };
 
   return (
-    <div className="container">
-      <div className="carousel">
-        <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
+    <div className={styles.container}>
+      <div className={styles.carousel}>
+        <BsArrowLeftCircleFill onClick={prevSlide} className={styles.arrow} />
         {haikus.map((item, idx) => {
           return (
             <div
               key={idx}
-              className={slide === idx ? "slide" : "slide slide-hidden"}
+              className={slide === idx ? styles.slide : styles.slideSlideHidden}
             >
               <Haiku 
                 haiku={item} 
@@ -37,13 +37,13 @@ export default function HaikuCarousel({ haikus,
             </div>
           );
         })}
-        <BsArrowRightCircleFill onClick={nextSlide} className="arrow arrow-right" />
-        <div className="indicators">
+        <BsArrowRightCircleFill onClick={nextSlide} className={styles.arrow} />
+        <div className={styles.indicators}>
           {haikus.map((_, idx) => {
             return (
               <button
                 key={idx}
-                className={`indicator ${slide === idx ? "" : "indicator-inactive"}`}
+                className={`${styles.indicator} ${slide === idx ? "" : styles.indicatorInactive}`}
                 onClick={() => setSlide(idx)}
               />
             );

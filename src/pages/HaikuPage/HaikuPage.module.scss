@@ -1,4 +1,4 @@
-.haiku-page {
+.haikuPage {
   min-height: 100vh;
   background-color: #f5f5f5;
   background-image: 
@@ -7,14 +7,14 @@
   padding: 2rem;
 }
 
-.haiku-header {
+.haikuHeader {
   text-align: center;
   margin-bottom: 3rem;
   padding: 2rem;
   border-bottom: 2px solid #d4a5a5;
 }
 
-.main-title {
+.mainTitle {
   font-family: "Noto Serif JP", serif;
   font-size: 3.5rem;
   color: #2c3e50;
@@ -29,17 +29,17 @@
   letter-spacing: 0.1em;
 }
 
-.haiku-content {
+.haikuContent {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.create-section {
+.createSection {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.create-btn {
+.createBtn {
   background: none;
   border: 2px solid #d4a5a5;
   padding: 1rem 2rem;
@@ -52,25 +52,25 @@
   overflow: hidden;
 }
 
-.create-btn:hover {
+.createBtn:hover {
   background-color: #d4a5a5;
   color: white;
 }
 
-.btn-text {
+.btnText {
   display: block;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-.btn-text-en {
+.btnTextEn {
   display: block;
   font-size: 0.9rem;
   opacity: 0.8;
 }
 
-.carousel-section,
-.all-haikus-section {
+.carouselSection,
+.allHaikusSection {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   padding: 2rem;
@@ -78,7 +78,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.section-title {
+.sectionTitle {
   font-family: "Noto Serif JP", serif;
   font-size: 2rem;
   color: #2c3e50;
@@ -87,7 +87,7 @@
   position: relative;
 }
 
-.section-title::after {
+.sectionTitle::after {
   content: "";
   display: block;
   width: 60px;
@@ -96,31 +96,31 @@
   margin: 1rem auto;
 }
 
-.haiku-modal .modal-content {
+.haikuModal .modalContent {
   background-color: #fff;
   border-radius: 8px;
   border: none;
 }
 
-.haiku-modal .modal-header {
+.haikuModal .modalHeader {
   border-bottom: 2px solid #d4a5a5;
 }
 
-.haiku-modal .modal-footer {
+.haikuModal .modalFooter {
   border-top: 2px solid #d4a5a5;
 }
 
 @media (max-width: 768px) {
-  .haiku-page {
+  .haikuPage {
     padding: 1rem;
   }
 
-  .main-title {
+  .mainTitle {
     font-size: 2.5rem;
   }
 
-  .carousel-section,
-  .all-haikus-section {
+  .carouselSection,
+  .allHaikusSection {
     padding: 1rem;
   }
 } 

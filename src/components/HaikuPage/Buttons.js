@@ -1,14 +1,14 @@
 import React from 'react'
-import './Buttons.css'
+import styles from './Buttons.module.scss'
 
 export default function Buttons({ filterItem, setItem, menuItems, haikus }) {
   return (
     <>
-      <div className="d-flex justify-content-center">
+      <div className={styles.buttonContainer}>
         {menuItems?.map((Val, _id) => {
           return (
             <button
-              className="filter-button btn-light text-green p-1 px-1 mx-.125"
+              className={styles.filterButton}
               onClick={() => filterItem(Val)}
               key={_id}
             >
@@ -17,7 +17,7 @@ export default function Buttons({ filterItem, setItem, menuItems, haikus }) {
           );
         })}
         <button
-          className="filter-button btn-dark text-white p-1 px-1 mx-.125"
+          className={styles.filterButton}
           onClick={() => setItem(haikus)}
         >
           All

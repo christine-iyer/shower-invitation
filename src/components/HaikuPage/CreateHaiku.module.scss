@@ -1,0 +1,25 @@
+.form {
+    width: 100%; 
+    font-family: bradleyHand;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formContainer {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+}
+
+.formSelect {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+}
+
+.haikuCreateBtn {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+}

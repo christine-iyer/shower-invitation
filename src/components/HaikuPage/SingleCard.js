@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import setClass from '../../utilities/category-class'
-import './HaikuStyles.css'
+import styles from './SingleCard.module.scss';
 
 export default function SingleCard({
   Val,
@@ -65,10 +65,10 @@ export default function SingleCard({
   return (
     <>
       <Card className={`${setClass(Val)} haikuCard`}>
-        <div className="haikuLines">
-          <div className="haikuLine">
+        <div className={styles.haikuLines}>
+          <div className={styles.haikuLine}>
             <Card.Text 
-              className="text" 
+              className={styles.text} 
               onClick={() => toggleInput('showB')}
               style={{ display: showInputs.showB ? 'none' : 'block' }}
             >
@@ -76,7 +76,7 @@ export default function SingleCard({
             </Card.Text>
             <input
               ref={inputRefB}
-              style={{ 
+                style={{ 
                 display: showInputs.showB ? 'block' : 'none',
                 ...inputStyle
               }}
@@ -92,9 +92,9 @@ export default function SingleCard({
             />
           </div>
           
-          <div className="haikuLine">
+          <div className={styles.haikuLine}>
             <Card.Text 
-              className="text" 
+              className={styles.text} 
               onClick={() => toggleInput('showC')}
               style={{ display: showInputs.showC ? 'none' : 'block' }}
             >
@@ -118,9 +118,9 @@ export default function SingleCard({
             />
           </div>
           
-          <div className="haikuLine">
+          <div className={styles.haikuLine}>
             <Card.Text 
-              className="text" 
+              className={styles.text} 
               onClick={() => toggleInput('showD')}
               style={{ display: showInputs.showD ? 'none' : 'block' }}
             >
@@ -146,14 +146,14 @@ export default function SingleCard({
         </div>
         
         <button 
-          className="haiku-delete-btn" 
+          className={styles.haikuDeleteBtn} 
           onClick={() => deleteHaiku(Val._id)}
           style={buttonStyle}
         >
           消去
         </button>
         <button 
-          className="haiku-edit-btn" 
+          className={styles.haikuEditBtn} 
           onClick={() => {
             toggleInput('showA');
             toggleInput('showB');
@@ -165,7 +165,7 @@ export default function SingleCard({
           Edit Haiku
         </button>
         <button 
-          className="haiku-like-btn" 
+          className={styles.haikuLikeBtn} 
           onClick={() => likeHaiku(Val._id)}
           style={{
             ...buttonStyle,
@@ -178,7 +178,7 @@ export default function SingleCard({
         
         <p 
           onClick={() => toggleInput('showA')} 
-          className="haiku-author"
+          className={styles.haikuAuthor}
           style={{ display: showInputs.showA ? 'none' : 'block' }}
         >
           by {Val.author} on {new Date(Val.createdAt).toLocaleDateString()}
@@ -199,7 +199,7 @@ export default function SingleCard({
               const author = inputRefA.current.value
               updateHaiku(Val._id, { author: author })
               toggleInput('showA');
-            }
+              }
           }}
           defaultValue={Val.author}
         />

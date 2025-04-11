@@ -1,10 +1,10 @@
 import SingleCard from "./SingleCard";
-import './HaikuStyles.css';
+import styles from './SingleCard.module.scss';
 
 const HaikuCard = ({ item, updateHaiku, likeHaiku }) => {
   return (
     <>
-      <div className="haikuContainer">
+      <div className={styles.haikuContainer}>
         {item?.map((Val) => {
           return (
             <SingleCard 

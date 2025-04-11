@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import '../../App.css'
 import { Modal, Button } from 'react-bootstrap';
 import CreateHaiku from '../../components/HaikuPage/CreateHaiku';
 import HaikuCarousel from '../../components/HaikuPage/HaikuCarousel';
 import Buttons from '../../components/HaikuPage/Buttons';
 import HaikuCard from '../../components/HaikuPage/HaikuCard';
-import './HaikuPage.css';
+import styles from './HaikuPage.module.scss';
 
 function HaikuPage() {
   const [haiku, setHaiku] = useState({
@@ -138,21 +137,21 @@ function HaikuPage() {
     listHaikus()
   }, [foundHaikus])
   return (
-    <div className="haiku-page">
-      <div className="haiku-header">
-        <h1 className="main-title">俳句の庭</h1>
-        <p className="subtitle">Haiku Garden</p>
+    <div className={styles.haikuPage}>
+      <div className={styles.haikuHeader}>
+        <h1 className={styles.mainTitle}>俳句の庭</h1>
+        <p className={styles.subtitle}>Haiku Garden</p>
       </div>
 
-      <div className="haiku-content">
-        <div className="create-section">
-          <button type="btn" onClick={handleShow} className="create-btn">
-            <span className="btn-text">新しい俳句を書く</span>
-            <span className="btn-text-en">Write a New Haiku</span>
+      <div className={styles.haikuContent}>
+        <div className={styles.createSection}>
+          <button type="btn" onClick={handleShow} className={styles.createBtn}>
+            <span className={styles.btnText}>新しい俳句を書く</span>
+            <span className={styles.btnTextEn}>Write a New Haiku</span>
           </button>
         </div>
 
-        <Modal show={show} onHide={handleClose} className="haiku-modal">
+        <Modal show={show} onHide={handleClose} className={styles.haikuModal}>
           <Modal.Body>
             <CreateHaiku
               createHaiku={createHaiku}
@@ -167,8 +166,8 @@ function HaikuPage() {
           </Modal.Footer>
         </Modal>
 
-        <div className="carousel-section">
-          <h2 className="section-title">Featured Haikus</h2>
+        <div className={styles.carouselSection}>
+          <h2 className={styles.sectionTitle}>Featured Haikus</h2>
           <HaikuCarousel
             haikus={haikus}
             updateHaiku={updateHaiku}
@@ -176,8 +175,8 @@ function HaikuPage() {
           />
         </div>
 
-        <div className="all-haikus-section">
-          <h2 className="section-title">All Haikus</h2>
+        <div className={styles.allHaikusSection}>
+          <h2 className={styles.sectionTitle}>All Haikus</h2>
           <Buttons
             haikus={haikus}
             item={item}

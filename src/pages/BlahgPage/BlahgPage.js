@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import UploadWidget from '../../components/BlahgPage/UploadWidget';
-import './style.css'
+import styles from './BlahgPage.module.scss'
 
 export default function BlahgPage() {
   const [blahg, setBlahg] = useState({
@@ -24,11 +24,11 @@ export default function BlahgPage() {
     const postDate = new Date(date);
     const diffTime = Math.abs(postDate - frankyBirthday);
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    
+
     // Calculate months and days
     const months = Math.floor(diffDays / 30);
     const days = diffDays % 30;
-    
+
     if (months === 0) {
       return `${days} day${days !== 1 ? 's' : ''}`;
     } else if (days === 0) {
@@ -108,7 +108,7 @@ export default function BlahgPage() {
           'Content-Type': 'application/json',
         }
       })
-      
+
       // Remove from state after successful deletion
       const updatedBlahgs = blahgs.filter((blahg) => blahg._id !== id)
       setBlahgs(updatedBlahgs)
@@ -151,11 +151,11 @@ export default function BlahgPage() {
       const index = blahgs.findIndex((blahg) => blahg._id === id)
       const blahgsCopy = [...blahgs]
       const subject = { ...blahgsCopy[index] }
-      
+
       // Update with edited values
       subject.title = editState.title
       subject.text = editState.text
-      
+
       const response = await fetch(`/api/blahgs/${id}`, {
         method: 'PUT',
         headers: {
@@ -163,13 +163,13 @@ export default function BlahgPage() {
         },
         body: JSON.stringify(subject)
       })
-      
+
       const updatedBlahg = await response.json()
-      
+
       // Update the blahg in the array
       blahgsCopy[index] = updatedBlahg
       setBlahgs(blahgsCopy)
-      
+
       // Reset edit state
       cancelEditing()
 
@@ -219,12 +219,11 @@ export default function BlahgPage() {
     })
   }
   return (
-    <div className='franky'>
+    <div className={styles.franky}>
       <section>
-        <div className='create'>
+        <div className={styles.create}>
           <h1>Scientific Observation Record</h1>
-          
-          <div className="uploadSection">
+          <div className={styles.uploadSection}>
             <span>
               <UploadWidget onUpload={handleOnUpload}>
                 {({ open }) => {
@@ -241,15 +240,15 @@ export default function BlahgPage() {
               </UploadWidget>
               {error && <p>{error}</p>}
               {url && (
-                <div key={url._id} className='preview-card'>
+                <div key={url._id} className={styles.previewcard}>
                   <img variant="top" src={url} alt='' id="uploadedimage" />
                 </div>
               )}
             </span>
           </div>
-          
-          <div className="formSection">
-            <label className="formLabel">Observation Title</label>
+
+          <div className={styles.formSection}>
+            <label className={styles.formLabel}>Observation Title</label>
             <input
               type='text'
               value={blahg.title}
@@ -258,9 +257,9 @@ export default function BlahgPage() {
               placeholder='Enter the title of your observation'
             />
           </div>
-          
-          <div className="formSection">
-            <label className="formLabel">Observer Name</label>
+
+          <div className={styles.formSection}>
+            <label className={styles.formLabel}>Observer Name</label>
             <input
               value={blahg.author}
               onChange={handleChange}
@@ -268,9 +267,9 @@ export default function BlahgPage() {
               placeholder='Your name as the observer'
             />
           </div>
-          
-          <div className="formSection">
-            <label className="formLabel">Observation Notes</label>
+
+          <div className={styles.formSection}>
+            <label className={styles.formLabel}>Observation Notes</label>
             <input
               value={blahg.text}
               onChange={handleChange}
@@ -278,9 +277,9 @@ export default function BlahgPage() {
               placeholder='Detailed description of the observation'
             />
           </div>
-          
-          <div className="formSection">
-            <label className="formLabel">Classification Category</label>
+
+          <div className={styles.formSection}>
+            <label className={styles.formLabel}>Classification Category</label>
             <select
               value={blahg.category}
               onChange={handleChange}
@@ -295,58 +294,58 @@ export default function BlahgPage() {
               <option value="❤️ C'est la vie, Franky!">❤️ C'est la vie, Franky!</option>
             </select>
           </div>
-          
+
           <button onClick={() => createBlahg()}>Submit Observation for Review</button>
         </div>
       </section>
 
       <div>
-        <h1 className=''>Observation Records</h1>
+        <h1 className={styles.title}>Observation Records</h1>
         {blahgs && blahgs.length ? (
-          <div className='cards'>
+          <div className={styles.cards}>
             {blahgs.map((blahg) => (
-              <div key={blahg._id} className="card">
+              <div key={blahg._id} className={styles.card}>
                 {/* Delete button */}
-                <button 
-                  className="deleteButton" 
+                <button
+                  className={styles.deleteButton}
                   onClick={() => deleteBlahg(blahg._id)}
                 >
                   ×
                 </button>
-                
-                <div className="imageContainer">
-                  <img className="image" src={blahg.image} alt='...' />
-                  <p className="frankyAge">
-                  ({calculateFrankyAge(blahg.createdAt)})  
+
+                <div className={styles.imageContainer}>
+                  <img className={styles.image} src={blahg.image} alt='...' />
+                  <p className={styles.frankyAge}>
+                    ({calculateFrankyAge(blahg.createdAt)})
                   </p>
                 </div>
-                <div className='textContainer'>
+                <div className={styles.textContainer}>
                   {editState.isEditing && editState.blahgId === blahg._id ? (
                     // Edit Mode
                     <>
                       <input
-                        className="editableInput"
+                        className={styles.editableInput}
                         value={editState.title}
                         onChange={handleEditChange}
                         name="title"
                         placeholder="Title"
                       />
                       <textarea
-                        className="editableTextarea"
+                        className={styles.editableTextarea}
                         value={editState.text}
                         onChange={handleEditChange}
                         name="text"
                         placeholder="Text"
                       />
-                      <div className="editControls">
-                        <button 
-                          className="cancelButton" 
+                      <div className={styles.editControls}>
+                        <button
+                          className={styles.cancelButton}
                           onClick={cancelEditing}
                         >
                           Cancel
                         </button>
-                        <button 
-                          className="saveButton" 
+                        <button
+                          className={styles.saveButton}
                           onClick={() => saveEdits(blahg._id)}
                         >
                           Save
@@ -356,12 +355,12 @@ export default function BlahgPage() {
                   ) : (
                     // View Mode
                     <>
-                      <p className='title ditable'>{blahg.title}</p>
-                      <p className='text editable'>{blahg.text}</p>
-                      <p className='details'>
+                      <p className={styles.title}>{blahg.title}</p>
+                      <p className={styles.text}>{blahg.text}</p>
+                      <p className={styles.details}>
                         <small>{blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}</small>
                       </p>
-                      <button className="cardButton" onClick={() => likeBlahg(blahg._id)}>
+                      <button className={styles.cardButton} onClick={() => likeBlahg(blahg._id)}>
                         {blahg.like} {blahg.category}
                       </button>
                     </>
