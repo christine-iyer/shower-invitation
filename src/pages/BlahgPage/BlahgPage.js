@@ -302,16 +302,23 @@ export default function BlahgPage() {
       <div>
         <h1 className={styles.title}>Observation Records</h1>
         {blahgs && blahgs.length ? (
-          <div className={styles.cards}>
+          <div className={styles.stuff}>
             {blahgs.map((blahg) => (
               <div key={blahg._id} className={styles.card}>
-                {/* Delete button */}
-                <button
-                  className={styles.deleteButton}
-                  onClick={() => deleteBlahg(blahg._id)}
-                >
-                  ×
-                </button>
+                {/* Delete button */}<div className={styles.buttonContainer}>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => deleteBlahg(blahg._id)}
+                  >
+                    ×
+                  </button>
+                  <button
+                    className={styles.editButton}
+                    onClick={() => startEditing(blahg)}
+                  >
+                    ...
+                  </button>
+                </div>
 
                 <div className={styles.imageContainer}>
                   <img className={styles.image} src={blahg.image} alt='...' />
@@ -366,7 +373,7 @@ export default function BlahgPage() {
                     </>
                   )}
                 </div>
-                <button onClick={() => startEditing(blahg)}>Edit Haiku</button>
+
               </div>
             ))}
           </div>

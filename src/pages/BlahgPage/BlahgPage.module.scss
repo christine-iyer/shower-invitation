@@ -130,11 +130,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
   height: auto !important; /* Allow the card to adjust to content height */
   position: relative !important;
-  min-height: 160px !important; /* Minimum height to accommodate content */
-  overflow: hidden !important; /* Prevent content from overflowing */
+  min-height: 160visible; /* Prevent content from overflowing */
   box-sizing: border-box !important; /* Include padding in width/height calculations */
   align-items: stretch !important; /* Stretch items to fill the container */
   transition: box-shadow 0.3s ease !important;
+  position: relative; /* Ensure proper positioning for child elements */
+  overflow: visible; /* Allow buttons to overflow */
+
 }
 
 .card:hover {
@@ -148,7 +150,7 @@
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  overflow: hidden !important;
+  overflow: visible;
   height: auto !important; /* Allow height to adjust to content */
   min-height: 190px !important; /* Increased from 150px to 190px to accommodate larger image */
   padding: 5px !important;
@@ -194,7 +196,8 @@
   margin-left: 10px;
 }
 .card {
-  padding: 1em !important;
+  position: relative; /* Ensure proper positioning for child elements */
+  overflow: visible; /* Allow buttons to overflow if necessary */
 }
 .details {
   font-style: italic !important;
@@ -217,7 +220,7 @@
 }
 
 /* Container for all cards */
-.cards {
+.stuff {
   display: flex !important;
   flex-direction: column !important;
   width: 100% !important;
@@ -228,9 +231,6 @@
 
 /* Delete button styling */
 .deleteButton {
-  position: absolute !important;
-  top: 10px !important;
-  right: 10px !important;
   background-color: rgba(255, 0, 0, 0.7) !important;
   color: white !important;
   border: none !important;
@@ -241,16 +241,21 @@
   justify-content: center !important;
   align-items: center !important;
   cursor: pointer !important;
-  opacity: 0 !important; /* Hidden by default */
-  transition: opacity 0.2s ease !important;
+  opacity: 1 !important; /* Always visible */
+  transition: transform 0.2s ease !important;
   z-index: 10 !important;
   font-size: 14px !important;
   font-weight: bold !important;
   line-height: 1 !important;
 }
 
+.deleteButton:hover {
+  background-color: rgba(255, 0, 0, 0.9) !important;
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
 .card:hover .deleteButton {
   opacity: 1 !important; /* Show on hover */
+  transform: scale(1.1);
 }
 
 .deleteButton:hover {
@@ -347,5 +352,49 @@
 .franky{
   margin-left: 25px !important;
   position: center;
+}.buttonContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 5px; /* Add spacing between buttons */
 }
-   
+.buttonContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Add spacing between buttons */
+  align-items: flex-end; /* Align buttons to the right */
+
+}
+
+.editButton {
+  background-color: rgba(162, 134, 109, 0.7); /* Blue color */
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  opacity: 1 !important; /* Always visible */
+  transition: transform 0.2s ease !important;
+  z-index: 10 !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+}
+
+.editButton:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(0.95); /* Slightly enlarge on hover */
+}
+
+.editButton:active {
+  transform: scale(0.95); /* Slightly shrink on click */
+}
