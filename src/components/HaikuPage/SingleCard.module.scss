@@ -1,6 +1,65 @@
+.haikuCard {
+  background-color: #f9f9f9; /* Softer, neutral background */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 1em; /* Add padding inside the card */
+  margin: 1em auto; /* Center the card and add spacing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+  max-width: 400px; /* Limit the card width */
+  text-align: center; /* Center-align text */
+}
+
 .text {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #2c3e50;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333; /* Neutral text color */
+  margin: 0.5em 0; /* Add spacing between lines */
+}
+
+.haikuActions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1em;
+}
+
+.inputField {
+  width: 100%;
+  max-width: 300px;
+  margin: 0.25rem auto;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  border: 1px solid #d4a5a5;
+  border-radius: 4px;
+  background-color: white;
+  font-family: inherit;
+  text-align: center;
+  display: none; /* Hide input fields by default */
+}
+
+.inputField.show {
+  display: block; /* Show input field when toggled */
+}
+
+.actionButton {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #d4a5a5;
+  border-radius: 4px;
+  background: none;
+  color: #2c3e50;
+  max-width: 40px;
+  min-width: auto;
+  width: auto;
+  height: auto;
+}
+
+.haikuText {
+  margin-bottom: 1em; /* Add spacing below the haiku text */
+}
+
+.line {
+  cursor: pointer; /* Indicate that the text is clickable */
+  margin: 0.5em 0; /* Add spacing between lines */
 }
