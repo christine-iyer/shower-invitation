@@ -1,28 +1,30 @@
 export default function setClass(item) {
+  if (!item || !item.author) {
+    console.warn("Invalid item passed to setClass:", item);
+    return 'anon'; // Default to 'anon' if item or author is missing
+  }
+
   if (item.author === 'Laura') {
-    return 'laura';
+    return 'styles.laura';
   } else if (item.author === 'Shannon') {
-    return 'shannon';
+    return 'styles.shannon';
   } else if (item.author === 'Anon') {
-    return 'anon';
+    return 'styles.anon';
   } else if (item.author === 'Paul') {
-    return 'paul';
+    return 'styles.paul';
   } else if (item.author === 'Chris') {
-    return 'chris';
+    return 'styles.chris';
   } else if (item.author === 'Leah') {
-    return 'leah';
+    return 'styles.leah';
   } else if (item.author === 'Claire') {
-    return 'claire';
+    return 'styles.claire';
   } else if (item.author === 'Lynne') {
-    return 'lynne';
+    return 'styles.lynne';
   } else if (item.author === 'Mary') {
-    return 'mary';
+    return 'styles.mary';
   } else if (item.author === 'Julie') {
-    return 'julie';
+    return 'styles.julie';
   } else {
-    return 'anon';
+    return 'styles.anon';
   }
 }
-
-   
-     

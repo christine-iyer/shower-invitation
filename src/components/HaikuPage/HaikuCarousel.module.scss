@@ -34,12 +34,14 @@
   flex: 0 0 100%; /* Each slide takes up 100% of the container width */
   opacity: 1;
   transition: opacity 0.5s ease-in-out; /* Smooth fade-in */
+  display: block; /* Ensure the active slide is visible */
 }
 
-.slideSlideHidden {
+.slideHidden {
   flex: 0 0 100%;
   opacity: 0;
   transition: opacity 0.5s ease-in-out; /* Smooth fade-out */
+  display: none; /* Hide inactive slides */
 }
 
 .indicators {
@@ -58,19 +60,6 @@
   cursor: pointer;
 }
 
-.indicatorInactive {
-  background-color: #eee;
-}
-@media (max-width: 768px) {
-  .arrow {
-    font-size: 1.5rem; /* Smaller arrows */
-  }
-
-  .container {
-    max-width: 100%; /* Full width on smaller screens */
-  }
-
-  .slide {
-    flex: 0 0 100%; /* Ensure each slide takes up full width */
-  }
+.activeIndicator {
+  background-color: #333; /* Highlight the active indicator */
 }

@@ -22,15 +22,14 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
   };
 
   const toggleInput = (field) => {
-    // Close all other inputs first, then toggle the selected one
-    setShowInputs({
+    setShowInputs((prevState) => ({
       showA: false,
-      showB: false, 
+      showB: false,
       showC: false,
       showD: false,
       showE: false,
-      [field]: !showInputs[field],
-    });
+      [field]: !prevState[field], // Toggle the selected field
+    }));
   };
 
   // Common input style
@@ -60,57 +59,31 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
     width: 'auto',
     height: 'auto'
   };
-  
+
+
 
   return (
     <div className={styles.haikuContainer}>
-      <div className={`${styles.haikuCard} ${setClass(haiku)}`}>
-        {haiku.title && !showInputs.showE ? (
-          <h3 
-            className={styles.haikuTitle} 
-            onClick={() => toggleInput('showE')}
-            style={{ 
-              textAlign: 'center', 
-              marginBottom: '1rem', 
-              cursor: 'pointer',
-              display: showInputs.showE ? 'none' : 'block'
-            }}
-          >
-            {haiku.title}
-          </h3>
-        ) : null}
-        
-        <input
-          ref={inputRefs.showE}
-          style={{ 
-            display: showInputs.showE ? 'block' : 'none',
-            ...inputStyle
-          }}
-          type="text"
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              const title = inputRefs.showE.current.value;
-              updateHaiku(haiku._id, { title });
-              toggleInput('showE');
-            }
-          }}
-          defaultValue={haiku.title}
-        />
-        
+      <div className={`${styles.haikuCard} ${styles[setClass(haiku)] || ''}`}>
+
+  
+        {/* Lines */}
         <div className={styles.haikuLines}>
-          <div className={styles.haikuLine}>
-            <p 
-              className={styles.text} 
+          {/* Line 1 */}
+          {!showInputs.showB ? (
+            <p
+              className={styles.text}
               onClick={() => toggleInput('showB')}
-              style={{ display: showInputs.showB ? 'none' : 'block' }}
+              style={{ cursor: 'pointer' }}
             >
               {haiku.one}
             </p>
+          ) : (
             <input
               ref={inputRefs.showB}
-              style={{ 
+              style={{
                 display: showInputs.showB ? 'block' : 'none',
-                ...inputStyle
+                ...inputStyle,
               }}
               type="text"
               onKeyDown={(e) => {
@@ -122,21 +95,23 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
               }}
               defaultValue={haiku.one}
             />
-          </div>
-          
-          <div className={styles.haikuLine}>
-            <p 
-              className={styles.text} 
+          )}
+  
+          {/* Line 2 */}
+          {!showInputs.showC ? (
+            <p
+              className={styles.text}
               onClick={() => toggleInput('showC')}
-              style={{ display: showInputs.showC ? 'none' : 'block' }}
+              style={{ cursor: 'pointer' }}
             >
               {haiku.two}
             </p>
+          ) : (
             <input
               ref={inputRefs.showC}
-              style={{ 
+              style={{
                 display: showInputs.showC ? 'block' : 'none',
-                ...inputStyle
+                ...inputStyle,
               }}
               type="text"
               onKeyDown={(e) => {
@@ -148,21 +123,23 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
               }}
               defaultValue={haiku.two}
             />
-          </div>
-          
-          <div className={styles.haikuLine}>
-            <p 
-              className={styles.text} 
+          )}
+  
+          {/* Line 3 */}
+          {!showInputs.showD ? (
+            <p
+              className={styles.text}
               onClick={() => toggleInput('showD')}
-              style={{ display: showInputs.showD ? 'none' : 'block' }}
+              style={{ cursor: 'pointer' }}
             >
               {haiku.three}
             </p>
+          ) : (
             <input
               ref={inputRefs.showD}
-              style={{ 
+              style={{
                 display: showInputs.showD ? 'block' : 'none',
-                ...inputStyle
+                ...inputStyle,
               }}
               type="text"
               onKeyDown={(e) => {
@@ -174,57 +151,36 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
               }}
               defaultValue={haiku.three}
             />
-          </div>
+          )}
         </div>
-        
-        <button 
-          className={styles.haikuDeleteBtn} 
-          onClick={() => deleteHaiku(haiku._id)}
-          style={buttonStyle}
-        >
-          消去
-        </button>
-        <button 
-          className={styles.haikuLikeBtn} 
-          onClick={() => likeHaiku(haiku._id)}
-          style={{
-            ...buttonStyle,
-            bottom: '0.75rem',
-            fontSize: '0.65rem'
-          }}
-        >
-          ♥ {haiku.like}
-        </button>
-        <p className={styles.haikuAuthor}>
-  by {haiku.author} on {format(new Date(haiku.createdAt), 'MM/dd/yyyy hh:mm a')}
-</p>
-        {/* <p 
-          onClick={() => toggleInput('showA')} 
-          className={styles.haikuAuthor}
-          style={{ display: showInputs.showA ? 'none' : 'block' }}
-        >
-          by {haiku.author} on {new Date(haiku.createdAt).toLocaleDateString()}
-        </p> */}
-        <input
-          ref={inputRefs.showA}
-          type="text"
-          style={{ 
-            display: showInputs.showA ? 'block' : 'none',
-            ...inputStyle,
-            position: 'absolute',
-            bottom: '0.75rem',
-            right: '3.5rem',
-            maxWidth: '150px'
-          }}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              const author = inputRefs.showA.current.value;
-              updateHaiku(haiku._id, { author });
-              toggleInput('showA');
-            }
-          }}
-          defaultValue={haiku.author}
-        />
+  
+        {/* Author */}
+        {!showInputs.showA ? (
+          <p
+            className={styles.haikuAuthor}
+            onClick={() => toggleInput('showA')}
+            style={{ cursor: 'pointer' }}
+          >
+            by {haiku.author} on {format(new Date(haiku.createdAt), 'MM/dd/yyyy hh:mm a')}
+          </p>
+        ) : (
+          <input
+            ref={inputRefs.showA}
+            style={{
+              display: showInputs.showA ? 'block' : 'none',
+              ...inputStyle,
+            }}
+            type="text"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                const author = inputRefs.showA.current.value;
+                updateHaiku(haiku._id, { author });
+                toggleInput('showA');
+              }
+            }}
+            defaultValue={haiku.author}
+          />
+        )}
       </div>
     </div>
   );

@@ -13,60 +13,45 @@ export default function HaikuCarousel({ haikus, updateHaiku, deleteHaiku, likeHa
   const prevSlide = () => {
     setSlide(slide === 0 ? haikus.length - 1 : slide - 1);
   };
-  useEffect(() => {
-    console.log("Haikus array:", haikus);
-  }, []); // Logs only on the initial render
-  useEffect(() => {
-    console.log("Current slide index:", slide);
-  }, [slide]); // Logs only when the `slide` state changes
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "ArrowRight") nextSlide();
-      if (e.key === "ArrowLeft") prevSlide();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [slide]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000); // Change slide every 5 seconds
-  
-    return () => clearInterval(interval); // Clear interval on component unmount
+    }, 5000); // Automatically change slides every 5 seconds
+
+    return () => clearInterval(interval); // Clear interval on unmount
   }, [slide]);
 
   return (
     <div className={styles.container}>
       <div className={styles.carousel}>
+        {/* Left Arrow */}
         <BsArrowLeftCircleFill onClick={prevSlide} className={styles.arrow} />
-        {haikus.map((item, idx) => {
-  if (!item.createdAt || isNaN(new Date(item.createdAt).getTime())) {
-    console.error(`Invalid date for haiku at index ${idx}:`, item.createdAt);
-    return null; // Skip rendering this haiku
-  }
 
-  return (
-    <div
-      key={idx}
-      className={slide === idx ? styles.slide : styles.slideSlideHidden}
-    >
-      <Haiku
-        haiku={item}
-        updateHaiku={updateHaiku}
-        deleteHaiku={deleteHaiku}
-        likeHaiku={likeHaiku}
-      />
-    </div>
-  );
-})}
+        {/* Slides */}
+        {haikus.map((item, idx) => (
+          <div
+            key={idx}
+            className={slide === idx ? styles.slide : styles.slideHidden}
+          >
+            <Haiku
+              haiku={item}
+              updateHaiku={updateHaiku}
+              deleteHaiku={deleteHaiku}
+              likeHaiku={likeHaiku}
+            />
+          </div>
+        ))}
+
+        {/* Right Arrow */}
         <BsArrowRightCircleFill onClick={nextSlide} className={styles.arrow} />
+
+        {/* Indicators */}
         <div className={styles.indicators}>
           {haikus.map((_, idx) => (
             <button
               key={idx}
-              className={`${styles.indicator} ${slide === idx ? "" : styles.indicatorInactive}`}
+              className={`${styles.indicator} ${slide === idx ? styles.activeIndicator : ''}`}
               onClick={() => setSlide(idx)}
             />
           ))}
