@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
 import setClass from '../../utilities/category-class'
 import styles from './Haiku.module.scss'
+import { format } from 'date-fns';
+
 
 export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
   const [showInputs, setShowInputs] = useState({
@@ -58,6 +60,7 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
     width: 'auto',
     height: 'auto'
   };
+  
 
   return (
     <div className={styles.haikuContainer}>
@@ -192,14 +195,16 @@ export default function Haiku({ haiku, updateHaiku, deleteHaiku, likeHaiku }) {
         >
           ♥ {haiku.like}
         </button>
-        
-        <p 
+        <p className={styles.haikuAuthor}>
+  by {haiku.author} on {format(new Date(haiku.createdAt), 'MM/dd/yyyy hh:mm a')}
+</p>
+        {/* <p 
           onClick={() => toggleInput('showA')} 
           className={styles.haikuAuthor}
           style={{ display: showInputs.showA ? 'none' : 'block' }}
         >
           by {haiku.author} on {new Date(haiku.createdAt).toLocaleDateString()}
-        </p>
+        </p> */}
         <input
           ref={inputRefs.showA}
           type="text"

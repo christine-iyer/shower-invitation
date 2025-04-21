@@ -1,14 +1,76 @@
-.container{
-  align-items: center;
-  background-color: yellow;
-
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden; /* Hide content outside the container */
 }
-.carousel{
-  box-shadow: 0px 0px 100px 20px rgba(245, 245, 245, 0.182), 
-               0px 0px 100px 20px rgb(243, 120, 161);
-                height: 100%;
-                width: 100%;
-                justify-content: center;
-                background-color: chartreuse;
 
+.carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.arrow:first-of-type {
+  left: 10px; /* Left arrow */
+}
+
+.arrow:last-of-type {
+  right: 10px; /* Right arrow */
+}
+
+.slide {
+  flex: 0 0 100%; /* Each slide takes up 100% of the container width */
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out; /* Smooth fade-in */
+}
+
+.slideSlideHidden {
+  flex: 0 0 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Smooth fade-out */
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+.indicatorInactive {
+  background-color: #eee;
+}
+@media (max-width: 768px) {
+  .arrow {
+    font-size: 1.5rem; /* Smaller arrows */
+  }
+
+  .container {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+
+  .slide {
+    flex: 0 0 100%; /* Ensure each slide takes up full width */
+  }
 }
