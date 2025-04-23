@@ -1,24 +1,21 @@
-
 .card-grid {
     margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 1%;
     gap: 9px
-
-    
 }
 
 .card {
-    /* perspective: 100px;
+    perspective: 100px;
     position: relative;
     width: 100px;
     height: 100px;
     cursor: pointer;
-    padding: 1%; */
+    padding: 1%;
 }
 
-.card > div {
+.card>div {
     position: absolute;
     top: 0;
     left: 0;
@@ -36,7 +33,8 @@
     border-radius: 6px;
 }
 
-.card .back, .card .front {
+.card .back,
+.card .front {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -53,7 +51,8 @@
     background: #fff;
     transform: rotateY(0deg);
 }
-.flipmatch{
+
+.flipmatch {
     animation: flipmatch 0.8s infinite;
 }
 
@@ -73,7 +72,7 @@
     transform: rotateY(0deg);
     transition-delay: 0.2s;
 }
-  
+
 .match-grid {
     margin-top: 10px;
     display: grid;
@@ -91,7 +90,7 @@
     cursor: pointer;
 }
 
-.match > div {
+.match>div {
     position: absolute;
     top: 0;
     left: 0;
@@ -109,7 +108,8 @@
     border-radius: 6px;
 }
 
-.match .hair, .match .face {
+.match .hair,
+.match .face {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -137,6 +137,7 @@
     font-style: bold;
     border: #520afb;
 }
+
 .over .face {
     transform: rotateY(180deg);
     transition-delay: 0.2s;
@@ -148,3 +149,70 @@
     transform: rotateY(0deg);
     transition-delay: 0.2s;
 }
+.flipmatch {
+    text-align: center;
+    margin: 2rem auto;
+  }
+  
+  .matchGrid {
+    display: grid; /* Enable CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
+    gap: 1rem; /* Space between grid items */
+    justify-content: center; /* Center the grid items */
+    padding: 1rem;
+  }
+  
+  .text {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  .flipmatch {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.matchGrid {
+  display: grid; /* Enable CSS Grid */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
+  gap: 1rem; /* Space between grid items */
+  justify-content: center; /* Center the grid items */
+  padding: 1rem;
+}
+
+.text {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+.matchCard {
+    width: 100%; /* Ensure the card takes up the full width of the grid cell */
+    height: 120px; /* Set a consistent height for the cards */
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .matchCard:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  .matched {
+    background-color: #d4edda; /* Green background for matched cards */
+    pointer-events: none; /* Disable interaction for matched cards */
+  }
+  @media (max-width: 768px) {
+    .matchGrid {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Smaller columns for smaller screens */
+      gap: 0.5rem; /* Reduce spacing between items */
+    }
+  
+    .matchCard {
+      height: 100px; /* Adjust card height for smaller screens */
+    }
+  }

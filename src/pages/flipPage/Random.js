@@ -49,19 +49,25 @@ const Random = () => {
           const days = Math.floor((date - startDate) / (24 * 60 * 60 * 1000));
           return Math.ceil((days + startDate.getDay() + 1) / 7);
         }
-
+  
         // Format variables
-        const formattedData = csvData.map(function (d) {
-          let parsedDate = d3.timeParse("%Y-%m-%d")(d.date);
-          return {
-            date: parsedDate,
-            value: +d.value, // Convert value to number
-            year: parsedDate.getFullYear(),
-            month: parsedDate.getMonth() + 1, // Month number (0-11),
-            week: getWeekNumber(parsedDate) // Calculate week number
-          };
-        });
-
+        const formattedData = csvData
+          .map(function (d) {
+            let parsedDate = d3.timeParse("%Y-%m-%d")(d.date);
+            if (!parsedDate) {
+              console.warn("Invalid date:", d.date);
+              return null; // Skip invalid rows
+            }
+            return {
+              date: parsedDate,
+              value: +d.value, // Convert value to number
+              year: parsedDate.getFullYear(),
+              month: parsedDate.getMonth() + 1, // Month number (0-11)
+              week: getWeekNumber(parsedDate) // Calculate week number
+            };
+          })
+          .filter(d => d !== null); // Remove null entries
+  
         // Set data state
         setData(formattedData);
       })

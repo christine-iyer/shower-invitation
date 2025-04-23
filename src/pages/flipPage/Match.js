@@ -1,5 +1,5 @@
 import React from 'react'
-import './card.css'
+import styles from './Card.module.scss'
 
 
 export default function Match({ match, handleMatch, over, prevented }) {
@@ -9,9 +9,9 @@ export default function Match({ match, handleMatch, over, prevented }) {
      }
      }
      return (
-          <div className="match" >
-               <div className={over ? "over" : ""}>
-                    <p className="hair">{match.word.toUpperCase()}</p>
+          <div className={styles.match} >
+               <div className={over ? styles.over : ""}>
+                    <p className={styles.hair}>{match.word.toUpperCase()}</p>
                     <img src='/IMG_4816.jpg' onClick={handleClick} className="face" alt="back" />
                </div>
           </div>

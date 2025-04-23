@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Match from './Match';
 import confetti from 'canvas-confetti';
-import './card.css';
+import styles from './Card.module.scss'
 
 const matchImages = [
      { "word": "bad", "matched": false },
@@ -128,20 +128,21 @@ export default function FlipMatch() {
      }, []);
 
      return (
-          <div className="flipmatch">
-               <h2>Matching</h2>
-               <button onClick={shuffleMatchs}>NewGame</button>
-               <div className='match-grid'>
-                    {matchs.map(match => (
-                         <Match key={match.id}
-                              match={match}
-                              handleMatch={handleMatch}
-                              over={match === choiceThree || match === choiceFour || match.matched}
-                              prevented={prevented}
-                         />
-                    ))}
-                    <p style={{ fontSize: '27px', color:'brown' }}>Misses: {rounds}</p>
-               </div>
-          </div>
+          <div className={styles.flipmatch}>
+    <h2>Matching</h2>
+    <button onClick={shuffleMatchs}>New Game</button>
+    <div className={styles.matchGrid}>
+      {matchs.map(match => (
+        <Match
+          key={match.id}
+          match={match}
+          handleMatch={handleMatch}
+          over={match === choiceThree || match === choiceFour || match.matched}
+          prevented={prevented}
+        />
+      ))}
+    </div>
+    <p className={styles.text}>Misses: {rounds}</p>
+  </div>
      );
 }
