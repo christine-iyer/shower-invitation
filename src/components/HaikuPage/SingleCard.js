@@ -111,13 +111,13 @@ export default function SingleCard({
           className={`${styles.haikuLikeBtn} ${styles.actionButton}`}
           onClick={() => likeHaiku(Val._id)}
         >
-          ♥♥♥♥♥♥♥♥♥ {Val.like}
+          ♥ {Val.like}
         </button>
         <button
           className={`${styles.haikuDeleteBtn} ${styles.actionButton}`}
           onClick={() => deleteHaiku(Val._id)}
         >
-          Delete
+          X
         </button>
       </div>
     </div>

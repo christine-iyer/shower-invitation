@@ -34,8 +34,12 @@
   flex: 0 0 100%; /* Each slide takes up 100% of the container width */
   opacity: 1;
   transition: opacity 0.5s ease-in-out; /* Smooth fade-in */
-  display: block; /* Ensure the active slide is visible */
+  display: flex; /* Use Flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Ensure the slide takes up the full height of the container */
 }
+
 
 .slideHidden {
   flex: 0 0 100%;
