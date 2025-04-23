@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import Card from './Card';
 import Random from './Random';
 import MatchWord from './MatchWord';
-import RothPage from '../RothPage/RothPage';
+
 import confetti from 'canvas-confetti';
-import './card.css';
+import styles from './Card.module.scss';
 
 const cardImages =[
     {
@@ -30126,15 +30126,6 @@ export default function FlipCard() {
         if (choiceOne && choiceTwo) {
             setDisabled(true);
             if (choiceOne.word === choiceTwo.word) {
-                // setCards(prevCards => {
-                //     return prevCards.map(card => {
-                //         if (card.word === choiceOne.word) {
-                //             return { ...card, matched: true };
-                //         } else {
-                //             return card;
-                //         }
-                //     });
-                // });
                 setTimeout(() => {
                     setCards(prevCards => {
                         return prevCards.map(card => {
@@ -30175,15 +30166,15 @@ export default function FlipCard() {
     }, []);
 
     return (
-        <div className="app">
-        <div className='match-container'>
+        <div className={styles.app}>
+        <div className={styles.header}>
             <MatchWord/>
             <hr></hr>
         </div>
-        <div className="flipcard">
+        <div className={styles.flipCard}>
             <h2>Vocab Practice</h2>
             <button onClick={shuffleCards}>New Game</button>
-            <div className='card-grid'>
+            <div className={styles.cardGrid}>
                 {cards.map(card => (
                     <Card key={card.id}
                         card={card}

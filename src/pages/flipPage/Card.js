@@ -1,5 +1,5 @@
 import React from 'react';
-import './card.css';
+import styles from './Card.module.scss';
 
 export default function Card({ card, handleChoice, flipped, disabled, showDefinition }) {
     const handleClick = () => {
@@ -9,12 +9,12 @@ export default function Card({ card, handleChoice, flipped, disabled, showDefini
     };
 
     return (
-        <div className="card" onClick={handleClick}>
-            <div className={flipped ? "flipped" : ""}>
-                <div className="back">
+        <div className={styles.card} onClick={handleClick}>
+            <div className={flipped ? styles.flipped : ""}>
+                <div className={styles.back}>
                     {showDefinition ? card.definition : card.word}
                 </div>
-                <div className="front">
+                <div className={styles.front}>
                     <img src='/IMG_4937.jpg' alt="back" />
                 </div>
             </div>

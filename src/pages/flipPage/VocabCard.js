@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Card from './Card';
-import confetti from 'canvas-confetti';
-import './card.css'
+import styles from './Card.module.scss';
 
 const cardImages = [
      // { "word": "bad", "matched": false },
@@ -30217,7 +30216,7 @@ export default function FlipCard() {
           <div className="flipcard">
                <h1>Matching</h1>
                <button onClick={shuffleCards}>NewGame</button>
-               <div className='card-grid'>
+               <div className={styles.cardGrid}>
                     {cards.map(card => (
                          <Card key={card.word}
                               card={card}
@@ -30226,7 +30225,7 @@ export default function FlipCard() {
                               disabled={disabled}
                          />
                     ))}
-                    <p style={{ fontSize: '27px', color:'brown' }}>Misses: {turns}</p>
+                    <p className={styles.font}>Misses: {turns}</p>
                </div>
           </div>
      );
