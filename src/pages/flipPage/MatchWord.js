@@ -119,7 +119,7 @@ export default function FlipMatch() {
      const resetTurn = (matched) => {
           setChoiceThree(null);
           setChoiceFour(null);
-          setRounds(prev => prev +  (matched ? 0 : 1 ));
+          setRounds(prev => prev + (matched ? 0 : 1));
           setPrevented(false);
      };
 
@@ -128,21 +128,27 @@ export default function FlipMatch() {
      }, []);
 
      return (
-          <div className={styles.flipmatch}>
-            <h2>Matching</h2>
-            <button onClick={shuffleMatchs}>New Game</button>
-            <div className={styles.matchGrid}>
-              {matchs.map(match => (
-                <Match
-                  key={match.id}
-                  match={match}
-                  handleMatch={handleMatch}
-                  over={match === choiceThree || match === choiceFour || match.matched}
-                  prevented={prevented}
-                />
-              ))}
-            </div>
-            <p className={styles.text}>Misses: {rounds}</p>
+          <div className={styles.kidFlipMatchGame}>
+               <h2>Matching</h2>
+               <button onClick={shuffleMatchs}>New Game</button>
+               <div
+                    className={styles.kidFlipMatchGrid}
+                    style={{
+                         gridTemplateColumns: `repeat(${Math.ceil(Math.sqrt(matchs.length))}, 1fr)`, // Equal rows and columns
+                    }}
+               >
+                    {matchs.map(match => (
+                         <Match
+                              key={match.id}
+                              match={match}
+                              handleMatch={handleMatch}
+                              over={match === choiceThree || match === choiceFour || match.matched}
+                              prevented={prevented}
+                         />
+                    ))}
+               </div>
+               <p className={styles.text}>Misses: {rounds}</p>
           </div>
-        );
+     );
+
 }

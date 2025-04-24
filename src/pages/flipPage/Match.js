@@ -12,7 +12,7 @@ export default function Match({ match, handleMatch, over, prevented }) {
           <div className={styles.match} >
                <div className={over ? styles.over : ""}>
                     <p className={styles.hair}>{match.word.toUpperCase()}</p>
-                    <img src='/IMG_4816.jpg' onClick={handleClick} className="face" alt="back" />
+                    <img src='/IMG_4816.jpg' onClick={handleClick} className={styles.face} alt="back" />
                </div>
           </div>
      )

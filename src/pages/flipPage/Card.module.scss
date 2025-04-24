@@ -1,7 +1,11 @@
-app{
-    background: #f0f0f0;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+.app {
+  display: flex; /* Use Flexbox for layout */
+  flex-direction: column; /* Stack child elements vertically */
+  align-items: center; /* Center child elements horizontally */
+  justify-content: flex-start; /* Align child elements at the top */
+  gap: 2rem; /* Add spacing between child elements */
+  padding: 2rem;
+  box-sizing: border-box; /* Include padding in width/height calculations */
 }
 .card-grid {
     margin-top: 40px;
@@ -11,17 +15,17 @@ app{
     gap: 9px
 }
 .header{
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
+  width: 100%; /* Take full width of the container */
+  text-align: center;
+  margin-bottom: 2rem; /* Add spacing below the header */
+
 }
 .flipCard {
-    perspective: 1000px;
-    position: relative;
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
+  width: 100%; /* Take full width of the container */
+  max-width: 1200px; /* Optional: Limit the maximum width */
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box; /* Include padding in width calculations */
 }
 .text{
     text-align: center;
@@ -295,4 +299,14 @@ app{
     .flipCard, .flipmatch {
       padding: 1rem; /* Reduce padding on smaller screens */
     }
+  }
+  .kidFlipMatchGrid {
+    display: grid; /* Enable CSS Grid */
+    gap: 1rem; /* Space between grid items */
+    justify-content: center; /* Center the grid items horizontally */
+    align-items: center; /* Center the grid items vertically */
+    padding: 1rem;
+    margin: 0 auto; /* Center the grid container itself */
+    max-width: 100%; /* Prevent the grid from overflowing */
+    box-sizing: border-box; /* Include padding in width calculations */
   }

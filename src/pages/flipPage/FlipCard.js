@@ -30170,6 +30170,7 @@ export default function FlipCard() {
           <div className={styles.header}>
             <MatchWord />
             <hr />
+            <hr />
           </div>
           <div className={styles.flipCard}>
             <h2>Vocab Practice</h2>
