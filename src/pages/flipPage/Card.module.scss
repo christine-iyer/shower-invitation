@@ -1,3 +1,8 @@
+app{
+    background: #f0f0f0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
 .card-grid {
     margin-top: 40px;
     display: grid;
@@ -5,7 +10,32 @@
     grid-gap: 1%;
     gap: 9px
 }
-
+.header{
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+.flipCard {
+    perspective: 1000px;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+.text{
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Default responsive columns */
+  gap: 10px; /* Space between cards */
+  justify-content: center;
+  margin-top: 20px;
+}
 .card {
     perspective: 100px;
     position: relative;
@@ -158,8 +188,12 @@
     display: grid; /* Enable CSS Grid */
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
     gap: 1rem; /* Space between grid items */
-    justify-content: center; /* Center the grid items */
+    justify-content: center; /* Center the grid items horizontally */
+    align-items: center; /* Center the grid items vertically */
     padding: 1rem;
+    margin: 0 auto; /* Center the grid container itself */
+    max-width: 100%; /* Prevent the grid from overflowing */
+    box-sizing: border-box; /* Include padding in width calculations */
   }
   
   .text {
@@ -172,14 +206,27 @@
   margin: 2rem auto;
 }
 
-.matchGrid {
-  display: grid; /* Enable CSS Grid */
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
-  gap: 1rem; /* Space between grid items */
-  justify-content: center; /* Center the grid items */
-  padding: 1rem;
+.matchCard {
+  width: 100%; /* Ensure the card takes up the full width of the grid cell */
+  height: 120px; /* Set a consistent height for the cards */
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
+.matchCard:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.matched {
+  background-color: #d4edda; /* Green background for matched cards */
+  pointer-events: none; /* Disable interaction for matched cards */
+}
 .text {
   margin-top: 1rem;
   font-size: 1.2rem;
@@ -214,5 +261,38 @@
   
     .matchCard {
       height: 100px; /* Adjust card height for smaller screens */
+    }
+  }
+  .cardGrid, .matchGrid {
+    display: grid; /* Enable CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
+    gap: 1rem; /* Space between grid items */
+    justify-content: center; /* Center the grid items horizontally */
+    align-items: center; /* Center the grid items vertically */
+    padding: 1rem;
+    margin: 0 auto; /* Center the grid container itself */
+    max-width: 100%; /* Prevent the grid from overflowing */
+    box-sizing: border-box; /* Include padding in width calculations */
+  }
+  .flipCard, .flipmatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center child elements horizontally */
+    justify-content: center; /* Center child elements vertically */
+    text-align: center;
+    margin: 0 auto; /* Center the container itself */
+    padding: 2rem;
+    width: 100%; /* Ensure the container takes up the full width */
+    max-width: 1200px; /* Optional: Limit the maximum width */
+    box-sizing: border-box; /* Include padding in width calculations */
+  }
+  @media (max-width: 768px) {
+    .cardGrid, .matchGrid {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Smaller columns for smaller screens */
+      gap: 0.5rem; /* Reduce spacing between items */
+    }
+  
+    .flipCard, .flipmatch {
+      padding: 1rem; /* Reduce padding on smaller screens */
     }
   }

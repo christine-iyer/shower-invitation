@@ -30167,31 +30167,34 @@ export default function FlipCard() {
 
     return (
         <div className={styles.app}>
-        <div className={styles.header}>
-            <MatchWord/>
-            <hr></hr>
-        </div>
-        <div className={styles.flipCard}>
+          <div className={styles.header}>
+            <MatchWord />
+            <hr />
+          </div>
+          <div className={styles.flipCard}>
             <h2>Vocab Practice</h2>
             <button onClick={shuffleCards}>New Game</button>
-            <div className={styles.cardGrid}>
-                {cards.map(card => (
-                    <Card key={card.id}
-                        card={card}
-                        handleChoice={handleChoice}
-                        flipped={card === choiceOne || card === choiceTwo || card.matched}
-                        disabled={disabled}
-                        showDefinition={card === choiceTwo}
-                    />
-                ))}
-                <p style={{ fontSize: '27px', color: 'brown' }}>Misses: {turns}</p>
+            <div
+              className={styles.cardGrid}
+              style={{
+                gridTemplateColumns: `repeat(${Math.ceil(Math.sqrt(cards.length))}, 1fr)`, // Equal rows and columns
+              }}
+            >
+              {cards.map((card) => (
+                <Card
+                  key={card.id}
+                  card={card}
+                  handleChoice={handleChoice}
+                  flipped={card === choiceOne || card === choiceTwo || card.matched}
+                  disabled={disabled}
+                  showDefinition={card === choiceTwo}
+                />
+              ))}
             </div>
-            <hr></hr>
+            <p className={styles.text}>Misses: {turns}</p>
+            <hr />
             <Random />
-            {/* <RothPage /> */}
-
-
+          </div>
         </div>
-        </div>
-    );
+      );
 }

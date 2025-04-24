@@ -129,20 +129,20 @@ export default function FlipMatch() {
 
      return (
           <div className={styles.flipmatch}>
-    <h2>Matching</h2>
-    <button onClick={shuffleMatchs}>New Game</button>
-    <div className={styles.matchGrid}>
-      {matchs.map(match => (
-        <Match
-          key={match.id}
-          match={match}
-          handleMatch={handleMatch}
-          over={match === choiceThree || match === choiceFour || match.matched}
-          prevented={prevented}
-        />
-      ))}
-    </div>
-    <p className={styles.text}>Misses: {rounds}</p>
-  </div>
-     );
+            <h2>Matching</h2>
+            <button onClick={shuffleMatchs}>New Game</button>
+            <div className={styles.matchGrid}>
+              {matchs.map(match => (
+                <Match
+                  key={match.id}
+                  match={match}
+                  handleMatch={handleMatch}
+                  over={match === choiceThree || match === choiceFour || match.matched}
+                  prevented={prevented}
+                />
+              ))}
+            </div>
+            <p className={styles.text}>Misses: {rounds}</p>
+          </div>
+        );
 }
