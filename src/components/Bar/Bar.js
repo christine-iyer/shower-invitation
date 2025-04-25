@@ -1,37 +1,29 @@
 import { Link } from "react-router-dom";
-
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import styles from "./Bar.module.scss";
 
 export default function Bar(props) {
   return (
-    <>
-      <Navbar className="navbar-left" bg="light" variant="dark" width='100%'>
-        <Nav >
-          <Link to="/">
-            <h6>Word Game</h6>
-          </Link>
-          &nbsp;  &nbsp;
-          &nbsp;
-
-          <Link to="/haikus">
-            <h6>Haikus</h6>
-          </Link>
-          &nbsp;  &nbsp;
-          &nbsp;
-
-          <Link to="/assets">
-            <h6>Assets</h6>
-          </Link>
-
-          &nbsp;  &nbsp;
-          &nbsp;
-          <Link to="/blahg">
-            <h6>Franky</h6>
-          </Link>
-          &nbsp;&nbsp;
-        </Nav>
-      </Navbar>
-    </>
+    <nav className={styles.navbar}>
+    <ul className={styles.navList}>
+      <li className={styles.navItem}>
+        <Link to="/">Word Game</Link>
+      </li>
+      <li className={styles.navItem}>
+        <Link to="/haikus">Haikus</Link>
+      </li>
+      <li className={styles.navItem}>
+        <Link to="/assets">Assets</Link>
+      </li>
+      <li className={styles.navItem}>
+        <Link to="/blahg">Franky</Link>
+      </li>
+      <li className={styles.navItem}>
+        <Link to="/toss">Toss</Link>
+      </li>
+      
+    </ul>
+  </nav>
+  
+     
   );
 }

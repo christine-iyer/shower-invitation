@@ -1,0 +1,31 @@
+.navbar {
+     background-color: #cac5d6; /* Light gray background */
+     padding: 1rem; /* Add padding around the navbar */
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+     display: flex;
+     justify-content: center; /* Center the navigation items */
+     border-radius: 2%;
+   }
+   
+   .navList {
+     list-style: none; /* Remove default list styling */
+     display: flex; /* Display items in a row */
+     gap: 2rem; /* Add spacing between items */
+     margin: 0; /* Remove default margin */
+     padding: 0; /* Remove default padding */
+   }
+   
+   .navItem {
+     font-size: 1rem; /* Set font size */
+     font-weight: bold; /* Make text bold */
+   }
+   
+   .navItem a {
+     text-decoration: none; /* Remove underline from links */
+     color: #007bff; /* Blue color for links */
+     transition: color 0.3s ease; /* Smooth transition for hover effect */
+   }
+   
+   .navItem a:hover {
+     color: #0056b3; /* Darker blue on hover */
+   }

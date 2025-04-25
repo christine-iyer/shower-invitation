@@ -6,7 +6,7 @@ import FlipCard from "./pages/flipPage/FlipCard";
 import { getCombinedData } from "./utils/data";
 import { formatTime } from "./utils/helpers";
 import Roth from "./pages/RothPage/RothPage";
-// import TossPage from "./pages/TossPage/TossPage"
+import TossPage from "./pages/TossPage/TossPage"
 
 export default function App() {
     const events = getCombinedData()
@@ -37,6 +37,7 @@ export default function App() {
                     <Route path='/assets' element={<Roth />} />
                     <Route path='/haikus' element={<HaikuPage />} />
                     <Route path='/blahg' element={<BlahgPage />} />
+                    <Route path='/toss' element={<TossPage />} />
                 </Routes>
             </BrowserRouter>
 </div>

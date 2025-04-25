@@ -1,128 +1,65 @@
-import { useState, useEffect } from 'react'
-
-import "./toss.css"
-
+import React, { useState } from "react";
+import styles from "./Toss.module.scss";
 
 export default function TossPage() {
-  const [toss, setToss] = useState({
-    name: '',
-    winner: '',
-    margin: 0,
-    date: new Date()
-  })
-  const [tosses, setTosses] = useState([])
-  const [foundTosses, setFoundTosses] = useState(null)
-  const [error, updateError] = useState();
-
-  const handleChange = (evt) => {
-    setToss({ ...toss, [evt.target.name]: evt.target.value })
-  }
-  const getTosses = async () => {
-    try {
-      const response = await fetch('/api/tosses')
-      const data = await response.json()
-      setTosses(data)
-    } catch (error) {
-      console.error(error)
+  const generateBingoNumbers = () => {
+    const numbers = [];
+    for (let i = 1; i <= 25; i++) {
+      numbers.push(i);
     }
-  }
+    return numbers.sort(() => Math.random() - 0.5).slice(0, 25); // Shuffle and take 25 numbers
+  };
 
-  const createToss = async () => {
-    try {
-      const response = await fetch('/api/tosses', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ ...toss })
-      })
-      const data = await response.json()
-      setFoundTosses(data)
-      setToss({
-        name: '',
-        winner: '',
-        margin: 0,
-        date: Date
-      })
-    } catch (error) {
-      console.error(error)
+  const [bingoNumbers, setBingoNumbers] = useState(generateBingoNumbers());
+  const [markedCells, setMarkedCells] = useState([]);
+
+  const handleCellClick = (number) => {
+    if (!markedCells.includes(number)) {
+      setMarkedCells([...markedCells, number]);
     }
-  }
+  };
 
-  const deleteToss = async (id) => {
-    try {
-      const response = await fetch(`/api/tosses/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      const data = await response.json()
-      setFoundTosses(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  useEffect(() => {
-    getTosses()
-  }, [foundTosses])
+  const checkWin = () => {
+    const winningPatterns = [
+      // Rows
+      [0, 1, 2, 3, 4],
+      [5, 6, 7, 8, 9],
+      [10, 11, 12, 13, 14],
+      [15, 16, 17, 18, 19],
+      [20, 21, 22, 23, 24],
+      // Columns
+      [0, 5, 10, 15, 20],
+      [1, 6, 11, 16, 21],
+      [2, 7, 12, 17, 22],
+      [3, 8, 13, 18, 23],
+      [4, 9, 14, 19, 24],
+      // Diagonals
+      [0, 6, 12, 18, 24],
+      [4, 8, 12, 16, 20],
+    ];
 
+    return winningPatterns.some((pattern) =>
+      pattern.every((index) => markedCells.includes(bingoNumbers[index]))
+    );
+  };
 
   return (
-    <div className='franky'>
-      <section>
-        <h1>Post Shamelessly</h1>
-        <div>
-          <input
-            type='text'
-            value={toss.name}
-            onChange={handleChange}
-            name="name"
-            placeholder='Name'
-          />
-
-          <select
-            value={toss.winner}
-            onChange={handleChange}
-            name="winner">
-            <option >Select a Winner</option>
-            <option value="Harris">Harris</option>
-            <option value="Trump">Trump</option>
-          </select>
-          <input type='number' name='margin' onChange={handleChange} value={toss.margin} />
-          <input type='date' name='date' onChange={handleChange} value={toss.date} />
-          <br />
-          <br />
-          <button onClick={() => createToss()}>Display your Entry</button>
-          <br />
-          Entries
-        </div>
-      </section>
-      <hr />
-
-
-      {tosses && tosses.length ? (
-        <div className='entries'>
-          {tosses.map((toss) => (
-            <div key={toss._id} className="card">
-              <div className='cardBody' >
-                <p className='title'
-                >on {new Date(toss.date).toLocaleDateString()}, {toss.name}  predicts {toss.winner} by {toss.margin}</p>
-                <p className='details'>
-                  <small>{toss.winner} posted</small>
-                </p>
-
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <>No Entries yet! Yet Add One Below this message</>
-      )}
+    <div className={styles.bingoContainer}>
+      <h1>Bingo Game</h1>
+      <div className={styles.bingoGrid}>
+        {bingoNumbers.map((number, index) => (
+          <div
+            key={index}
+            className={`${styles.bingoCell} ${
+              markedCells.includes(number) ? styles.marked : ""
+            }`}
+            onClick={() => handleCellClick(number)}
+          >
+            {number}
+          </div>
+        ))}
+      </div>
+      {checkWin() && <h2 className={styles.winMessage}>Bingo! You Win!</h2>}
     </div>
   );
-
-
-
-  ;
 }

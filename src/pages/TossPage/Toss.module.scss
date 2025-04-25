@@ -1,15 +1,48 @@
-.entries{
-     display: grid;
-     grid-template-columns: 3;
-
-}
-.card {
-     border: 1px solid #ddd;
-     border-radius: 8px;
-     padding: 20px;
+.bingoContainer {
      display: flex;
      flex-direction: column;
+     align-items: center;
      justify-content: center;
-     align-items: center;     
-}
+     padding: 2rem;
+     background-color: #f9f9f9;
+     min-height: 100vh;
+     font-family: Arial, sans-serif;
+   }
    
+   .bingoGrid {
+     display: grid;
+     grid-template-columns: repeat(5, 1fr); /* 5x5 grid */
+     gap: 10px;
+     margin-top: 2rem;
+   }
+   
+   .bingoCell {
+     width: 60px;
+     height: 60px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: #ffffff;
+     border: 2px solid #007bff;
+     border-radius: 4px;
+     font-size: 1.2rem;
+     font-weight: bold;
+     cursor: pointer;
+     transition: background-color 0.3s ease, color 0.3s ease;
+   }
+   
+   .bingoCell:hover {
+     background-color: #e6f7ff;
+   }
+   
+   .marked {
+     background-color: #007bff;
+     color: #ffffff;
+   }
+   
+   .winMessage {
+     margin-top: 2rem;
+     font-size: 1.5rem;
+     color: #28a745;
+     font-weight: bold;
+   }

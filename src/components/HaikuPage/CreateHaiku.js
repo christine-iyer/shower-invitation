@@ -1,81 +1,73 @@
-import { Form } from 'react-bootstrap'
-import styles from './CreateHaiku.module.scss'
-
+import styles from './CreateHaiku.module.scss';
 
 export default function CreateHaiku({
   createHaiku,
   haiku,
   handleChange
 }) {
-
   return (
     <>
       <h2>Create A Haiku</h2>
-      <div className={styles.containerX}>
-        <Form
-
+      <div className={styles.container}>
+        <form
           className={styles.form}
           onSubmit={(e) => {
-            e.preventDefault()
-            createHaiku()
+            e.preventDefault();
+            createHaiku();
           }}
         >
-          <div
-            className={styles.formContainer}
-          >
-            <Form.Select
-              aria-label="Default select example"
+          <div className={styles.formContainer}>
+            <select
+              aria-label="Select Author"
               value={haiku.author}
               onChange={handleChange}
               name="author"
+              className={styles.select}
             >
-              <option>Author</option>
-              <option value="Anon" name="Anon">Anon</option>
-              <option value="Chris" name="Chris">Chris</option>
-              <option value="Julie" name="Julie">Julie</option>
-              <option value="Laura" name="Laura">Laura</option>
-              <option value="Leah" name="Leah">Leah</option>
-              <option value="Mary" name="Mary">Mary</option>
-              <option value="Paul" name="Paul">Paul</option>
-              <option value="Lynne" name="Lynne">Lynne</option>
-              <option value="Shannon" name="Shannon">Shannon</option>
-            </Form.Select>
-            <Form.Control
-
-              type='text'
+              <option value="">Author</option>
+              <option value="Anon">Anon</option>
+              <option value="Chris">Chris</option>
+              <option value="Julie">Julie</option>
+              <option value="Laura">Laura</option>
+              <option value="Leah">Leah</option>
+              <option value="Mary">Mary</option>
+              <option value="Paul">Paul</option>
+              <option value="Lynne">Lynne</option>
+              <option value="Shannon">Shannon</option>
+            </select>
+            <input
+              type="text"
               value={haiku.one}
-              name='one'
+              name="one"
               onChange={handleChange}
-              placeholder='Line 1'
+              placeholder="Line 1"
+              className={styles.input}
             />
-            <Form.Control
-              className={styles.formControl}
-              type='text'
+            <input
+              type="text"
               value={haiku.two}
-              name='two'
+              name="two"
               onChange={handleChange}
-              placeholder='Line 2'
+              placeholder="Line 2"
+              className={styles.input}
             />
-            <Form.Control
-              className={styles.formControl}
-              type='text'
+            <input
+              type="text"
               value={haiku.three}
-              name='three'
+              name="three"
               onChange={handleChange}
-              placeholder='Line 3'
+              placeholder="Line 3"
+              className={styles.input}
             />
           </div>
           <button
             className={styles.haikuCreateBtn}
-            type='submit'
-            value='Create Haiku'
+            type="submit"
           >
             Create
           </button>
-        </Form>
+        </form>
       </div>
-
-
     </>
-  )
+  );
 }
