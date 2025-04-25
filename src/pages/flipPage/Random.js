@@ -13,7 +13,7 @@ const Random = () => {
 
   ];
 
-  const [selectedYears, setSelectedYears] = useState([2020, 2021, 2022, 2023, 2024]);
+  const [selectedYears, setSelectedYears] = useState([2020, 2021, 2022, 2023, 2024, 2025]);
   const [data, setData] = useState(null);
   const [selectedChoice, setSelectedChoice] = useState('');
 
@@ -43,6 +43,8 @@ const Random = () => {
   const fetchData = (selectedChoice) => {
     d3.csv(selectedChoice)
       .then(function (csvData) {
+        console.log("Raw CSV Data:", csvData); // Log raw data
+  
         // Function to calculate week number
         function getWeekNumber(date) {
           const startDate = new Date(date.getFullYear(), 0, 1);
@@ -54,6 +56,7 @@ const Random = () => {
         const formattedData = csvData
           .map(function (d) {
             let parsedDate = d3.timeParse("%Y-%m-%d")(d.date);
+            console.log("Parsed Date:", parsedDate, "Raw Date:", d.date); // Log parsed dates
             if (!parsedDate) {
               console.warn("Invalid date:", d.date);
               return null; // Skip invalid rows
@@ -67,6 +70,8 @@ const Random = () => {
             };
           })
           .filter(d => d !== null); // Remove null entries
+  
+        console.log("Formatted Data:", formattedData); // Log formatted data
   
         // Set data state
         setData(formattedData);
@@ -146,8 +151,8 @@ const Random = () => {
 
     // Define color scale for years
     var color = d3.scaleOrdinal()
-      .domain([2020, 2021, 2022, 2023, 2024])
-      .range(["rgb(203,203,70)", "rgb(103,103,154)", "rgb(132,45,103)", "rgb(233, 64,147)", "rgb(234,97,42)"]);
+      .domain([2020, 2021, 2022, 2023, 2024, 2025])
+      .range(["rgb(203,203,70)", "rgb(103,103,154)", "rgb(132,45,103)", "rgb(233, 64,147)", "rgb(234,97,42)", "rgb(45, 42, 234)"]);
 
     // Define x-axis scale (0 to 52 weeks)
     var x = d3.scaleTime()
@@ -531,7 +536,18 @@ const Random = () => {
             type="checkbox" value="2024" style={{ opacity: 0.4 }}
             checked={selectedYears.includes(2024)}
             onChange={handleYearChange} />
-          2024
+          2025
+        </label>
+        <label style={{
+          backgroundColor: "rgb(45, 42, 234)",
+          padding: '5px',
+          margin: '0 5px'
+        }}>
+          <input
+            type="checkbox" value="2025" style={{ opacity: 0.4 }}
+            checked={selectedYears.includes(2025)}
+            onChange={handleYearChange} />
+          2025
         </label>
       </div>
       <svg width={660} height={400} id="my_dataviz" ref={ref} />
