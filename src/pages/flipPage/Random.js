@@ -155,9 +155,10 @@ const Random = () => {
       .range(["rgb(203,203,70)", "rgb(103,103,154)", "rgb(132,45,103)", "rgb(233, 64,147)", "rgb(234,97,42)", "rgb(45, 42, 234)"]);
 
     // Define x-axis scale (0 to 52 weeks)
-    var x = d3.scaleTime()
-      .domain([0, 52]) // Week numbers from 0 to 52
-      .range([0, width]);
+// Define x-axis scale (0 to 52 weeks)
+var x = d3.scaleLinear()
+  .domain([0, 52]) // Week numbers from 0 to 52
+  .range([0, width]);
 
     // Define y-axis scale
     var y = d3.scaleLinear()
