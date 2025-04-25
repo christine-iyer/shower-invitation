@@ -65,7 +65,7 @@ const handleChange = (event) => {
 
         </div>
         <div>
-          <button type='submit' onClick={getMergedData}> $
+          <button className={styles.button}type='submit' onClick={getMergedData}> $
 
           </button>
         </div>
@@ -100,7 +100,7 @@ const handleChange = (event) => {
 
             </div>
             <div>
-              <button styles={styles.button} onClick={handlePercentChangeClick}>
+              <button className={styles.button} onClick={handlePercentChangeClick}>
                 %△
               </button>
               {showPercentChange && (
