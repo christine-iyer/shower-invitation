@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styles from './RothPage.module.scss';
 
 
 // const SERVER_URL = "http://localhost:3008/api/portfolio/";
@@ -69,11 +70,11 @@ const handleChange = (event) => {
           </button>
         </div>
         <div>
-          <div className='cass'>
-            <div className='happy'>
+          <div className={styles.page}>
+            <div className={styles.assets}>
               {mergedData && mergedData.length ? (
                 mergedData.map(data => (
-                  <p key={data?.symbol} blog={data}>
+                  <p className={styles.card}key={data?.symbol} blog={data}>
                     {data.symbol + ' ' +
                       (data.regularMarketPrice * data.shares).toFixed(2) +
                       '... you paid ' +
@@ -90,16 +91,16 @@ const handleChange = (event) => {
                   </p>
                 ))
               ) : (
-                <h2>Click $ for your portfolio</h2>
+                <h2 className={styles.prompt}>Click $ for your portfolio</h2>
               )}
             </div>
             <div>
-              <h3>Total Purchase Price: {formatDollarAmount(totalPurchasePrice)}</h3>
-              <h3>Total Market Value: {formatDollarAmount(totalMarketValue)}</h3>
+              <h3 className ={styles.calculations}>Total Purchase Price: {formatDollarAmount(totalPurchasePrice)}</h3>
+              <h3 className ={styles.calculations}>Total Market Value: {formatDollarAmount(totalMarketValue)}</h3>
 
             </div>
             <div>
-              <button onClick={handlePercentChangeClick}>
+              <button styles={styles.button} onClick={handlePercentChangeClick}>
                 %△
               </button>
               {showPercentChange && (
