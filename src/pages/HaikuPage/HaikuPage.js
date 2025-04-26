@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import CreateHaiku from '../../components/HaikuPage/CreateHaiku';
-import HaikuCarousel from '../../components/HaikuPage/HaikuCarousel';
-import Buttons from '../../components/HaikuPage/Buttons';
 import HaikuCard from '../../components/HaikuPage/HaikuCard';
 import styles from './HaikuPage.module.scss';
 
@@ -13,27 +11,25 @@ function HaikuPage() {
     two: '',
     three: '',
     like: 0
-  })
-  const [haikus, setHaikus] = useState([])
-  const [foundHaikus, setFoundHaikus] = useState(null)
-  const [item, setItem] = useState(haikus);
-  const menuItems = [...new Set(haikus?.map((Val) => Val.author))];
-  const filterItem = (curcat) => {
-    const newItem = haikus?.filter((newVal) => {
-      return newVal.author === curcat;
-    });
-    setItem(newItem);
-  };
+  });
+  const [haikus, setHaikus] = useState([]);
+  const [editHaiku, setEditHaiku] = useState(null); // Track the haiku being edited
+  const [showEditModal, setShowEditModal] = useState(false); // Track if the edit modal is open
 
-  const handleChange = (event) => {
-    setHaiku({ ...haiku, [event.target.name]: event.target.value })
-  }
-  const [show, setShow] = useState(false);
-  const [showAD, setShowAD] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleShowA = () => setShowAD(false);
-  const handleShowD = () => setShowAD(true);
+  // Fetch haikus from the API on component mount
+  useEffect(() => {
+    const fetchHaikus = async () => {
+      try {
+        const response = await fetch('/api/haikus');
+        const data = await response.json();
+        setHaikus(data);
+      } catch (error) {
+        console.error('Error fetching haikus:', error);
+      }
+    };
+  
+    fetchHaikus();
+  }, []);
 
   const createHaiku = async () => {
     try {
@@ -43,11 +39,11 @@ function HaikuPage() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ ...haiku })
-      })
-      const data = await response.json()
-      setHaikus([data, ...haikus])
+      });
+      const data = await response.json();
+      setHaikus([data, ...haikus]);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     } finally {
       setHaiku({
         author: '',
@@ -55,48 +51,10 @@ function HaikuPage() {
         two: '',
         three: '',
         like: 0
-      })
+      });
     }
-  }
-  const likeHaiku = async (id) => {
-    try {
-      const index = haikus.findIndex((haiku) => haiku._id === id)
-      const haikusCopy = [...haikus]
-      const subject = haikusCopy[index]
-      subject.like = subject.like + 1
-      const response = await fetch(`/api/haikus/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(subject)
-      })
-      const likedHaiku = await response.json()
-      const likedHaikusCopy = [likedHaiku, ...haikus]
-      setHaikus(likedHaikusCopy)
-      setHaikus(haikusCopy)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  };
 
-  const deleteHaiku = async (id) => {
-    try {
-      const response = await fetch(`/api/haikus/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      const data = await response.json()
-      const haikusCopy = [...haikus]
-      const index = haikusCopy.findIndex(haiku => id === haiku._id)
-      haikusCopy.splice(index, 1)
-      setHaikus(haikusCopy)
-    } catch (error) {
-      console.error(error)
-    }
-  }
   const updateHaiku = async (id, updatedData) => {
     try {
       const response = await fetch(`/api/haikus/${id}`, {
@@ -105,97 +63,74 @@ function HaikuPage() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(updatedData)
-      })
-      const data = await response.json()
-      const haikusCopy = [...haikus]
-      const index = haikusCopy.findIndex(haiku => id === haiku._id)
-      haikusCopy[index] = { ...haikusCopy[index], ...updatedData }
-      setHaikus(haikusCopy)
-
+      });
+      const data = await response.json();
+      const haikusCopy = [...haikus];
+      const index = haikusCopy.findIndex((haiku) => id === haiku._id);
+      haikusCopy[index] = { ...haikusCopy[index], ...updatedData };
+      setHaikus(haikusCopy);
+      setShowEditModal(false); // Close the edit modal
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
+  const handleEdit = (haiku) => {
+    setEditHaiku(haiku); // Set the haiku to be edited
+    setShowEditModal(true); // Open the edit modal
+  };
 
-
-  const listHaikus = async () => {
-    try {
-      const response = await fetch('/api/haikus', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      const data = await response.json()
-      setHaikus(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  useEffect(() => {
-    listHaikus()
-  }, [foundHaikus])
   return (
     <div className={styles.haikuPage}>
-      <div className={styles.haikuHeader}>
-        <h1 className={styles.mainTitle}>俳句の庭</h1>
-        <p className={styles.subtitle}>Haiku Garden</p>
-      </div>
-
-      <div className={styles.haikuContent}>
-        <div className={styles.createSection}>
-          <button type="btn" onClick={handleShow} className={styles.createBtn}>
-            <span className={styles.btnText}>新しい俳句を書く</span>
-            <span className={styles.btnTextEn}>Write a New Haiku</span>
-          </button>
-        </div>
-
-        <Modal show={show} onHide={handleClose} className={styles.haikuModal}>
-          <Modal.Body>
-            <CreateHaiku
-              createHaiku={createHaiku}
+      <h1>Haiku Collection</h1>
+  
+      {/* Create Haiku Form */}
+      <CreateHaiku
+        createHaiku={createHaiku}
+        haiku={haiku}
+        handleChange={(event) =>
+          setHaiku({ ...haiku, [event.target.name]: event.target.value })
+        }
+      />
+  
+      {/* List of Haikus */}
+      <div className={styles.haikuList}>
+        {haikus.length > 0 ? (
+          haikus.map((haiku) => (
+            <HaikuCard
+              key={haiku._id}
               haiku={haiku}
-              handleChange={handleChange}
+              handleEdit={handleEdit}
             />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-
-        <div className={styles.carouselSection}>
-          <h2 className={styles.sectionTitle}>Featured Haikus</h2>
-          <HaikuCarousel
-            haikus={haikus}
-            updateHaiku={updateHaiku}
-            likeHaiku={likeHaiku}
-          />
-        </div>
-
-        <div className={styles.allHaikusSection}>
-          <h2 className={styles.sectionTitle}>All Haikus</h2>
-          <Buttons
-            haikus={haikus}
-            item={item}
-            filterItem={filterItem}
-            setItem={setItem}
-            menuItems={menuItems}
-          />
-          <HaikuCard
-            haikus={haikus}
-            item={item}
-            filterItem={filterItem}
-            deleteHaiku={deleteHaiku}
-            updateHaiku={updateHaiku}
-            likeHaiku={likeHaiku}
-          />
-        </div>
+          ))
+        ) : (
+          <p>No haikus available. Create one to get started!</p>
+        )}
       </div>
+  
+      {/* Edit Modal */}
+      <Modal
+        show={showEditModal}
+        onHide={() => setShowEditModal(false)}
+        className={styles.haikuModal}
+      >
+        <Modal.Body>
+          <CreateHaiku
+            createHaiku={() => updateHaiku(editHaiku._id, editHaiku)}
+            haiku={editHaiku}
+            handleChange={(event) =>
+              setEditHaiku({ ...editHaiku, [event.target.name]: event.target.value })
+            }
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowEditModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
-  )
+  );
 }
 
 export default HaikuPage;
