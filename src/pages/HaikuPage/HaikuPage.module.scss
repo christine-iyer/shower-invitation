@@ -5,6 +5,20 @@
   font-family: Arial, sans-serif;
 }
 
+.filterContainer {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filterSelect {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .haikuList {
   margin-top: 2rem;
   display: flex;
@@ -12,32 +26,66 @@
   gap: 1rem;
 }
 
-.haikuModal {
-  max-width: 500px;
-  margin: auto;
+.haikuCard {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  width: calc(33.333% - 1rem);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.haikuModal .modalContent {
-  background-color: #a2c675;
-  border-radius: 8px;
+.haikuCard h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.haikuCard p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #666;
+}
+.editButton {
+  background-color: #ffc107; /* Yellow */
+  color: #fff;
   border: none;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.haikuModal .modalHeader {
-  border-bottom: 2px solid #d4a5a5;
+.deleteButton {
+  background-color: #dc3545; /* Red */
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.haikuModal .modalFooter {
-  border-top: 2px solid #d4a5a5;
+.saveButton {
+  background-color: #28a745; /* Green */
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancelButton {
+  background-color: #6c757d; /* Gray */
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  .haikuPage {
-    padding: 1rem;
-  }
-
-  .haikuList {
-    flex-direction: column;
-    gap: 1rem;
+  .haikuCard {
+    width: 100%;
   }
 }
