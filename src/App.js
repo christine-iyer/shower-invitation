@@ -39,7 +39,7 @@ export default function App() {
                     <Route path='/haikus' element={<HaikuPage />} />
                     <Route path='/blahg' element={<BlahgPage />} />
                     <Route path='/toss' element={<TossPage />} />
-                    <Route path='/toss' element={<MapsPage />} />
+                    <Route path='/maps' element={<MapsPage />} />
                 </Routes>
             </BrowserRouter>
 </div>
