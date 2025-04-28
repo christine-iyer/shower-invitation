@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
+import ZoneGrid from "../../components/Map/ZoneGrid";
 
 const MapsPage = () => {
   const statePopulation = {
@@ -1224,6 +1225,7 @@ const MapsPage = () => {
   return <div>
     <h1>Historical Electoral Map Here (2020)</h1>
     <div id="map" style={{ width: "100%", height: "100%", background: "#f9f9f9" }}></div>;
+    <ZoneGrid/>
   </div>
 
 };
