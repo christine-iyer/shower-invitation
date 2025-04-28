@@ -1100,45 +1100,43 @@ const MapsPage = () => {
 
   useEffect(() => {
     if (!usStates || !usStates.features) return; // Wait until `usStates` and `features` are available
-
+  
     // Clear any previous SVG if present
     d3.select("#map").select("svg").remove();
     const width = 960;
     const height = 600;
-
+  
     const svg = d3.select("#map")
       .append("svg")
       .attr("width", width)
       .attr("height", height);
-
+  
     const projection = d3.geoAlbersUsa().scale(1000).translate([width / 2, height / 2]);
     const path = d3.geoPath().projection(projection);
-
+  
     // Create a mapping for the states from combinedData for quick lookup
     const stateDataMap = new Map(combinedData.map(d => [d.State, d]));
-
+  
     // Parse each state’s `TimeSixteen` and `DaySixteen` into a Date object and sort them chronologically
     combinedData.forEach(d => {
       d.announcementTime = new Date(`${d.DayTwenty}T${d.TimeTwenty}`);
     });
-
-    combinedData.sort((a, b) => a.announcementTime - b.announcementTime);  // Sort states by announcement time
-
-    // Calculate total duration (in milliseconds) for the entire animation
-
+  
+    combinedData.sort((a, b) => a.announcementTime - b.announcementTime);
+  
     // Tooltip element
     const tooltip = d3.select("body")
       .append("div")
       .attr("class", "tooltip")
       .style("position", "absolute")
       .style("padding", "8px")
-      .style("background", "rgba(255, 255, 255, 0.9)") // Softer white background
-      .style("color", "#333") // Darker text
-      .style("border-radius", "8px") // Rounded corners
-      .style("box-shadow", "0px 4px 6px rgba(0, 0, 0, 0.1)") // Subtle shadow
+      .style("background", "rgba(255, 255, 255, 0.9)")
+      .style("color", "#333")
+      .style("border-radius", "8px")
+      .style("box-shadow", "0px 4px 6px rgba(0, 0, 0, 0.1)")
       .style("pointer-events", "none")
       .style("opacity", 0);
-
+  
     // Draw the map
     svg.selectAll("path")
       .data(usStates.features)
@@ -1148,25 +1146,21 @@ const MapsPage = () => {
       .attr("fill", (d) => {
         const stateName = d.properties.NAME;
         const stateData = stateDataMap.get(stateName);
-
-        // Determine color based on WinnerSixteen and WinnerTwenty
+  
         if (stateData) {
-          const WinnerTwenty = stateData.WinnerTwenty.slice(-1);  // Get last character
-          // Get last character
+          const WinnerTwenty = stateData.WinnerTwenty.slice(-1);
           return (WinnerTwenty === "R") ? "#f4a6a6" :
             (WinnerTwenty === "D") ? "#a6c8f4" : "#f4f4f4";
         }
-        return "#e0e0e0"; // Default color if no data
+        return "#e0e0e0";
       })
       .attr("stroke", "rgba(0, 0, 0, 0.2)")
       .attr("stroke-width", 0.5)
       .style("transition", "fill 0.3s ease, stroke 0.3s ease")
-
-
       .on("mouseover", function (event, d) {
         const stateName = d.properties.NAME;
         const stateData = stateDataMap.get(stateName);
-
+  
         if (stateData) {
           tooltip
             .transition()
@@ -1174,29 +1168,28 @@ const MapsPage = () => {
             .style("opacity", 1);
           tooltip
             .html(`
-        <strong>${stateName}</strong><br>
-        Population: ${stateData.Population.toLocaleString()}<br>
-        Electoral Votes: ${stateData.ElectoralVotes}<br>
-        Winner: ${stateData.WinnerTwenty}
-      `)
+              <strong>${stateName}</strong><br>
+              Population: ${stateData.Population.toLocaleString()}<br>
+              Electoral Votes: ${stateData.ElectoralVotes}<br>
+              Winner: ${stateData.WinnerTwenty}
+            `)
             .style("left", (event.pageX + 10) + "px")
             .style("top", (event.pageY - 28) + "px");
-
+  
           d3.select(this)
             .attr("fill", (d) => {
               const stateName = d.properties.NAME;
               const stateData = stateDataMap.get(stateName);
-
+  
               if (stateData) {
                 const WinnerTwenty = stateData.WinnerTwenty.slice(-1);
-                return (WinnerTwenty === "R") ? "#e57373" : // Slightly darker red
-                  (WinnerTwenty === "D") ? "#73a6e5" : // Slightly darker blue
-                    "#dcdcdc"; // Neutral gray
+                return (WinnerTwenty === "R") ? "#e57373" :
+                  (WinnerTwenty === "D") ? "#73a6e5" : "#dcdcdc";
               }
-              return "#dcdcdc"; // Default gray
+              return "#dcdcdc";
             })
-            .attr("stroke", "#666") // Darker stroke on hover
-            .attr("stroke-width", 1.5); // Slightly thicker stroke
+            .attr("stroke", "#666")
+            .attr("stroke-width", 1.5);
         }
       })
       .on("mouseout", function () {
@@ -1204,22 +1197,21 @@ const MapsPage = () => {
           .transition()
           .duration(500)
           .style("opacity", 0);
-
+  
         d3.select(this)
           .attr("fill", (d) => {
             const stateName = d.properties.NAME;
             const stateData = stateDataMap.get(stateName);
-
+  
             if (stateData) {
               const WinnerTwenty = stateData.WinnerTwenty.slice(-1);
-              return (WinnerTwenty === "R") ? "#f4a6a6" : // Reset to soft red
-                (WinnerTwenty === "D") ? "#a6c8f4" : // Reset to soft blue
-                  "#f4f4f4"; // Neutral white
+              return (WinnerTwenty === "R") ? "#f4a6a6" :
+                (WinnerTwenty === "D") ? "#a6c8f4" : "#f4f4f4";
             }
-            return "#e0e0e0"; // Default light gray
+            return "#e0e0e0";
           })
-          .attr("stroke", "rgba(0, 0, 0, 0.2)") // Reset stroke
-          .attr("stroke-width", 0.5); // Reset stroke width
+          .attr("stroke", "rgba(0, 0, 0, 0.2)")
+          .attr("stroke-width", 0.5);
       });
   }, [usStates]);
 
