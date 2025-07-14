@@ -2,10 +2,11 @@
 const { Schema, model } = require('mongoose')
 
 const bevvySchema = new Schema({
-     name: String, 
-     ingredients: [], 
-     picture: String, 
-     notes: String,
+     theCock: String, 
+     theIngredients: [], 
+     theRecipe: String, 
+     theJpeg: String,
+     theComment: String,
  }, {
 timestamps: true
 })
