@@ -153,6 +153,64 @@ const likeComment = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+// Edit comment functionality
+const editComment = async (req, res) => {
+  const { id, commentId } = req.params;
+  const { text } = req.body;
+  
+  try {
+    const review = await Review.findById(id);
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
+    
+    // Find the comment
+    const comment = review.comments.id(commentId);
+    if (!comment) {
+      return res.status(404).json({ message: "Comment not found" });
+    }
+    
+    if (!text || text.trim() === '') {
+      return res.status(400).json({ message: "Comment text is required" });
+    }
+    
+    // Update comment text and add updatedAt timestamp
+    comment.text = text.trim();
+    comment.updatedAt = new Date();
+    
+    await review.save();
+    
+    res.status(200).json({ message: "Comment updated", data: comment });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// Delete comment functionality
+const deleteComment = async (req, res) => {
+  const { id, commentId } = req.params;
+  
+  try {
+    const review = await Review.findById(id);
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
+    
+    // Find the comment
+    const comment = review.comments.id(commentId);
+    if (!comment) {
+      return res.status(404).json({ message: "Comment not found" });
+    }
+    
+    // Remove the comment from the array
+    review.comments.pull(commentId);
+    await review.save();
+    
+    res.status(200).json({ message: "Comment deleted", data: comment });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 module.exports = {
   writeReview,
@@ -162,5 +220,7 @@ module.exports = {
   getReview,
   likeReview,
   addComment,    // NEW
-  likeComment,   // NEW
+  likeComment, 
+  editComment, 
+  deleteComment  // NEW
 };
