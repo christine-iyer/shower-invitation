@@ -20,11 +20,11 @@ const writeReview = async (req, res) => {
 
 const editReview = async (req, res) => {
   const { id } = req.params;
-  const { text, author, genre, title, rating, images } = req.body;
+  const { text, author, genre, title, rating, images, like } = req.body; // Added 'like' here
   try {
     const updatedReview = await Review.findByIdAndUpdate(
       id,
-      { title, author, text, genre, rating, images },
+      { title, author, text, genre, rating, images, like }, // Added 'like' here
       { new: true, runValidators: true }
     );
     if (!updatedReview) {
@@ -71,19 +71,84 @@ const getReview = async (req, res) => {
   }
 };
 
+// UPDATED: Better like functionality
 const likeReview = async (req, res) => {
   const { id } = req.params;
-  const { like } = req.body;
   try {
-    const likedReview = await Review.findByIdAndUpdate(
-      id,
-      { like },
-      { new: true, runValidators: true }
-    );
-    if (!likedReview) {
+    const review = await Review.findById(id);
+    if (!review) {
       return res.status(404).json({ message: "Review not found" });
     }
-    res.status(200).json({ message: "Review liked", data: likedReview });
+    
+    // Increment the like count
+    review.like = (review.like || 0) + 1;
+    await review.save();
+    
+    res.status(200).json({ message: "Review liked", data: review });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// NEW: Add comment functionality
+const addComment = async (req, res) => {
+  const { id } = req.params;
+  const { text } = req.body;
+  
+  try {
+    const review = await Review.findById(id);
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
+    
+    if (!text || text.trim() === '') {
+      return res.status(400).json({ message: "Comment text is required" });
+    }
+    
+    // Create new comment object
+    const newComment = {
+      text: text.trim(),
+      likes: 0,
+      createdAt: new Date()
+    };
+    
+    // Add comment to review
+    if (!review.comments) {
+      review.comments = [];
+    }
+    review.comments.push(newComment);
+    
+    await review.save();
+    
+    // Return the new comment
+    const addedComment = review.comments[review.comments.length - 1];
+    res.status(201).json({ message: "Comment added", data: addedComment });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// NEW: Like comment functionality
+const likeComment = async (req, res) => {
+  const { id, commentId } = req.params;
+  
+  try {
+    const review = await Review.findById(id);
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
+    
+    // Find the comment
+    const comment = review.comments.id(commentId);
+    if (!comment) {
+      return res.status(404).json({ message: "Comment not found" });
+    }
+    
+    // Increment comment likes
+    comment.likes = (comment.likes || 0) + 1;
+    await review.save();
+    
+    res.status(200).json({ message: "Comment liked", data: comment });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -96,4 +161,6 @@ module.exports = {
   listReviews,
   getReview,
   likeReview,
+  addComment,    // NEW
+  likeComment,   // NEW
 };
