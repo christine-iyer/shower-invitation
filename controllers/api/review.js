@@ -36,17 +36,7 @@ const editReview = async (req, res) => {
   }
 };
 
-const deleteReview = async (req, res) => {
-  try {
-    const deletedReview = await Review.findByIdAndDelete(req.params.id);
-    if (!deletedReview) {
-      return res.status(404).json({ message: "Review not found" });
-    }
-    res.status(200).json({ message: "Review deleted", data: deletedReview });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
+
 
 const listReviews = async (req, res) => {
   try {
@@ -185,20 +175,43 @@ const editComment = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+const deleteReview = async (req, res) => {
+  try {
+    console.log("🗑️ DELETE REVIEW - Params:", req.params);
+    console.log("🗑️ DELETE REVIEW - ID:", req.params.id);
+    
+    const deletedReview = await Review.findByIdAndDelete(req.params.id);
+    if (!deletedReview) {
+      console.log("❌ Review not found:", req.params.id);
+      return res.status(404).json({ message: "Review not found" });
+    }
+    
+    console.log("✅ Review deleted successfully:", deletedReview._id);
+    res.status(200).json({ message: "Review deleted", data: deletedReview });
+  } catch (error) {
+    console.error("❌ Error deleting review:", error);
+    res.status(400).json({ message: error.message });
+  }
+};
 
-// Delete comment functionality
 const deleteComment = async (req, res) => {
   const { id, commentId } = req.params;
   
   try {
+    console.log("🗑️ DELETE COMMENT - Review ID:", id);
+    console.log("🗑️ DELETE COMMENT - Comment ID:", commentId);
+    
     const review = await Review.findById(id);
     if (!review) {
+      console.log("❌ Review not found:", id);
       return res.status(404).json({ message: "Review not found" });
     }
     
     // Find the comment
     const comment = review.comments.id(commentId);
     if (!comment) {
+      console.log("❌ Comment not found:", commentId);
+      console.log("📋 Available comments:", review.comments.map(c => c._id));
       return res.status(404).json({ message: "Comment not found" });
     }
     
@@ -206,11 +219,14 @@ const deleteComment = async (req, res) => {
     review.comments.pull(commentId);
     await review.save();
     
+    console.log("✅ Comment deleted successfully:", commentId);
     res.status(200).json({ message: "Comment deleted", data: comment });
   } catch (error) {
+    console.error("❌ Error deleting comment:", error);
     res.status(400).json({ message: error.message });
   }
 };
+
 
 module.exports = {
   writeReview,
