@@ -101,21 +101,29 @@ export default function BlahgPage() {
 
   // Delete blahg function
   const deleteBlahg = async (id) => {
-    try {
-      await fetch(`/api/blahgs/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-
-      // Remove from state after successful deletion
-      const updatedBlahgs = blahgs.filter((blahg) => blahg._id !== id)
-      setBlahgs(updatedBlahgs)
-    } catch (error) {
-      console.error(error)
-    }
+  // First confirmation
+  if (!window.confirm("Are you sure you want to delete this?")) {
+    return;
   }
+  // Second confirmation
+  if (!window.confirm("Seriously, last chance?")) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`/api/blahgs/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      setBlahgs(blahgs.filter((blahg) => blahg._id !== id));
+    } else {
+      console.error("Failed to delete blahg:", await response.text());
+    }
+  } catch (error) {
+    console.error("Error deleting blahg:", error);
+  }
+};
 
   // Start editing a blahg
   const startEditing = (blahg) => {
