@@ -42,6 +42,7 @@ app.use('/api/haikus', require('./routes/api/haikus'))
 app.use('/api/blahgs', require('./routes/api/blahgs'))
 app.use('/api/tosses', require('./routes/api/tosses'))
 app.use('/api/bevvies', require('./routes/api/bevvies'))
+app.use('/api/strains', require('./routes/api/strains'))
 
 
 app.get('*', (req, res) => {
