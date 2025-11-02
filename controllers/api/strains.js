@@ -1,5 +1,5 @@
      require('dotenv').config()
-     const Strain = require('../../models/blahg')
+     const Strain = require('../../models/strain')
      
      const destroyStrain = async (req, res, next) => {
           try {
