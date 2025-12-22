@@ -1,10 +1,97 @@
-const router = require('express').Router()
-const userController = require('../../controllers/api/user.js')
+// const router = require('express').Router()
+// const userController = require('../../controllers/api/user.js')
 
-router.post('/', userController.signUp )
-router.put('/:id', userController.updateUser )
-router.delete('/:id', userController.deleteUser )
-router.get('/:id', userController.getUser )
-router.get('/', userController.listUsers )
+// router.post('/', userController.signUp )
+// router.put('/:id', userController.updateUser )
+// router.delete('/:id', userController.deleteUser )
+// router.get('/:id', userController.getUser )
+// router.get('/', userController.listUsers )
 
-module.exports = router
+// module.exports = router
+// routes/api/user.js
+const express = require('express');
+const router = express.Router();
+const userController = require('../../controllers/api/user.js');
+const passport = require('../../config/passport');
+
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://book-app-front-lake.vercel.app';
+
+// ========== ORIGINAL USER ROUTES ==========
+router.post('/', userController.signUp);
+router.put('/:id', userController.updateUser);
+router.delete('/:id', userController.deleteUser);
+router.get('/:id', userController.getUser);
+router.get('/', userController.listUsers);
+
+// ========== GOOGLE OAUTH ROUTES ==========
+// @route   GET /api/user/auth/google
+// @desc    Initiate Google OAuth
+router.get('/auth/google', 
+  passport.authenticate('google', { 
+    scope: ['profile', 'email'],
+    session: false 
+  })
+);
+
+// @route   GET /api/user/auth/google/callback
+// @desc    Google OAuth callback
+router.get('/auth/google/callback',
+  passport.authenticate('google', { 
+    failureRedirect: `${FRONTEND_URL}/?error=auth_failed`,
+    session: false 
+  }),
+  (req, res) => {
+    try {
+      const user = req.user;
+      
+      if (!user) {
+        return res.redirect(`${FRONTEND_URL}/?error=no_user`);
+      }
+
+      // Generate JWT token
+      const { generateToken } = require('../../utils/jwt');
+      const token = generateToken(user);
+      
+      console.log('OAuth Success - Redirecting with token');
+
+      // Redirect to frontend with token
+      res.redirect(`${FRONTEND_URL}/auth/callback?token=${token}`);
+    } catch (error) {
+      console.error('OAuth Callback Error:', error);
+      res.redirect(`${FRONTEND_URL}/?error=server_error`);
+    }
+  }
+);
+
+// @route   GET /api/user/auth/me
+// @desc    Get current user from token
+router.get('/auth/me', async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(' ')[1];
+    
+    if (!token) {
+      return res.status(401).json({ message: 'No token provided' });
+    }
+
+    const { verifyToken } = require('../../utils/jwt');
+    const decoded = verifyToken(token);
+    
+    if (!decoded) {
+      return res.status(401).json({ message: 'Invalid token' });
+    }
+
+    const User = require('../../models/user');
+    const user = await User.findById(decoded.id).select('-password');
+    
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.error('Get user error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+module.exports = router;
