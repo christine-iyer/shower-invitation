@@ -9,6 +9,7 @@
 
 // module.exports = router
 // routes/api/user.js
+// routes/api/user.js
 const express = require('express');
 const router = express.Router();
 const userController = require('../../controllers/api/user.js');
@@ -16,8 +17,20 @@ const passport = require('../../config/passport');
 
 const FRONTEND_URL = process.env.FRONTEND_URL || 'https://book-app-front-lake.vercel.app';
 
-// ========== ORIGINAL USER ROUTES ==========
-router.post('/', userController.signUp);
+// ========== AUTHENTICATION ROUTES ==========
+// @route   POST /api/user/signup
+// @desc    Create new user account
+router.post('/signup', userController.signUp);
+
+// @route   POST /api/user/login
+// @desc    Login with email and password
+router.post('/login', userController.login);
+
+// @route   POST /api/user/logout
+// @desc    Logout (client removes token)
+router.post('/logout', userController.logout);
+
+// ========== USER CRUD ROUTES ==========
 router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
 router.get('/:id', userController.getUser);
