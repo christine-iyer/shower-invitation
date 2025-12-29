@@ -23,3 +23,7 @@
 | DIS | 151.93 | 10 | 12/22/2021 |
 | VTI | 239.05 | 10 | 12/22/2021 |
 | LI | 32.53 | 225 | 11/13/2020 |
+
+### 12/29/25
+
+The objective is to make the front end accessible by signing in with regular or google. so far the backend is not set up for google.
