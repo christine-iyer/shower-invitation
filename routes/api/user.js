@@ -39,9 +39,9 @@ router.get('/auth/google', (req, res, next) => {
   })(req, res, next);
 });
 
-// @route   GET /api/user/auth/google/callback
+// @route   GET /api/user/auth/google/Callback
 // @desc    Google redirects here after user logs in
-router.get('/auth/google/callback',
+router.get('/auth/google/Callback',
   (req, res, next) => {
     console.log('=== Google Callback Received ===');
     passport.authenticate('google', { 
@@ -122,7 +122,7 @@ router.get('/auth/debug', (req, res) => {
     hasGoogleSecret: !!process.env.GOOGLE_CLIENT_SECRET,
     frontendUrl: process.env.FRONTEND_URL,
     backendUrl: process.env.BACKEND_URL,
-    callbackUrl: `${process.env.BACKEND_URL || 'https://franky-app-ix96j.ondigitalocean.app'}/api/user/auth/google/callback`
+    callbackUrl: `${process.env.BACKEND_URL || 'https://franky-app-ix96j.ondigitalocean.app'}/api/user/auth/google/Callback`
   });
 });
 
