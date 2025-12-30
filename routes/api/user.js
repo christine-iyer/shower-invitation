@@ -38,14 +38,14 @@ router.get('/auth/google',
 // @route   GET /api/user/auth/google/callback
 // @desc    Google redirects here after user logs in
 router.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: `${FRONTEND_URL}/Callback?error=auth_failed` }),
+  passport.authenticate('google', { failureRedirect: `${FRONTEND_URL}/auth/callback?error=auth_failed` }),
   async (req, res) => {
     try {
       // req.user is set by passport after successful authentication
       const user = req.user;
       
       if (!user) {
-        return res.redirect(`${FRONTEND_URL}/Callback?error=no_user`);
+        return res.redirect(`${FRONTEND_URL}/auth/callback?error=no_user`);
       }
       
       // Generate JWT token
@@ -54,10 +54,10 @@ router.get('/auth/google/callback',
       console.log('Google auth successful, redirecting with token');
       
       // Redirect to frontend with token
-      res.redirect(`${FRONTEND_URL}/Callback?token=${token}`);
+      res.redirect(`${FRONTEND_URL}/auth/callback?token=${token}`);
     } catch (error) {
       console.error('Google callback error:', error);
-      res.redirect(`${FRONTEND_URL}/Callback?error=auth_failed`);
+      res.redirect(`${FRONTEND_URL}/auth/callback?error=auth_failed`);
     }
   }
 );
