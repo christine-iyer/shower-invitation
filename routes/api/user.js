@@ -46,21 +46,37 @@ router.get('/auth/google',
   })
 );
 
-// @route   GET /api/user/auth/google/callback
-// @desc    Google OAuth callback
+// GET /api/user/auth/google/callback
+// Google redirects here after user logs in
 router.get('/auth/google/callback',
-  passport.authenticate('google', { 
-    failureRedirect: `${FRONTEND_URL}/Callback?error=auth_failed` 
-  }),
+  passport.authenticate('google', { failureRedirect: '/auth/failed' }),
   async (req, res) => {
-    // User authenticated successfully
-    const user = req.user;
-    
-    // Generate JWT token
-    const token = generateToken(user);
-    
-    // Redirect back to your frontend with token
-    res.redirect(`${FRONTEND_URL}/Callback?token=${token}`);
+    try {
+      const user = req.user; // User from Google
+      
+      // Create or find user in your database
+      let dbUser = await User.findOne({ googleId: user.id });
+      if (!dbUser) {
+        dbUser = await User.create({
+          googleId: user.id,
+          username: user.displayName,
+          email: user.emails[0].value,
+          avatar: user.photos[0].value
+        });
+      }
+      
+      // Generate JWT token
+      const token = jwt.sign(
+        { userId: dbUser._id },
+        process.env.JWT_SECRET,
+        { expiresIn: '7d' }
+      );
+      
+      // Redirect to frontend with token
+      res.redirect(`https://book-app-front-lake.vercel.app/Callback?token=${token}`);
+    } catch (error) {
+      res.redirect(`https://book-app-front-lake.vercel.app/Callback?error=auth_failed`);
+    }
   }
 );
 // @route   GET /api/user/auth/me
