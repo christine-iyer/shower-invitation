@@ -29,34 +29,46 @@ router.get('/', userController.listUsers);
 // ========== GOOGLE OAUTH ROUTES ==========
 // @route   GET /api/user/auth/google
 // @desc    Initiate Google OAuth
-router.get('/auth/google', 
+// ========== GOOGLE OAUTH ROUTES ==========
+// @route   GET /api/user/auth/google
+// @desc    Initiate Google OAuth
+router.get('/auth/google', (req, res, next) => {
+  console.log('=== Initiating Google OAuth ===');
   passport.authenticate('google', { 
     scope: ['profile', 'email']
-  })
-);
+  })(req, res, next);
+});
 
 // @route   GET /api/user/auth/google/callback
 // @desc    Google redirects here after user logs in
 router.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: `${FRONTEND_URL}/Callback?error=auth_failed` }),
+  (req, res, next) => {
+    console.log('=== Google Callback Received ===');
+    passport.authenticate('google', { 
+      failureRedirect: `${FRONTEND_URL}/Callback?error=auth_failed`,
+      session: false  // Add this if you're using JWT, not sessions
+    })(req, res, next);
+  },
   async (req, res) => {
     try {
-      // req.user is set by passport after successful authentication
+      console.log('=== Processing authenticated user ===');
       const user = req.user;
       
       if (!user) {
+        console.error('No user in request after authentication');
         return res.redirect(`${FRONTEND_URL}/Callback?error=no_user`);
       }
       
+      console.log('User authenticated:', user.username);
+      
       // Generate JWT token
       const token = generateToken(user);
-      
-      console.log('Google auth successful, redirecting with token');
+      console.log('Token generated, redirecting to frontend');
       
       // Redirect to frontend with token
       res.redirect(`${FRONTEND_URL}/Callback?token=${token}`);
     } catch (error) {
-      console.error('Google callback error:', error);
+      console.error('❌ Google callback error:', error);
       res.redirect(`${FRONTEND_URL}/Callback?error=auth_failed`);
     }
   }
@@ -102,6 +114,16 @@ router.get('/me', async (req, res) => {
     console.error('Get user error:', error);
     res.status(500).json({ message: 'Server error' });
   }
+});
+// Add to route.js - TEMPORARY DEBUGGING ROUTE
+router.get('/auth/debug', (req, res) => {
+  res.json({
+    hasGoogleClientId: !!process.env.GOOGLE_CLIENT_ID,
+    hasGoogleSecret: !!process.env.GOOGLE_CLIENT_SECRET,
+    frontendUrl: process.env.FRONTEND_URL,
+    backendUrl: process.env.BACKEND_URL,
+    callbackUrl: `${process.env.BACKEND_URL || 'https://franky-app-ix96j.ondigitalocean.app'}/api/user/auth/google/callback`
+  });
 });
 
 module.exports = router;

@@ -7,79 +7,87 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const BACKEND_URL = process.env.BACKEND_URL || 'https://franky-app-ix96j.ondigitalocean.app';
 
+console.log('=== Passport Configuration ===');
+console.log('GOOGLE_CLIENT_ID:', GOOGLE_CLIENT_ID ? `Set (${GOOGLE_CLIENT_ID.substring(0, 20)}...)` : 'MISSING');
+console.log('GOOGLE_CLIENT_SECRET:', GOOGLE_CLIENT_SECRET ? 'Set' : 'MISSING');
+console.log('BACKEND_URL:', BACKEND_URL);
+console.log('Callback URL:', `${BACKEND_URL}/api/user/auth/google/callback`);
+
 // Validate required environment variables
 if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
-  console.error('⚠️  WARNING: Google OAuth credentials are missing!');
-  console.error('GOOGLE_CLIENT_ID:', GOOGLE_CLIENT_ID ? 'Set' : 'MISSING');
-  console.error('GOOGLE_CLIENT_SECRET:', GOOGLE_CLIENT_SECRET ? 'Set' : 'MISSING');
-  console.error('Google OAuth will not work until these are configured.');
-} else {
-  console.log('✓ Google OAuth credentials configured');
-  
-  passport.use(
-    new GoogleStrategy(
-      {
-        clientID: GOOGLE_CLIENT_ID,
-        clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: `${BACKEND_URL}/api/user/auth/google/callback`,
-      },
-      async (accessToken, refreshToken, profile, done) => {
-        try {
-          console.log('Google Profile:', profile);
+  console.error('⚠️  CRITICAL: Google OAuth credentials are MISSING!');
+  console.error('Please set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in your environment variables');
+  throw new Error('Google OAuth credentials not configured');
+}
 
-          // Check if user already exists
-          let user = await User.findOne({ googleId: profile.id });
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
+      callbackURL: `${BACKEND_URL}/api/user/auth/google/callback`,
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        console.log('=== Google OAuth Callback ===');
+        console.log('Profile ID:', profile.id);
+        console.log('Profile Email:', profile.emails?.[0]?.value);
+        console.log('Profile Name:', profile.displayName);
 
+        // Check if user already exists
+        let user = await User.findOne({ googleId: profile.id });
+
+        if (user) {
+          console.log('✓ Existing user found:', user.username);
+          return done(null, user);
+        }
+
+        // Check if email already exists (from manual signup)
+        const email = profile.emails?.[0]?.value;
+        if (email) {
+          user = await User.findOne({ email });
           if (user) {
-            console.log('Existing user found:', user);
+            // Link Google account to existing user
+            user.googleId = profile.id;
+            user.avatar = profile.photos?.[0]?.value;
+            await user.save();
+            console.log('✓ Linked Google to existing user:', user.username);
             return done(null, user);
           }
-
-          // Check if email already exists (from manual signup)
-          const email = profile.emails?.[0]?.value;
-          if (email) {
-            user = await User.findOne({ email });
-            if (user) {
-              // Link Google account to existing user
-              user.googleId = profile.id;
-              user.avatar = profile.photos?.[0]?.value;
-              await user.save();
-              console.log('Linked Google to existing user:', user);
-              return done(null, user);
-            }
-          }
-
-          // Create new user
-          user = await User.create({
-            googleId: profile.id,
-            username: profile.displayName || `user_${Date.now()}`,
-            email: email,
-            avatar: profile.photos?.[0]?.value,
-          });
-
-          console.log('New user created:', user);
-          return done(null, user);
-        } catch (error) {
-          console.error('Passport Google Strategy Error:', error);
-          return done(error, undefined);
         }
+
+        // Create new user
+        user = await User.create({
+          googleId: profile.id,
+          username: profile.displayName || `user_${Date.now()}`,
+          email: email,
+          avatar: profile.photos?.[0]?.value,
+        });
+
+        console.log('✓ New user created:', user.username);
+        return done(null, user);
+      } catch (error) {
+        console.error('❌ Passport Google Strategy Error:', error);
+        return done(error, null);
       }
-    )
-  );
-
-  // Serialize user for session (optional if using JWT)
-  passport.serializeUser((user, done) => {
-    done(null, user._id);
-  });
-
-  passport.deserializeUser(async (id, done) => {
-    try {
-      const user = await User.findById(id);
-      done(null, user);
-    } catch (error) {
-      done(error, null);
     }
-  });
-}
+  )
+);
+
+// Serialize user for session
+passport.serializeUser((user, done) => {
+  done(null, user._id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (error) {
+    done(error, null);
+  }
+});
+
+console.log('✓ Passport Google Strategy configured successfully');
 
 module.exports = passport;
