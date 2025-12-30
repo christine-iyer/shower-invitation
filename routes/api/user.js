@@ -41,8 +41,7 @@ router.get('/', userController.listUsers);
 // @desc    Initiate Google OAuth
 router.get('/auth/google', 
   passport.authenticate('google', { 
-    scope: ['profile', 'email'],
-    session: false 
+    scope: ['profile', 'email']
   })
 );
 
