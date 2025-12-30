@@ -8,31 +8,29 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const BACKEND_URL = process.env.BACKEND_URL || 'https://franky-app-ix96j.ondigitalocean.app';
 
 console.log('=== Passport Configuration ===');
-console.log('GOOGLE_CLIENT_ID:', GOOGLE_CLIENT_ID ? `Set (${GOOGLE_CLIENT_ID.substring(0, 20)}...)` : 'MISSING');
+console.log('GOOGLE_CLIENT_ID:', GOOGLE_CLIENT_ID ? 'Set' : 'MISSING');
 console.log('GOOGLE_CLIENT_SECRET:', GOOGLE_CLIENT_SECRET ? 'Set' : 'MISSING');
-console.log('BACKEND_URL:', BACKEND_URL);
 console.log('Callback URL:', `${BACKEND_URL}/api/user/auth/google/callback`);
 
-// Validate required environment variables
 if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
   console.error('⚠️  CRITICAL: Google OAuth credentials are MISSING!');
-  console.error('Please set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in your environment variables');
   throw new Error('Google OAuth credentials not configured');
 }
+
+console.log('✓ Google OAuth credentials configured');
 
 passport.use(
   new GoogleStrategy(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: `${BACKEND_URL}/api/user/auth/google/callback`,
+      callbackURL: `${BACKEND_URL}/api/user/auth/google/callback`,  // ✓ LOWERCASE callback
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
         console.log('=== Google OAuth Callback ===');
         console.log('Profile ID:', profile.id);
-        console.log('Profile Email:', profile.emails?.[0]?.value);
-        console.log('Profile Name:', profile.displayName);
+        console.log('Email:', profile.emails?.[0]?.value);
 
         // Check if user already exists
         let user = await User.findOne({ googleId: profile.id });
@@ -74,7 +72,6 @@ passport.use(
   )
 );
 
-// Serialize user for session
 passport.serializeUser((user, done) => {
   done(null, user._id);
 });
@@ -88,6 +85,6 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-console.log('✓ Passport Google Strategy configured successfully');
+console.log('✓ Passport Google Strategy configured');
 
 module.exports = passport;
