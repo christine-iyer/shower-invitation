@@ -36,28 +36,37 @@ router.get('/auth/google',
 );
 
 // @route   GET /api/user/auth/google/callback
-// @desc    Google redirects here after user logs in
+// @desc    Google OAuth callback
 router.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: `${FRONTEND_URL}/auth/callback?error=auth_failed` }),
+  passport.authenticate('google', { 
+    failureRedirect: `${FRONTEND_URL}/?error=auth_failed`,
+    session: false 
+  }),
   async (req, res) => {
     try {
-      // req.user is set by passport after successful authentication
       const user = req.user;
       
+      console.log('=== Google OAuth Callback ===');
+      console.log('User from Passport:', user);
+      
       if (!user) {
-        return res.redirect(`${FRONTEND_URL}/auth/callback?error=no_user`);
+        console.error('No user returned from Passport');
+        return res.redirect(`${FRONTEND_URL}/?error=no_user`);
       }
       
       // Generate JWT token
       const token = generateToken(user);
       
-      console.log('Google auth successful, redirecting with token');
+      console.log('Token generated successfully');
+      console.log('Redirecting to:', `${FRONTEND_URL}/auth/callback?token=${token.substring(0, 20)}...`);
       
-      // Redirect to frontend with token
+      // Redirect to frontend with token (use lowercase path)
       res.redirect(`${FRONTEND_URL}/auth/callback?token=${token}`);
     } catch (error) {
-      console.error('Google callback error:', error);
-      res.redirect(`${FRONTEND_URL}/auth/callback?error=auth_failed`);
+      console.error('=== Google Callback Error ===');
+      console.error('Error:', error.message);
+      console.error('Stack:', error.stack);
+      res.redirect(`${FRONTEND_URL}/?error=server_error`);
     }
   }
 );
