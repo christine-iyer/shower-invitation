@@ -14,6 +14,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../../controllers/api/user.js');
 const passport = require('../../config/passport');
+const { generateToken } = require('../../utils/jwt');
 
 const FRONTEND_URL = process.env.FRONTEND_URL || 'https://book-app-front-lake.vercel.app';
 
@@ -49,32 +50,19 @@ router.get('/auth/google',
 // @desc    Google OAuth callback
 router.get('/auth/google/callback',
   passport.authenticate('google', { 
-    failureRedirect: `${FRONTEND_URL}/?error=auth_failed`,
-    session: false 
+    failureRedirect: `${FRONTEND_URL}/Callback?error=auth_failed` 
   }),
-  (req, res) => {
-    try {
-      const user = req.user;
-      
-      if (!user) {
-        return res.redirect(`${FRONTEND_URL}/?error=no_user`);
-      }
-
-      // Generate JWT token
-      const { generateToken } = require('../../utils/jwt');
-      const token = generateToken(user);
-      
-      console.log('OAuth Success - Redirecting with token');
-
-      // Redirect to frontend with token
-      res.redirect(`${FRONTEND_URL}/auth/callback?token=${token}`);
-    } catch (error) {
-      console.error('OAuth Callback Error:', error);
-      res.redirect(`${FRONTEND_URL}/?error=server_error`);
-    }
+  async (req, res) => {
+    // User authenticated successfully
+    const user = req.user;
+    
+    // Generate JWT token
+    const token = generateToken(user);
+    
+    // Redirect back to your frontend with token
+    res.redirect(`${FRONTEND_URL}/Callback?token=${token}`);
   }
 );
-
 // @route   GET /api/user/auth/me
 // @desc    Get current user from token
 router.get('/auth/me', async (req, res) => {
