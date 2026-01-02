@@ -12,13 +12,7 @@ router.post('/signup', userController.signUp);
 router.post('/login', userController.login);
 router.post('/logout', userController.logout);
 
-// ========== USER CRUD ROUTES ==========
-router.put('/:id', userController.updateUser);
-router.delete('/:id', userController.deleteUser);
-router.get('/:id', userController.getUser);
-router.get('/', userController.listUsers);
-
-// ========== GOOGLE OAUTH ROUTES ==========
+// ========== GOOGLE OAUTH ROUTES (Before dynamic :id routes) ==========
 router.get('/auth/google', (req, res, next) => {
   console.log('=== Initiating Google OAuth ===');
   passport.authenticate('google', { 
@@ -26,8 +20,7 @@ router.get('/auth/google', (req, res, next) => {
   })(req, res, next);
 });
 
-// LOWERCASE callback - matches Google Cloud Console
-router.get('/auth/google/callback',  // ✓ lowercase
+router.get('/auth/google/callback',
   (req, res, next) => {
     console.log('=== Google Callback Received ===');
     passport.authenticate('google', { 
@@ -50,7 +43,6 @@ router.get('/auth/google/callback',  // ✓ lowercase
       const token = generateToken(user);
       console.log('Token generated, redirecting to frontend');
       
-      // Capital C for FRONTEND route
       res.redirect(`${FRONTEND_URL}/Callback?token=${token}`);
     } catch (error) {
       console.error('❌ Google callback error:', error);
@@ -59,8 +51,23 @@ router.get('/auth/google/callback',  // ✓ lowercase
   }
 );
 
+// Debug route
+router.get('/auth/debug', (req, res) => {
+  res.json({
+    hasGoogleClientId: !!process.env.GOOGLE_CLIENT_ID,
+    hasGoogleSecret: !!process.env.GOOGLE_CLIENT_SECRET,
+    frontendUrl: process.env.FRONTEND_URL,
+    backendUrl: process.env.BACKEND_URL,
+    callbackUrl: `${process.env.BACKEND_URL || 'https://franky-app-ix96j.ondigitalocean.app'}/api/user/auth/google/callback`
+  });
+});
+
+// ========== SPECIFIC ROUTES (MUST come before /:id) ==========
+// @route   GET /api/user/me
+// @desc    Get current user from token
 router.get('/me', async (req, res) => {
   try {
+    console.log('=== GET /me endpoint hit ===');
     const authHeader = req.headers.authorization;
     
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -75,13 +82,25 @@ router.get('/me', async (req, res) => {
       return res.status(401).json({ message: 'Invalid token' });
     }
 
+    console.log('Token decoded:', decoded);
+    
+    // The decoded token should have the user id
     const userId = decoded.id || decoded.userId || decoded._id;
+    
+    if (!userId) {
+      console.error('No user ID found in token:', decoded);
+      return res.status(401).json({ message: 'Invalid token structure' });
+    }
+    
     const user = await User.findById(userId).select('-password');
     
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
+    console.log('User found:', user.username);
+
+    // Return user data in the format your frontend expects
     res.json({
       _id: user._id,
       username: user.username,
@@ -91,19 +110,17 @@ router.get('/me', async (req, res) => {
     });
   } catch (error) {
     console.error('Get user error:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
 
-// Debug route
-router.get('/auth/debug', (req, res) => {
-  res.json({
-    hasGoogleClientId: !!process.env.GOOGLE_CLIENT_ID,
-    hasGoogleSecret: !!process.env.GOOGLE_CLIENT_SECRET,
-    frontendUrl: process.env.FRONTEND_URL,
-    backendUrl: process.env.BACKEND_URL,
-    callbackUrl: `${process.env.BACKEND_URL || 'https://franky-app-ix96j.ondigitalocean.app'}/api/user/auth/google/callback`
-  });
-});
+// Get all users (list)
+router.get('/', userController.listUsers);
+
+// ========== DYNAMIC ROUTES (MUST come LAST) ==========
+// These catch any GET /api/user/:id
+router.get('/:id', userController.getUser);
+router.put('/:id', userController.updateUser);
+router.delete('/:id', userController.deleteUser);
 
 module.exports = router;
