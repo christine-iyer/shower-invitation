@@ -8,6 +8,9 @@ const reviewSchema = new Schema({
     text: { type: String },
     genre: { type: String },
     rating: { type: Number },
+    setting: { type: String },
+    source: { type: String },
+    format: { type: String },
     images: { type: [String], required: false, default: [] },
     like: { type: Number },
     comments: [{
