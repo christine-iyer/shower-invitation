@@ -20,11 +20,11 @@ const writeReview = async (req, res) => {
 
 const editReview = async (req, res) => {
   const { id } = req.params;
-  const { text, author, genre, title, rating, setting, source, format, images, like } = req.body; // Added 'like' here
+  const { text, author, genre, title, rating, setting, source, format, images } = req.body; // Added 'like' here
   try {
     const updatedReview = await Review.findByIdAndUpdate(
       id,
-      { title, author, text, genre, rating, setting, source, format, images, like }, // Added 'like' here
+      { title, author, text, genre, rating, setting, source, format, images }, // Added 'like' here
       { new: true, runValidators: true }
     );
     if (!updatedReview) {
