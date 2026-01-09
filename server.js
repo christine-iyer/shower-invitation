@@ -1,11 +1,14 @@
 // server.js
 const cors = require("cors");
+const bodyParser = require('body-parser');
 require('dotenv').config()
-require('./config/database') // Existing MongoDB connection
+require('./config/database')
+require('./config/environment'); // Existing MongoDB connection
 const passport = require('./config/passport') // Updated passport config
 
 const express = require('express')
 const app = express()
+const {authRoutes, customerRoutes, itemRoutes, invoiceRoutes}= require('./routes/tortilla.j'son) 
 
 app.use(cors({
   origin: [
