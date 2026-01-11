@@ -1,6 +1,6 @@
-const quickbooksClient = require('../utils/quickbooksClient');
-const config = require('../config/environment');
-const ResponseHandler = require('../utils/responseHandler');
+const quickbooksClient = require('../../utils/quickbooksClient');
+const config = require('../../config/environment');
+const ResponseHandler = require('../../utils/responseHandler');
 
 class AuthController {
   async handleCallback(req, res) {

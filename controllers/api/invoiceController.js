@@ -1,7 +1,7 @@
-const Invoice = require('../models/invoice');
-const Customer = require('../models/customer');
-const quickbooksClient = require('../utils/quickbooksClient');
-const ResponseHandler = require('../utils/responseHandler');
+const Invoice = require('../../models/invoice');
+const Customer = require('../../models/customer');
+const quickbooksClient = require('../../utils/quickbooksClient');
+const ResponseHandler = require('../../utils/responseHandler');
 
 class InvoiceController {
   async getAll(req, res) {

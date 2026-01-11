@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const authController = require('../controllers/authController');
-const customerController = require('../controllers/customerController');
-const invoiceController = require('../controllers/invoiceController');
-const itemController = require('../controllers/itemController');
+const authController = require('../../controllers/api/authController');
+const customerController = require('../../controllers/api/customerController');
+const invoiceController = require('../../controllers/api/invoiceController');
+const itemController = require('../../controllers/api/itemController');
 
 router.get('/auth/callback', authController.handleCallback);
 
