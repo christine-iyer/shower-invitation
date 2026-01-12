@@ -7,7 +7,7 @@ const invoiceController = require('../../controllers/api/invoiceController');
 const itemController = require('../../controllers/api/itemController');
 
 router.get('/auth/callback', authController.handleCallback);
-
+router.get('/auth/status', authController.checkAuth);
 router.get('/customers', customerController.getAll);
 router.post('/customers/create', customerController.create);
 router.post('/customers/bulk', customerController.createBulk);
