@@ -13,6 +13,7 @@ const app = express()
 app.use(cors({
   origin: [
     'https://book-app-front-lake.vercel.app',
+    'http://localhost:3000',
     'http://localhost:19006',
     'http://localhost:8081'
   ],
