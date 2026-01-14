@@ -1,3 +1,5 @@
+
+
 | Symbol | Purchase Price | Shares | Principal Date |
 |--------|---------------|--------|----------------|
 | AMD | 152.31 | 1 | 10/23/2024 |
