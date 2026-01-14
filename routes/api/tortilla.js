@@ -5,7 +5,7 @@ const authController = require('../../controllers/api/authController');
 const customerController = require('../../controllers/api/customerController');
 const invoiceController = require('../../controllers/api/invoiceController');
 const itemController = require('../../controllers/api/itemController');
-router.get('/callback', authController.handleCallback);
+
 router.get('/callback', authController.handleCallback);
 router.get('/status', authController.checkAuth);
 router.get('/customers', customerController.getAll);
