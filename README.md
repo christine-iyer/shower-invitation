@@ -1,4 +1,4 @@
-
+had to add envt variables. to the digital ocean.
 
 | Symbol | Purchase Price | Shares | Principal Date |
 |--------|---------------|--------|----------------|
