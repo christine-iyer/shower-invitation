@@ -8,6 +8,7 @@ const itemController = require('../../controllers/api/itemController');
 
 router.get('/callback', authController.handleCallback);
 router.get('/status', authController.checkAuth);
+router.post('/logout', authController.logout);  // ADD THIS LINE
 router.get('/customers', customerController.getAll);
 router.post('/customers/create', customerController.create);
 router.post('/customers/bulk', customerController.createBulk);

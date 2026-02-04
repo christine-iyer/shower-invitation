@@ -89,6 +89,32 @@ class AuthController {
       res.redirect(`${config.clientUrl}/?auth=failed&error=${encodeURIComponent(error.message)}`);
     }
   }
+
+  // NEW: Logout function
+  async logout(req, res) {
+    try {
+      console.log('=== QuickBooks Logout Initiated ===');
+      
+      // Delete all tokens from database
+      const result = await QuickBooksToken.deleteMany({});
+      console.log(`Deleted ${result.deletedCount} token record(s) from database`);
+      
+      // Clear tokens from memory
+      quickbooksClient.setAccessToken('');
+      quickbooksClient.setCompanyId('');
+      
+      console.log('✅ Logout successful');
+      console.log('Tokens cleared from memory and database');
+      
+      return res.json({
+        success: true,
+        message: 'Successfully logged out from QuickBooks'
+      });
+    } catch (error) {
+      console.error('❌ Error during logout:', error);
+      return ResponseHandler.error(res, error);
+    }
+  }
 }
 
 module.exports = new AuthController();
