@@ -5,6 +5,39 @@ class QuickBooksClient {
   constructor() {
     this.accessToken = '';
     this.companyId = config.companyId;
+    this.isLoading = false;
+    
+    // Load tokens from DB on startup
+    this.loadTokensFromDB();
+  }
+
+  async loadTokensFromDB() {
+    if (this.isLoading) return;
+    this.isLoading = true;
+    
+    try {
+      const QuickBooksToken = require('../models/quickbooksToken');
+      const tokenRecord = await QuickBooksToken.findOne().sort({ updatedAt: -1 });
+      
+      if (tokenRecord) {
+        // Check if token is expired
+        if (tokenRecord.expiresAt > new Date()) {
+          this.accessToken = tokenRecord.accessToken;
+          this.companyId = tokenRecord.realmId;
+          console.log('✅ Loaded valid QuickBooks token from database');
+          console.log('Token expires at:', tokenRecord.expiresAt.toISOString());
+        } else {
+          console.log('⚠️ Token in database is expired');
+          // TODO: Implement refresh token logic here
+        }
+      } else {
+        console.log('ℹ️ No QuickBooks tokens found in database');
+      }
+    } catch (error) {
+      console.error('❌ Error loading tokens from database:', error.message);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   setAccessToken(token) {
@@ -23,11 +56,21 @@ class QuickBooksClient {
     return this.companyId;
   }
 
-  isAuthenticated() {
+  async isAuthenticated() {
+    // If token in memory, return true
+    if (this.accessToken) {
+      return true;
+    }
+    
+    // Otherwise, try to load from DB
+    await this.loadTokensFromDB();
     return !!this.accessToken;
   }
 
   async get(endpoint) {
+    // Ensure we have a token
+    await this.isAuthenticated();
+    
     if (!this.accessToken) {
       throw new Error('Not authenticated');
     }
@@ -49,6 +92,9 @@ class QuickBooksClient {
   }
 
   async post(endpoint, data) {
+    // Ensure we have a token
+    await this.isAuthenticated();
+    
     if (!this.accessToken) {
       throw new Error('Not authenticated');
     }

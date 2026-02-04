@@ -1,6 +1,7 @@
 const quickbooksClient = require('../../utils/quickbooksClient');
 const config = require('../../config/environment');
 const ResponseHandler = require('../../utils/responseHandler');
+const QuickBooksToken = require('../../models/quickbooksToken');
 
 class AuthController {
   async checkAuth(req, res) {
@@ -42,9 +43,31 @@ class AuthController {
       
       console.log('✅ Token exchange successful');
       console.log('Access token received:', tokenData.access_token ? 'Yes' : 'No');
+      console.log('Refresh token received:', tokenData.refresh_token ? 'Yes' : 'No');
       console.log('Token type:', tokenData.token_type);
       console.log('Expires in:', tokenData.expires_in);
       
+      // Calculate expiration date
+      const expiresAt = new Date(Date.now() + tokenData.expires_in * 1000);
+      
+      // Save tokens to MongoDB
+      await QuickBooksToken.findOneAndUpdate(
+        { realmId: realmId },
+        {
+          accessToken: tokenData.access_token,
+          refreshToken: tokenData.refresh_token,
+          realmId: realmId,
+          tokenType: tokenData.token_type,
+          expiresAt: expiresAt,
+          updatedAt: new Date()
+        },
+        { upsert: true, new: true }
+      );
+      
+      console.log('✅ Tokens saved to database');
+      console.log('Token expires at:', expiresAt.toISOString());
+      
+      // Set tokens in memory for immediate use
       quickbooksClient.setAccessToken(tokenData.access_token);
       quickbooksClient.setCompanyId(realmId);
       

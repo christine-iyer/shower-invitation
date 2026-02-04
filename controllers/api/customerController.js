@@ -4,6 +4,12 @@ const ResponseHandler = require('../../utils/responseHandler');
 
 class CustomerController {
   async getAll(req, res) {
+
+  const isAuth = await quickbooksClient.isAuthenticated();
+  
+  if (!isAuth) {
+    return ResponseHandler.notAuthenticated(res);
+  }
     if (!quickbooksClient.isAuthenticated()) {
       return ResponseHandler.notAuthenticated(res);
     }
