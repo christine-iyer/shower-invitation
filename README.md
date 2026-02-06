@@ -1,5 +1,5 @@
 had to add envt variables. to the digital ocean.
-
+there's a few more tests to do for tortilla. 
 | Symbol | Purchase Price | Shares | Principal Date |
 |--------|---------------|--------|----------------|
 | AMD | 152.31 | 1 | 10/23/2024 |
