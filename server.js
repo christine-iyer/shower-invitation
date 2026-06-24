@@ -56,6 +56,7 @@ app.use('/api/bevvies', require('./routes/api/bevvies'))
 app.use('/api/auth', require('./routes/api/tortilla'))
 app.use('/api/tortilla', require('./routes/api/tortilla'))
 app.use('/api/strains', require('./routes/api/strains'))
+app.use('/api/corn', require('./routes/api/corn'))
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))

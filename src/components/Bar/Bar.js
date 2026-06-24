@@ -23,6 +23,9 @@ export default function Bar(props) {
       <li className={styles.navItem}>
         <Link to="/maps">Maps</Link>
       </li>
+      <li className={styles.navItem}>
+        <Link to="/corn">Corn</Link>
+      </li>
 
       
     </ul>
