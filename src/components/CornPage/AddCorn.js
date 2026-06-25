@@ -19,8 +19,8 @@ export default function AddCorn({
           {/* Yellow Corn Section */}
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Yellow Corn</h3>
-            <div className={styles.formContainer}>
-              <div className={styles.formGroupYellow}>
+            <div className={styles.formContainerYellow}>
+              <div className={styles.formGroup}>
                 <label htmlFor="yellowRaw">Raw Corn in Lbs</label>
                 <input
                   type="number"
@@ -32,7 +32,7 @@ export default function AddCorn({
                   className={styles.input}
                 />
               </div>
-              <div className={styles.formGroupYellow}>
+              <div className={styles.formGroup}>
                 <label htmlFor="yellowCooked">Cooked Tortillas and Chips</label>
                 <input
                   type="number"
@@ -44,7 +44,7 @@ export default function AddCorn({
                   className={styles.input}
                 />
               </div>
-              <div className={styles.formGroupYellow}>
+              <div className={styles.formGroup}>
                 <label htmlFor="yellowProduction">Production Time (minutes)</label>
                 <input
                   type="number"
@@ -62,8 +62,8 @@ export default function AddCorn({
           {/* White Corn Section */}
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>White Corn</h3>
-            <div className={styles.formContainer}>
-              <div className={styles.formGroupWhite}>
+            <div className={styles.formContainerWhite}>
+              <div className={styles.formGroup}>
                 <label htmlFor="whiteRaw">Raw Corn in Lbs</label>
                 <input
                   type="number"
@@ -75,7 +75,7 @@ export default function AddCorn({
                   className={styles.input}
                 />
               </div>
-              <div className={styles.formGroupWhite}>
+              <div className={styles.formGroup}>
                 <label htmlFor="whiteCooked">Cooked Tortillas and Chips</label>
                 <input
                   type="number"
@@ -105,8 +105,8 @@ export default function AddCorn({
           {/* Blue Corn Section */}
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Blue Corn</h3>
-            <div className={styles.formContainer}>
-              <div className={styles.formGroupBlue}>
+            <div className={styles.formContainerBlue}>
+              <div className={styles.formGroup}>
                 <label htmlFor="blueRaw">Raw Corn in Lbs</label>
                 <input
                   type="number"
@@ -118,7 +118,7 @@ export default function AddCorn({
                   className={styles.input}
                 />
               </div>
-              <div className={styles.formGroupBlue}>
+              <div className={styles.formGroup}>
                 <label htmlFor="blueCooked">Cooked Tortillas and Chips</label>
                 <input
                   type="number"
@@ -130,7 +130,7 @@ export default function AddCorn({
                   className={styles.input}
                 />
               </div>
-              <div className={styles.formGroupBlue}>
+              <div className={styles.formGroup}>
                 <label htmlFor="blueProduction">Production Time (minutes)</label>
                 <input
                   type="number"

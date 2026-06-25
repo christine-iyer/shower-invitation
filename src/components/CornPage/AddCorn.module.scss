@@ -39,51 +39,42 @@
   display: flex;
   flex-direction: column;
   gap: 1rem; /* Space between inputs */
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.formContainerYellow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Space between inputs */
+  background-color: #fffacd; /* Light yellow */
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.formContainerWhite {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Space between inputs */
+  background-color: #faebd7; /* Antique white */
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.formContainerBlue {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Space between inputs */
+  background-color: #add8e6; /* Light blue */
+  padding: 1rem;
+  border-radius: 6px;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  background-color: #f1f1f1;
-
-  label {
-    font-weight: 600;
-    color: #333;
-    font-size: 0.9rem;
-  }
-}
-.formGroupYellow {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  background-color: #ffff99; /* Light yellow */
-
-  label {
-    font-weight: 600;
-    color: #333;
-    font-size: 0.9rem;
-  }
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  background-color: #ffffff; /* White background */
-
-  label {
-    font-weight: 600;
-    color: #333;
-    font-size: 0.9rem;
-  }
-}
-
-.formGroupBlue {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  background-color: #f1fffa; /* Light blue-green */
 
   label {
     font-weight: 600;
