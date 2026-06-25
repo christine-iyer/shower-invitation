@@ -41,6 +41,57 @@
   gap: 1rem; /* Space between inputs */
 }
 
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #f1f1f1;
+
+  label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+  }
+}
+.formGroupYellow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #ffff99; /* Light yellow */
+
+  label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #ffffff; /* White background */
+
+  label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+  }
+}
+
+.formGroupBlue {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #f1fffa; /* Light blue-green */
+
+  label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+  }
+}
+
 .input {
   padding: 0.5rem;
   font-size: 1rem;

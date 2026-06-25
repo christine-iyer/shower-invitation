@@ -25,7 +25,7 @@ app.use(cors({
 const path = require('path')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
-const PORT = process.env.PORT || 3006
+const PORT = process.env.PORT || 3009
 
 // middleware
 app.use(express.json())
